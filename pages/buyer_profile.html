@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>Buyer Profile</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/buyer_profile.css" />
+    <link rel="stylesheet" href="../assets/css/header_footer.css" />
+    <script src="../assets/js/main.js"></script>
+    <link
+      rel="icon"
+      href="../assets/images/cattles/logo1.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <div class="form_container divspace">
+        <form>
+          <!-- left section -->
+
+          <div class="left_section divspace">
+            <div class="profile_img_container">
+              <img
+                class="profile_img"
+                src="../assets/images/profile_logo.png"
+                alt="profile_img"
+              />
+              <input type="url" id="image" />
+            </div>
+
+            <div id="customer_portal">
+              <div class="links_container">
+                <div class="icon_container1">
+                  <i class="fa-solid fa-paw"></i>
+                </div>
+                <h2>
+                  <a href="cattle/cattleList.html?page=sellerCattleList">
+                    Cattle List
+                  </a>
+                </h2>
+              </div>
+
+              <div class="links_container">
+                <div class="icon_container1">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <h2>
+                  <a href="cattle/cattleList.html?page=favourites">
+                    Favourites
+                  </a>
+                </h2>
+              </div>
+
+              <div class="links_container">
+                <div class="icon_container1">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                </div>
+                <h2 class="links_head" id="customerLogOut">Log out</h2>
+              </div>
+
+              <div class="links_container" id="delAccount">
+                <div class="icon_container2">
+                  <i class="fa-solid fa-trash"></i>
+                </div>
+                <h2 class="links_head" id="delete">Delete Account</h2>
+              </div>
+            </div>
+
+            <div id="rep_portal">
+              <div class="links_container">
+                <div class="icon_container1">
+                  <i class="fa-solid fa-list"></i>
+                </div>
+                <h2>
+                  <a href="cattle/cattleList.html?page=repCattleList">
+                    Cattle List
+                  </a>
+                </h2>
+              </div>
+
+              <div class="links_container">
+                <div class="icon_container1">
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <h2>
+                  <a href="cattle/cattleList.html?page=verifiedCattles">
+                    Verified Cattles
+                  </a>
+                </h2>
+              </div>
+
+              <div class="links_container">
+                <div class="icon_container1">
+                  <i class="fa-regular fa-circle-xmark"></i>
+                </div>
+                <h2>
+                  <a href="cattle/cattleList.html?page=rejectedCattles">
+                    Rejected Cattles
+                  </a>
+                </h2>
+              </div>
+
+              <div class="links_container">
+                <div class="icon_container1">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                </div>
+                <h2 class="links_head" id="repLogOut">Log out</h2>
+              </div>
+            </div>
+          </div>
+
+          <!-- right section -->
+
+          <div class="right_section divspace">
+            <div class="user_details divspace">
+              <h1 class="head">Profile</h1>
+
+              <div class="divspace divspace1">
+                <div class="label_container">
+                  <label> Name </label>
+                </div>
+                <div class="colon_container">:</div>
+                <div class="input_container">
+                  <input
+                    type="text"
+                    id="name"
+                    pattern="^[a-zA-Z]+([ ][a-zA-Z]+)*$"
+                    title="Don't use spaces in the first and last"
+                    oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="divspace divspace1">
+                <div class="label_container">
+                  <label> Phone.No </label>
+                </div>
+                <div class="colon_container">:</div>
+                <div class="input_container">
+                  <input
+                    required
+                    type="tel"
+                    maxlength="10"
+                    id="phone_no"
+                    disabled
+                  />
+                </div>
+              </div>
+
+              <div class="divspace divspace1">
+                <div class="label_container">
+                  <label> Address </label>
+                </div>
+                <div class="colon_container">:</div>
+                <div class="input_container">
+                  <textarea id="address" readonly></textarea>
+                </div>
+              </div>
+
+              <div class="divspace divspace1">
+                <div class="label_container">
+                  <label> District </label>
+                </div>
+                <div class="colon_container">:</div>
+                <div class="input_container">
+                  <select id="district" required>
+                    <option>Ariyalur</option>
+                    <option>Chengalpattu</option>
+                    <option>Chennai</option>
+                    <option>Coimbatore</option>
+                    <option>Cuddalore</option>
+                    <option>Dharmapuri</option>
+                    <option>Dindigul</option>
+                    <option>Erode</option>
+                    <option>Kallakurichi</option>
+                    <option>Kanchipuram</option>
+                    <option>Kanniyakumari</option>
+                    <option>Karur</option>
+                    <option>Krishnagiri</option>
+                    <option>Madurai</option>
+                    <option>Mayiladuthurai</option>
+                    <option>Nagapattinam</option>
+                    <option>Namakkal</option>
+                    <option>Nilgiris</option>
+                    <option>Perambalur</option>
+                    <option>Puducherry</option>
+                    <option>Pudukkottai</option>
+                    <option>Ramanathapuram</option>
+                    <option>Ranipet</option>
+                    <option>Salem</option>
+                    <option>Sivaganga</option>
+                    <option>Tenkasi</option>
+                    <option>Thanjavur</option>
+                    <option>Theni</option>
+                    <option>Thoothukudi</option>
+                    <option>Tiruchirappalli</option>
+                    <option>Tirunelveli</option>
+                    <option>Tirupathur</option>
+                    <option>Tiruppur</option>
+                    <option>Tiruvallur</option>
+                    <option>Tiruvannamalai</option>
+                    <option>Tiruvarur</option>
+                    <option>Vellore</option>
+                    <option>Viluppuram</option>
+                    <option>Virudhunagar</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="divspace divspace1">
+                <div class="label_container">
+                  <label> Pincode </label>
+                </div>
+                <div class="colon_container">:</div>
+                <div class="input_container">
+                  <input
+                    required
+                    type="text"
+                    id="pincode"
+                    pattern="^[123456789]\d{5}$"
+                    oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                    minlength="6"
+                    maxlength="6"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="button_container divspace">
+                <div class="divspace">
+                  <button class="edit_btn" type="submit" id="editButton">
+                    Edit
+                  </button>
+                </div>
+                <div class="divspace">
+                  <button type="button" id="save">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/footer.js"></script>
+
+    <script>
+      if (phone_id !== null) {
+        document.getElementById("phone_no").removeAttribute("disabled");
+        document.getElementById("phone_no").setAttribute("readonly", true);
+        document.getElementById("customer_portal").style.display = "block";
+      } else if (rep_id != null) {
+        document.getElementById("rep_portal").style.display = "block";
+      }
+
+      // function for enabling input
+
+      function enableInput(e) {
+        e.preventDefault();
+        if (confirm("Are you sure you want to edit the details")) {
+          document.getElementById("name").removeAttribute("readonly");
+          document.getElementById("phone_no").removeAttribute("readonly");
+          document.getElementById("address").removeAttribute("readonly");
+          document.getElementById("district").removeAttribute("readonly");
+          document.getElementById("pincode").removeAttribute("readonly");
+        }
+      }
+
+      // function for updating details
+
+      function disableInput() {
+        if (rep_id === null) {
+          const person_data = userDetails.find((e) => e.phone_no === phone_id);
+
+          if (confirm("Are you sure you want to save the details")) {
+            person_data.name = document.getElementById("name").value;
+            person_data.address = document.getElementById("address").value;
+            person_data.district = document.getElementById("district").value;
+            person_data.pincode = document.getElementById("pincode").value;
+
+            localStorage.setItem("userData", JSON.stringify(userDetails));
+          }
+        } else if (phone_id === null) {
+          const repData = repDetail.find((e) => e.userId === rep_id);
+
+          if (confirm("Are you sure you want to save the details")) {
+            repData.name = document.getElementById("name").value;
+            repData.phone_no = document.getElementById("phone_no").value;
+            repData.address = document.getElementById("address").value;
+            repData.district = document.getElementById("district").value;
+            repData.pincode = document.getElementById("pincode").value;
+
+            localStorage.setItem("rep_details", JSON.stringify(repDetail));
+          }
+        }
+
+        window.location.reload();
+      }
+
+      if (rep_id === null) {
+        const person_data = userDetails.find((e) => e.phone_no === phone_id);
+
+        document.getElementById("name").value = person_data.name;
+        document.getElementById("phone_no").value = person_data.phone_no;
+        document.getElementById("address").value = person_data.address;
+        document.getElementById("district").value = person_data.district;
+        document.getElementById("pincode").value = person_data.pincode;
+
+        document
+          .getElementById("editButton")
+          .addEventListener("click", enableInput);
+
+        document.getElementById("save").addEventListener("click", disableInput);
+
+        // function for deleting account
+
+        function deleteaccount(e) {
+          if (confirm("Are you sure you want to delete the account?")) {
+            const removedata = userDetails.indexOf(person_data);
+            userDetails.splice(removedata, 1);
+            localStorage.setItem("userData", JSON.stringify(userDetails));
+            localStorage.removeItem("phone_no_id");
+            window.location.href = "../index.html";
+          }
+        }
+
+        const del = document.querySelector("#delete");
+        del.addEventListener("click", deleteaccount);
+      } else if (phone_id === null) {
+        const repData = repDetail.find((e) => e.userId === rep_id);
+
+        document.getElementById("name").value = repData.name;
+        document.getElementById("phone_no").value = repData.phone_no;
+        document.getElementById("address").value = repData.address;
+        document.getElementById("district").value = repData.district;
+        document.getElementById("pincode").value = repData.pincode;
+
+        document
+          .getElementById("editButton")
+          .addEventListener("click", enableInput);
+
+        document.getElementById("save").addEventListener("click", disableInput);
+      }
+    </script>
+  </body>
+</html>

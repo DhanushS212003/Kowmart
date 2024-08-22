@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>Edit Cattle Details</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/cattles/selldetails3.css" />
+    <link rel="stylesheet" href="../../assets/css/header_footer.css" />
+    <script src="../../assets/js/main.js"></script>
+    <link
+      rel="icon"
+      href="../../assets/images/cattles/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <!-- back button section -->
+
+      <div class="back_btn_container">
+        <div>
+          <button onclick="window.history.back()">BACK</button>
+        </div>
+        <h1 class="title4">Cattle Details</h1>
+      </div>
+
+      <hr />
+
+      <!-- Details section -->
+
+      <form>
+        <div class="details_section">
+          <div>
+            <label> Age </label>
+            <br />
+            <input
+              required
+              type="text"
+              id="age"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+              maxlength="2"
+            />
+          </div>
+          <div>
+            <label> Gender </label>
+            <br />
+            <select required id="gender">
+              <option>Male</option>
+              <option selected>Female</option>
+            </select>
+          </div>
+          <div class="weight">
+            <label> Weight (kg) </label>
+            <br />
+            <input
+              required
+              type="text"
+              id="weight"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+              maxlength="5"
+            />
+          </div>
+        </div>
+
+        <div class="details_section">
+          <div>
+            <label> Milk per day (litres) </label>
+            <br />
+            <input
+              required
+              type="text"
+              id="milk"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+              maxlength="2"
+            />
+          </div>
+          <div>
+            <label> Price (Rs.) </label>
+            <br />
+            <input
+              required
+              type="text"
+              id="price"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+            />
+          </div>
+          <div class="weight">
+            <label> Lactation </label>
+            <br />
+            <input
+              required
+              type="text"
+              id="lactation"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+              maxlength="2"
+            />
+          </div>
+        </div>
+
+        <div class="description_section">
+          <label> Description </label>
+          <br />
+          <textarea id="description"></textarea>
+        </div>
+
+        <div class="details_section">
+          <div>
+            <label> Upload Photo: </label>
+            <br />
+            <input type="url" multiple id="image" />
+          </div>
+          <div>
+            <label> Upload Photo: </label>
+            <br />
+            <input type="url" multiple id="image1" />
+          </div>
+          <div class="weight">
+            <label> Upload Video: </label>
+            <br />
+            <input type="url" multiple />
+          </div>
+        </div>
+
+        <div class="btn_container1">
+          <div class="sold_btn_container">
+            <button id="sold_btn" type="button">Sold</button>
+          </div>
+          <div>
+            <button class="submit_btn" type="button" id="save_btn">Save</button>
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/footer.js"></script>
+
+    <script>
+      // Edit page
+
+      const uid = JSON.parse(localStorage.getItem("cattle_unique_Id"));
+      const cattle = JSON.parse(localStorage.getItem("cattle_details"));
+
+      function find_data(e) {
+        return e.cattle_uniqueId == uid;
+      }
+
+      cattle_data = cattle.find(find_data);
+
+      document.getElementById("age").value = cattle_data.age;
+      document.getElementById("gender").value = cattle_data.gender;
+      document.getElementById("weight").value = cattle_data.weight;
+      document.getElementById("milk").value = cattle_data.milk;
+      document.getElementById("price").value = cattle_data.price;
+      document.getElementById("lactation").value = cattle_data.lactation;
+      document.getElementById("description").value = cattle_data.description;
+      document.getElementById("image").value = cattle_data.image;
+      document.getElementById("image1").value = cattle_data.image1;
+
+      // Update function
+
+      function updateDetails() {
+        if (confirm("Are you sure you want to save the details")) {
+          cattle_data.age = document.getElementById("age").value;
+          cattle_data.gender = document.getElementById("gender").value;
+          cattle_data.weight = document.getElementById("weight").value;
+          cattle_data.milk = document.getElementById("milk").value;
+          cattle_data.price = document.getElementById("price").value;
+          cattle_data.lactation = document.getElementById("lactation").value;
+          cattle_data.description =
+            document.getElementById("description").value;
+          cattle_data.image = document.getElementById("image").value;
+          cattle_data.image1 = document.getElementById("image1").value;
+
+          localStorage.setItem("cattle_details", JSON.stringify(cattle));
+          window.location.href = "./cattleList.html?page=verifiedCattles";
+        }
+      }
+
+      document
+        .getElementById("save_btn")
+        .addEventListener("click", updateDetails);
+
+      // Delete function
+
+      function deleteDetails() {
+        if (confirm("Are you sure you want to remove this cattle?")) {
+          const uid = JSON.parse(localStorage.getItem("cattle_unique_Id"));
+          const cattleIndex = verifiedCattleLists.indexOf(
+            verifiedCattleLists.find((e) => e.cattle_uniqueId === uid)
+          );
+
+          verifiedCattleLists.splice(cattleIndex, 1);
+          localStorage.setItem(
+            "verifiedCattles",
+            JSON.stringify(verifiedCattleLists)
+          );
+          document.querySelector("form").reset();
+          window.location.href = "./cattleList.html?page=verifiedCattles";
+        }
+      }
+
+      document
+        .getElementById("sold_btn")
+        .addEventListener("click", deleteDetails);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>Sell details 1</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/cattles/selldetails1&2.css" />
+    <link rel="stylesheet" href="../../assets/css/header_footer.css" />
+    <script src="../../assets/js/main.js"></script>
+    <link
+      rel="icon"
+      href="../../assets/images/cattles/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <!-- back button section -->
+
+      <div class="back_btn_container">
+        <div>
+          <button onclick="window.history.back()">BACK</button>
+        </div>
+        <h1 class="title1">List Your LiveStock Here</h1>
+      </div>
+
+      <!-- title section -->
+
+      <h3 class="title2">Buy and Sell your Cattles easier!</h3>
+      <img
+        class="choose"
+        src="../../assets/images/choose_category_active.png"
+        alt="choose"
+      />
+      <h1 class="title3">Choose Category</h1>
+      <hr />
+
+      <!-- categories section -->
+
+      <div class="categories_container">
+        <div class="category_container" id="Cow">
+          <div class="catimg_container">
+            <img
+              class="cat_img"
+              src="../../assets/images/cattles/ch1.jpg"
+              alt="cow"
+            />
+          </div>
+          <p class="category_title">Cow</p>
+        </div>
+
+        <div class="category_container" id="Buffalo">
+          <div class="catimg_container">
+            <img
+              class="cat_img"
+              src="../../assets/images/cattles/ch2.jpg"
+              alt="buffalo"
+            />
+          </div>
+          <p class="category_title">Buffalo</p>
+        </div>
+
+        <div class="category_container" id="Goat">
+          <div class="catimg_container">
+            <img
+              class="cat_img"
+              src="../../assets/images/cattles/ch3.jpg"
+              alt="goat"
+            />
+          </div>
+          <p class="category_title">Goat</p>
+        </div>
+
+        <div class="category_container" id="Sheep">
+          <div class="catimg_container">
+            <img
+              class="cat_img"
+              src="../../assets/images/cattles/ch4.jpg"
+              alt="sheep"
+            />
+          </div>
+          <p class="category_title">Sheep</p>
+        </div>
+
+        <div class="category_container" id="Ox">
+          <div class="catimg_container">
+            <img
+              class="cat_img"
+              src="../../assets/images/cattles/ch5.jpg"
+              alt="ox"
+            />
+          </div>
+          <p class="category_title">Ox</p>
+        </div>
+      </div>
+    </main>
+
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/footer.js"></script>
+
+    <script>
+      // Passing category value to the breed page
+
+      const parentDiv = document.querySelector(".categories_container");
+      const childDiv = parentDiv.children;
+
+      for (let i = 0; i < childDiv.length; i++) {
+        const element = childDiv[i];
+        element.addEventListener("click", function (event) {
+          const cattle = event.currentTarget.getAttribute("id");
+          window.location.href = `./sell_details2.html?cattle=${cattle}`;
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+body {
+    background-color: #e8f5ec;
+    font-family: 'Questrial', sans-serif;
+}
+
+.content_container{
+    display: flex;
+    justify-content: center;
+}
+
+.content ,.content1{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin: 5%;
+}
+
+.text_container{
+    width: 50%;
+}
+
+p{
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 15px;
+}
+
+.info_text{
+    font-size: 22px;
+    line-height: 3rem;
+    font-weight: normal;
+}
+
+.heading{
+    line-height: 3rem;
+    font-size: 32px;
+}
+
+.image{
+    border-radius: 10px;
+}
+
+.banner_container {
+    height: 450px;
+    background-image: url("../images/cattles/ho3.jpg");
+    margin-top: 60px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner_title {
+    background-color: #ffffff80;
+    padding: 15px 20px;
+}
+
+@media screen and (max-width: 480px) {
+
+    .banner_container{
+        height: 36vh;
+        background-position: 0;
+    }
+
+    .banner_title{
+        padding: 5px 10px;
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .content{
+        display: block;
+        width: 100%;
+        margin: 10%;
+    }
+
+    .image{
+        width: 80%;
+        display: block;
+        margin: auto;
+    }
+
+    .text_container{
+        width: 100%;
+    }
+
+    .info_text{
+        font-size: 18px;
+        line-height: 2rem;
+    }
+
+    .content1{
+        flex-direction: column-reverse;
+        width: 100%;
+        margin: -5% 10% 10% 10%;
+    }
+
+}

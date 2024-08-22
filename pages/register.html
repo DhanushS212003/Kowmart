@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>Register</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/signin.css" />
+    <link
+      rel="icon"
+      href="../assets/images/cattles/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="logo_container">
+        <img class="logo" src="../assets/images/cattles/logo1.png" alt="logo" />
+      </div>
+      <div class="logo_name_container">
+        <h2 class="logo_name">KowMart</h2>
+      </div>
+    </div>
+
+    <div class="form_container">
+      <form id="registerForm">
+        <h1>REGISTER</h1>
+        <div class="details_container">
+          <div class="userIdContainer">
+            <label> User ID </label>
+            <br />
+            <input type="text" id="userId" minlength="4" maxlength="4" />
+          </div>
+          <div>
+            <label> Name </label>
+            <br />
+            <input
+              required
+              type="text"
+              id="name"
+              pattern="^[a-zA-Z]+([ ][a-zA-Z]+)*$"
+              title="Don't use spaces in the first and last"
+              oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
+            />
+          </div>
+          <div class="phoneContainer">
+            <label> Phone No. </label>
+            <br />
+            <input
+              type="tel"
+              id="phone_no"
+              pattern="^[6789]\d{9}$"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+              minlength="10"
+              maxlength="10"
+              title="Please enter a valid phone number"
+            />
+          </div>
+          <div>
+            <label> Password </label>
+            <br />
+            <input
+              required
+              type="password"
+              id="password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
+              minlength="8"
+              maxlength="8"
+              title="Don't use Space"
+            />
+          </div>
+          <div>
+            <label> Confirm Password </label>
+            <br />
+            <input
+              required
+              type="password"
+              id="confirm_password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
+              minlength="8"
+              maxlength="8"
+              title="Don't use Space"
+            />
+          </div>
+          <div class="submit_btn_container">
+            <button type="submit">SUBMIT</button>
+          </div>
+          <div class="link_container">
+            <p>Existing User? <a id="inLink"> Login here </a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script src="../assets/js/register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+  </body>
+</html>

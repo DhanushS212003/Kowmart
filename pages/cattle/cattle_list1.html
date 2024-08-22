@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>Cattle List 1</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/cattles/cattlelist.css" />
+    <link rel="stylesheet" href="../../assets/css/header_footer.css" />
+    <script src="../../assets/js/main.js"></script>
+    <link
+      rel="icon"
+      href="../../assets/images/cattles/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <!-- Cattles Section  -->
+
+      <div class="products_section1">
+        <div class="filter_cattles_container">
+          <div class="back_button_container1">
+            <button class="btn" onclick="window.history.back()">BACK</button>
+          </div>
+
+          <div class="filter_container">
+            <div class="breed_filter_container">
+              <div class="topic_container">
+                <p class="topic">Breeds</p>
+              </div>
+              <div class="breed_list_container"></div>
+            </div>
+
+            <div class="breed_filter_container">
+              <div class="topic_container">
+                <p class="topic">Districts</p>
+              </div>
+              <div class="state_list_container"></div>
+            </div>
+
+            <div class="range_container">
+              <div class="topic_container">
+                <p class="topic">Price <small>(INR)</small></p>
+              </div>
+              <div class="wrapper">
+                <div class="price-input">
+                  <div class="field">
+                    <input
+                      type="number"
+                      class="input-min"
+                      min="1000"
+                      max="300000"
+                      value="1000"
+                    />
+                  </div>
+                  <div class="field_separator">to</div>
+                  <div class="field">
+                    <input
+                      type="number"
+                      class="input-max"
+                      min="1000"
+                      max="300000"
+                      value="300000"
+                    />
+                  </div>
+                </div>
+                <div class="slider">
+                  <div class="progress"></div>
+                </div>
+                <div class="range-input">
+                  <input
+                    type="range"
+                    class="range-min"
+                    min="1000"
+                    max="300000"
+                    value="1000"
+                    step="500"
+                  />
+                  <input
+                    type="range"
+                    class="range-max"
+                    min="1000"
+                    max="300000"
+                    value="300000"
+                    step="500"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="pincode_container">
+              <div class="topic_container">
+                <p class="topic">Pincode</p>
+              </div>
+              <div class="search_bar_container">
+                <input
+                  type="search"
+                  placeholder="search"
+                  oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                  minlength="6"
+                  maxlength="6"
+                  id="pincode_input"
+                />
+                <i class="fa-solid fa-magnifying-glass" id="mag_search"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cattles_title_container">
+          <div class="title_container1"></div>
+          <div class="cattles_container"></div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/footer.js"></script>
+
+    <script>
+      const breed_list = [
+        {
+          name: "Gir",
+          category: "Cow",
+        },
+        {
+          name: "Red sindhi",
+          category: "Cow",
+        },
+        {
+          name: "Kankrej",
+          category: "Cow",
+        },
+        {
+          name: "Jersey",
+          category: "Cow",
+        },
+        {
+          name: "Rathi Heifer",
+          category: "Cow",
+        },
+        {
+          name: "Kapila",
+          category: "Cow",
+        },
+        {
+          name: "Vilwadri",
+          category: "Cow",
+        },
+        {
+          name: "HF",
+          category: "Cow",
+        },
+        {
+          name: "Tharparkar",
+          category: "Cow",
+        },
+        {
+          name: "Sahiwal",
+          category: "Cow",
+        },
+        {
+          name: "Deoni",
+          category: "Cow",
+        },
+        {
+          name: "Surti",
+          category: "Buffalo",
+        },
+        {
+          name: "Nili",
+          category: "Buffalo",
+        },
+        {
+          name: "Banni",
+          category: "Buffalo",
+        },
+        {
+          name: "Murrah",
+          category: "Buffalo",
+        },
+        {
+          name: "Jafarabadi",
+          category: "Buffalo",
+        },
+        {
+          name: "Malabari",
+          category: "Goat",
+        },
+        {
+          name: "Sirohi",
+          category: "Goat",
+        },
+        {
+          name: "Kota",
+          category: "Goat",
+        },
+        {
+          name: "Beetal",
+          category: "Goat",
+        },
+        {
+          name: "Sannen",
+          category: "Goat",
+        },
+        {
+          name: "Jamunapari",
+          category: "Goat",
+        },
+        {
+          name: "Boer",
+          category: "Goat",
+        },
+        {
+          name: "Sojat",
+          category: "Goat",
+        },
+        {
+          name: "Barbari",
+          category: "Goat",
+        },
+        {
+          name: "Gujri",
+          category: "Goat",
+        },
+        {
+          name: "Jakhrana",
+          category: "Goat",
+        },
+        {
+          name: "Bannur",
+          category: "Sheep",
+        },
+        {
+          name: "Neelore Jodipi",
+          category: "Sheep",
+        },
+        {
+          name: "Sindhanoor",
+          category: "Sheep",
+        },
+        {
+          name: "Deccani",
+          category: "Sheep",
+        },
+        {
+          name: "Coimbatore",
+          category: "Sheep",
+        },
+        {
+          name: "Ongole",
+          category: "Ox",
+        },
+        {
+          name: "Brahma",
+          category: "Ox",
+        },
+      ];
+
+      const state_list = [
+        { name: "Ariyalur" },
+        { name: "Chengalpattu" },
+        { name: "Chennai" },
+        { name: "Coimbatore" },
+        { name: "Cuddalore" },
+        { name: "Dharmapuri" },
+        { name: "Dindigul" },
+        { name: "Erode" },
+        { name: "Kallakurichi" },
+        { name: "Kanchipuram" },
+        { name: "Kanniyakumari" },
+        { name: "Karur" },
+        { name: "Krishnagiri" },
+        { name: "Madurai" },
+        { name: "Mayiladuthurai" },
+        { name: "Nagapattinam" },
+        { name: "Namakkal" },
+        { name: "Nilgiris" },
+        { name: "Perambalur" },
+        { name: "Puducherry" },
+        { name: "Pudukkottai" },
+        { name: "Ramanathapuram" },
+        { name: "Ranipet" },
+        { name: "Salem" },
+        { name: "Sivaganga" },
+        { name: "Tenkasi" },
+        { name: "Thanjavur" },
+        { name: "Theni" },
+        { name: "Thoothukudi" },
+        { name: "Tiruchirappalli" },
+        { name: "Tirunelveli" },
+        { name: "Tirupathur" },
+        { name: "Tiruppur" },
+        { name: "Tiruvallur" },
+        { name: "Tiruvannamalai" },
+        { name: "Tiruvarur" },
+        { name: "Vellore" },
+        { name: "Viluppuram" },
+        { name: "Virudhunagar" },
+      ];
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const cattlePage = urlParams.get("cattle_details");
+      // heading
+      category_name = document.createElement("h1");
+      category_name.setAttribute("class", "title_color");
+      category_name.innerText = `All ${cattlePage}s`;
+      document.querySelector("div.title_container1").append(category_name);
+
+      if (verifiedCattleLists.length !== 0) {
+        const cat_breed_list = breed_list.filter(
+          (e) => e.category == cattlePage
+        );
+
+        for (let i = 0; i < cat_breed_list.length; i++) {
+          // breed_container
+          breed_container = document.createElement("div");
+          breed_container.setAttribute("class", "breed_container");
+
+          // checkbox
+          checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.setAttribute("class", "checkbox");
+          checkbox.setAttribute("id", cat_breed_list[i].name);
+          checkbox.addEventListener("click", breedOnSelect);
+          breed_container.append(checkbox);
+
+          // label
+          label = document.createElement("label");
+          label.setAttribute("for", cat_breed_list[i].name);
+          label.innerText = cat_breed_list[i].name;
+          breed_container.append(label);
+
+          document
+            .querySelector("div.breed_list_container")
+            .append(breed_container);
+        }
+
+        for (let i = 0; i < state_list.length; i++) {
+          // breed_container
+          state_container = document.createElement("div");
+          state_container.setAttribute("class", "state_container");
+
+          // checkbox
+          checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.setAttribute("class", "checkbox1");
+          checkbox.setAttribute("id", state_list[i].name);
+          checkbox.addEventListener("click", stateOnSelect);
+          state_container.append(checkbox);
+
+          // label
+          label = document.createElement("label");
+          label.setAttribute("for", state_list[i].name);
+          label.innerText = state_list[i].name;
+          state_container.append(label);
+
+          document
+            .querySelector("div.state_list_container")
+            .append(state_container);
+        }
+
+        let cattleDetails = [];
+
+        for (let i = 0; i < verifiedCattleLists.length; i++) {
+          let cattleData = cattle_detail.find(
+            (e) =>
+              e.cattle_uniqueId === verifiedCattleLists[i]["cattle_uniqueId"]
+          );
+          cattleData.rep_id = verifiedCattleLists[i]["repUserId"];
+          cattleDetails.push(cattleData);
+        }
+
+        let categoryCattleDetails = cattleDetails.filter(
+          (e) => e.cattle === cattlePage
+        );
+
+        for (let i = 0; i < categoryCattleDetails.length; i++) {
+          const cattle_container = cards(categoryCattleDetails[i]);
+          document
+            .querySelector("div.cattles_container")
+            .append(cattle_container);
+        }
+
+        const selectedBreeds = [];
+        const selectedDistricts = [];
+
+        function filterCattles() {
+          let breedFilteredCattles = [];
+
+          for (let i = 0; i < selectedBreeds.length; i++) {
+            const filter_products = categoryCattleDetails.filter(
+              (e) => e.breed === selectedBreeds[i]
+            );
+            breedFilteredCattles = breedFilteredCattles.concat(filter_products);
+          }
+
+          const selectedRep = [];
+
+          for (let i = 0; i < selectedDistricts.length; i++) {
+            const filterRep = repDetail.find(
+              (e) => e.district === selectedDistricts[i]
+            );
+            if (filterRep) {
+              selectedRep.push(filterRep.userId);
+            }
+          }
+
+          let filteredCattles = [];
+
+          if (selectedBreeds.length > 0 && selectedDistricts.length > 0) {
+            const filterCattles = breedFilteredCattles.filter((e) =>
+              selectedRep.includes(e.rep_id)
+            );
+            filteredCattles = filteredCattles.concat(filterCattles);
+          } else if (selectedBreeds.length > 0) {
+            filteredCattles = filteredCattles.concat(breedFilteredCattles);
+          } else if (selectedDistricts.length > 0) {
+            for (let i = 0; i < categoryCattleDetails.length; i++) {
+              if (selectedRep.includes(categoryCattleDetails[i].rep_id)) {
+                filteredCattles.push(categoryCattleDetails[i]);
+              }
+            }
+          } else {
+            filteredCattles = categoryCattleDetails;
+          }
+
+          displayFilteredCattles(filteredCattles);
+        }
+
+        function displayFilteredCattles(cattles) {
+          const cattlesContainer = document.querySelector(
+            "div.cattles_container"
+          );
+          cattlesContainer.innerHTML = "";
+
+          if (cattles.length === 0) {
+            const no_image = document.createElement("img");
+            no_image.setAttribute("src", "../../assets/images/no_result.gif");
+            no_image.setAttribute("class", "no_result");
+            cattlesContainer.append(no_image);
+          } else {
+            for (let i = 0; i < cattles.length; i++) {
+              const cattle_container = cards(cattles[i]);
+              cattlesContainer.append(cattle_container);
+            }
+          }
+        }
+
+        function breedOnSelect(event) {
+          const element = event.target;
+          if (element.checked) {
+            selectedBreeds.push(element.id);
+          } else {
+            const index = selectedBreeds.indexOf(this.id);
+            selectedBreeds.splice(index, 1);
+          }
+          filterCattles();
+        }
+
+        function stateOnSelect(event) {
+          const element = event.target;
+          if (element.checked) {
+            selectedDistricts.push(element.id);
+          } else {
+            const index = selectedDistricts.indexOf(this.id);
+            selectedDistricts.splice(index, 1);
+          }
+          filterCattles();
+        }
+
+        const magnifying_glass = document.getElementById("mag_search");
+        magnifying_glass.addEventListener("click", function () {
+          const pincode_value = document.getElementById("pincode_input").value;
+          const zoneRep = repDetail.filter((e) => e.pincode == pincode_value);
+
+          const crossButton = document.getElementById("pincode_input");
+          crossButton.addEventListener("search", () => {
+            if (!crossButton.value) {
+              document.querySelector("div.cattles_container").innerHTML = "";
+              for (let i = 0; i < categoryCattleDetails.length; i++) {
+                const defaultCattleContainer = cards(categoryCattleDetails[i]);
+                document
+                  .querySelector("div.cattles_container")
+                  .append(defaultCattleContainer);
+              }
+            }
+          });
+
+          if (pincode_value.length === 6) {
+            document.querySelector("div.cattles_container").innerHTML = "";
+
+            const zoneVerifiedCattles = verifiedCattleLists.filter((e) =>
+              zoneRep.some((a) => a.userId === e.repUserId)
+            );
+            const zoneAllCattles = cattle_detail.filter((e) =>
+              zoneVerifiedCattles.some(
+                (a) => a.cattle_uniqueId === e.cattle_uniqueId
+              )
+            );
+            const zoneCattles = zoneAllCattles.filter(
+              (e) => e.cattle === cattlePage
+            );
+
+            if (zoneCattles.length == 0) {
+              const no_image = document.createElement("img");
+              no_image.setAttribute("src", "../../assets/images/no_result.gif");
+              no_image.setAttribute("class", "no_result");
+              document.querySelector("div.cattles_container").append(no_image);
+            } else {
+              for (let i = 0; i < zoneCattles.length; i++) {
+                const cattle_filter_container = cards(zoneCattles[i]);
+                document
+                  .querySelector("div.cattles_container")
+                  .append(cattle_filter_container);
+              }
+            }
+          } else if (pincode_value.length === 0) {
+            alert("Please enter a pincode");
+          } else {
+            alert("Please enter a proper pincode");
+          }
+        });
+
+        const rangeInput = document.querySelectorAll(".range-input input");
+        const priceInput = document.querySelectorAll(".price-input input");
+        const progress = document.querySelector(".slider .progress");
+
+        let priceGap = 2000;
+        let uniqueCattles = [];
+
+        priceInput.forEach((input) => {
+          input.addEventListener("change", (e) => {
+            let minVal = parseInt(priceInput[0].value);
+            maxVal = parseInt(priceInput[1].value);
+
+            if (e.target.value < 1000) {
+              e.target.value = 1000;
+            }
+
+            if (maxVal - minVal >= priceGap && maxVal <= 300000) {
+              if (e.target.className === "input-min") {
+                rangeInput[0].value = minVal;
+                progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+              } else {
+                rangeInput[1].value = maxVal;
+                progress.style.right =
+                  100 - (maxVal / rangeInput[1].max) * 100 + "%";
+              }
+            }
+            uniqueCattles = [];
+            for (let i = 0; i < categoryCattleDetails.length; i++) {
+              if (
+                minVal < categoryCattleDetails[i]["price"] &&
+                categoryCattleDetails[i]["price"] < maxVal
+              ) {
+                uniqueCattles.push(categoryCattleDetails[i]);
+              }
+            }
+            document.querySelector("div.cattles_container").innerHTML = "";
+            if (uniqueCattles.length === 0) {
+              const no_image = document.createElement("img");
+              no_image.setAttribute("src", "../../assets/images/no_result.gif");
+              no_image.setAttribute("class", "no_result");
+              document.querySelector("div.cattles_container").append(no_image);
+            } else {
+              for (let i = 0; i < uniqueCattles.length; i++) {
+                const cattle_container = cards(uniqueCattles[i]);
+                document
+                  .querySelector("div.cattles_container")
+                  .append(cattle_container);
+              }
+            }
+          });
+        });
+
+        rangeInput.forEach((input) => {
+          input.addEventListener("change", (e) => {
+            let minVal = parseInt(rangeInput[0].value),
+              maxVal = parseInt(rangeInput[1].value);
+
+            if (e.target.value < 1000) {
+              e.target.value = 1000;
+            }
+
+            if (maxVal - minVal < priceGap) {
+              if (e.target.className === "range-min") {
+                rangeInput[0].value = maxVal - priceGap;
+              } else {
+                rangeInput[1].value = minVal + priceGap;
+              }
+            } else {
+              priceInput[0].value = minVal;
+              priceInput[1].value = maxVal;
+              progress.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+              progress.style.right =
+                100 - (maxVal / rangeInput[1].max) * 100 + "%";
+            }
+            uniqueCattles = [];
+            for (let i = 0; i < categoryCattleDetails.length; i++) {
+              if (
+                minVal < categoryCattleDetails[i]["price"] &&
+                categoryCattleDetails[i]["price"] < maxVal
+              ) {
+                uniqueCattles.push(categoryCattleDetails[i]);
+              }
+            }
+            document.querySelector("div.cattles_container").innerHTML = "";
+            if (uniqueCattles.length === 0) {
+              const no_image = document.createElement("img");
+              no_image.setAttribute("src", "../../assets/images/no_result.gif");
+              no_image.setAttribute("class", "no_result");
+              document.querySelector("div.cattles_container").append(no_image);
+            } else {
+              for (let i = 0; i < uniqueCattles.length; i++) {
+                const cattle_container = cards(uniqueCattles[i]);
+                document
+                  .querySelector("div.cattles_container")
+                  .append(cattle_container);
+              }
+            }
+          });
+        });
+
+        function cards(card) {
+          // cattle container
+          cattle_container = document.createElement("div");
+          cattle_container.setAttribute("class", "cattle_container");
+
+          // image container
+          cattle_img_container = document.createElement("div");
+          cattle_img_container.setAttribute("class", "img_container");
+          cattle_container.append(cattle_img_container);
+
+          // a
+          cattle_anchor = document.createElement("a");
+          cattle_anchor.setAttribute(
+            "href",
+            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+          );
+          cattle_img_container.append(cattle_anchor);
+
+          // cattle image
+          cattle_image = document.createElement("img");
+          cattle_image.setAttribute("src", card.image);
+          cattle_image.setAttribute("alt", `${card.breed} ${card.cattle}`);
+          cattle_image.setAttribute("class", "cattle_image");
+          cattle_anchor.append(cattle_image);
+
+          // cattle info container
+          info_container = document.createElement("div");
+          info_container.setAttribute("class", "info_container");
+          cattle_container.append(info_container);
+
+          // cattle info
+          cattle_name = document.createElement("p");
+          cattle_name.setAttribute("class", "cattle_name");
+          cattle_name.innerText = `${card.breed} ${card.cattle} ${card.id}`;
+          info_container.append(cattle_name);
+
+          cattle_age = document.createElement("p");
+          cattle_age.innerText = `Age: ${card.age} Year(s)`;
+          info_container.append(cattle_age);
+
+          cattle_gender = document.createElement("p");
+          cattle_gender.innerText = `Gender: ${card.gender}`;
+          info_container.append(cattle_gender);
+
+          // a
+
+          buttonContainer = document.createElement("a");
+          buttonContainer.setAttribute(
+            "href",
+            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+          );
+          info_container.append(buttonContainer);
+
+          // Know more button
+
+          button_know = document.createElement("button");
+          button_know.innerText = "Know More";
+          buttonContainer.append(button_know);
+
+          return cattle_container;
+        }
+      }
+    </script>
+  </body>
+</html>

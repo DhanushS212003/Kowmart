@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>Cow 1 details</title>
+
+    <link rel="stylesheet" href="../../../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="../../../assets/css/cattle details/cattle_productpage.css"
+    />
+    <link rel="stylesheet" href="../../../assets/css/header_footer.css" />
+    <script src="../../../assets/js/main.js"></script>
+    <link
+      rel="icon"
+      href="../../../assets/images/cattles/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <!-- Back button section -->
+
+      <div class="back_button_container">
+        <button class="back_btn" onclick="window.history.back()">BACK</button>
+      </div>
+
+      <!-- Cattle image section -->
+
+      <div class="slide_container">
+        <div class="cattle_image_container"></div>
+        <button class="chevron" id="left">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="chevron" id="right">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Cattle details section -->
+
+      <div class="details_container">
+        <div class="cattle_details_container">
+          <!-- Cattle name section -->
+
+          <div class="cattle_details1_container">
+            <button class="verified">VERIFIED CATTLE</button>
+            <h1 class="cat_name"></h1>
+            <div class="age_gender_container">
+              <p class="cat_age"></p>
+              <p class="cat_gender"></p>
+            </div>
+          </div>
+
+          <!-- Cattle milk section -->
+
+          <div class="cattle_details2_container">
+            <h1 class="details_container_head">Details</h1>
+            <hr />
+            <div class="cattle_other_details_container">
+              <div class="cattle_milk_container">
+                <p>Milk per day</p>
+                <p class="cattle_milk"></p>
+              </div>
+              <div class="cattle_milk_container">
+                <p>Lactation</p>
+                <p class="cattle_lact"></p>
+              </div>
+              <div class="cattle_milk_container">
+                <p>Weight</p>
+                <p class="cattle_weight"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cattle description section -->
+
+          <div class="description_container">
+            <h1 class="details_container_head">Description</h1>
+            <hr />
+            <p class="description"></p>
+          </div>
+        </div>
+
+        <div class="seller_container">
+          <!-- Cattle price section -->
+
+          <div class="price_container">
+            <h1 class="price"></h1>
+            <div class="fav_btn_container" id="fav1"></div>
+          </div>
+
+          <!-- Seller details section -->
+
+          <div class="sellerdetails_container">
+            <h4>SOLD BY</h4>
+            <h2 class="seller_name"></h2>
+            <h4 class="posted_date"></h4>
+            <div class="fav_btn_container">
+              <a
+                href="https://api.whatsapp.com/qr/XQYMHVSSYORIN1?autoload=1&app_absent=0"
+              >
+                <button id="chat" class="fav_btn">Chat with Seller</button>
+              </a>
+            </div>
+            <div class="seller_phoneno_container">
+              <i class="fa-solid fa-phone"></i>
+              <p class="phone_no"></p>
+            </div>
+            <div class="seller_address_container">
+              <i class="fa-solid fa-location-dot"></i>
+              <p class="address"></p>
+            </div>
+          </div>
+
+          <!-- Seller profile section -->
+
+          <div class="seller_profile_container">
+            <div class="seller_profile_btn"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cattles Section -->
+
+      <div class="products_section">
+        <hr id="line" />
+        <h1 id="cattle_title"></h1>
+      </div>
+    </main>
+
+    <script src="../../../assets/js/header.js"></script>
+    <script src="../../../assets/js/footer.js"></script>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const breed_category = urlParams.get("breed");
+      const cattle_id = urlParams.get("cattle_id");
+      const user_id = urlParams.get("user_id");
+      const page = urlParams.get("page");
+      const desc = urlParams.get("desc");
+
+      const cattleData = cattle_detail.filter(
+        (e) => e.cattle_uniqueId == cattle_id
+      );
+      const repData = repDetail.find((e) => e.userId === user_id);
+      const userData = userDetails.find((e) => e.phone_no === user_id);
+
+      cattle_image = document.createElement("img");
+      cattle_image.setAttribute("src", cattleData[0].image);
+      cattle_image.setAttribute(
+        "alt",
+        `${cattleData[0].breed} ${cattleData[0].cattle}`
+      );
+      cattle_image.setAttribute("class", "image");
+      document.querySelector("div.cattle_image_container").append(cattle_image);
+
+      if (cattleData[0].image1 != "") {
+        cattle_image1 = document.createElement("img");
+        cattle_image1.setAttribute("src", cattleData[0].image1);
+        cattle_image1.setAttribute(
+          "alt",
+          `${cattleData[0].breed} ${cattleData[0].cattle}`
+        );
+        cattle_image1.setAttribute("class", "image");
+      } else {
+        document.getElementById("left").style.display = "none";
+        document.getElementById("right").style.display = "none";
+      }
+
+      // Function for toggling two cattle images
+
+      function add(e) {
+        const imagesrc = document.querySelector(".image").getAttribute("src");
+
+        if (imagesrc == cattleData[0].image) {
+          document
+            .querySelector(".image")
+            .setAttribute("src", cattleData[0].image1);
+        } else if (imagesrc == cattleData[0].image1) {
+          document
+            .querySelector(".image")
+            .setAttribute("src", cattleData[0].image);
+        }
+      }
+
+      document.getElementById("left").addEventListener("click", add);
+      document.getElementById("right").addEventListener("click", add);
+
+      cattle_name = document.querySelector("h1.cat_name");
+      cattle_name.innerText = `${cattleData[0].breed} ${cattleData[0].cattle} ${cattleData[0].id}`;
+
+      cattle_age = document.querySelector("p.cat_age");
+      cattle_age.innerText = `${cattleData[0].age} Years`;
+
+      cattle_gender = document.querySelector("p.cat_gender");
+      cattle_gender.innerText = cattleData[0].gender;
+
+      milk = document.querySelector("p.cattle_milk");
+      milk.innerText = `${cattleData[0].milk} litres`;
+
+      lactation = document.querySelector("p.cattle_lact");
+      lactation.innerText = cattleData[0].lactation;
+
+      weight = document.querySelector("p.cattle_weight");
+      weight.innerText = `${cattleData[0].weight} Kg`;
+
+      // if (desc === "no") {
+      if (cattleData[0].description != "") {
+        description = document.querySelector("p.description");
+        description.innerText = cattleData[0].description;
+      } else {
+        description = document.querySelector("p.description");
+        description.innerText = `Quality ${cattleData[0].breed} ${cattleData[0].cattle} of ${cattleData[0].age} year(s) age is available. The price of the cattle is Rs. ${cattleData[0].price} /-. The ${cattleData[0].cattle} is in ${cattleData[0].lactation} lactation. It Produces ${cattleData[0].milk} Litres of milk on daily basis.`;
+      }
+      // }
+      // else {
+
+      //     let verification = "";
+
+      //     for (let i = 0; i < cattleData[0]["verificationData"].length; i++){
+      //         verification += verificationDetails[cattleData[0]["verificationData"][i]]["question"] + ". ";
+      //     }
+
+      //     description = document.querySelector("p.description");
+      //     description.innerText = verification;
+      // }
+
+      price = document.querySelector("h1.price");
+      price.innerText = `Rs.${cattleData[0].price}`;
+
+      // ₹ seller details
+
+      favourite = document.createElement("button");
+      favourite.setAttribute("class", "fav_btn");
+      favourite.setAttribute("id", "favourite");
+      favourite.innerText = "Add to Favourite";
+      favourite.setAttribute("custom-id", cattle_id);
+      document.querySelector(".fav_btn_container").append(favourite);
+
+      // Function for favourites
+
+      favourite.addEventListener("click", function (event) {
+        if (page === null) {
+          if (phone_id == null) {
+            alert("Please Log In");
+            return;
+          } else {
+            const cattleId = event.currentTarget.getAttribute("custom-id");
+            const favourites =
+              JSON.parse(localStorage.getItem("favourites")) || [];
+
+            for (let i = 0; i < favourites.length; i++) {
+              if (
+                cattleId == favourites[i].cattleId &&
+                favourites[i].phone_id == phone_id
+              ) {
+                alert("Already added in the list");
+                return;
+              }
+            }
+            alert("Added to your Favourites list");
+            favourites.push({ cattleId, phone_id });
+            localStorage.setItem("favourites", JSON.stringify(favourites));
+            // window.location.href = "../../cattle/cattleList.html";
+          }
+        }
+      });
+
+      if (page === null) {
+        seller_name = document.querySelector("h2.seller_name");
+        seller_name.innerText = repData.name;
+
+        uploaded_date = document.querySelector("h4.posted_date");
+        uploaded_date.innerText = `Posted On: ${cattleData[0].date}`;
+
+        icon = document.createElement("i");
+
+        phone_no = document.querySelector("p.phone_no");
+        phone_no.innerText = repData.phone_no;
+
+        address = document.querySelector("p.address");
+        address.innerText = `${repData.address}, ${repData.district}, ${repData.pincode}.`;
+      }
+
+      if (page === "seller") {
+        seller_name = document.querySelector("h2.seller_name");
+        seller_name.innerText = userData.name;
+
+        uploaded_date = document.querySelector("h4.posted_date");
+        uploaded_date.innerText = `Posted On: ${cattleData[0].date}`;
+
+        icon = document.createElement("i");
+
+        phone_no = document.querySelector("p.phone_no");
+        phone_no.innerText = userData.phone_no;
+
+        address = document.querySelector("p.address");
+        address.innerText = `${userData.address}, ${userData.district}, ${userData.pincode}.`;
+      }
+
+      seller_profile = document.createElement("button");
+      seller_profile.setAttribute("class", "fav_btn");
+      seller_profile.setAttribute("id", "seller_profile");
+      seller_profile.setAttribute("onclick", sellerId());
+      seller_profile.setAttribute("custom-id", user_id);
+      seller_profile.innerText = "View Seller's Other Cattles";
+      document.querySelector(".seller_profile_btn").append(seller_profile);
+
+      // Function for seller-profile
+
+      function sellerId() {
+        if (page === null) {
+          seller_profile.addEventListener("click", function (event) {
+            window.location.href = `../../cattle/cattleList.html?page=repOtherCattles&user-id=${user_id}`;
+          });
+        }
+      }
+
+      const breedCattles = cattle_detail.filter(
+        (e) => e.breed == breed_category
+      );
+
+      const verifiedBreedCattles = breedCattles.filter((e) => {
+        const matchCattleId = verifiedCattleLists.find(
+          (a) => a.cattle_uniqueId === e.cattle_uniqueId
+        );
+        if (matchCattleId) {
+          e.repId = matchCattleId.repUserId;
+          return true;
+        }
+        return false;
+      });
+
+      const currentIndexNo = verifiedBreedCattles.indexOf(
+        verifiedBreedCattles.find((e) => e.cattle_uniqueId == cattle_id)
+      );
+      const spliceCattles = verifiedBreedCattles.splice(0, currentIndexNo);
+      const addedCattles = verifiedBreedCattles.concat(spliceCattles);
+
+      document.getElementById(
+        "cattle_title"
+      ).innerText = `More ${breed_category}`;
+
+      // heading
+
+      if (breed_category == null) {
+        document.getElementById("cattle_title").style.display = "none";
+        document.getElementById("line").style.display = "none";
+      }
+
+      cattles_container = document.createElement("div");
+      cattles_container.setAttribute("class", "cattles_container");
+
+      document.querySelector("div.products_section").append(cattles_container);
+
+      for (let i = 1; i < addedCattles.length; i++) {
+        if (i <= 3) {
+          // cattle container
+          cattle_container = document.createElement("div");
+          cattle_container.setAttribute("class", "cattle_container");
+
+          // image container
+          cattle_img_container = document.createElement("div");
+          cattle_img_container.setAttribute("class", "img_container");
+          cattle_container.append(cattle_img_container);
+
+          // a
+          cattle_anchor = document.createElement("a");
+          cattle_anchor.setAttribute(
+            "href",
+            `./C1.html?breed=${addedCattles[i].breed}&cattle_id=${addedCattles[i].cattle_uniqueId}&user_id=${addedCattles[i].repId}`
+          );
+          cattle_img_container.append(cattle_anchor);
+
+          // cattle image
+          cat_image = document.createElement("img");
+          cat_image.setAttribute("src", addedCattles[i].image);
+          cat_image.setAttribute(
+            "alt",
+            `${addedCattles[i].breed} ${addedCattles[i].cattle}`
+          );
+          cat_image.setAttribute("class", "cattle_image");
+          cattle_anchor.append(cat_image);
+
+          // cattle info container
+          info_container = document.createElement("div");
+          info_container.setAttribute("class", "info_container");
+          cattle_container.append(info_container);
+
+          // cattle info
+          cattle_name = document.createElement("p");
+          cattle_name.setAttribute("class", "cattle_name");
+          cattle_name.innerText = `${addedCattles[i].breed} ${addedCattles[i].cattle} ${addedCattles[i].id}`;
+          info_container.append(cattle_name);
+
+          cattle_age = document.createElement("p");
+          cattle_age.setAttribute("class", "cattle_age");
+          cattle_age.innerText = `Age: ${addedCattles[i].age} Year(s)`;
+          info_container.append(cattle_age);
+
+          cattle_gender = document.createElement("p");
+          cattle_gender.setAttribute("class", "cattle_age");
+          cattle_gender.innerText = `Gender: ${addedCattles[i].gender}`;
+          info_container.append(cattle_gender);
+
+          // a
+
+          buttonContainer = document.createElement("a");
+          buttonContainer.setAttribute(
+            "href",
+            `./C1.html?breed=${addedCattles[i].breed}&cattle_id=${addedCattles[i].cattle_uniqueId}&user_id=${addedCattles[i].repId}`
+          );
+          info_container.append(buttonContainer);
+
+          button_know = document.createElement("button");
+          button_know.innerText = "Know More";
+          buttonContainer.append(button_know);
+
+          document
+            .querySelector("div.cattles_container")
+            .append(cattle_container);
+        }
+      }
+    </script>
+  </body>
+</html>

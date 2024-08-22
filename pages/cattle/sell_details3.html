@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>Sell details 3</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/cattles/selldetails3.css" />
+    <link rel="stylesheet" href="../../assets/css/header_footer.css" />
+    <script src="../../assets/js/main.js"></script>
+    <link
+      rel="icon"
+      href="../../assets/images/cattles/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <!-- Pop up section -->
+
+      <!-- <div class="container">
+            <div class="popUpContainer">
+                <p> Uploaded Successfully </p>
+            </div>
+        </div> -->
+
+      <!-- back button section -->
+
+      <div class="back_btn_container">
+        <div>
+          <button onclick="window.history.back()">BACK</button>
+        </div>
+        <h1 class="title1">List Your LiveStock Here</h1>
+      </div>
+
+      <!-- title section -->
+
+      <h3 class="title2">Buy and Sell your Cattles easier!</h3>
+      <img
+        class="choose"
+        src="../../assets/images/choose_animals_active.png"
+        alt="choose"
+      />
+      <h1 class="title3">Animal Details</h1>
+      <hr />
+
+      <!-- Details section -->
+
+      <form>
+        <div class="details_section">
+          <div>
+            <label> Age (in Years) </label>
+            <br />
+            <input
+              required
+              type="text"
+              id="age"
+              oninput="this.value = this.value.replace(/[^1-9]/g,'')"
+              maxlength="1"
+            />
+          </div>
+
+          <div>
+            <label> Gender </label>
+            <br />
+            <select required id="gender">
+              <option>Female</option>
+              <option>Male</option>
+            </select>
+          </div>
+
+          <div class="weight">
+            <label> Weight (kg) </label>
+            <br />
+            <input
+              required
+              type="text"
+              id="weight"
+              pattern="^[1-9]\d*$"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+              maxlength="4"
+              max="2000"
+              title="Do not start with 0"
+            />
+          </div>
+        </div>
+
+        <div class="details_section">
+          <div>
+            <label> Price (Rs.) </label>
+            <br />
+            <input
+              required
+              type="text"
+              id="price"
+              pattern="^[1-9]\d*$"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+              maxlength="7"
+              title="Do not start with 0"
+            />
+          </div>
+          <div class="milk_container">
+            <label> Milk per day (litres) </label>
+            <br />
+            <input
+              type="text"
+              id="milk"
+              pattern="^[1-9]\d*$"
+              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+              maxlength="2"
+              title="Do not start with 0"
+            />
+          </div>
+          <div class="weight lact_container">
+            <label> Lactation </label>
+            <br />
+            <input
+              type="text"
+              id="lactation"
+              oninput="this.value = this.value.replace(/[^1-9]/g,'')"
+              maxlength="1"
+            />
+          </div>
+        </div>
+
+        <div class="description_section">
+          <label> Description </label>
+          <br />
+          <textarea id="description"></textarea>
+        </div>
+
+        <div class="details_section">
+          <div>
+            <label> Upload Photo: </label>
+            <br />
+            <input required type="url" id="image" />
+          </div>
+          <div>
+            <label> Upload Photo: </label>
+            <br />
+            <input type="url" id="image1" />
+          </div>
+          <div class="weight">
+            <label> Upload Video: </label>
+            <br />
+            <input type="url" multiple />
+          </div>
+        </div>
+
+        <div class="submit_btn_container">
+          <button class="submit_btn" type="button">SUBMIT</button>
+        </div>
+      </form>
+    </main>
+
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/footer.js"></script>
+
+    <script>
+      const user_address = userDetails.find(
+        (e) => e.phone_no == phone_id
+      ).address;
+      const user_district = userDetails.find(
+        (e) => e.phone_no == phone_id
+      ).district;
+      const user_pincode = userDetails.find(
+        (e) => e.phone_no == phone_id
+      ).pincode;
+
+      document.getElementById("gender").addEventListener("change", function () {
+        if (document.getElementById("gender").value === "Male") {
+          document.querySelector(".milk_container").style.display = "none";
+          document.querySelector(".lact_container").style.display = "none";
+        } else {
+          document.querySelector(".milk_container").style.display = "block";
+          document.querySelector(".lact_container").style.display = "block";
+        }
+      });
+
+      document.querySelector(".submit_btn").addEventListener("click", (e) => {
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const cattle = urlParams.get("cattle");
+        breed = urlParams.get("breed");
+        age = document.getElementById("age").value;
+        gender = document.getElementById("gender").value;
+        weight = document.getElementById("weight").value;
+        milk = document.getElementById("milk").value;
+        price = document.getElementById("price").value;
+        lactation = document.getElementById("lactation").value;
+        description = document.getElementById("description").value;
+        image = document.getElementById("image").value;
+        image1 = document.getElementById("image1").value;
+        cattle_uniqueId = uuidv4();
+        userId = phone_id;
+        timestamp = new Date();
+        date = timestamp.toLocaleDateString();
+        status = "";
+
+        notificationId = uuidv4();
+
+        messageTitle = "New " + breed + " " + cattle + " has been uploaded";
+
+        const customerData = userDetails.find((e) => e.phone_no === userId);
+
+        message =
+          "It is in " +
+          customerData.address +
+          ", " +
+          customerData.district +
+          ", " +
+          customerData.pincode;
+        readStatus = false;
+
+        const stock = cattle_detail
+          .filter((e) => e.breed == breed)
+          .length.toString()
+          .padStart(3, "0");
+        const stock_no = parseInt(stock) + 1;
+
+        id = cattle[0] + breed[0] + stock_no;
+
+        if (user_address != "" && user_pincode != "" && user_district != "") {
+          const repUserId = repDetail.find(
+            (e) => e.district === customerData.district
+          ).userId;
+          const receiver = repUserId;
+
+          cattle_detail.push({
+            cattle,
+            breed,
+            age,
+            gender,
+            weight,
+            milk,
+            price,
+            lactation,
+            description,
+            image,
+            image1,
+            id,
+            cattle_uniqueId,
+            userId,
+            date,
+            status,
+          });
+          repCattleDetails.push({ cattle_uniqueId, repUserId, userId });
+          notificationList.push({
+            notificationId,
+            messageTitle,
+            message,
+            receiver,
+            readStatus,
+          });
+
+          localStorage.setItem("cattle_details", JSON.stringify(cattle_detail));
+          localStorage.setItem(
+            "repCattleList",
+            JSON.stringify(repCattleDetails)
+          );
+          localStorage.setItem(
+            "notificationList",
+            JSON.stringify(notificationList)
+          );
+          location.href = "./cattleList.html?page=sellerCattleList";
+          document.querySelector("form").reset();
+        } else {
+          alert("Please fill the address, state and pincode in your profile");
+        }
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+  </body>
+</html>

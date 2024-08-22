@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <title>Cattles</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/cattles/cattles.css" />
+    <link rel="stylesheet" href="../../assets/css/header_footer.css" />
+    <script src="../../assets/js/main.js"></script>
+    <link
+      rel="icon"
+      href="../../assets/images/cattles/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <!-- Search bar and category section -->
+
+      <div class="category_searchbar_container">
+        <div class="search_bar_container">
+          <input
+            type="search"
+            placeholder="search cattles by id (CG1)"
+            id="search_input"
+          />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="category_list_container">
+          <div class="category_container">
+            <div class="cat_img_container">
+              <img
+                class="cat_img"
+                src="../../assets/images/cattles/ch1.jpg"
+                alt="cow"
+                id="Cow"
+              />
+            </div>
+            <p class="cat_img_title">COW</p>
+          </div>
+          <div class="category_container">
+            <div class="cat_img_container">
+              <img
+                class="cat_img"
+                src="../../assets/images/cattles/ch2.jpg"
+                alt="buffalo"
+                id="Buffalo"
+              />
+            </div>
+            <p class="cat_img_title">BUFFALO</p>
+          </div>
+          <div class="category_container">
+            <div class="cat_img_container">
+              <img
+                class="cat_img"
+                src="../../assets/images/cattles/ch3.jpg"
+                alt="goat"
+                id="Goat"
+              />
+            </div>
+            <p class="cat_img_title">GOAT</p>
+          </div>
+          <div class="category_container">
+            <div class="cat_img_container">
+              <img
+                class="cat_img"
+                src="../../assets/images/cattles/ch4.jpg"
+                alt="sheep"
+                id="Sheep"
+              />
+            </div>
+            <p class="cat_img_title">SHEEP</p>
+          </div>
+          <div class="category_container">
+            <div class="cat_img_container">
+              <img
+                class="cat_img"
+                src="../../assets/images/cattles/ch5.jpg"
+                alt="ox"
+                id="Ox"
+              />
+            </div>
+            <p class="cat_img_title">OX</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner Section -->
+
+      <div class="banner_container">
+        <h1 class="banner_title">Most Trusted Livestock Market</h1>
+      </div>
+
+      <!-- Cattles Section -->
+
+      <div class="products_section">
+        <div class="product_title_container">
+          <h1 class="product_title">Gir</h1>
+        </div>
+        <div class="cattles_container1" id="Gir_container"></div>
+        <hr />
+
+        <div class="product_title_container">
+          <h1 class="product_title">Surti</h1>
+        </div>
+        <div class="cattles_container2" id="Surti_container"></div>
+        <hr />
+
+        <div class="product_title_container">
+          <h1 class="product_title">Malabari</h1>
+        </div>
+        <div class="cattles_container3" id="Malabari_container"></div>
+        <hr />
+
+        <div class="product_title_container">
+          <h1 class="product_title">Bannur</h1>
+        </div>
+        <div class="cattles_container4" id="Bannur_container"></div>
+        <hr />
+
+        <div class="product_title_container">
+          <h1 class="product_title">Ongole</h1>
+        </div>
+        <div class="cattles_container5" id="Ongole_container"></div>
+      </div>
+
+      <!-- Gif -->
+
+      <img class="gif" src="../../assets/images/gif1.gif" alt="gif" />
+    </main>
+
+    <script src="../../assets/js/header.js"></script>
+    <script src="../../assets/js/footer.js"></script>
+
+    <script>
+      // Most breed section
+
+      if (verifiedCattleLists.length !== 0) {
+        let cattleDetails = [];
+
+        for (let i = 0; i < verifiedCattleLists.length; i++) {
+          let cattleData = cattle_detail.find(
+            (e) =>
+              e.cattle_uniqueId === verifiedCattleLists[i]["cattle_uniqueId"]
+          );
+          cattleData.rep_id = verifiedCattleLists[i]["repUserId"];
+          cattleDetails.push(cattleData);
+        }
+
+        seller_cattles = cattleDetails.filter((e) => e.userId != phone_id);
+        most_breed_Gir = cattleDetails.filter((e) => e.breed == "Gir");
+        most_breed_Surti = cattleDetails.filter((e) => e.breed == "Surti");
+        most_breed_Malabari = cattleDetails.filter(
+          (e) => e.breed == "Malabari"
+        );
+        most_breed_Bannur = cattleDetails.filter((e) => e.breed == "Bannur");
+        most_breed_Ongole = cattleDetails.filter((e) => e.breed == "Ongole");
+
+        for (let i = 0; i < most_breed_Gir.length; i++) {
+          if (i < 3) {
+            const cattle_container = cards(most_breed_Gir[i]);
+            document
+              .querySelector("div.cattles_container1")
+              .append(cattle_container);
+          }
+        }
+
+        for (let i = 0; i < most_breed_Surti.length; i++) {
+          if (i < 3) {
+            const cattle_container = cards(most_breed_Surti[i]);
+            document
+              .querySelector("div.cattles_container2")
+              .append(cattle_container);
+          }
+        }
+
+        for (let i = 0; i < most_breed_Malabari.length; i++) {
+          if (i < 3) {
+            const cattle_container = cards(most_breed_Malabari[i]);
+            document
+              .querySelector("div.cattles_container3")
+              .append(cattle_container);
+          }
+        }
+
+        for (let i = 0; i < most_breed_Bannur.length; i++) {
+          if (i < 3) {
+            const cattle_container = cards(most_breed_Bannur[i]);
+            document
+              .querySelector("div.cattles_container4")
+              .append(cattle_container);
+          }
+        }
+
+        for (let i = 0; i < most_breed_Ongole.length; i++) {
+          if (i < 3) {
+            const cattle_container = cards(most_breed_Ongole[i]);
+            document
+              .querySelector("div.cattles_container5")
+              .append(cattle_container);
+          }
+        }
+
+        function cards(card) {
+          // cattle container
+          cattle_container = document.createElement("div");
+          cattle_container.setAttribute("class", "cattle_container");
+
+          // image container
+          cattle_img_container = document.createElement("div");
+          cattle_img_container.setAttribute("class", "img_container");
+          cattle_container.append(cattle_img_container);
+
+          // a
+          cattle_anchor = document.createElement("a");
+          cattle_anchor.setAttribute(
+            "href",
+            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+          );
+          cattle_img_container.append(cattle_anchor);
+
+          // cattle image
+          cattle_image = document.createElement("img");
+          cattle_image.setAttribute("src", card.image);
+          cattle_image.setAttribute(
+            "alt",
+            `${card.breed} ${card.cattle} ${card.id}`
+          );
+          cattle_image.setAttribute("class", "cattle_image");
+          cattle_anchor.append(cattle_image);
+
+          // cattle info container
+          info_container = document.createElement("div");
+          info_container.setAttribute("class", "info_container");
+          cattle_container.append(info_container);
+
+          // cattle info
+          cattle_name = document.createElement("p");
+          cattle_name.setAttribute("class", "cattle_name");
+          cattle_name.innerText = `${card.breed} ${card.cattle} ${card.id}`;
+          info_container.append(cattle_name);
+
+          cattle_age = document.createElement("p");
+          cattle_age.innerText = `Age: ${card.age} Year(s)`;
+          info_container.append(cattle_age);
+
+          cattle_gender = document.createElement("p");
+          cattle_gender.innerText = `Gender: ${card.gender}`;
+          info_container.append(cattle_gender);
+
+          // a
+
+          buttonContainer = document.createElement("a");
+          buttonContainer.setAttribute(
+            "href",
+            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+          );
+          info_container.append(buttonContainer);
+
+          // Know more button
+          know_button = document.createElement("button");
+          know_button.innerText = "Know More";
+          buttonContainer.append(know_button);
+
+          return cattle_container;
+        }
+      }
+
+      // Passing category value to the list page
+
+      const category = document.querySelectorAll(".cat_img");
+      category.forEach((each) => {
+        each.addEventListener("click", (event) => {
+          const { id } = each;
+          window.location.href = `./cattle_list1.html?cattle_details=${id}`;
+        });
+      });
+
+      const mag_glass = document.querySelector(".fa-magnifying-glass");
+      mag_glass.addEventListener("click", function () {
+        const search_box = document.getElementById("search_input").value;
+        if (search_box === "") {
+          alert("Please enter a ID");
+          return false;
+        }
+
+        const searchCattle = cattle_detail.find((e) => e.id === search_box);
+        if (searchCattle === undefined) {
+          alert("THERE is no cattle with this ID");
+          return false;
+        }
+
+        const checkVerify = verifiedCattleLists.find(
+          (e) => e.cattle_uniqueId === searchCattle.cattle_uniqueId
+        );
+        if (checkVerify === undefined) {
+          alert("THERE is no cattle with this ID");
+        } else {
+          const cattle_breed = searchCattle["breed"];
+          const cattle_id = searchCattle["cattle_uniqueId"];
+          const user_id = checkVerify["repUserId"];
+          window.location.href = `../cattle details/cow/C1.html?breed=${cattle_breed}&cattle_id=${cattle_id}&user_id=${user_id}`;
+        }
+      });
+    </script>
+  </body>
+</html>
