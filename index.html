@@ -8,15 +8,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     />
-    <title>Cattles</title>
+    <title>Home</title>
 
-    <link rel="stylesheet" href="../../assets/css/style.css" />
-    <link rel="stylesheet" href="../../assets/css/cattles/cattles.css" />
-    <link rel="stylesheet" href="../../assets/css/header_footer.css" />
-    <script src="../../assets/js/main.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/cattles/cattles.css" />
+    <link rel="stylesheet" href="./assets/css/header_footer.css" />
+    <script src="./assets/js/main.js"></script>
     <link
       rel="icon"
-      href="../../assets/images/cattles/logo.png"
+      href="./assets/images/cattles/logo1.png"
       type="image/x-icon"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,7 +46,7 @@
             <div class="cat_img_container">
               <img
                 class="cat_img"
-                src="../../assets/images/cattles/ch1.jpg"
+                src="./assets/images/cattles/ch1.jpg"
                 alt="cow"
                 id="Cow"
               />
@@ -57,7 +57,7 @@
             <div class="cat_img_container">
               <img
                 class="cat_img"
-                src="../../assets/images/cattles/ch2.jpg"
+                src="./assets/images/cattles/ch2.jpg"
                 alt="buffalo"
                 id="Buffalo"
               />
@@ -68,7 +68,7 @@
             <div class="cat_img_container">
               <img
                 class="cat_img"
-                src="../../assets/images/cattles/ch3.jpg"
+                src="./assets/images/cattles/ch3.jpg"
                 alt="goat"
                 id="Goat"
               />
@@ -79,7 +79,7 @@
             <div class="cat_img_container">
               <img
                 class="cat_img"
-                src="../../assets/images/cattles/ch4.jpg"
+                src="./assets/images/cattles/ch4.jpg"
                 alt="sheep"
                 id="Sheep"
               />
@@ -90,7 +90,7 @@
             <div class="cat_img_container">
               <img
                 class="cat_img"
-                src="../../assets/images/cattles/ch5.jpg"
+                src="./assets/images/cattles/ch5.jpg"
                 alt="ox"
                 id="Ox"
               />
@@ -141,11 +141,11 @@
 
       <!-- Gif -->
 
-      <img class="gif" src="../../assets/images/gif1.gif" alt="gif" />
+      <img class="gif" src="./assets/images/gif1.gif" alt="gif" />
     </main>
 
-    <script src="../../assets/js/header.js"></script>
-    <script src="../../assets/js/footer.js"></script>
+    <script src="./assets/js/header.js"></script>
+    <script src="./assets/js/footer.js"></script>
 
     <script>
       // Most breed section
@@ -230,7 +230,7 @@
           cattle_anchor = document.createElement("a");
           cattle_anchor.setAttribute(
             "href",
-            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+            `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
           );
           cattle_img_container.append(cattle_anchor);
 
@@ -268,7 +268,7 @@
           buttonContainer = document.createElement("a");
           buttonContainer.setAttribute(
             "href",
-            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+            `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
           );
           info_container.append(buttonContainer);
 
@@ -287,7 +287,7 @@
       category.forEach((each) => {
         each.addEventListener("click", (event) => {
           const { id } = each;
-          window.location.href = `./cattle_list1.html?cattle_details=${id}`;
+          window.location.href = `./pages/cattle/cattle_list1.html?cattle_details=${id}`;
         });
       });
 
@@ -314,7 +314,7 @@
           const cattle_breed = searchCattle["breed"];
           const cattle_id = searchCattle["cattle_uniqueId"];
           const user_id = checkVerify["repUserId"];
-          window.location.href = `../cattle details/cow/C1.html?breed=${cattle_breed}&cattle_id=${cattle_id}&user_id=${user_id}`;
+          window.location.href = `./pages/cattle details/cow/C1.html?breed=${cattle_breed}&cattle_id=${cattle_id}&user_id=${user_id}`;
         }
       });
     </script>
