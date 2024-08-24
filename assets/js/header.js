@@ -1,79 +1,79 @@
 const root = window.location.origin;
 
 const beforeLogin = `<header>
+        <div class = "header_container">
+          <div class = "navbar">
+              <div class = "logo_container"> <a href = "${root}/index.html"> <img class = "logo" src = "${root}/assets/images/cattles/logo1.png" alt = "logo"> </a> </div>
+              <a href = "${root}/index.html"> <h1 class = "logo_head"> KowMart </h1> </a>
+          </div>
 
-        <div class = "navbar">
-            <div class = "logo_container"> <a href = "${root}/index.html"> <img class = "logo" src = "${root}/assets/images/cattles/logo1.png" alt = "logo"> </a> </div>
-            <div> <a href = "${root}/index.html"> <h1 class = "logo_head"> KowMart </h1> </a> </div>
+          <div id = "mySidenav" class = "sidenav">
+              <a href = "javascript:void(0)" class = "closebtn" onclick = "closeNav()">&times;</a> 
+              <ul class = "navbar">
+                  <li> <a href = "${root}/index.html"> Cattles </a> </li>
+                  <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
+                  <li class = "btn_con"> <a href = "${root}/pages/signIn.html"> <button class = "login"> LOGIN </button> </a> </li>
+              </ul>
+          </div> 
+
+          <span class = "navBar" style = "font-size:30px;cursor:pointer" onclick = "openNav()"> &#9776; </span>
+
+          <div class = "link_container">
+              <ul class = "navbar">
+                  <li> <a href = "${root}/index.html"> Cattles </a> </li>
+                  <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
+              </ul>
+          </div>
+          
+          <div class = "btn_container"> <button class = "login" onclick = "openSearch()"> LOGIN </button> </a> </div>
+
+          <div id="myOverlay" class="overlay">
+              <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+              <div class="overlay-content">
+                  <div class="user_container">
+                      <h2> <a href="${root}/pages/signIn.html?user=customer"> Customer </a> </h2>
+                  </div>
+                  <div class="user_container">
+                      <h2> <a href="${root}/pages/signIn.html?user=rep"> Rep </a> </h2>
+                  </div>
+              </div>
+          </div>
         </div>
-
-        <div id = "mySidenav" class = "sidenav">
-            <a href = "javascript:void(0)" class = "closebtn" onclick = "closeNav()">&times;</a> 
-            <ul class = "navbar">
-                <li> <a href = "${root}/index.html"> Cattles </a> </li>
-                <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
-                <li class = "btn_con"> <a href = "${root}/pages/signIn.html"> <button class = "login"> LOGIN </button> </a> </li>
-            </ul>
-        </div> 
-
-        <span class = "navBar" style = "font-size:30px;cursor:pointer" onclick = "openNav()"> &#9776; </span>
-
-        <div class = "link_container">
-            <ul class = "navbar">
-                <li> <a href = "${root}/index.html"> Cattles </a> </li>
-                <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
-            </ul>
-        </div>
-        
-        <div class = "btn_container"> <button class = "login" onclick = "openSearch()"> LOGIN </button> </a> </div>
-
-        <div id="myOverlay" class="overlay">
-            <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-            <div class="overlay-content">
-                <div class="user_container">
-                    <h2> <a href="${root}/pages/signIn.html?user=customer"> Customer </a> </h2>
-                </div>
-                <div class="user_container">
-                    <h2> <a href="${root}/pages/signIn.html?user=rep"> Rep </a> </h2>
-                </div>
-            </div>
-        </div>
-    
     </header>`;
 
 const afterLogin = `<header>
+        <div class = "header_container">
+          <div class = "navbar">
+              <div class = "logo_container"> <a href = "${root}/index.html"> <img class = "logo" src = "${root}/assets/images/cattles/logo1.png" alt = "logo"> </a> </div>
+              <div> <a href = "${root}/index.html"> <h1 class = "logo_head"> KowMart </h1> </a> </div>
+          </div>
 
-        <div class = "navbar">
-            <div class = "logo_container"> <a href = "${root}/index.html"> <img class = "logo" src = "${root}/assets/images/cattles/logo1.png" alt = "logo"> </a> </div>
-            <div> <a href = "${root}/index.html"> <h1 class = "logo_head"> KowMart </h1> </a> </div>
+          <div id = "mySidenav" class = "sidenav">
+              <a href = "javascript:void(0)" class = "closebtn" onclick = "closeNav()">&times;</a>
+              <ul class = "navbar">
+                  <li> <a href = "${root}/index.html"> Cattles </a> </li>
+                  <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
+                  <li class = "btn_con"> <a href = "${root}/pages/cattle/sell_details1.html"><button class = "login" id = "sell"> SELL </button> </a> </li>
+                  <li class = "profile_icon"> <a href = "${root}/pages/buyer_profile.html"> <i class = "fa-solid fa-user"> </i> </a> </li>
+                  <li> <a href = "${root}/pages/notification.html" class = "newNotification"> Notification </a> </li>
+              </ul>
+          </div>
+
+          <span class = "navBar" style = "font-size:30px;cursor:pointer" onclick = "openNav()"> &#9776; </span>
+
+          <div class = "link_container">
+              <ul class = "navbar">
+                  <li> <a href = "${root}/index.html"> Cattles </a> </li>
+                  <li> <a href = "${root}/pages/notification.html" class = "newNotification"> Notification </a> </li>
+                  <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
+              </ul>
+          </div>
+
+          <div class = "navbar btn_container">
+              <a href = "${root}/pages/cattle/sell_details1.html" id="sellBtn"> <button class = "login" id = "sell"> SELL </button> </a> 
+              <div class = "user_icon_container"> <a href = ${root}/pages/buyer_profile.html> <i class = "fa-solid fa-user"> </i> </a> </div>
+          </div> 
         </div>
-
-        <div id = "mySidenav" class = "sidenav">
-            <a href = "javascript:void(0)" class = "closebtn" onclick = "closeNav()">&times;</a>
-            <ul class = "navbar">
-                <li> <a href = "${root}/index.html"> Cattles </a> </li>
-                <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
-                <li class = "btn_con"> <a href = "${root}/pages/cattle/sell_details1.html"><button class = "login" id = "sell"> SELL </button> </a> </li>
-                <li class = "profile_icon"> <a href = "${root}/pages/buyer_profile.html"> <i class = "fa-solid fa-user"> </i> </a> </li>
-                <li> <a href = "${root}/pages/notification.html" class = "newNotification"> Notification </a> </li>
-            </ul>
-        </div>
-
-        <span class = "navBar" style = "font-size:30px;cursor:pointer" onclick = "openNav()"> &#9776; </span>
-
-        <div class = "link_container">
-            <ul class = "navbar">
-                <li> <a href = "${root}/index.html"> Cattles </a> </li>
-                <li> <a href = "${root}/pages/notification.html" class = "newNotification"> Notification </a> </li>
-                <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
-            </ul>
-        </div>
-
-        <div class = "navbar btn_container">
-            <a href = "${root}/pages/cattle/sell_details1.html" id="sellBtn"> <button class = "login" id = "sell"> SELL </button> </a> 
-            <div class = "user_icon_container"> <a href = ${root}/pages/buyer_profile.html> <i class = "fa-solid fa-user"> </i> </a> </div>
-        </div> 
-
     </header>`;
 
 const userDetails = JSON.parse(localStorage.getItem("userData"));

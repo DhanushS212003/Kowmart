@@ -82,12 +82,6 @@ button {
     color: #00a651;
 }
 
-p {
-    font-size: 18px;
-    line-height: 15px;
-    font-weight: bold;
-}
-
 div.category_container>a {
     text-decoration: none;
     color: black;

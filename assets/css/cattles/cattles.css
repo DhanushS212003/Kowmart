@@ -169,12 +169,6 @@ div.cattle_container>div.info_container>a>button:hover {
     transition: all 800ms;
 }
 
-p {
-    line-height: 15px;
-    font-weight: bold;
-    font-size: 18px;
-}
-
 .gif {
     width: 180px;
     position: relative;
@@ -221,8 +215,7 @@ p {
         margin: 0px 40px -10px 35px;
     }
 
-    .cattles_container0
-    .cattles_container1,
+    .cattles_container0 .cattles_container1,
     .cattles_container2,
     .cattles_container3,
     .cattles_container4,

@@ -25,67 +25,72 @@
     />
   </head>
 
-  <body>
-    <div class="navbar">
-      <div class="logo_container">
-        <img class="logo" src="../assets/images/cattles/logo1.png" alt="logo" />
-      </div>
-      <div class="logo_name_container">
-        <h2 class="logo_name">KowMart</h2>
-      </div>
-    </div>
-
-    <div class="form_container">
-      <form id="loginForm">
-        <h1>LOGIN</h1>
-        <div class="details_container">
-          <div class="customerContainer">
-            <label> Phone No. </label>
-            <br />
-            <!-- <input required type = "tel" id = "phone_no" pattern="^[6789]\d{9}$" oninput = "this.value = this.value.replace(/[^0-9]/g,'')" minlength = "10" maxlength= "10" title = "Please enter a valid phone number"> -->
-            <input
-              type="tel"
-              id="phone_no"
-              minlength="10"
-              maxlength="10"
-              title="Please enter a valid phone number"
-            />
-          </div>
-          <div class="userIdContainer">
-            <label> User ID </label>
-            <br />
-            <input
-              type="text"
-              id="user_id"
-              minlength="4"
-              maxlength="4"
-              title="Please enter a valid user id"
-            />
-          </div>
-          <div>
-            <label> Password </label>
-            <br />
-            <input
-              required
-              type="password"
-              id="password"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
-              minlength="8"
-              maxlength="8"
-              title="Don't use Space"
-            />
-          </div>
-
-          <div class="submit_btn_container">
-            <button type="submit">LOGIN</button>
-          </div>
-          <div class="link_container">
-            <p id="RegLink">New Customer? <a id="regLink"> Start here </a></p>
-          </div>
+  <body style="background-color: #e8f5ec">
+    <main>
+      <div class="navbar">
+        <div class="logo_container">
+          <img
+            class="logo"
+            src="../assets/images/cattles/logo1.png"
+            alt="logo"
+          />
         </div>
-      </form>
-    </div>
+        <div class="logo_name_container">
+          <h2 class="logo_name">KowMart</h2>
+        </div>
+      </div>
 
+      <div class="form_container">
+        <form id="loginForm">
+          <h1>LOGIN</h1>
+          <div class="details_container">
+            <div class="customerContainer">
+              <label> Phone No. </label>
+              <br />
+              <!-- <input required type = "tel" id = "phone_no" pattern="^[6789]\d{9}$" oninput = "this.value = this.value.replace(/[^0-9]/g,'')" minlength = "10" maxlength= "10" title = "Please enter a valid phone number"> -->
+              <input
+                type="tel"
+                id="phone_no"
+                minlength="10"
+                maxlength="10"
+                title="Please enter a valid phone number"
+              />
+            </div>
+            <div class="userIdContainer">
+              <label> User ID </label>
+              <br />
+              <input
+                type="text"
+                id="user_id"
+                minlength="4"
+                maxlength="4"
+                title="Please enter a valid user id"
+              />
+            </div>
+            <div>
+              <label> Password </label>
+              <br />
+              <input
+                required
+                type="password"
+                id="password"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
+                minlength="8"
+                maxlength="8"
+                title="Don't use Space"
+              />
+            </div>
+
+            <div class="submit_btn_container">
+              <button type="submit">LOGIN</button>
+            </div>
+            <div class="link_container">
+              <p id="RegLink">New Customer? <a id="regLink"> Start here </a></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
     <script src="../assets/js/login.js"></script>
   </body>
 </html>

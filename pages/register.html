@@ -25,86 +25,91 @@
     />
   </head>
 
-  <body>
-    <div class="navbar">
-      <div class="logo_container">
-        <img class="logo" src="../assets/images/cattles/logo1.png" alt="logo" />
-      </div>
-      <div class="logo_name_container">
-        <h2 class="logo_name">KowMart</h2>
-      </div>
-    </div>
-
-    <div class="form_container">
-      <form id="registerForm">
-        <h1>REGISTER</h1>
-        <div class="details_container">
-          <div class="userIdContainer">
-            <label> User ID </label>
-            <br />
-            <input type="text" id="userId" minlength="4" maxlength="4" />
-          </div>
-          <div>
-            <label> Name </label>
-            <br />
-            <input
-              required
-              type="text"
-              id="name"
-              pattern="^[a-zA-Z]+([ ][a-zA-Z]+)*$"
-              title="Don't use spaces in the first and last"
-              oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
-            />
-          </div>
-          <div class="phoneContainer">
-            <label> Phone No. </label>
-            <br />
-            <input
-              type="tel"
-              id="phone_no"
-              pattern="^[6789]\d{9}$"
-              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
-              minlength="10"
-              maxlength="10"
-              title="Please enter a valid phone number"
-            />
-          </div>
-          <div>
-            <label> Password </label>
-            <br />
-            <input
-              required
-              type="password"
-              id="password"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
-              minlength="8"
-              maxlength="8"
-              title="Don't use Space"
-            />
-          </div>
-          <div>
-            <label> Confirm Password </label>
-            <br />
-            <input
-              required
-              type="password"
-              id="confirm_password"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
-              minlength="8"
-              maxlength="8"
-              title="Don't use Space"
-            />
-          </div>
-          <div class="submit_btn_container">
-            <button type="submit">SUBMIT</button>
-          </div>
-          <div class="link_container">
-            <p>Existing User? <a id="inLink"> Login here </a></p>
-          </div>
+  <body style="background-color: #e8f5ec">
+    <main>
+      <div class="navbar">
+        <div class="logo_container">
+          <img
+            class="logo"
+            src="../assets/images/cattles/logo1.png"
+            alt="logo"
+          />
         </div>
-      </form>
-    </div>
+        <div class="logo_name_container">
+          <h2 class="logo_name">KowMart</h2>
+        </div>
+      </div>
 
+      <div class="form_container">
+        <form id="registerForm">
+          <h1>REGISTER</h1>
+          <div class="details_container">
+            <div class="userIdContainer">
+              <label> User ID </label>
+              <br />
+              <input type="text" id="userId" minlength="4" maxlength="4" />
+            </div>
+            <div>
+              <label> Name </label>
+              <br />
+              <input
+                required
+                type="text"
+                id="name"
+                pattern="^[a-zA-Z]+([ ][a-zA-Z]+)*$"
+                title="Don't use spaces in the first and last"
+                oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
+              />
+            </div>
+            <div class="phoneContainer">
+              <label> Phone No. </label>
+              <br />
+              <input
+                type="tel"
+                id="phone_no"
+                pattern="^[6789]\d{9}$"
+                oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                minlength="10"
+                maxlength="10"
+                title="Please enter a valid phone number"
+              />
+            </div>
+            <div>
+              <label> Password </label>
+              <br />
+              <input
+                required
+                type="password"
+                id="password"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
+                minlength="8"
+                maxlength="8"
+                title="Don't use Space"
+              />
+            </div>
+            <div>
+              <label> Confirm Password </label>
+              <br />
+              <input
+                required
+                type="password"
+                id="confirm_password"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
+                minlength="8"
+                maxlength="8"
+                title="Don't use Space"
+              />
+            </div>
+            <div class="submit_btn_container">
+              <button type="submit">SUBMIT</button>
+            </div>
+            <div class="link_container">
+              <p>Existing User? <a id="inLink"> Login here </a></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
     <script src="../assets/js/register.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
   </body>
