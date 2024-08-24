@@ -1,17 +1,10 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-
-body {
-    background-color: #e8f5ec;
-    font-family: 'Questrial', sans-serif;
-}
-
-.content_container{
+.content_container {
     display: flex;
     justify-content: center;
 }
 
-.content ,.content1{
+.content,
+.content1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -19,28 +12,28 @@ body {
     margin: 5%;
 }
 
-.text_container{
+.text_container {
     width: 50%;
 }
 
-p{
+p {
     font-size: 18px;
     font-weight: bold;
     line-height: 15px;
 }
 
-.info_text{
+.info_text {
     font-size: 22px;
     line-height: 3rem;
     font-weight: normal;
 }
 
-.heading{
+.heading {
     line-height: 3rem;
     font-size: 32px;
 }
 
-.image{
+.image {
     border-radius: 10px;
 }
 
@@ -63,39 +56,39 @@ p{
 
 @media screen and (max-width: 480px) {
 
-    .banner_container{
+    .banner_container {
         height: 36vh;
         background-position: 0;
     }
 
-    .banner_title{
+    .banner_title {
         padding: 5px 10px;
         font-size: 22px;
         text-align: center;
     }
 
-    .content{
+    .content {
         display: block;
         width: 100%;
         margin: 10%;
     }
 
-    .image{
+    .image {
         width: 80%;
         display: block;
         margin: auto;
     }
 
-    .text_container{
+    .text_container {
         width: 100%;
     }
 
-    .info_text{
+    .info_text {
         font-size: 18px;
         line-height: 2rem;
     }
 
-    .content1{
+    .content1 {
         flex-direction: column-reverse;
         width: 100%;
         margin: -5% 10% 10% 10%;

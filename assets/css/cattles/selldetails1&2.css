@@ -1,45 +1,37 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-
-body {
-    background-color: #e8f5ec;
-    font-family: 'Questrial', sans-serif;
-}
-
-.title1{
+.title1 {
     width: 69%;
     color: #00a387;
 }
 
-.title2{
+.title2 {
     text-align: center;
     margin-top: -15px;
 }
 
-.title3{
+.title3 {
     margin-top: 10px;
     text-align: center;
     color: darkslategray;
 }
 
-hr{
+hr {
     margin: 0px 10% 30px 10%;
 }
 
-.cat_img{
+.cat_img {
     height: 110px;
     width: 150px;
 }
 
-.catimg_container{
+.catimg_container {
     padding: 0px 10px;
 }
 
-.bspace{
+.bspace {
     padding-left: 40px;
 }
 
-.back_btn_container{
+.back_btn_container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -48,7 +40,7 @@ hr{
     margin-left: 10%;
 }
 
-button{
+button {
     padding: 10px 20px;
     font-size: 20px;
     font-weight: bold;
@@ -58,14 +50,14 @@ button{
     color: #00a651;
 }
 
-.choose{
+.choose {
     width: 35px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-.categories_container{
+.categories_container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -74,11 +66,11 @@ button{
     margin-bottom: 35px;
 }
 
-#breed_container{
+#breed_container {
     width: 53%;
 }
 
-.category_container{
+.category_container {
     box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 1px 3px 1px;
     text-align: center;
     margin: 12px;
@@ -86,60 +78,61 @@ button{
     cursor: pointer;
 }
 
-.category_container:hover{
+.category_container:hover {
     color: #00a651;
 }
 
-p{
+p {
     font-size: 18px;
     line-height: 15px;
     font-weight: bold;
 }
 
-div.category_container >a{
+div.category_container>a {
     text-decoration: none;
     color: black;
 }
 
 @media screen and (max-width: 480px) {
-    div.back_btn_container >div >button{
+    div.back_btn_container>div>button {
         display: none;
     }
 
-    .back_btn_container{
+    .back_btn_container {
         margin: 0;
         margin-top: 15px;
     }
 
-    .categories_container ,#breed_container{
+    .categories_container,
+    #breed_container {
         width: 100%;
     }
 
-    .title1{
+    .title1 {
         width: 100%;
         text-align: center;
         font-size: 24px;
     }
 
-    .title2{
+    .title2 {
         font-size: 16px;
         margin-top: -5px;
     }
 
-    .title3{
+    .title3 {
         font-size: 24px;
     }
 
-    hr{
+    hr {
         margin: 0px 15px 15px 15px;
     }
 
-    .cat_img{
+    .cat_img {
         height: 90px;
         width: 125px;
     }
 
-    .category_title{
+    .category_title {
         margin: 13px 0px;
     }
 }

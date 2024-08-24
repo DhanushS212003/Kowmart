@@ -1,16 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-
-body {
-    background-color: #e8f5ec;
-    font-family: 'Questrial', sans-serif;
-}
-
-main {
-    overflow-x: hidden;
-}
-
-.category_searchbar_container{
+.category_searchbar_container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -19,31 +7,31 @@ main {
     align-items: center;
 }
 
-.cat_img{
+.cat_img {
     width: 100px;
     border-radius: 50px;
     cursor: pointer;
 }
 
-.cat_img_title{
+.cat_img_title {
     line-height: 10px;
 }
 
-.category_container:hover{
+.category_container:hover {
     color: #00a651;
 }
 
-.cat_img_container{
+.cat_img_container {
     padding: 15px 10px 0px 15px;
 }
 
-.category_list_container{
+.category_list_container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.search_bar_container{
+.search_bar_container {
     display: flex;
     flex-direction: row;
     background-color: white;
@@ -57,25 +45,25 @@ main {
     border: 1.5px solid #00a651;
 }
 
-.search_bar_container:focus-within{
+.search_bar_container:focus-within {
     border: 2px solid #00a651;
 }
 
-input{
+input {
     background-color: white;
     outline: none;
     border: 0;
     width: 80%;
 }
 
-.category_container{
+.category_container {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     text-align: center;
     overflow: hidden;
 }
 
-button{
+button {
     padding: 10px 20px;
     font-size: 20px;
     font-weight: bold;
@@ -85,68 +73,72 @@ button{
     color: white;
 }
 
-.info_container{
-    padding-left: 20px; 
+.info_container {
+    padding-left: 20px;
 }
 
-div.cattle_container >div.info_container >a >button:hover {
+div.cattle_container>div.info_container>a>button:hover {
     background-color: white;
     color: #00a651;
 }
 
-.banner_container{
+.banner_container {
     width: 100%;
     height: 50vh;
-    background-image:url("../../images/cattles/ho4.jpg");
+    background-image: url("../../images/cattles/ho4.jpg");
     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: row;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.banner_title{
+.banner_title {
     background-color: #ffffff80;
     padding: 15px 20px;
     font-size: 32px;
 }
 
-.products_section{
+.products_section {
     margin: 0% 10%;
 }
 
-.product_title_container{
+.product_title_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.cattles_container1 ,.cattles_container2 ,.cattles_container3 ,.cattles_container4 ,.cattles_container5{
-    margin: 10px 0px 15px 0px; 
+.cattles_container1,
+.cattles_container2,
+.cattles_container3,
+.cattles_container4,
+.cattles_container5 {
+    margin: 10px 0px 15px 0px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     grid-gap: 0px 115px;
 }
 
-.cattle_container{
+.cattle_container {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     margin-bottom: 20px;
     padding: 15px 20px 15px 20px;
     border-radius: 5px;
     background-color: white;
     width: fit-content;
- }
+}
 
-.divspace{
+.divspace {
     padding-left: 40px;
- }
+}
 
- .cattle_container:hover {
+.cattle_container:hover {
     box-shadow: #57d192 3px 3px 3px;
 }
- 
+
 .cattle_image {
     width: 280px;
     height: 255px;
@@ -156,14 +148,14 @@ div.cattle_container >div.info_container >a >button:hover {
     width: 280px;
     height: 255px;
     overflow: hidden;
-} 
+}
 
-.cattle_image:hover{
+.cattle_image:hover {
     transform: scale(1.2);
     transition: all 800ms;
 }
 
- p{
+p {
     line-height: 15px;
     font-weight: bold;
     font-size: 18px;
@@ -178,17 +170,17 @@ div.cattle_container >div.info_container >a >button:hover {
     animation-iteration-count: infinite;
 }
 
-.fa-magnifying-glass{
+.fa-magnifying-glass {
     color: #00a651;
     font-size: 20px;
 }
 
-.fa-magnifying-glass:hover{
+.fa-magnifying-glass:hover {
     color: #00a651;
 }
 
-.cattle_name{
-    color:#00a651;
+.cattle_name {
+    color: #00a651;
 }
 
 .product_title {
@@ -207,15 +199,19 @@ div.cattle_container >div.info_container >a >button:hover {
 
 @media screen and (max-width: 480px) {
 
-    .products_section{
+    .products_section {
         margin: 0;
     }
 
-    .product_title_container{
-        margin: 0px 40px -10px 35px; 
+    .product_title_container {
+        margin: 0px 40px -10px 35px;
     }
 
-    .cattles_container1 ,.cattles_container2 ,.cattles_container3 ,.cattles_container4 ,.cattles_container5{
+    .cattles_container1,
+    .cattles_container2,
+    .cattles_container3,
+    .cattles_container4,
+    .cattles_container5 {
         grid-auto-flow: column;
         grid-gap: 0;
         grid-template-columns: repeat(auto-fit, minmax(395px, 1fr));
@@ -224,66 +220,66 @@ div.cattle_container >div.info_container >a >button:hover {
         margin: 0;
     }
 
-    .cattle_container{
+    .cattle_container {
         margin: 20px 40px 50px 35px;
     }
 
-    hr{
+    hr {
         margin: -15px 35px 5px 35px;
     }
 
-    .gif{
+    .gif {
         width: 130px;
     }
 
-    .banner_container{
+    .banner_container {
         height: 36vh;
     }
 
-    .info_container{
-       text-align: center;
-       padding: 0px;
+    .info_container {
+        text-align: center;
+        padding: 0px;
     }
 
-    .category_searchbar_container{
+    .category_searchbar_container {
         flex-direction: column;
         margin: 0;
     }
 
-    .category_list_container{
+    .category_list_container {
         justify-content: center;
     }
 
-    .cat_img{
+    .cat_img {
         width: 90px;
     }
 
-    .search_bar_container{
+    .search_bar_container {
         width: 250px;
         height: 25px;
         font-size: 18px;
         margin: 40px 0px 25px 0px;
     }
 
-    div.category_containerln >p{
+    div.category_containerln>p {
         font-size: 18px;
         line-height: 10px;
     }
 
-    .banner_title{
+    .banner_title {
         padding: 5px 10px;
         font-size: 22px;
     }
 
-    .fa-magnifying-glass{
+    .fa-magnifying-glass {
         font-size: 20px;
     }
 
-    h1{
+    h1 {
         font-size: 28px;
     }
 
-    .btn1{
+    .btn1 {
         font-size: 18px;
         padding: 8px 15px;
     }

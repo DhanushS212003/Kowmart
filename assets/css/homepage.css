@@ -1,15 +1,3 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-
-body {
-    background-color: #e8f5ec;
-    font-family: 'Questrial', sans-serif;
-}
-
-main {
-    overflow-x: hidden;
-}
-
 button {
     padding: 10px 20px;
     font-size: 20px;
@@ -20,12 +8,12 @@ button {
     color: white;
 }
 
-div.info_container >a >button:hover {
+div.info_container>a>button:hover {
     background-color: white;
     color: #00a651;
 }
 
-.info_container{
+.info_container {
     padding-left: 20px;
 }
 
@@ -42,30 +30,30 @@ div.info_container >a >button:hover {
     align-items: center;
 }
 
-.banner_title{
+.banner_title {
     background-color: #ffffff80;
     padding: 15px 20px;
 }
 
-.product_title{
+.product_title {
     font-size: 32px;
     text-align: center;
     margin: 40px 0px 30px 0px;
     color: darkslategray;
 }
 
-.products_section{
+.products_section {
     margin: 2% 10%;
 }
 
-.cattles_container{
+.cattles_container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     grid-gap: 0px 115px;
 }
 
 .cattle_container {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; 
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     margin-bottom: 20px;
     border-radius: 5px;
     padding: 15px 20px 15px 20px;
@@ -86,16 +74,16 @@ div.info_container >a >button:hover {
     width: 280px;
     height: 255px;
     overflow: hidden;
-} 
+}
 
-.cattle_image:hover{
+.cattle_image:hover {
     transform: scale(1.2);
     transition: all 800ms;
 }
 
-p{
+p {
     line-height: 15px;
-    font-weight: bold;  
+    font-weight: bold;
     font-size: 18px;
 }
 
@@ -108,12 +96,12 @@ p{
     animation-iteration-count: infinite;
 }
 
-hr{
+hr {
     margin: 40px 100px -10px 100px;
 }
 
-.cattle_name{
-    color:#00a651;
+.cattle_name {
+    color: #00a651;
 }
 
 .reviewsContainer {
@@ -204,7 +192,7 @@ h4 {
     right: 2%;
 }
 
-div.nextContainer > button {
+div.nextContainer>button {
     background: #e8f5ec;
     position: absolute;
     border-radius: 50%;
@@ -217,7 +205,8 @@ div.nextContainer > button {
     cursor: pointer;
 }
 
-.fa-chevron-left ,.fa-chevron-right {
+.fa-chevron-left,
+.fa-chevron-right {
     font-size: 22px;
 }
 
@@ -239,7 +228,7 @@ div.nextContainer > button {
 
 .dots.active {
     background-color: #00a651;
-  }
+}
 
 @keyframes running_cow {
     0% {
@@ -253,38 +242,38 @@ div.nextContainer > button {
 
 @media screen and (max-width: 480px) {
 
-    .cattle_container{
+    .cattle_container {
         margin-bottom: 40px;
     }
 
-    .products_section{
+    .products_section {
         margin: 0px;
     }
 
-    .cattles_container{
+    .cattles_container {
         justify-items: center;
     }
 
-    .gif{
+    .gif {
         width: 130px;
     }
 
-    .banner_container{
+    .banner_container {
         height: 36vh;
         background-position: 0;
     }
 
-    .banner_title{
+    .banner_title {
         padding: 5px 10px;
         font-size: 22px;
     }
 
-    .info_container{
-       text-align: center;
-       padding: 0px;
+    .info_container {
+        text-align: center;
+        padding: 0px;
     }
-    
-    .product_detail{
+
+    .product_detail {
         font-size: 28px;
     }
 

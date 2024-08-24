@@ -1,26 +1,13 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-
-body {
-    background-color: #e8f5ec;
-    font-family: 'Questrial', sans-serif;
-}
-
-p{
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.back_button_container{
+.back_button_container {
     margin-top: 2.5%;
     margin-left: 10%;
 }
 
-.info_container{
+.info_container {
     padding-left: 20px;
 }
 
-button{
+button {
     padding: 10px 20px;
     font-size: 20px;
     font-weight: bold;
@@ -31,18 +18,18 @@ button{
     border-radius: 5px;
 }
 
-div.info_container >a >button:hover{
+div.info_container>a>button:hover {
     background-color: white;
     color: #00a651;
     cursor: pointer;
 }
 
-.back_btn{
+.back_btn {
     background-color: white;
     color: #00a651;
 }
 
-.details_container{
+.details_container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -50,84 +37,87 @@ div.info_container >a >button:hover{
     margin-top: 2%;
 }
 
-.cattle_details_container{
+.cattle_details_container {
     width: 40%;
     margin-right: 2%;
 }
 
-.seller_container{
+.seller_container {
     width: 25%;
 }
 
-.cattle_details1_container{
+.cattle_details1_container {
     background-color: white;
     border-radius: 5px;
     padding: 20px 0px 0px 20px;
 }
 
-.cattle_details2_container{
+.cattle_details2_container {
     background-color: white;
     border-radius: 5px;
 }
 
-.cat_name{
-   margin-bottom: 0px;
+.cat_name {
+    margin-bottom: 0px;
 }
 
-.age_gender_container{
+.age_gender_container {
     display: flex;
     flex-direction: row;
 }
 
-.cat_age{
+.cat_age {
     border-right: 1px solid grey;
     padding-right: 15px;
     color: teal;
 }
 
-.cat_gender{
+.cat_gender {
     padding-left: 15px;
     color: teal;
 }
 
-.cattle_milk_container{
+.cattle_milk_container {
     text-align: center;
 }
 
-.cattle_milk, .cattle_lact, .cattle_weight{
+.cattle_milk,
+.cattle_lact,
+.cattle_weight {
     color: teal;
 }
 
-.cattle_other_details_container{
+.cattle_other_details_container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-#od{
+#od {
     margin-left: 5px;
     margin-top: -10px;
 }
 
-.description_container{
+.description_container {
     background-color: white;
     border-radius: 5px;
 }
 
-.details_container_head{
+.details_container_head {
     padding: 20px 0px 0px 20px;
     color: #406367;
 }
 
-hr{
+hr {
     margin-top: -10px;
 }
 
-#hr1{
+#hr1 {
     margin: 30px 0px;
 }
 
-.fav_btn ,.verified{
+.fav_btn,
+.verified {
     font-size: 18px;
     background-color: yellowgreen;
     border-style: none;
@@ -135,100 +125,104 @@ hr{
     border-radius: 5px;
 }
 
-.price_container{
+.price_container {
     background-color: white;
     font-size: 1.5rem;
     border-radius: 5px;
     padding: 20px;
 }
 
-#favourite ,#seller_profile{
+#favourite,
+#seller_profile {
     font-size: 20px;
-    width:100%;
+    width: 100%;
     height: fit-content;
     background-color: teal;
     border: 3px solid teal;
 }
 
-button#favourite:hover, button#view:hover, button#seller_profile:hover{
+button#favourite:hover,
+button#view:hover,
+button#seller_profile:hover {
     background-color: white;
     color: teal;
 }
 
-.price{
+.price {
     margin-top: 0px;
     margin-bottom: 15px;
 }
 
-.sellerdetails_container{
+.sellerdetails_container {
     background-color: white;
     border-radius: 5px;
     padding-left: 20px;
 }
 
-h4{
+h4 {
     padding-top: 15px;
     color: #406367;
     font-weight: normal;
 }
 
-.seller_name{
+.seller_name {
     color: teal;
     font-size: 1.8em;
     margin-top: -15px;
     margin-bottom: -20px;
 }
 
-#chat{
+#chat {
     font-size: 20px;
     width: 90%;
     background-color: white;
     border: 2px solid black;
-    color: teal; 
+    color: teal;
     height: fit-content;
 }
 
-button#chat:hover{
+button#chat:hover {
     border: 4px solid black;
     height: 43px;
     padding-top: 6px;
 }
 
-.address{
+.address {
     line-height: 2rem;
     margin: 0;
 }
 
-.seller_profile_container{
+.seller_profile_container {
     background-color: white;
     border-radius: 5px;
     padding: 20px;
     margin-top: 21.5px;
 }
-  
-.cattle_image_container{
-    margin: 20px 0px; 
+
+.cattle_image_container {
+    margin: 20px 0px;
 }
 
-.image{
+.image {
     width: 43%;
-    height: 30rem; 
+    height: 30rem;
     display: block;
     margin: auto;
 }
 
-.cattle_age ,.cattle_name{
+.cattle_age,
+.cattle_name {
     line-height: 15px;
     font-weight: bold;
     font-size: 18px;
 }
 
-.description{
+.description {
     line-height: 2.2rem;
     padding: 0px 15px 10px 30px;
 }
 
-#p4{
+#p4 {
     padding-left: 40px;
 }
 
@@ -241,7 +235,7 @@ button#chat:hover{
     margin: 2% 10%;
 }
 
-.cattles_container{
+.cattles_container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     grid-gap: 0px 115px;
@@ -269,32 +263,33 @@ button#chat:hover{
     width: 280px;
     height: 255px;
     overflow: hidden;
-} 
+}
 
-.cattle_img:hover{
+.cattle_img:hover {
     transform: scale(1.2);
     transition: all 800ms;
 }
 
-span{
+span {
     font-family: serif;
 }
 
-.cattle_name{
-    color:#00a651;
+.cattle_name {
+    color: #00a651;
 }
 
-.fa-phone, .fa-house{
+.fa-phone,
+.fa-house {
     font-size: 20px;
     margin-right: 15px;
 }
 
-.fa-location-dot{
+.fa-location-dot {
     font-size: 20px;
     margin: 0px 20px 0px 5px;
 }
 
-.chevron{
+.chevron {
     padding: 0;
     background-color: #e8f5ec;
     border: 0;
@@ -306,137 +301,142 @@ span{
     border-radius: 50%;
 }
 
-#left{
+#left {
     left: 20.2em;
 }
 
-#right{
+#right {
     right: 20.2em;
 }
 
-.fa-chevron-left{
+.fa-chevron-left {
     margin-left: -15px;
     font-size: 25px;
 }
 
-.fa-chevron-right{
+.fa-chevron-right {
     margin-right: -12px;
     font-size: 25px;
 }
 
-.fa-chevron-left:hover ,.fa-chevron-right:hover{
+.fa-chevron-left:hover,
+.fa-chevron-right:hover {
     color: #00a651;
-} 
+}
 
-.seller_phoneno_container{
+.seller_phoneno_container {
     display: flex;
     align-items: center;
 }
 
-.seller_address_container{
+.seller_address_container {
     display: flex;
     align-items: baseline;
 }
 
 @media screen and (max-width: 480px) {
 
-    .cattle_container{
+    .cattle_container {
         margin-bottom: 50px;
     }
 
-    .cattles_container{
+    .cattles_container {
         justify-items: center;
     }
 
-    .products_section{
+    .products_section {
         margin: 10% 10% 0% 10%;
     }
 
-    .info_container{
+    .info_container {
         text-align: center;
         padding: 0px;
     }
 
-    .back_button_container{
+    .back_button_container {
         margin: 0px;
     }
 
-    .details_container{
+    .details_container {
         flex-direction: column;
         margin-top: -30px;
     }
 
-    .cattle_image_container{
+    .cattle_image_container {
         margin: 45px 30px 30px 30px;
     }
 
-    .image{
+    .image {
         width: 90%;
         height: 20rem;
     }
 
-    .back_btn{
+    .back_btn {
         display: none;
     }
 
-    .cattle_details_container ,.seller_container{
+    .cattle_details_container,
+    .seller_container {
         width: 85%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 30px;
     }
 
-    .seller_container{
+    .seller_container {
         margin-top: 10px;
     }
 
-    #favourite, #chat, #seller_profile{
+    #favourite,
+    #chat,
+    #seller_profile {
         font-size: 20px;
         padding-left: 50px;
         padding-right: 50px;
     }
 
-    #view{
+    #view {
         font-size: 20px;
         padding-left: 40px;
         padding-right: 40px;
     }
 
-    p{
+    p {
         font-size: 18px;
     }
 
-    .description{
+    .description {
         line-height: 2rem;
         padding-left: 20px;
     }
 
-    .address{
+    .address {
         line-height: 2rem;
         margin-right: 3px;
     }
 
-    #hr1{
+    #hr1 {
         margin: 30px 40px 25px 40px;
     }
 
-    .chevron{
+    .chevron {
         top: 13.5em;
         height: 35px;
         width: 38px;
     }
 
-    .fa-chevron-left ,.fa-chevron-right{
+    .fa-chevron-left,
+    .fa-chevron-right {
         margin: 0;
         font-size: 20px;
     }
 
-    #left{
+    #left {
         left: 20px;
     }
 
-    #right{
+    #right {
         right: 20px;
     }
-  
+
 }

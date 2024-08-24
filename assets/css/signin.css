@@ -1,89 +1,78 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-
-body {
-    background-color: #e8f5ec;
-    font-family: 'Questrial', sans-serif;
-    margin: 0;
-    width: 100%;
-}
-
-
-form{
+form {
     background-color: white;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     padding: 20px;
     border-radius: 5px;
 }
 
-.logo{
+.logo {
     width: 80px;
 }
 
-.navbar{
+.navbar {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: -20px;
 }
 
-h1{
+h1 {
     text-align: center;
     color: #00a387;
     font-size: 35px;
 }
 
-.details_container{
+.details_container {
     margin-top: -20px;
     font-weight: bold;
 }
 
-input{
+input {
     margin-top: 8px;
     padding-left: 20px;
     min-width: 92%;
-    height: 40px;   
+    height: 40px;
     font-size: 20px;
     outline: none;
     border: 1px solid gray;
 }
 
-input:focus{
+input:focus {
     border: 1.5px solid red;
 }
 
-input:valid{
+input:valid {
     border: 1.5px solid green;
 }
 
-.link_container{
+.link_container {
     margin-bottom: -25px;
 }
 
-div.link_containerew >p{
+div.link_containerew>p {
     margin-top: 13px;
     text-align: center;
 }
 
-div.link_container >p >a{
+div.link_container>p>a {
     text-decoration: none;
     color: #00a387;
 }
 
-label{
+label {
     font-size: 20px;
 }
 
-.form_container{
+.form_container {
     display: flex;
     justify-content: center;
 }
 
-div{
+div {
     padding: 10px;
 }
 
-button{
+button {
     padding: 12px 140px;
     font-size: 25px;
     font-weight: bold;
@@ -93,46 +82,46 @@ button{
     color: white;
 }
 
-.submit_btn_container{
+.submit_btn_container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-p{
+p {
     margin-top: 5px;
     text-align: center;
     font-size: 20px;
 }
 
-.logo_name{
+.logo_name {
     color: #00a651;
     font-size: 50px;
 }
 
 @media screen and (max-width: 480px) {
 
-    body{
+    body {
         background-color: #e8f5ec;
     }
 
-    form{
+    form {
         width: 80%;
     }
 
-    div{
+    div {
         padding: 5px;
     }
 
-    .navbar{
+    .navbar {
         margin: 40px 15px 10px 0px;
     }
 
-    .logo_container{
+    .logo_container {
         margin-right: 10px;
     }
 
-    .logo{
+    .logo {
         width: 65px;
         margin: 0;
     }
@@ -141,36 +130,36 @@ p{
         margin: 0;
     }
 
-    .logo_name{
+    .logo_name {
         font-size: 40px;
         margin: 0;
     }
 
-    .details_container{
+    .details_container {
         margin: 0;
     }
 
-    h1{
+    h1 {
         font-size: 30px;
         margin-top: 10px;
     }
 
-    .label{
+    .label {
         font-size: 18px;
     }
 
-    .input{
+    .input {
         margin-top: 3px;
         height: 30px;
         font-size: 18px;
     }
 
-    button{
+    button {
         padding: 12px 100px;
         font-size: 20px;
     }
 
-    p{
+    p {
         font-size: 18px;
-    }  
+    }
 }
