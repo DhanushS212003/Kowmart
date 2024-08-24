@@ -10,7 +10,7 @@ const beforeLogin = `<header>
         <div id = "mySidenav" class = "sidenav">
             <a href = "javascript:void(0)" class = "closebtn" onclick = "closeNav()">&times;</a> 
             <ul class = "navbar">
-                <li> <a href = "${root}/pages/cattle/cattle_index.html"> Cattles </a> </li>
+                <li> <a href = "${root}/index.html"> Cattles </a> </li>
                 <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
                 <li class = "btn_con"> <a href = "${root}/pages/signIn.html"> <button class = "login"> LOGIN </button> </a> </li>
             </ul>
@@ -20,7 +20,7 @@ const beforeLogin = `<header>
 
         <div class = "link_container">
             <ul class = "navbar">
-                <li> <a href = "${root}/pages/cattle/cattle_index.html"> Cattles </a> </li>
+                <li> <a href = "${root}/index.html"> Cattles </a> </li>
                 <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
             </ul>
         </div>
@@ -51,7 +51,7 @@ const afterLogin = `<header>
         <div id = "mySidenav" class = "sidenav">
             <a href = "javascript:void(0)" class = "closebtn" onclick = "closeNav()">&times;</a>
             <ul class = "navbar">
-                <li> <a href = "${root}/pages/cattle/cattle_index.html"> Cattles </a> </li>
+                <li> <a href = "${root}/index.html"> Cattles </a> </li>
                 <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
                 <li class = "btn_con"> <a href = "${root}/pages/cattle/sell_details1.html"><button class = "login" id = "sell"> SELL </button> </a> </li>
                 <li class = "profile_icon"> <a href = "${root}/pages/buyer_profile.html"> <i class = "fa-solid fa-user"> </i> </a> </li>
@@ -63,7 +63,7 @@ const afterLogin = `<header>
 
         <div class = "link_container">
             <ul class = "navbar">
-                <li> <a href = "${root}/pages/cattle/cattle_index.html"> Cattles </a> </li>
+                <li> <a href = "${root}/index.html"> Cattles </a> </li>
                 <li> <a href = "${root}/pages/notification.html" class = "newNotification"> Notification </a> </li>
                 <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
             </ul>

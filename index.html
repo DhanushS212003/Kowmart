@@ -100,7 +100,22 @@
         </div>
       </div>
 
-      <!-- Banner Section -->
+      <!-- Banner Section 1 -->
+
+      <div class="banner_container_1">
+        <h1 class="banner_title">Buy or Sell Livestock Online</h1>
+      </div>
+
+      <!-- Best Cattles Section -->
+
+      <div class="products_section">
+        <div class="product_title_container">
+          <h1 class="product_title">Our Best Cattles</h1>
+        </div>
+        <div class="cattles_container0"></div>
+      </div>
+
+      <!-- Banner Section 2 -->
 
       <div class="banner_container">
         <h1 class="banner_title">Most Trusted Livestock Market</h1>
@@ -112,40 +127,41 @@
         <div class="product_title_container">
           <h1 class="product_title">Gir</h1>
         </div>
-        <div class="cattles_container1" id="Gir_container"></div>
+        <div class="cattles_container1"></div>
         <hr />
 
         <div class="product_title_container">
           <h1 class="product_title">Surti</h1>
         </div>
-        <div class="cattles_container2" id="Surti_container"></div>
+        <div class="cattles_container2"></div>
         <hr />
 
         <div class="product_title_container">
           <h1 class="product_title">Malabari</h1>
         </div>
-        <div class="cattles_container3" id="Malabari_container"></div>
+        <div class="cattles_container3"></div>
         <hr />
 
         <div class="product_title_container">
           <h1 class="product_title">Bannur</h1>
         </div>
-        <div class="cattles_container4" id="Bannur_container"></div>
+        <div class="cattles_container4"></div>
         <hr />
 
         <div class="product_title_container">
           <h1 class="product_title">Ongole</h1>
         </div>
-        <div class="cattles_container5" id="Ongole_container"></div>
+        <div class="cattles_container5"></div>
       </div>
 
       <!-- Gif -->
 
-      <img class="gif" src="./assets/images/gif1.gif" alt="gif" />
+      <!-- <img class="gif" src="./assets/images/gif1.gif" alt="gif" /> -->
     </main>
 
     <script src="./assets/js/header.js"></script>
     <script src="./assets/js/footer.js"></script>
+    <script src="./assets/js/index.js"></script>
 
     <script>
       // Most breed section
@@ -162,14 +178,27 @@
           cattleDetails.push(cattleData);
         }
 
-        seller_cattles = cattleDetails.filter((e) => e.userId != phone_id);
-        most_breed_Gir = cattleDetails.filter((e) => e.breed == "Gir");
-        most_breed_Surti = cattleDetails.filter((e) => e.breed == "Surti");
-        most_breed_Malabari = cattleDetails.filter(
+        const best_cattles = cattleDetails.filter((e) => e.isBest);
+        const most_breed_Gir = cattleDetails.filter((e) => e.breed == "Gir");
+        const most_breed_Surti = cattleDetails.filter(
+          (e) => e.breed == "Surti"
+        );
+        const most_breed_Malabari = cattleDetails.filter(
           (e) => e.breed == "Malabari"
         );
-        most_breed_Bannur = cattleDetails.filter((e) => e.breed == "Bannur");
-        most_breed_Ongole = cattleDetails.filter((e) => e.breed == "Ongole");
+        const most_breed_Bannur = cattleDetails.filter(
+          (e) => e.breed == "Bannur"
+        );
+        const most_breed_Ongole = cattleDetails.filter(
+          (e) => e.breed == "Ongole"
+        );
+
+        for (let i = 0; i < best_cattles.length; i++) {
+          const cattle_container = cards(best_cattles[i]);
+          document
+            .querySelector("div.cattles_container0")
+            .append(cattle_container);
+        }
 
         for (let i = 0; i < most_breed_Gir.length; i++) {
           if (i < 3) {
