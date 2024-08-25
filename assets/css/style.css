@@ -29,14 +29,18 @@ a {
     text-decoration: none;
 }
 
-.primary-color {
+.primary_color {
     color: var(--primary-color)
 }
 
-.primary-btn {
+.primary_btn {
     border: 1px solid var(--primary-color);
     background-color: #00a651;
     color: white;
     border-radius: 4px;
     padding: 4px 10px;
+}
+
+.pointer {
+    cursor: pointer;
 }

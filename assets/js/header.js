@@ -4,26 +4,28 @@ const beforeLogin = `<header>
         <div class = "header_container">
           <div class = "d-flex align-items-center">
               <div class = "logo_container"> <a href = "${root}/index.html"> <img class = "logo" src = "${root}/assets/images/cattles/logo1.png" alt = "logo"> </a> </div>
-              <a class = "primary-color" href = "${root}/index.html"> <h2> KowMart </h2> </a>
+              <a class = "primary_color" href = "${root}/index.html"> <h2> KowMart </h2> </a>
           </div>
 
           <div id = "mySidenav" class = "sidenav">
-              <a href = "javascript:void(0)" class = "closebtn" onclick = "closeNav()">&times;</a> 
-              <ul class = "navbar">
-                  <li> <a href = "${root}/index.html"> Cattles </a> </li>
-                  <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
-                  <li class = "btn_con"> <a href = "${root}/pages/signIn.html"> <button class = "login"> LOGIN </button> </a> </li>
-              </ul>
-          </div> 
+              <div class = "d-flex flex-column row-gap-3 ps-4 py-3">
+                <a href = "${root}/index.html"> Cattles </a>
+                <a href = "${root}/pages/about.html"> About Us </a>
+                <a href = "${root}/pages/signIn.html"><button class = "primary_btn"> LOGIN </button> </a>
+              </div>
+          </div>
 
-          <span class = "navBar" style = "font-size:30px;cursor:pointer" onclick = "openNav()"> &#9776; </span>
+          <div class = "nav_icons_container">
+              <i class="fa-solid fa-bars bars_icon pointer" onclick = "openNav()"></i>
+              <i class="fa-solid fa-xmark close_icon pointer" onclick = "closeNav()"></i>
+          </div>
 
-          <div class = "d-flex column-gap-5">
+          <div class = "d-flex column-gap-5 nav_links_container">
             <a class = "nav_links" href = "${root}/index.html"> Cattles </a>
             <a class = "nav_links" href = "${root}/pages/about.html"> About Us </a>
           </div>
           
-          <div> <button class = "primary-btn" onclick = "openSearch()"> LOGIN </button> </div>
+          <div class = "nav_links_container"> <button class = "primary_btn" onclick = "openSearch()"> LOGIN </button> </div>
 
           <div id="myOverlay" class="overlay">
               <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
@@ -43,31 +45,33 @@ const afterLogin = `<header>
         <div class = "header_container">
           <div class = "d-flex align-items-center">
             <div class = "logo_container"> <a href = "${root}/index.html"> <img class = "logo" src = "${root}/assets/images/cattles/logo1.png" alt = "logo"> </a> </div>
-            <a class = "primary-color" href = "${root}/index.html"> <h2> KowMart </h2> </a>
+            <a class = "primary_color" href = "${root}/index.html"> <h2> KowMart </h2> </a>
           </div>
 
           <div id = "mySidenav" class = "sidenav">
-              <a href = "javascript:void(0)" class = "closebtn" onclick = "closeNav()">&times;</a>
-              <ul class = "navbar">
-                  <li> <a href = "${root}/index.html"> Cattles </a> </li>
-                  <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
-                  <li class = "btn_con"> <a href = "${root}/pages/cattle/sell_details1.html"><button class = "login" id = "sell"> SELL </button> </a> </li>
-                  <li class = "profile_icon"> <a href = "${root}/pages/buyer_profile.html"> <i class = "fa-solid fa-user"> </i> </a> </li>
-                  <li> <a href = "${root}/pages/notification.html" class = "notification_nav"> Notification </a> </li>
-              </ul>
+              <div class = "d-flex flex-column row-gap-3 ps-4 py-3">
+                <a href = "${root}/index.html"> Cattles </a>
+                <a href = "${root}/pages/about.html"> About Us </a>
+                <a href = "${root}/pages/cattle/sell_details1.html"><button class = "primary_btn"> SELL </button> </a>
+                <a href = "${root}/pages/buyer_profile.html"> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
+                <a href = "${root}/pages/notification.html" class = "notification_nav"> Notification </a>
+              </div>
           </div>
 
-          <span class = "navBar" style = "font-size:30px;cursor:pointer" onclick = "openNav()"> &#9776; </span>
+          <div class = "nav_icons_container">
+              <i class="fa-solid fa-bars bars_icon pointer" onclick = "openNav()"></i>
+              <i class="fa-solid fa-xmark close_icon pointer" onclick = "closeNav()"></i>
+          </div>
 
-          <div class = "d-flex column-gap-5">
+          <div class = "d-flex column-gap-5 nav_links_container">
               <a class = "nav_links" href = "${root}/index.html"> Cattles </a>
               <a class = "nav_links notification_nav" href = "${root}/pages/notification.html"> Notification </a>
               <a class = "nav_links" href = "${root}/pages/about.html"> About Us </a>
           </div>
 
-          <div class = "d-flex align-items-end column-gap-3">
-              <button class = "primary-btn"> SELL </button>
-              <a href = ${root}/pages/buyer_profile.html> <i class = "fa-regular fa-user primary-color" style = "font-size: 20px"> </i> </a>
+          <div class = "d-flex align-items-end column-gap-3 nav_links_container">
+              <button class = "primary_btn"> SELL </button>
+              <a href = ${root}/pages/buyer_profile.html> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
           </div> 
         </div>
     </header>`;
@@ -137,7 +141,7 @@ if (phone_id) {
     }
   }
 } else {
-  document.body.insertAdjacentHTML("afterbegin", afterLogin);
+  document.body.insertAdjacentHTML("afterbegin", beforeLogin);
 
   function openSearch() {
     document.getElementById("myOverlay").style.display = "block";
