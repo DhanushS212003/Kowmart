@@ -72,16 +72,6 @@ div {
     padding: 10px;
 }
 
-button {
-    padding: 12px 140px;
-    font-size: 25px;
-    font-weight: bold;
-    background-color: #00a651;
-    border-radius: 5px;
-    border-style: none;
-    color: white;
-}
-
 .submit_btn_container {
     display: flex;
     justify-content: center;
@@ -152,11 +142,6 @@ p {
         margin-top: 3px;
         height: 30px;
         font-size: 18px;
-    }
-
-    button {
-        padding: 12px 100px;
-        font-size: 20px;
     }
 
     p {

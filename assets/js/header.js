@@ -2,9 +2,9 @@ const root = window.location.origin;
 
 const beforeLogin = `<header>
         <div class = "header_container">
-          <div class = "navbar">
+          <div class = "d-flex align-items-center">
               <div class = "logo_container"> <a href = "${root}/index.html"> <img class = "logo" src = "${root}/assets/images/cattles/logo1.png" alt = "logo"> </a> </div>
-              <a href = "${root}/index.html"> <h1 class = "logo_head"> KowMart </h1> </a>
+              <a class = "primary-color" href = "${root}/index.html"> <h2> KowMart </h2> </a>
           </div>
 
           <div id = "mySidenav" class = "sidenav">
@@ -18,14 +18,12 @@ const beforeLogin = `<header>
 
           <span class = "navBar" style = "font-size:30px;cursor:pointer" onclick = "openNav()"> &#9776; </span>
 
-          <div class = "link_container">
-              <ul class = "navbar">
-                  <li> <a href = "${root}/index.html"> Cattles </a> </li>
-                  <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
-              </ul>
+          <div class = "d-flex column-gap-5">
+            <a class = "nav_links" href = "${root}/index.html"> Cattles </a>
+            <a class = "nav_links" href = "${root}/pages/about.html"> About Us </a>
           </div>
           
-          <div class = "btn_container"> <button class = "login" onclick = "openSearch()"> LOGIN </button> </a> </div>
+          <div> <button class = "primary-btn" onclick = "openSearch()"> LOGIN </button> </div>
 
           <div id="myOverlay" class="overlay">
               <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
@@ -43,9 +41,9 @@ const beforeLogin = `<header>
 
 const afterLogin = `<header>
         <div class = "header_container">
-          <div class = "navbar">
-              <div class = "logo_container"> <a href = "${root}/index.html"> <img class = "logo" src = "${root}/assets/images/cattles/logo1.png" alt = "logo"> </a> </div>
-              <div> <a href = "${root}/index.html"> <h1 class = "logo_head"> KowMart </h1> </a> </div>
+          <div class = "d-flex align-items-center">
+            <div class = "logo_container"> <a href = "${root}/index.html"> <img class = "logo" src = "${root}/assets/images/cattles/logo1.png" alt = "logo"> </a> </div>
+            <a class = "primary-color" href = "${root}/index.html"> <h2> KowMart </h2> </a>
           </div>
 
           <div id = "mySidenav" class = "sidenav">
@@ -55,23 +53,21 @@ const afterLogin = `<header>
                   <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
                   <li class = "btn_con"> <a href = "${root}/pages/cattle/sell_details1.html"><button class = "login" id = "sell"> SELL </button> </a> </li>
                   <li class = "profile_icon"> <a href = "${root}/pages/buyer_profile.html"> <i class = "fa-solid fa-user"> </i> </a> </li>
-                  <li> <a href = "${root}/pages/notification.html" class = "newNotification"> Notification </a> </li>
+                  <li> <a href = "${root}/pages/notification.html" class = "notification_nav"> Notification </a> </li>
               </ul>
           </div>
 
           <span class = "navBar" style = "font-size:30px;cursor:pointer" onclick = "openNav()"> &#9776; </span>
 
-          <div class = "link_container">
-              <ul class = "navbar">
-                  <li> <a href = "${root}/index.html"> Cattles </a> </li>
-                  <li> <a href = "${root}/pages/notification.html" class = "newNotification"> Notification </a> </li>
-                  <li> <a href = "${root}/pages/about.html"> About Us </a> </li>
-              </ul>
+          <div class = "d-flex column-gap-5">
+              <a class = "nav_links" href = "${root}/index.html"> Cattles </a>
+              <a class = "nav_links notification_nav" href = "${root}/pages/notification.html"> Notification </a>
+              <a class = "nav_links" href = "${root}/pages/about.html"> About Us </a>
           </div>
 
-          <div class = "navbar btn_container">
-              <a href = "${root}/pages/cattle/sell_details1.html" id="sellBtn"> <button class = "login" id = "sell"> SELL </button> </a> 
-              <div class = "user_icon_container"> <a href = ${root}/pages/buyer_profile.html> <i class = "fa-solid fa-user"> </i> </a> </div>
+          <div class = "d-flex align-items-end column-gap-3">
+              <button class = "primary-btn"> SELL </button>
+              <a href = ${root}/pages/buyer_profile.html> <i class = "fa-regular fa-user primary-color" style = "font-size: 20px"> </i> </a>
           </div> 
         </div>
     </header>`;
@@ -113,7 +109,7 @@ if (phone_id) {
     const newNote = userNotificationList.find((e) => e.status === false);
 
     if (newNote) {
-      document.querySelector(".newNotification").style.borderBottom =
+      document.querySelector(".notification_nav").style.borderBottom =
         "2px solid #00a651";
     }
   }
@@ -136,12 +132,12 @@ if (phone_id) {
     const newNote = repNotificationList.find((e) => e.readStatus === false);
 
     if (newNote) {
-      document.querySelector(".newNotification").style.borderBottom =
+      document.querySelector(".notification_nav").style.borderBottom =
         "2px solid #00a651";
     }
   }
 } else {
-  document.body.insertAdjacentHTML("afterbegin", beforeLogin);
+  document.body.insertAdjacentHTML("afterbegin", afterLogin);
 
   function openSearch() {
     document.getElementById("myOverlay").style.display = "block";

@@ -63,16 +63,6 @@ input {
     overflow: hidden;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #00a651;
-    border: 2px solid #00a651;
-    border-radius: 5px;
-    color: white;
-}
-
 .info_container {
     padding-left: 20px;
 }

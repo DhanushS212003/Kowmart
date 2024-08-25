@@ -132,16 +132,6 @@ select {
     justify-content: center;
 }
 
-button {
-    padding: 10px 30px;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: #00a651;
-    color: white;
-    border-style: none;
-    border-radius: 5px;
-}
-
 .edit_btn {
     background-color: white;
     border: 2px solid #00a651;
@@ -251,11 +241,6 @@ p {
         width: 94%;
         margin-left: 0;
         height: 38px;
-    }
-
-    button {
-        padding: 8px 20px;
-        font-size: 20px;
     }
 
     .fa-bag-shopping,

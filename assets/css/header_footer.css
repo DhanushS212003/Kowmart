@@ -2,7 +2,7 @@ header {
     position: sticky;
     top: 0;
     background-color: white;
-    box-shadow: #00a651 4px 4px 4px;
+    box-shadow: var(--primary-color) 4px 4px 4px;
     z-index: 1;
 }
 
@@ -13,13 +13,7 @@ header {
     flex-wrap: wrap;
     max-width: 1500px;
     margin: 0 auto;
-}
-
-.navbar {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    align-items: center;
+    padding: 2px 0;
 }
 
 .logo_container {
@@ -27,47 +21,15 @@ header {
 }
 
 .logo {
-    width: 70px;
+    width: 55px;
 }
 
-.navbar>a {
-    font-size: 20px;
-    text-decoration: none;
-    color: #00a651;
+.nav_links {
+    color: var(--primary-color);
 }
 
-li {
-    padding: 20px;
-    list-style: none;
-}
-
-li>a {
-    font-size: 22px;
-    text-decoration: none;
-    font-weight: bold;
-    color: #00a651;
-}
-
-li>a:hover {
+.nav_links:hover {
     color: orange;
-}
-
-.login {
-    border: 2px solid #00a651;
-    background-color: white;
-    color: #00a651;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px 20px;
-}
-
-.login:hover {
-    color: orange;
-}
-
-#sell {
-    padding: 10px 25px;
 }
 
 .VIpgJd-ZVi9od-ORHb-OEVmcd {
@@ -78,7 +40,7 @@ li>a:hover {
     margin: 0 !important;
     margin-top: 12px !important;
     padding: 8px;
-    border: 2px solid #00a651;
+    border: 2px solid var(--primary-color);
     font-family: 'Poppins';
     background: white;
     border-radius: 10px;
@@ -94,8 +56,8 @@ li>a:hover {
     margin-left: 30px;
 }
 
-footer {
-    background-color: #00a651;
+/* footer {
+    background-color: var(--primary-color);
     color: white;
 }
 
@@ -148,7 +110,7 @@ i {
 }
 
 .fa-user {
-    color: #00a651;
+    color: var(--primary-color);
 }
 
 .fa-user:hover {
@@ -157,11 +119,7 @@ i {
 
 .comAddress {
     line-height: 22px;
-}
-
-.user_icon_container {
-    margin-left: 30px;
-}
+} */
 
 .sidenav {
     height: 36%;
@@ -202,11 +160,7 @@ i {
     position: absolute;
     left: 21rem;
     top: 23px;
-    color: #00a651;
-}
-
-.btn_container {
-    align-items: center;
+    color: var(--primary-color);
 }
 
 .overlay {
@@ -258,13 +212,13 @@ i {
 }
 
 .user_container>h2>a {
-    color: #00a651;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 @media screen and (max-width: 1560px) {
     .header_container {
-        padding: 0 50px;
+        padding: 2px 20px;
     }
 
     .footer_container {
@@ -314,6 +268,10 @@ i {
     }
 }
 
+@media screen and (max-width: 768px) {
+    /* TODO */
+}
+
 @media screen and (max-width: 480px) {
 
     header {
@@ -322,29 +280,14 @@ i {
         padding: 0px;
     }
 
-    .logo {
-        width: 60px;
-    }
-
     .logo_container {
         padding: 18px 15px 0px 20px;
         margin-top: -7px;
     }
 
-    .logo_head {
-        font-size: 2rem;
-    }
-
     .link_container {
         display: none;
         background-color: #f1f1f1;
-        width: 100%;
-    }
-
-    .btn_container {
-        display: none;
-        background-color: #f1f1f1;
-        margin-top: -10px;
         width: 100%;
     }
 
@@ -406,26 +349,9 @@ i {
         padding: 20px 0px 30px 0px;
     }
 
-    .login {
-        background-color: transparent;
-        font-size: 25px;
-        padding: 7px 15px;
-        color: teal;
-        border: 2px solid teal;
-    }
-
-    #sell {
-        padding: 7px 20px;
-        font-weight: bold;
-    }
-
     .fa-user {
         color: teal;
         font-size: 30px;
-    }
-
-    .user_icon_container {
-        margin: 0px 0px 20px 40px;
     }
 
     .list_page_foot {
