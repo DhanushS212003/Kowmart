@@ -8,10 +8,10 @@ const footer = `<footer>
             </div>
 
             <div class = "right_foot">
-                <h2 class = "right_foot_title"> CONNECT WITH US</h2>
-                <p> Email: info@kowmart.com</p>
-                <p> Ph.no: 1234567890</p>
-                <p class = "comAddress"> Address:  No.3/5, Anna Salai, West Mambalam, Chennai - 33. </p>
+                <h4 class = "text-body-tertiary"> CONNECT WITH US</h4>
+                <p class = "mt-2"> Email: info@kowmart.com</p>
+                <p class = "mt-2"> Ph.no: 1234567890</p>
+                <p class = "mt-2"> Address:  No.3/5, Anna Salai, West Mambalam, Chennai - 33. </p>
                 <div class = "com_icons">
                     <i class = "fa-brands fa-facebook"></i>
                     <i class = "fa-brands fa-whatsapp"></i>
