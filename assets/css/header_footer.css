@@ -35,7 +35,7 @@ header {
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 4.1rem;
+    top: 4.4rem;
     left: 0;
     background-color: white;
     transition: 0.5s;
@@ -43,8 +43,7 @@ header {
 }
 
 .sidenav a {
-    color: teal;
-    transition: 0.3s;
+    color: var(--primary-color);
 }
 
 .nav_icons_container {
