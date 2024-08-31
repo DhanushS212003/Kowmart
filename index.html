@@ -11,7 +11,7 @@
     <title>Home</title>
 
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/cattles/cattles.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
     <link rel="stylesheet" href="./assets/css/header_footer.css" />
     <link
       rel="icon"
@@ -30,79 +30,89 @@
     <main>
       <!-- Search bar and category section -->
 
-      <div class="category_searchbar_container">
+      <div class="category_search_container">
         <div class="search_bar_container">
           <input
+            class="border-0 w-100 ps-3"
+            style="outline: none"
             type="search"
-            placeholder="search cattles by id (CG1)"
+            placeholder="Search Cattles"
             id="search_input"
           />
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="search_icon_container">
+            <i class="fa-solid fa-magnifying-glass text-white"></i>
+          </div>
         </div>
 
         <div class="category_list_container">
-          <div class="category_container">
-            <div class="cat_img_container">
-              <img
-                class="cat_img"
-                src="./assets/images/cattles/ch1.jpg"
-                alt="cow"
-                id="Cow"
-              />
-            </div>
-            <p class="cat_img_title">COW</p>
+          <div class="category_container" id="cow">
+            <img
+              class="category_img"
+              src="./assets/images/cattles/ch1.jpg"
+              alt="cow"
+            />
+            <p class="mt-2 text-center">COW</p>
           </div>
-          <div class="category_container">
-            <div class="cat_img_container">
-              <img
-                class="cat_img"
-                src="./assets/images/cattles/ch2.jpg"
-                alt="buffalo"
-                id="Buffalo"
-              />
-            </div>
-            <p class="cat_img_title">BUFFALO</p>
+          <div class="category_container" id="buffalo">
+            <img
+              class="category_img"
+              src="./assets/images/cattles/ch2.jpg"
+              alt="buffalo"
+            />
+            <p class="mt-2 text-center">BUFFALO</p>
           </div>
-          <div class="category_container">
-            <div class="cat_img_container">
-              <img
-                class="cat_img"
-                src="./assets/images/cattles/ch3.jpg"
-                alt="goat"
-                id="Goat"
-              />
-            </div>
-            <p class="cat_img_title">GOAT</p>
+          <div class="category_container" id="goat">
+            <img
+              class="category_img"
+              src="./assets/images/cattles/ch3.jpg"
+              alt="goat"
+            />
+            <p class="mt-2 text-center">GOAT</p>
           </div>
-          <div class="category_container">
-            <div class="cat_img_container">
-              <img
-                class="cat_img"
-                src="./assets/images/cattles/ch4.jpg"
-                alt="sheep"
-                id="Sheep"
-              />
-            </div>
-            <p class="cat_img_title">SHEEP</p>
+          <div class="category_container" id="sheep">
+            <img
+              class="category_img"
+              src="./assets/images/cattles/ch4.jpg"
+              alt="sheep"
+            />
+            <p class="mt-2 text-center">SHEEP</p>
           </div>
-          <div class="category_container">
-            <div class="cat_img_container">
-              <img
-                class="cat_img"
-                src="./assets/images/cattles/ch5.jpg"
-                alt="ox"
-                id="Ox"
-              />
-            </div>
-            <p class="cat_img_title">OX</p>
+          <div class="category_container" id="ox">
+            <img
+              class="category_img"
+              src="./assets/images/cattles/ch5.jpg"
+              alt="ox"
+            />
+            <p class="mt-2 text-center">OX</p>
           </div>
         </div>
       </div>
 
-      <!-- Banner Section 1 -->
+      <!-- Banner Section -->
 
-      <div class="banner_container_1">
-        <h1 class="banner_title">Buy or Sell Livestock Online</h1>
+      <div class="position-relative">        
+        <div class="banner_container">
+          <div class="banner_slide">
+            <h3 class="banner_title">Buy or Sell Livestock Online</h1>
+          </div>
+          <div class="banner_slide">
+            <h3 class="banner_title">Most Trusted Livestock Marketplace</h1>
+          </div>
+        </div>
+        <div class="banner_chevron_container">
+          <div class="banner_chevron" onclick="movePreviousBanner()">
+            <i class="fa-solid fa-chevron-left"></i>
+          </div>
+        </div>
+        <div class="banner_chevron_container end-0">
+          <div class="banner_chevron" onclick="moveNextBanner()">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+        <div class="banner_dots_container">
+          <div class="banner_dots" id="0"></div>
+          <div class="banner_dots" id="1"></div>
+        </div>
       </div>
 
       <!-- Best Cattles Section -->
@@ -112,12 +122,6 @@
           <h1 class="product_title">Our Best Cattles</h1>
         </div>
         <div class="cattles_container0"></div>
-      </div>
-
-      <!-- Banner Section 2 -->
-
-      <div class="banner_container">
-        <h1 class="banner_title">Most Trusted Livestock Market</h1>
       </div>
 
       <!-- Cattles Section -->
@@ -169,6 +173,7 @@
     ></script>
 
     <script>
+
       // Most breed section
 
       if (verifiedCattleLists.length !== 0) {
@@ -176,8 +181,7 @@
 
         for (let i = 0; i < verifiedCattleLists.length; i++) {
           let cattleData = cattle_detail.find(
-            (e) =>
-              e.cattle_uniqueId === verifiedCattleLists[i]["cattle_uniqueId"]
+            (e) => e.cattle_uniqueId === verifiedCattleLists[i]["cattle_uniqueId"]
           );
           cattleData.rep_id = verifiedCattleLists[i]["repUserId"];
           cattleDetails.push(cattleData);
@@ -185,68 +189,50 @@
 
         const best_cattles = cattleDetails.filter((e) => e.isBest);
         const most_breed_Gir = cattleDetails.filter((e) => e.breed == "Gir");
-        const most_breed_Surti = cattleDetails.filter(
-          (e) => e.breed == "Surti"
-        );
+        const most_breed_Surti = cattleDetails.filter((e) => e.breed == "Surti");
         const most_breed_Malabari = cattleDetails.filter(
           (e) => e.breed == "Malabari"
         );
-        const most_breed_Bannur = cattleDetails.filter(
-          (e) => e.breed == "Bannur"
-        );
-        const most_breed_Ongole = cattleDetails.filter(
-          (e) => e.breed == "Ongole"
-        );
+        const most_breed_Bannur = cattleDetails.filter((e) => e.breed == "Bannur");
+        const most_breed_Ongole = cattleDetails.filter((e) => e.breed == "Ongole");
 
         for (let i = 0; i < best_cattles.length; i++) {
           const cattle_container = cards(best_cattles[i]);
-          document
-            .querySelector("div.cattles_container0")
-            .append(cattle_container);
+          document.querySelector("div.cattles_container0").append(cattle_container);
         }
 
         for (let i = 0; i < most_breed_Gir.length; i++) {
           if (i < 3) {
             const cattle_container = cards(most_breed_Gir[i]);
-            document
-              .querySelector("div.cattles_container1")
-              .append(cattle_container);
+            document.querySelector("div.cattles_container1").append(cattle_container);
           }
         }
 
         for (let i = 0; i < most_breed_Surti.length; i++) {
           if (i < 3) {
             const cattle_container = cards(most_breed_Surti[i]);
-            document
-              .querySelector("div.cattles_container2")
-              .append(cattle_container);
+            document.querySelector("div.cattles_container2").append(cattle_container);
           }
         }
 
         for (let i = 0; i < most_breed_Malabari.length; i++) {
           if (i < 3) {
             const cattle_container = cards(most_breed_Malabari[i]);
-            document
-              .querySelector("div.cattles_container3")
-              .append(cattle_container);
+            document.querySelector("div.cattles_container3").append(cattle_container);
           }
         }
 
         for (let i = 0; i < most_breed_Bannur.length; i++) {
           if (i < 3) {
             const cattle_container = cards(most_breed_Bannur[i]);
-            document
-              .querySelector("div.cattles_container4")
-              .append(cattle_container);
+            document.querySelector("div.cattles_container4").append(cattle_container);
           }
         }
 
         for (let i = 0; i < most_breed_Ongole.length; i++) {
           if (i < 3) {
             const cattle_container = cards(most_breed_Ongole[i]);
-            document
-              .querySelector("div.cattles_container5")
-              .append(cattle_container);
+            document.querySelector("div.cattles_container5").append(cattle_container);
           }
         }
 
@@ -271,10 +257,7 @@
           // cattle image
           cattle_image = document.createElement("img");
           cattle_image.setAttribute("src", card.image);
-          cattle_image.setAttribute(
-            "alt",
-            `${card.breed} ${card.cattle} ${card.id}`
-          );
+          cattle_image.setAttribute("alt", `${card.breed} ${card.cattle} ${card.id}`);
           cattle_image.setAttribute("class", "cattle_image");
           cattle_anchor.append(cattle_image);
 
@@ -317,7 +300,7 @@
 
       // Passing category value to the list page
 
-      const category = document.querySelectorAll(".cat_img");
+      const category = document.querySelectorAll(".category_container");
       category.forEach((each) => {
         each.addEventListener("click", (event) => {
           const { id } = each;
@@ -351,6 +334,40 @@
           window.location.href = `./pages/cattle details/cow/C1.html?breed=${cattle_breed}&cattle_id=${cattle_id}&user_id=${user_id}`;
         }
       });
+
+      let bannerIndex = "0";
+      const banners = [
+        "./assets/images/banner_1.jpg",
+        "./assets/images/banner_2.jpg",
+      ];
+      const bannerLastIndex = banners.length - 1 + "";
+
+      function setBanner(index) {
+        bannerIndex = index + "";
+
+        document.querySelectorAll('.banner_slide').forEach((slide, i) => {
+            slide.style.transform = `translateX(-${index * 100}%)`;
+            slide.style.backgroundImage = `url(${banners[i]})`;
+        });
+      }
+
+      document.querySelectorAll(".banner_dots").forEach((each) => {
+          each.addEventListener("click", (event) => {
+              setBanner(each.id);
+          });
+      });
+      
+      function movePreviousBanner() {
+        bannerIndex == 0
+          ? setBanner(bannerLastIndex)
+          : setBanner(parseInt(bannerIndex) - 1);
+      }
+
+      function moveNextBanner() {
+        bannerIndex == bannerLastIndex
+          ? setBanner("0")
+          : setBanner(parseInt(bannerIndex) + 1);
+      }
     </script>
   </body>
 </html>
