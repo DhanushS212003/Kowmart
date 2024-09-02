@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="stylesheet" href="./assets/css/banner.css" />
     <link rel="stylesheet" href="./assets/css/header_footer.css" />
     <link
       rel="icon"
@@ -93,10 +94,14 @@
       <div class="position-relative">
         <div class="banner_container">
           <div class="banner_slide">
-            <h3 class="banner_title">Buy or Sell Livestock Online</h1>
+            <div class="banner_title_container">
+              <h3 class="banner_title">Buy or Sell Livestock Online</h1>
+            </div>
           </div>
           <div class="banner_slide">
-            <h3 class="banner_title">Most Trusted Livestock Marketplace</h1>
+            <div class="banner_title_container">
+              <h3 class="banner_title">Most Trusted Livestock Marketplace</h1>
+            </div>
           </div>
         </div>
         <div class="banner_chevron_container">
@@ -335,43 +340,12 @@
         }
       });
 
-      let bannerIndex = "0";
       const banners = [
         "./assets/images/banner_1.jpg",
         "./assets/images/banner_2.jpg",
       ];
-      const bannerLastIndex = banners.length - 1 + "";
+      moveBanners(banners)
 
-      function setBanner(index) {
-        bannerIndex = index + "";
-
-        document.querySelectorAll('.banner_slide').forEach((slide, i) => {
-            slide.style.transform = `translateX(-${index * 100}%)`;
-            slide.style.backgroundImage = `url(${banners[i]})`;
-        });
-
-        document.querySelectorAll(".banner_dots").forEach((dot, i) => {
-          dot.classList.toggle("active_dot", i == index);
-        });
-      }
-
-      document.querySelectorAll(".banner_dots").forEach((each) => {
-          each.addEventListener("click", (event) => {
-              setBanner(each.id);
-          });
-      });
-      
-      function movePreviousBanner() {
-        bannerIndex == 0
-          ? setBanner(bannerLastIndex)
-          : setBanner(parseInt(bannerIndex) - 1);
-      }
-
-      function moveNextBanner() {
-        bannerIndex == bannerLastIndex
-          ? setBanner("0")
-          : setBanner(parseInt(bannerIndex) + 1);
-      }
     </script>
   </body>
 </html>

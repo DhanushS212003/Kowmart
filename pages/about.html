@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/about.css" />
+    <link rel="stylesheet" href="../assets/css/banner.css" />
     <link rel="stylesheet" href="../assets/css/header_footer.css" />
     <link
       rel="icon"
@@ -30,10 +31,33 @@
     <main>
       <!-- banner section -->
 
-      <div class="banner_container">
-        <h1 class="banner_title">
-          India's Best Online Marketplace For Cattle Trading
-        </h1>
+      <div class="position-relative">
+        <div class="banner_container">
+          <div class="banner_slide">
+            <div class="banner_title_container">
+              <h3 class="banner_title">India's Best Online Marketplace For Cattle Trading</h1>
+            </div>
+          </div>
+          <div class="banner_slide">
+            <div class="banner_title_container">
+              <h3 class="banner_title">Wide Range of Verified Cattle</h1>
+            </div>
+          </div>
+        </div>
+        <div class="banner_chevron_container">
+          <div class="banner_chevron" onclick="movePreviousBanner()">
+            <i class="fa-solid fa-chevron-left"></i>
+          </div>
+        </div>
+        <div class="banner_chevron_container end-0">
+          <div class="banner_chevron" onclick="moveNextBanner()">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+        <div class="banner_dots_container">
+          <div class="banner_dots active_dot" id="0"></div>
+          <div class="banner_dots" id="1"></div>
+        </div>
       </div>
 
       <!-- content section -->
@@ -77,6 +101,7 @@
           </div>
         </div>
       </div>
+  
     </main>
 
     <script src="../assets/js/main.js"></script>
@@ -87,5 +112,15 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+
+      const banners = [
+        "../assets/images/banner_3.jpg",
+        "../assets/images/banner_4.jpg",
+      ];
+      moveBanners(banners)
+
+    </script>
   </body>
 </html>
