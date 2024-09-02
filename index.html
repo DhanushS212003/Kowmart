@@ -90,7 +90,7 @@
 
       <!-- Banner Section -->
 
-      <div class="position-relative">        
+      <div class="position-relative">
         <div class="banner_container">
           <div class="banner_slide">
             <h3 class="banner_title">Buy or Sell Livestock Online</h1>
@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="banner_dots_container">
-          <div class="banner_dots" id="0"></div>
+          <div class="banner_dots active_dot" id="0"></div>
           <div class="banner_dots" id="1"></div>
         </div>
       </div>
@@ -348,6 +348,10 @@
         document.querySelectorAll('.banner_slide').forEach((slide, i) => {
             slide.style.transform = `translateX(-${index * 100}%)`;
             slide.style.backgroundImage = `url(${banners[i]})`;
+        });
+
+        document.querySelectorAll(".banner_dots").forEach((dot, i) => {
+          dot.classList.toggle("active_dot", i == index);
         });
       }
 
