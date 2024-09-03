@@ -181,127 +181,127 @@
 
       // Most breed section
 
-      if (verifiedCattleLists.length !== 0) {
-        let cattleDetails = [];
+      // if (verifiedCattleLists.length !== 0) {
+      //   let cattleDetails = [];
 
-        for (let i = 0; i < verifiedCattleLists.length; i++) {
-          let cattleData = cattle_detail.find(
-            (e) => e.cattle_uniqueId === verifiedCattleLists[i]["cattle_uniqueId"]
-          );
-          cattleData.rep_id = verifiedCattleLists[i]["repUserId"];
-          cattleDetails.push(cattleData);
-        }
+      //   for (let i = 0; i < verifiedCattleLists.length; i++) {
+      //     let cattleData = cattle_detail.find(
+      //       (e) => e.cattle_uniqueId === verifiedCattleLists[i]["cattle_uniqueId"]
+      //     );
+      //     cattleData.rep_id = verifiedCattleLists[i]["repUserId"];
+      //     cattleDetails.push(cattleData);
+      //   }
 
-        const best_cattles = cattleDetails.filter((e) => e.isBest);
-        const most_breed_Gir = cattleDetails.filter((e) => e.breed == "Gir");
-        const most_breed_Surti = cattleDetails.filter((e) => e.breed == "Surti");
-        const most_breed_Malabari = cattleDetails.filter(
-          (e) => e.breed == "Malabari"
-        );
-        const most_breed_Bannur = cattleDetails.filter((e) => e.breed == "Bannur");
-        const most_breed_Ongole = cattleDetails.filter((e) => e.breed == "Ongole");
+      //   const best_cattles = cattleDetails.filter((e) => e.isBest);
+      //   const most_breed_Gir = cattleDetails.filter((e) => e.breed == "Gir");
+      //   const most_breed_Surti = cattleDetails.filter((e) => e.breed == "Surti");
+      //   const most_breed_Malabari = cattleDetails.filter(
+      //     (e) => e.breed == "Malabari"
+      //   );
+      //   const most_breed_Bannur = cattleDetails.filter((e) => e.breed == "Bannur");
+      //   const most_breed_Ongole = cattleDetails.filter((e) => e.breed == "Ongole");
 
-        for (let i = 0; i < best_cattles.length; i++) {
-          const cattle_container = cards(best_cattles[i]);
-          document.querySelector("div.cattles_container0").append(cattle_container);
-        }
+      //   for (let i = 0; i < best_cattles.length; i++) {
+      //     const cattle_container = cards(best_cattles[i]);
+      //     document.querySelector("div.cattles_container0").append(cattle_container);
+      //   }
 
-        for (let i = 0; i < most_breed_Gir.length; i++) {
-          if (i < 3) {
-            const cattle_container = cards(most_breed_Gir[i]);
-            document.querySelector("div.cattles_container1").append(cattle_container);
-          }
-        }
+      //   for (let i = 0; i < most_breed_Gir.length; i++) {
+      //     if (i < 3) {
+      //       const cattle_container = cards(most_breed_Gir[i]);
+      //       document.querySelector("div.cattles_container1").append(cattle_container);
+      //     }
+      //   }
 
-        for (let i = 0; i < most_breed_Surti.length; i++) {
-          if (i < 3) {
-            const cattle_container = cards(most_breed_Surti[i]);
-            document.querySelector("div.cattles_container2").append(cattle_container);
-          }
-        }
+      //   for (let i = 0; i < most_breed_Surti.length; i++) {
+      //     if (i < 3) {
+      //       const cattle_container = cards(most_breed_Surti[i]);
+      //       document.querySelector("div.cattles_container2").append(cattle_container);
+      //     }
+      //   }
 
-        for (let i = 0; i < most_breed_Malabari.length; i++) {
-          if (i < 3) {
-            const cattle_container = cards(most_breed_Malabari[i]);
-            document.querySelector("div.cattles_container3").append(cattle_container);
-          }
-        }
+      //   for (let i = 0; i < most_breed_Malabari.length; i++) {
+      //     if (i < 3) {
+      //       const cattle_container = cards(most_breed_Malabari[i]);
+      //       document.querySelector("div.cattles_container3").append(cattle_container);
+      //     }
+      //   }
 
-        for (let i = 0; i < most_breed_Bannur.length; i++) {
-          if (i < 3) {
-            const cattle_container = cards(most_breed_Bannur[i]);
-            document.querySelector("div.cattles_container4").append(cattle_container);
-          }
-        }
+      //   for (let i = 0; i < most_breed_Bannur.length; i++) {
+      //     if (i < 3) {
+      //       const cattle_container = cards(most_breed_Bannur[i]);
+      //       document.querySelector("div.cattles_container4").append(cattle_container);
+      //     }
+      //   }
 
-        for (let i = 0; i < most_breed_Ongole.length; i++) {
-          if (i < 3) {
-            const cattle_container = cards(most_breed_Ongole[i]);
-            document.querySelector("div.cattles_container5").append(cattle_container);
-          }
-        }
+      //   for (let i = 0; i < most_breed_Ongole.length; i++) {
+      //     if (i < 3) {
+      //       const cattle_container = cards(most_breed_Ongole[i]);
+      //       document.querySelector("div.cattles_container5").append(cattle_container);
+      //     }
+      //   }
 
-        function cards(card) {
-          // cattle container
-          cattle_container = document.createElement("div");
-          cattle_container.setAttribute("class", "cattle_container");
+      //   function cards(card) {
+      //     // cattle container
+      //     cattle_container = document.createElement("div");
+      //     cattle_container.setAttribute("class", "cattle_container");
 
-          // image container
-          cattle_img_container = document.createElement("div");
-          cattle_img_container.setAttribute("class", "img_container");
-          cattle_container.append(cattle_img_container);
+      //     // image container
+      //     cattle_img_container = document.createElement("div");
+      //     cattle_img_container.setAttribute("class", "img_container");
+      //     cattle_container.append(cattle_img_container);
 
-          // a
-          cattle_anchor = document.createElement("a");
-          cattle_anchor.setAttribute(
-            "href",
-            `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
-          );
-          cattle_img_container.append(cattle_anchor);
+      //     // a
+      //     cattle_anchor = document.createElement("a");
+      //     cattle_anchor.setAttribute(
+      //       "href",
+      //       `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+      //     );
+      //     cattle_img_container.append(cattle_anchor);
 
-          // cattle image
-          cattle_image = document.createElement("img");
-          cattle_image.setAttribute("src", card.image);
-          cattle_image.setAttribute("alt", `${card.breed} ${card.cattle} ${card.id}`);
-          cattle_image.setAttribute("class", "cattle_image");
-          cattle_anchor.append(cattle_image);
+      //     // cattle image
+      //     cattle_image = document.createElement("img");
+      //     cattle_image.setAttribute("src", card.image);
+      //     cattle_image.setAttribute("alt", `${card.breed} ${card.cattle} ${card.id}`);
+      //     cattle_image.setAttribute("class", "cattle_image");
+      //     cattle_anchor.append(cattle_image);
 
-          // cattle info container
-          info_container = document.createElement("div");
-          info_container.setAttribute("class", "info_container");
-          cattle_container.append(info_container);
+      //     // cattle info container
+      //     info_container = document.createElement("div");
+      //     info_container.setAttribute("class", "info_container");
+      //     cattle_container.append(info_container);
 
-          // cattle info
-          cattle_name = document.createElement("p");
-          cattle_name.setAttribute("class", "cattle_name");
-          cattle_name.innerText = `${card.breed} ${card.cattle} ${card.id}`;
-          info_container.append(cattle_name);
+      //     // cattle info
+      //     cattle_name = document.createElement("p");
+      //     cattle_name.setAttribute("class", "cattle_name");
+      //     cattle_name.innerText = `${card.breed} ${card.cattle} ${card.id}`;
+      //     info_container.append(cattle_name);
 
-          cattle_age = document.createElement("p");
-          cattle_age.innerText = `Age: ${card.age} Year(s)`;
-          info_container.append(cattle_age);
+      //     cattle_age = document.createElement("p");
+      //     cattle_age.innerText = `Age: ${card.age} Year(s)`;
+      //     info_container.append(cattle_age);
 
-          cattle_gender = document.createElement("p");
-          cattle_gender.innerText = `Gender: ${card.gender}`;
-          info_container.append(cattle_gender);
+      //     cattle_gender = document.createElement("p");
+      //     cattle_gender.innerText = `Gender: ${card.gender}`;
+      //     info_container.append(cattle_gender);
 
-          // a
+      //     // a
 
-          buttonContainer = document.createElement("a");
-          buttonContainer.setAttribute(
-            "href",
-            `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
-          );
-          info_container.append(buttonContainer);
+      //     buttonContainer = document.createElement("a");
+      //     buttonContainer.setAttribute(
+      //       "href",
+      //       `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+      //     );
+      //     info_container.append(buttonContainer);
 
-          // Know more button
-          know_button = document.createElement("button");
-          know_button.innerText = "Know More";
-          buttonContainer.append(know_button);
+      //     // Know more button
+      //     know_button = document.createElement("button");
+      //     know_button.innerText = "Know More";
+      //     buttonContainer.append(know_button);
 
-          return cattle_container;
-        }
-      }
+      //     return cattle_container;
+      //   }
+      // }
 
       // Passing category value to the list page
 

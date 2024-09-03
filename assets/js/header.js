@@ -11,7 +11,7 @@ const beforeLogin = `<header>
               <div class = "d-flex flex-column row-gap-3 ps-4 py-3">
                 <a href = "${root}/index.html"> Cattles </a>
                 <a href = "${root}/pages/about.html"> About Us </a>
-                <a href = "${root}/pages/signIn.html"><button class = "primary_btn"> LOGIN </button> </a>
+                <a onclick = "openCustomerSelection()"><button class = "primary_btn"> LOGIN </button> </a>
               </div>
           </div>
 
@@ -25,16 +25,16 @@ const beforeLogin = `<header>
             <a class = "nav_links" href = "${root}/pages/about.html"> About Us </a>
           </div>
           
-          <div class = "nav_links_container"> <button class = "primary_btn" onclick = "openSearch()"> LOGIN </button> </div>
+          <div class = "nav_links_container"> <button class = "primary_btn" onclick = "openCustomerSelection()"> LOGIN </button> </div>
 
-          <div id="myOverlay" class="overlay">
-              <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-              <div class="overlay-content">
-                  <div class="user_container">
-                      <h2> <a href="${root}/pages/signIn.html?user=customer"> Customer </a> </h2>
+          <div class="overlay">
+              <span class="closebtn" onclick="closeCustomerSelection()" title="close">×</span>
+              <div class="overlay_content">
+                  <div class="type_container">
+                     <a href="${root}/pages/signIn.html?user=customer"> Customer </a>
                   </div>
-                  <div class="user_container">
-                      <h2> <a href="${root}/pages/signIn.html?user=rep"> Rep </a> </h2>
+                  <div class="type_container">
+                     <a href="${root}/pages/signIn.html?user=rep"> Rep </a>
                   </div>
               </div>
           </div>
@@ -143,11 +143,22 @@ if (phone_id) {
 } else {
   document.body.insertAdjacentHTML("afterbegin", beforeLogin);
 
-  function openSearch() {
-    document.getElementById("myOverlay").style.display = "block";
+  function openCustomerSelection() {
+    document.querySelector(".overlay").classList.add("show_overlay");
   }
 
-  function closeSearch() {
-    document.getElementById("myOverlay").style.display = "none";
+  function closeCustomerSelection() {
+    document.querySelector(".overlay").classList.remove("show_overlay");
+  }
+
+  document.addEventListener("keydown", (event) => handleKeyDown(event));
+
+  function handleKeyDown(event) {
+    if (
+      document.querySelector(".overlay").classList.contains("show_overlay") &&
+      event.key === "Escape"
+    ) {
+      closeCustomerSelection();
+    }
   }
 }

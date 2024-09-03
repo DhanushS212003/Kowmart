@@ -140,32 +140,39 @@ footer {
 
 /* FOOTER */
 
+/* CUSTOMER SELECTION MODAL */
+
 .overlay {
     height: 100%;
     width: 100%;
-    display: none;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #e8f5ec;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
-.overlay-content {
+.show_overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.overlay_content {
+    display: flex;
+    justify-content: space-evenly;
     position: relative;
     top: 35%;
-    width: 50%;
-    text-align: center;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
+    width: 100%;
 }
 
-.overlay .closebtn {
+.closebtn {
     position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
+    top: 30px;
+    right: 30px;
+    font-size: 40px;
     cursor: pointer;
     color: gray;
 }
@@ -174,24 +181,25 @@ footer {
     color: black;
 }
 
-.user_container {
+.type_container {
     background-color: white;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    width: 225px;
-    height: 120px;
+    width: 185px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.user_container:hover {
+.type_container:hover {
     box-shadow: #57d192 3px 3px 3px;
 }
 
-.user_container>h2>a {
+.type_container>a {
     color: var(--primary-color);
-    text-decoration: none;
 }
+
+/* CUSTOMER SELECTION MODAL */
 
 @media screen and (max-width: 1560px) {
     .header_container {
@@ -302,5 +310,17 @@ footer {
 
     .footer_com_info {
         margin-top: 8px !important;
+    }
+
+    .type_container {
+        width: 150px;
+        height: 85px;
+    }
+}
+
+@media screen and (max-width: 399px) {
+    .type_container {
+        width: 120px;
+        height: 60px;
     }
 }
