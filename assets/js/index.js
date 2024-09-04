@@ -546,12 +546,12 @@ const verifiedCattles = [
 
 const cattle_data = JSON.parse(localStorage.getItem("cattleDetails"));
 const user_Data = JSON.parse(localStorage.getItem("userData"));
-const rep_Data = JSON.parse(localStorage.getItem("rep_details"));
+const rep_Data = JSON.parse(localStorage.getItem("repData"));
 const verified_cattles = JSON.parse(localStorage.getItem("verifiedCattles"));
 
 if (!cattle_data && !user_Data && !rep_Data && !verified_cattles) {
   localStorage.setItem("cattleDetails", JSON.stringify(cattleData));
   localStorage.setItem("userData", JSON.stringify(userData));
-  localStorage.setItem("rep_details", JSON.stringify(repData));
+  localStorage.setItem("repData", JSON.stringify(repData));
   localStorage.setItem("verifiedCattles", JSON.stringify(verifiedCattles));
 }

@@ -78,7 +78,7 @@ const afterLogin = `<header>
 
 const userDetails = JSON.parse(localStorage.getItem("userData"));
 const cattle_detail = JSON.parse(localStorage.getItem("cattleDetails")) || [];
-const repDetail = JSON.parse(localStorage.getItem("rep_details"));
+const repDetail = JSON.parse(localStorage.getItem("repData"));
 const phone_id = JSON.parse(localStorage.getItem("phoneNo_id"));
 const rep_id = JSON.parse(localStorage.getItem("rep_id"));
 const repCattleDetails =

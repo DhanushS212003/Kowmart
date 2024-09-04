@@ -43,13 +43,13 @@ function signUp(e) {
     const pincode = "";
     const phoneNo = "";
 
-    const rep_details = JSON.parse(localStorage.getItem("rep_details")) || [];
+    const repData = JSON.parse(localStorage.getItem("repData")) || [];
 
-    const exist = rep_details.some((data) => data.userId === repId);
+    const exist = repData.some((data) => data.userId === repId);
 
     if (!exist) {
       if (password === confirm_password) {
-        rep_details.push({
+        repData.push({
           repId,
           name,
           phoneNo,
@@ -59,7 +59,7 @@ function signUp(e) {
           pincode,
           user,
         });
-        localStorage.setItem("rep_details", JSON.stringify(rep_details));
+        localStorage.setItem("repData", JSON.stringify(repData));
         document.querySelector("form").reset();
         alert("Account Created Successfully");
         window.location.href = "../../pages/signIn.html?user=rep";

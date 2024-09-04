@@ -1,6 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const user = params.get("user");
-const repDetail = JSON.parse(localStorage.getItem("rep_details"));
+const repDetail = JSON.parse(localStorage.getItem("repData"));
 
 function signIn(e) {
   e.preventDefault();
@@ -30,7 +30,7 @@ function signIn(e) {
     const userId = document.getElementById("userId").value;
     const password = document.getElementById("password").value;
 
-    const repDetail = JSON.parse(localStorage.getItem("rep_details"));
+    const repDetail = JSON.parse(localStorage.getItem("repData"));
 
     if (repDetail) {
       const exist = repDetail.some(
