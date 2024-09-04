@@ -280,7 +280,7 @@ span {
 
 .chevron {
     padding: 0;
-    background-color: #e8f5ec;
+    background-color: var(--primary-bg-color);
     border: 0;
     position: absolute;
     top: 21.3em;

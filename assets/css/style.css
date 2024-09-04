@@ -3,6 +3,7 @@
 
 :root {
     --primary-color: #00a651;
+    --primary-bg-color: #e8f5ec;
 }
 
 body {
@@ -13,7 +14,7 @@ body {
 }
 
 main {
-    background-color: #e8f5ec;
+    background-color: var(--primary-bg-color);
     max-width: 1500px;
     margin: 0 auto;
 }
@@ -40,6 +41,10 @@ a {
     color: white;
     border-radius: 4px;
     padding: 6px 10px;
+}
+
+.primary_bg_color {
+    background-color: var(--primary-bg-color)
 }
 
 .pointer {

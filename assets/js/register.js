@@ -1,27 +1,12 @@
 const params = new URLSearchParams(window.location.search);
 const user = params.get("user");
 
-window.addEventListener("load", function () {
-  if (user === "rep") {
-    document.querySelector("div.phoneContainer").style.display = "none";
-    document.getElementById("userId").required = true;
-  } else if (user === "customer") {
-    document.querySelector("div.userIdContainer").style.display = "none";
-    document.getElementById("phone_no").required = true;
-  }
-  document.getElementById("inLink").style.cursor = "pointer";
-});
-
-document.getElementById("inLink").addEventListener("click", () => {
-  window.location.href = `signIn.html?user=${user}`;
-});
-
 function signUp(e) {
   e.preventDefault();
 
   if (user === "customer") {
     const name = document.getElementById("name").value;
-    const phone_no = document.getElementById("phone_no").value;
+    const phoneNo = document.getElementById("phoneNo").value;
     const user_uniqueId = uuidv4();
     const password = document.getElementById("password").value;
     const confirm_password = document.getElementById("confirm_password").value;
@@ -32,13 +17,13 @@ function signUp(e) {
 
     const userData = JSON.parse(localStorage.getItem("userData")) || [];
 
-    const exist = userData.some((data) => data.phone_no === phone_no);
+    const exist = userData.some((data) => data.phone_no === phoneNo);
 
     if (!exist) {
       if (password === confirm_password) {
         userData.push({
           name,
-          phone_no,
+          phoneNo,
           password,
           address,
           district,
@@ -48,7 +33,6 @@ function signUp(e) {
         });
         localStorage.setItem("userData", JSON.stringify(userData));
         document.querySelector("form").reset();
-        // document.getElementById("phone_no").focus();
         alert("Account Created Successfully");
         window.location.href = "../../pages/signIn.html?user=customer";
       } else {
@@ -67,7 +51,7 @@ function signUp(e) {
     const pincode = "";
     const user = "rep";
     // const notification = [];
-    const phone_no = "";
+    const phoneNo = "";
 
     const rep_details = JSON.parse(localStorage.getItem("rep_details")) || [];
 
@@ -78,7 +62,7 @@ function signUp(e) {
         rep_details.push({
           userId,
           name,
-          phone_no,
+          phoneNo,
           password,
           address,
           district,
@@ -87,7 +71,6 @@ function signUp(e) {
         });
         localStorage.setItem("rep_details", JSON.stringify(rep_details));
         document.querySelector("form").reset();
-        // document.getElementById("user_id").focus();
         alert("Account Created Successfully");
         window.location.href = "../../pages/signIn.html?user=rep";
       } else {

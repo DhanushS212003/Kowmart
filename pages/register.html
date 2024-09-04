@@ -11,7 +11,7 @@
     <title>Register</title>
 
     <link rel="stylesheet" href="../../assets/css/style.css" />
-    <link rel="stylesheet" href="../assets/css/signin.css" />
+    <link rel="stylesheet" href="../assets/css/login.css" />
     <link
       rel="icon"
       href="../assets/images/cattles/logo1.png"
@@ -25,90 +25,59 @@
     />
   </head>
 
-  <body style="background-color: #e8f5ec">
-    <main>
-      <div class="navbar">
-        <div class="logo_container">
-          <img
-            class="logo"
-            src="../assets/images/cattles/logo1.png"
-            alt="logo"
-          />
-        </div>
-        <div class="logo_name_container">
-          <h2 class="logo_name">KowMart</h2>
-        </div>
+  <body>
+    <main class="d-flex flex-column align-items-center vh-100 row-gap-3 pt-5">
+      <div class="d-flex align-items-center column-gap-2">
+        <img class="logo" src="../assets/images/cattles/logo1.png" alt="logo" />
+        <h3 class="primary_color">KowMart</h3>
       </div>
 
-      <div class="form_container">
-        <form id="registerForm">
-          <h1>REGISTER</h1>
-          <div class="details_container">
-            <div class="userIdContainer">
-              <label> User ID </label>
-              <br />
-              <input type="text" id="userId" minlength="4" maxlength="4" />
-            </div>
-            <div>
-              <label> Name </label>
-              <br />
-              <input
-                required
-                type="text"
-                id="name"
-                pattern="^[a-zA-Z]+([ ][a-zA-Z]+)*$"
-                title="Don't use spaces in the first and last"
-                oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
-              />
-            </div>
-            <div class="phoneContainer">
-              <label> Phone No. </label>
-              <br />
-              <input
-                type="tel"
-                id="phone_no"
-                pattern="^[6789]\d{9}$"
-                oninput="this.value = this.value.replace(/[^0-9]/g,'')"
-                minlength="10"
-                maxlength="10"
-                title="Please enter a valid phone number"
-              />
-            </div>
-            <div>
-              <label> Password </label>
-              <br />
-              <input
-                required
-                type="password"
-                id="password"
-                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
-                minlength="8"
-                maxlength="8"
-                title="Don't use Space"
-              />
-            </div>
-            <div>
-              <label> Confirm Password </label>
-              <br />
-              <input
-                required
-                type="password"
-                id="confirm_password"
-                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
-                minlength="8"
-                maxlength="8"
-                title="Don't use Space"
-              />
-            </div>
-            <div class="submit_btn_container">
-              <button type="submit">SUBMIT</button>
-            </div>
-            <div class="link_container">
-              <p>Existing User? <a id="inLink"> Login here </a></p>
-            </div>
-          </div>
-        </form>
-      </div>
+      <form id="registerForm" class="d-flex flex-column row-gap-4">
+        <h6 class="text-center">REGISTER</h6>
+        <input id="userId" type="text" placeholder="User ID" minlength="4" maxlength="4" />
+        <input
+          id="name"
+          type="text"
+          placeholder="Name"
+          title="Name should contain atleast 3 alphabets"
+          required
+          pattern="^[a-zA-Z]+([ ][a-zA-Z]+)*$"
+          oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
+          minlength="3"
+          maxlength="30"
+        />
+        <input
+          id="phoneNo"
+          type="tel"
+          placeholder="Phone No"
+          title="Please enter a valid phone number"
+          required
+          pattern="^[6789]\d{9}$"
+          oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+          minlength="10"
+          maxlength="10"
+        />
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
+          minlength="8"
+          maxlength="24"
+        />
+        <input
+          id="confirm_password"
+          type="password"
+          placeholder="Confirm Password"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
+          minlength="8"
+          maxlength="24"
+        />
+        <button class="primary_btn w-100" style="border-radius: 2px;" type="submit">SUBMIT</button>
+        <p class="text-center">Existing User? <a class="text-decoration-underline pointer" id="login_link"> Login here </a></p>
+      </form>
     </main>
 
     <script src="../assets/js/register.js"></script>
@@ -118,6 +87,18 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      (() => {
+        const element = document.getElementById("userId");
+        if (user === "customer") element.style.display = "none";
+        else element.required = true;
+
+        document.getElementById("login_link").addEventListener("click", () => {
+          window.location.href = `signIn.html?user=${user}`;
+        });
+      })()
+    </script>
     
   </body>
 </html>
