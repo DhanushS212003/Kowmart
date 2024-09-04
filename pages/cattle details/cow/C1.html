@@ -117,7 +117,7 @@
             </div>
             <div class="seller_phoneno_container">
               <i class="fa-solid fa-phone"></i>
-              <p class="phone_no"></p>
+              <p class="phoneNo"></p>
             </div>
             <div class="seller_address_container">
               <i class="fa-solid fa-location-dot"></i>
@@ -159,10 +159,10 @@
       const desc = urlParams.get("desc");
 
       const cattleData = cattle_detail.filter(
-        (e) => e.cattle_uniqueId == cattle_id
+        (e) => e.cattleUniqueId == cattle_id
       );
       const repData = repDetail.find((e) => e.userId === user_id);
-      const userData = userDetails.find((e) => e.phone_no === user_id);
+      const userData = userDetails.find((e) => e.phoneNo === user_id);
 
       cattle_image = document.createElement("img");
       cattle_image.setAttribute("src", cattleData[0].image);
@@ -294,8 +294,8 @@
 
         icon = document.createElement("i");
 
-        phone_no = document.querySelector("p.phone_no");
-        phone_no.innerText = repData.phone_no;
+        phoneNo = document.querySelector("p.phoneNo");
+        phoneNo.innerText = repData.phoneNo;
 
         address = document.querySelector("p.address");
         address.innerText = `${repData.address}, ${repData.district}, ${repData.pincode}.`;
@@ -310,8 +310,8 @@
 
         icon = document.createElement("i");
 
-        phone_no = document.querySelector("p.phone_no");
-        phone_no.innerText = userData.phone_no;
+        phoneNo = document.querySelector("p.phoneNo");
+        phoneNo.innerText = userData.phoneNo;
 
         address = document.querySelector("p.address");
         address.innerText = `${userData.address}, ${userData.district}, ${userData.pincode}.`;
@@ -341,7 +341,7 @@
 
       const verifiedBreedCattles = breedCattles.filter((e) => {
         const matchCattleId = verifiedCattleLists.find(
-          (a) => a.cattle_uniqueId === e.cattle_uniqueId
+          (a) => a.cattleUniqueId === e.cattleUniqueId
         );
         if (matchCattleId) {
           e.repId = matchCattleId.repUserId;
@@ -351,7 +351,7 @@
       });
 
       const currentIndexNo = verifiedBreedCattles.indexOf(
-        verifiedBreedCattles.find((e) => e.cattle_uniqueId == cattle_id)
+        verifiedBreedCattles.find((e) => e.cattleUniqueId == cattle_id)
       );
       const spliceCattles = verifiedBreedCattles.splice(0, currentIndexNo);
       const addedCattles = verifiedBreedCattles.concat(spliceCattles);
@@ -387,7 +387,7 @@
           cattle_anchor = document.createElement("a");
           cattle_anchor.setAttribute(
             "href",
-            `./C1.html?breed=${addedCattles[i].breed}&cattle_id=${addedCattles[i].cattle_uniqueId}&user_id=${addedCattles[i].repId}`
+            `./C1.html?breed=${addedCattles[i].breed}&cattle_id=${addedCattles[i].cattleUniqueId}&user_id=${addedCattles[i].repId}`
           );
           cattle_img_container.append(cattle_anchor);
 
@@ -427,7 +427,7 @@
           buttonContainer = document.createElement("a");
           buttonContainer.setAttribute(
             "href",
-            `./C1.html?breed=${addedCattles[i].breed}&cattle_id=${addedCattles[i].cattle_uniqueId}&user_id=${addedCattles[i].repId}`
+            `./C1.html?breed=${addedCattles[i].breed}&cattle_id=${addedCattles[i].cattleUniqueId}&user_id=${addedCattles[i].repId}`
           );
           info_container.append(buttonContainer);
 

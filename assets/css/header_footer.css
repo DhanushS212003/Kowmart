@@ -192,6 +192,7 @@ footer {
 }
 
 .type_container:hover {
+    cursor: pointer;
     box-shadow: #57d192 3px 3px 3px;
 }
 

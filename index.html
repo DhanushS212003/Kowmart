@@ -186,7 +186,7 @@
 
       //   for (let i = 0; i < verifiedCattleLists.length; i++) {
       //     let cattleData = cattle_detail.find(
-      //       (e) => e.cattle_uniqueId === verifiedCattleLists[i]["cattle_uniqueId"]
+      //       (e) => e.cattleUniqueId === verifiedCattleLists[i]["cattleUniqueId"]
       //     );
       //     cattleData.rep_id = verifiedCattleLists[i]["repUserId"];
       //     cattleDetails.push(cattleData);
@@ -255,7 +255,7 @@
       //     cattle_anchor = document.createElement("a");
       //     cattle_anchor.setAttribute(
       //       "href",
-      //       `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+      //       `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.rep_id}`
       //     );
       //     cattle_img_container.append(cattle_anchor);
 
@@ -290,7 +290,7 @@
       //     buttonContainer = document.createElement("a");
       //     buttonContainer.setAttribute(
       //       "href",
-      //       `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+      //       `./pages/cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.rep_id}`
       //     );
       //     info_container.append(buttonContainer);
 
@@ -309,7 +309,7 @@
       category.forEach((each) => {
         each.addEventListener("click", (event) => {
           const { id } = each;
-          window.location.href = `./pages/cattle/cattle_list1.html?cattle_details=${id}`;
+          window.location.href = `./pages/cattle/cattle_list1.html?cattleDetails=${id}`;
         });
       });
 
@@ -328,13 +328,13 @@
         }
 
         const checkVerify = verifiedCattleLists.find(
-          (e) => e.cattle_uniqueId === searchCattle.cattle_uniqueId
+          (e) => e.cattleUniqueId === searchCattle.cattleUniqueId
         );
         if (checkVerify === undefined) {
           alert("THERE is no cattle with this ID");
         } else {
           const cattle_breed = searchCattle["breed"];
-          const cattle_id = searchCattle["cattle_uniqueId"];
+          const cattle_id = searchCattle["cattleUniqueId"];
           const user_id = checkVerify["repUserId"];
           window.location.href = `./pages/cattle details/cow/C1.html?breed=${cattle_breed}&cattle_id=${cattle_id}&user_id=${user_id}`;
         }

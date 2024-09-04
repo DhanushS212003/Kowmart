@@ -156,7 +156,7 @@
                     required
                     type="tel"
                     maxlength="10"
-                    id="phone_no"
+                    id="phoneNo"
                     disabled
                   />
                 </div>
@@ -268,8 +268,8 @@
 
     <script>
       if (phone_id !== null) {
-        document.getElementById("phone_no").removeAttribute("disabled");
-        document.getElementById("phone_no").setAttribute("readonly", true);
+        document.getElementById("phoneNo").removeAttribute("disabled");
+        document.getElementById("phoneNo").setAttribute("readonly", true);
         document.getElementById("customer_portal").style.display = "block";
       } else if (rep_id != null) {
         document.getElementById("rep_portal").style.display = "block";
@@ -281,7 +281,7 @@
         e.preventDefault();
         if (confirm("Are you sure you want to edit the details")) {
           document.getElementById("name").removeAttribute("readonly");
-          document.getElementById("phone_no").removeAttribute("readonly");
+          document.getElementById("phoneNo").removeAttribute("readonly");
           document.getElementById("address").removeAttribute("readonly");
           document.getElementById("district").removeAttribute("readonly");
           document.getElementById("pincode").removeAttribute("readonly");
@@ -292,7 +292,7 @@
 
       function disableInput() {
         if (rep_id === null) {
-          const person_data = userDetails.find((e) => e.phone_no === phone_id);
+          const person_data = userDetails.find((e) => e.phoneNo === phone_id);
 
           if (confirm("Are you sure you want to save the details")) {
             person_data.name = document.getElementById("name").value;
@@ -307,7 +307,7 @@
 
           if (confirm("Are you sure you want to save the details")) {
             repData.name = document.getElementById("name").value;
-            repData.phone_no = document.getElementById("phone_no").value;
+            repData.phoneNo = document.getElementById("phoneNo").value;
             repData.address = document.getElementById("address").value;
             repData.district = document.getElementById("district").value;
             repData.pincode = document.getElementById("pincode").value;
@@ -320,10 +320,10 @@
       }
 
       if (rep_id === null) {
-        const person_data = userDetails.find((e) => e.phone_no === phone_id);
+        const person_data = userDetails.find((e) => e.phoneNo === phone_id);
 
         document.getElementById("name").value = person_data.name;
-        document.getElementById("phone_no").value = person_data.phone_no;
+        document.getElementById("phoneNo").value = person_data.phoneNo;
         document.getElementById("address").value = person_data.address;
         document.getElementById("district").value = person_data.district;
         document.getElementById("pincode").value = person_data.pincode;
@@ -341,7 +341,7 @@
             const removedata = userDetails.indexOf(person_data);
             userDetails.splice(removedata, 1);
             localStorage.setItem("userData", JSON.stringify(userDetails));
-            localStorage.removeItem("phone_no_id");
+            localStorage.removeItem("phoneNo_id");
             window.location.href = "../index.html";
           }
         }
@@ -352,7 +352,7 @@
         const repData = repDetail.find((e) => e.userId === rep_id);
 
         document.getElementById("name").value = repData.name;
-        document.getElementById("phone_no").value = repData.phone_no;
+        document.getElementById("phoneNo").value = repData.phoneNo;
         document.getElementById("address").value = repData.address;
         document.getElementById("district").value = repData.district;
         document.getElementById("pincode").value = repData.pincode;

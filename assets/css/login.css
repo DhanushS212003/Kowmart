@@ -17,14 +17,6 @@ input {
     border-radius: 2px;
 }
 
-input:focus {
-    border: 1.5px solid red;
-}
-
-input:valid {
-    border: 1.5px solid green;
-}
-
 form>h6 {
     margin-bottom: -8px !important;
 }

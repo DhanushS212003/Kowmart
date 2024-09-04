@@ -1,10 +1,10 @@
-const cattle_data = [
+const cattleData = [
   {
     // ----------------------------- BEST CATTLES -----------------------
     age: "4",
     breed: "Gir",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c1",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c1",
     date: "25-03-2023",
     description:
       "Quality Gir Cow of 4 year(s) age is available in Chennai, TN. The price of the cattle is Rs. 70000/-. The Cow is in 2nd lactation. It Produces 12 Litres of milk on daily basis.",
@@ -25,7 +25,7 @@ const cattle_data = [
     age: "1",
     breed: "Kankrej",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c2",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c2",
     date: "25-03-2023",
     description:
       "Quality Kankrej Cow of less than a year age is available in Chennai, Tamil Nadu. The price of the cattle is Rs. 100000/-. The Cow is in 3rd lactation. It Produces 14 Litres of milk on daily basis.",
@@ -46,7 +46,7 @@ const cattle_data = [
     age: "6",
     breed: "Surti",
     cattle: "Buffalo",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c3",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c3",
     date: "25-03-2023",
     description:
       "Quality Surti Buffalo of 6 year(s) age is available in Trichy, Tamil Nadu. The price of the cattle is Rs. 80000/-. The Buffalo is 9 month(s) pregnant The Buffalo is in 2nd lactation. It Produces 10 Litres of milk on daily basis.",
@@ -67,7 +67,7 @@ const cattle_data = [
     age: "3",
     breed: "Malabari",
     cattle: "Goat",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c4",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c4",
     date: "25-03-2023",
     description:
       "Quality Malabari Goat of 3 year(s) age is available in Coimbatore, Tamil Nadu. The price of the cattle is Rs. 10000/-.",
@@ -88,7 +88,7 @@ const cattle_data = [
     age: "1",
     breed: "Bannur",
     cattle: "Sheep",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c5",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c5",
     date: "26-03-2023",
     description:
       "Quality Bannur Sheep of 1 year(s) age is available in Chennai, Tamil Nadu. The price of the cattle is Rs. 18000/-.",
@@ -109,7 +109,7 @@ const cattle_data = [
     age: "4",
     breed: "Ongole",
     cattle: "Ox",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c6",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c6",
     date: "27-03-2023",
     description:
       "Quality Ongole Ox of 4 year(s) age is available in Chennai, Tamil Nadu. The price of the cattle is Rs. 35000/-.",
@@ -132,7 +132,7 @@ const cattle_data = [
     age: "4",
     breed: "Gir",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c7",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c7",
     date: "27-03-2023",
     description:
       "Quality Gir Cow of 4 year(s) age is available in Lucknow, UP. The price of the cattle is Rs. 150000/-. The Cow is in 2nd lactation. It Produces 12 Litres of milk on daily basis.",
@@ -152,7 +152,7 @@ const cattle_data = [
     age: "2",
     breed: "Gir",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c8",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c8",
     date: "25-03-2023",
     description:
       "Quality Gir Cow of 2 year(s) age is available in MYSURU, KARNATAKA. The price of the cattle is Rs. 30000/-. ",
@@ -172,7 +172,7 @@ const cattle_data = [
     age: "3",
     breed: "Gir",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c9",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c9",
     date: "26-03-2023",
     description:
       "Quality Gir Cow of 3 year(s) age is available in AHMADABAD, GUJARAT. The price of the cattle is Rs. 50000/-. The Cow is 7 month(s) pregnant The Cow is in 2nd lactation. It Produces 10 Litres of milk on daily basis.",
@@ -193,7 +193,7 @@ const cattle_data = [
     age: "4",
     breed: "HF1",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a1",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a1",
     date: "26-03-2023",
     description:
       "Quality HF Cow of 4 year(s) age is available in Karnal, Haryana. The price of the cattle is Rs. 82000/-. The Cow is in 2nd lactation. It Produces 20 Litres of milk on daily basis.",
@@ -213,7 +213,7 @@ const cattle_data = [
     age: "3",
     breed: "HF2",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a2",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a2",
     date: "28-03-2023",
     description:
       "Quality HF Cow of 3 year(s) age is available in THRISSUR, KERALA. The price of the cattle is Rs. 80000/-. The Cow is in 2nd lactation. It Produces 10 Litres of milk on daily basis.",
@@ -233,7 +233,7 @@ const cattle_data = [
     age: "2",
     breed: "HF3",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a3",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a3",
     date: "26-03-2023",
     description:
       "Quality HF Cow of 2 year(s) age is available in Kapurthala, Punjab. The price of the cattle is Rs. 150000/-. The Cow is 8 month(s) pregnant The Cow is in 1st lactation. It Produces 35 Litres of milk on daily basis.",
@@ -254,7 +254,7 @@ const cattle_data = [
     age: "3",
     breed: "Jersey",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a4",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a4",
     date: "26-03-2023",
     description:
       "Quality Jersey Cow of 5 year(s) age is available in RAMGARH, JHARKHAND. The price of the cattle is Rs. 42000/-.",
@@ -274,7 +274,7 @@ const cattle_data = [
     age: "5",
     breed: "Jersey",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a5",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a5",
     date: "27-03-2023",
     description:
       "Quality Jersey Cow of 5 year(s) age is available in RAMGARH, JHARKHAND. The price of the cattle is Rs. 42000/-.",
@@ -294,7 +294,7 @@ const cattle_data = [
     age: "5",
     breed: "Jersey",
     cattle: "Cow",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a6",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a6",
     date: "28-03-2023",
     description:
       "Quality Jersey Cow of 5 year(s) age is available in BUXAR, BIHAR. The price of the cattle is Rs. 65000/-. The Cow is 9 month(s) pregnant The Cow is in 2nd lactation. It Produces 24 Litres of milk on daily basis.",
@@ -315,7 +315,7 @@ const cattle_data = [
     age: "3",
     breed: "Murrah",
     cattle: "Buffalo",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a7",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a7",
     date: "29-03-2023",
     description:
       "Quality Murrah Buffalo of 3 year(s) age is available in BIDAR, KARNATAKA. The price of the cattle is Rs. 45000/-. The Buffalo is 2 month(s) pregnant It Produces 10 Litres of milk on daily basis.",
@@ -335,7 +335,7 @@ const cattle_data = [
     age: "1",
     breed: "Murrah",
     cattle: "Buffalo",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a8",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a8",
     date: "27-03-2023",
     description:
       "Quality Murrah Buffalo of 1 year(s) age is available in THRISSUR, KERALA. The price of the cattle is Rs. 60000/-. ",
@@ -355,7 +355,7 @@ const cattle_data = [
     age: "2",
     breed: "Murrah",
     cattle: "Buffalo",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a9",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a9",
     date: "26-03-2023",
     description:
       "Quality Murrah Buffalo of 2 year(s) age is available in Ayodhya , Uttar Pradesh . The price of the cattle is Rs. 30000/-",
@@ -376,7 +376,7 @@ const cattle_data = [
     age: "1",
     breed: "Sirohi",
     cattle: "Goat",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b1",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b1",
     date: "24-03-2023",
     description:
       "Quality Sirohi Goat of less than a year age is available in AJMER, RAJASTHAN. The price of the cattle is Rs. 20000/-",
@@ -396,7 +396,7 @@ const cattle_data = [
     age: "1",
     breed: "Sirohi",
     cattle: "Goat",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b2",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b2",
     date: "26-03-2023",
     description:
       "Quality Sirohi Goat of less than a year age is available in CHANDAULI, UTTAR PRADESH. The price of the cattle is Rs. 30000/-.",
@@ -416,7 +416,7 @@ const cattle_data = [
     age: "2",
     breed: "Sirohi",
     cattle: "Goat",
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b3",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b3",
     date: "27-03-2023",
     description:
       "Quality Sirohi Goat of 2 year(s) age is available in Campirganj, UP. The price of the cattle is Rs. 27000/-",
@@ -433,126 +433,125 @@ const cattle_data = [
     verificationData: ["0", "1", "4", "6", "7"],
   },
 ];
-// --------------------------------------------
 
-const user_data = [
+const userData = [
   {
     name: "Dhanush",
-    phone_no: "1234567890",
+    phoneNo: "1234567890",
     password: "Aa!12345",
     address: "No.22/7, Raghavan Colony, West Mambalam",
     district: "Chennai",
     pincode: "600033",
     user: "customer",
-    user_uniqueId: "9e6c8ef1-d606-4d19-9c1c-96c50518d039",
+    userUniqueId: "9e6c8ef1-d606-4d19-9c1c-96c50518d039",
   },
 ];
 
-const rep_data = [
+const repData = [
   {
     userId: "Rep1",
     name: "Rep A",
-    phone_no: "0987654321",
+    phoneNo: "0987654321",
     password: "Aa!12345",
     address: "No.3/5, Anna Salai, Central",
     district: "Chennai",
     pincode: "600001",
     user: "rep",
-    user_uniqueId: "9e6c8ef1-d606-4d19-9c1c-96c50518d030",
+    userUniqueId: "9e6c8ef1-d606-4d19-9c1c-96c50518d030",
   },
 ];
 
-const verification_data = [
+const verifiedCattles = [
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c1",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c1",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c2",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c2",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c3",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c3",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c4",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c4",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c5",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c5",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c6",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c6",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c7",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c7",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c9",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085c9",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a1",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a1",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a2",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a2",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a4",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a4",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a5",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a5",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a7",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a7",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a8",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085a8",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b2",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b2",
     repUserId: "Rep1",
     userId: "1234567890",
   },
   {
-    cattle_uniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b3",
+    cattleUniqueId: "846bb3db-d183-4add-bcc6-0a976d9085b3",
     repUserId: "Rep1",
     userId: "1234567890",
   },
 ];
 
-const cattle__Details = JSON.parse(localStorage.getItem("cattle_details"));
-const user__Data = JSON.parse(localStorage.getItem("userData"));
-const rep__Data = JSON.parse(localStorage.getItem("rep_details"));
-const verify__Cattles = JSON.parse(localStorage.getItem("verifiedCattles"));
+const cattle_data = JSON.parse(localStorage.getItem("cattleDetails"));
+const user_Data = JSON.parse(localStorage.getItem("userData"));
+const rep_Data = JSON.parse(localStorage.getItem("rep_details"));
+const verified_cattles = JSON.parse(localStorage.getItem("verifiedCattles"));
 
-if (!cattle__Details && !user__Data && !rep__Data && !verify__Cattles) {
-  localStorage.setItem("cattle_details", JSON.stringify(cattle_data));
-  localStorage.setItem("userData", JSON.stringify(user_data));
-  localStorage.setItem("rep_details", JSON.stringify(rep_data));
-  localStorage.setItem("verifiedCattles", JSON.stringify(verification_data));
+if (!cattle_data && !user_Data && !rep_Data && !verified_cattles) {
+  localStorage.setItem("cattleDetails", JSON.stringify(cattleData));
+  localStorage.setItem("userData", JSON.stringify(userData));
+  localStorage.setItem("rep_details", JSON.stringify(repData));
+  localStorage.setItem("verifiedCattles", JSON.stringify(verifiedCattles));
 }

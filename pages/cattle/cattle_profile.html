@@ -158,40 +158,40 @@
       // Edit page
 
       const uid = JSON.parse(localStorage.getItem("cattle_unique_Id"));
-      const cattle = JSON.parse(localStorage.getItem("cattle_details"));
+      const cattle = JSON.parse(localStorage.getItem("cattleDetails"));
 
       function find_data(e) {
-        return e.cattle_uniqueId == uid;
+        return e.cattleUniqueId == uid;
       }
 
-      cattle_data = cattle.find(find_data);
+      cattleData = cattle.find(find_data);
 
-      document.getElementById("age").value = cattle_data.age;
-      document.getElementById("gender").value = cattle_data.gender;
-      document.getElementById("weight").value = cattle_data.weight;
-      document.getElementById("milk").value = cattle_data.milk;
-      document.getElementById("price").value = cattle_data.price;
-      document.getElementById("lactation").value = cattle_data.lactation;
-      document.getElementById("description").value = cattle_data.description;
-      document.getElementById("image").value = cattle_data.image;
-      document.getElementById("image1").value = cattle_data.image1;
+      document.getElementById("age").value = cattleData.age;
+      document.getElementById("gender").value = cattleData.gender;
+      document.getElementById("weight").value = cattleData.weight;
+      document.getElementById("milk").value = cattleData.milk;
+      document.getElementById("price").value = cattleData.price;
+      document.getElementById("lactation").value = cattleData.lactation;
+      document.getElementById("description").value = cattleData.description;
+      document.getElementById("image").value = cattleData.image;
+      document.getElementById("image1").value = cattleData.image1;
 
       // Update function
 
       function updateDetails() {
         if (confirm("Are you sure you want to save the details")) {
-          cattle_data.age = document.getElementById("age").value;
-          cattle_data.gender = document.getElementById("gender").value;
-          cattle_data.weight = document.getElementById("weight").value;
-          cattle_data.milk = document.getElementById("milk").value;
-          cattle_data.price = document.getElementById("price").value;
-          cattle_data.lactation = document.getElementById("lactation").value;
-          cattle_data.description =
+          cattleData.age = document.getElementById("age").value;
+          cattleData.gender = document.getElementById("gender").value;
+          cattleData.weight = document.getElementById("weight").value;
+          cattleData.milk = document.getElementById("milk").value;
+          cattleData.price = document.getElementById("price").value;
+          cattleData.lactation = document.getElementById("lactation").value;
+          cattleData.description =
             document.getElementById("description").value;
-          cattle_data.image = document.getElementById("image").value;
-          cattle_data.image1 = document.getElementById("image1").value;
+          cattleData.image = document.getElementById("image").value;
+          cattleData.image1 = document.getElementById("image1").value;
 
-          localStorage.setItem("cattle_details", JSON.stringify(cattle));
+          localStorage.setItem("cattleDetails", JSON.stringify(cattle));
           window.location.href = "./cattleList.html?page=verifiedCattles";
         }
       }
@@ -206,7 +206,7 @@
         if (confirm("Are you sure you want to remove this cattle?")) {
           const uid = JSON.parse(localStorage.getItem("cattle_unique_Id"));
           const cattleIndex = verifiedCattleLists.indexOf(
-            verifiedCattleLists.find((e) => e.cattle_uniqueId === uid)
+            verifiedCattleLists.find((e) => e.cattleUniqueId === uid)
           );
 
           verifiedCattleLists.splice(cattleIndex, 1);

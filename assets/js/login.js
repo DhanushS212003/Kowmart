@@ -13,13 +13,13 @@ function signIn(e) {
 
     if (userDetails) {
       const exist = userDetails.some(
-        (data) => data.phone_no === phoneNo && data.password === password
+        (data) => data.phoneNo === phoneNo && data.password === password
       );
 
       if (!exist) {
         alert("Incorrect login credentials");
       } else {
-        localStorage.setItem("phone_no_id", JSON.stringify(phoneNo));
+        localStorage.setItem("phoneNo_id", JSON.stringify(phoneNo));
         alert("Successfully logined");
         window.location.href = "../../pages/buyer_profile.html";
       }

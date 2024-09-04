@@ -34,14 +34,14 @@
 
       <form id="registerForm" class="d-flex flex-column row-gap-4">
         <h6 class="text-center">REGISTER</h6>
-        <input id="userId" type="text" placeholder="User ID" minlength="4" maxlength="4" />
+        <input id="repId" type="text" placeholder="Rep ID" minlength="4" maxlength="4" />
         <input
           id="name"
           type="text"
           placeholder="Name"
           title="Name should contain atleast 3 alphabets"
           required
-          pattern="^[a-zA-Z]+([ ][a-zA-Z]+)*$"
+          pattern="^[a-zA-Z ]{3,30}"
           oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
           minlength="3"
           maxlength="30"
@@ -71,9 +71,6 @@
           type="password"
           placeholder="Confirm Password"
           required
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
-          minlength="8"
-          maxlength="24"
         />
         <button class="primary_btn w-100" style="border-radius: 2px;" type="submit">SUBMIT</button>
         <p class="text-center">Existing User? <a class="text-decoration-underline pointer" id="login_link"> Login here </a></p>
@@ -90,7 +87,7 @@
 
     <script>
       (() => {
-        const element = document.getElementById("userId");
+        const element = document.getElementById("repId");
         if (user === "customer") element.style.display = "none";
         else element.required = true;
 

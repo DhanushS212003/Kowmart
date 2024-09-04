@@ -77,9 +77,9 @@ const afterLogin = `<header>
     </header>`;
 
 const userDetails = JSON.parse(localStorage.getItem("userData"));
-const cattle_detail = JSON.parse(localStorage.getItem("cattle_details")) || [];
+const cattle_detail = JSON.parse(localStorage.getItem("cattleDetails")) || [];
 const repDetail = JSON.parse(localStorage.getItem("rep_details"));
-const phone_id = JSON.parse(localStorage.getItem("phone_no_id"));
+const phone_id = JSON.parse(localStorage.getItem("phoneNo_id"));
 const rep_id = JSON.parse(localStorage.getItem("rep_id"));
 const repCattleDetails =
   JSON.parse(localStorage.getItem("repCattleList")) || [];
@@ -100,7 +100,7 @@ if (phone_id) {
   const customerLogOutBtn = document.querySelector("#customerLogOut");
   customerLogOutBtn?.addEventListener("click", () => {
     if (confirm("Are you sure you want to logout")) {
-      localStorage.removeItem("phone_no_id");
+      localStorage.removeItem("phoneNo_id");
       document.body.innerHTML = beforeLogin;
       window.location.href = "../../index.html";
     }

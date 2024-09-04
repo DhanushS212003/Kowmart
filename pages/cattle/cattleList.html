@@ -92,12 +92,12 @@
           );
 
           const favourite_id = cattle_detail.filter((e) =>
-            users_FavCattle.find((a) => a.cattleId === e.cattle_uniqueId)
+            users_FavCattle.find((a) => a.cattleId === e.cattleUniqueId)
           );
 
           const favouriteCattles = favourite_id.filter((e) => {
             const matchCattleId = verifiedCattleLists.find(
-              (a) => a.cattle_uniqueId === e.cattle_uniqueId
+              (a) => a.cattleUniqueId === e.cattleUniqueId
             );
             if (matchCattleId) {
               e.repId = matchCattleId.repUserId;
@@ -121,7 +121,7 @@
             cattle_anchor = document.createElement("a");
             cattle_anchor.setAttribute(
               "href",
-              `../cattle details/cow/C1.html?breed=${favouriteCattles[i].breed}&cattle_id=${favouriteCattles[i].cattle_uniqueId}&user_id=${favouriteCattles[i].repId}`
+              `../cattle details/cow/C1.html?breed=${favouriteCattles[i].breed}&cattle_id=${favouriteCattles[i].cattleUniqueId}&user_id=${favouriteCattles[i].repId}`
             );
             cattle_img_container.append(cattle_anchor);
 
@@ -158,7 +158,7 @@
             button_know.setAttribute("class", "remove_button");
             button_know.setAttribute(
               "data-id",
-              favouriteCattles[i].cattle_uniqueId
+              favouriteCattles[i].cattleUniqueId
             );
             button_know.innerText = "Remove";
             info_container.append(button_know);
@@ -215,7 +215,7 @@
           cattle_anchor.setAttribute(
             "href",
             `../cattle details/cow/C1.html?cattle_id=${
-              usersCattle[i].cattle_uniqueId
+              usersCattle[i].cattleUniqueId
             }&user_id=${usersCattle[i].userId}&page=${"seller"}&desc=no`
           );
           cattle_img_container.append(cattle_anchor);
@@ -271,7 +271,7 @@
 
         for (let i = 0; i < repCattlesId.length; i++) {
           let repOtherCattlesData = cattle_detail.find(
-            (e) => e.cattle_uniqueId === repCattlesId[i]["cattle_uniqueId"]
+            (e) => e.cattleUniqueId === repCattlesId[i]["cattleUniqueId"]
           );
           repOtherCattles.push(repOtherCattlesData);
         }
@@ -291,7 +291,7 @@
           cattle_anchor = document.createElement("a");
           cattle_anchor.setAttribute(
             "href",
-            `../cattle details/cow/C1.html?breed=${repOtherCattles[i].breed}&cattle_id=${repOtherCattles[i].cattle_uniqueId}&user_id=${user_id}`
+            `../cattle details/cow/C1.html?breed=${repOtherCattles[i].breed}&cattle_id=${repOtherCattles[i].cattleUniqueId}&user_id=${user_id}`
           );
           cattle_img_container.append(cattle_anchor);
 
@@ -329,7 +329,7 @@
           buttonContainer = document.createElement("a");
           buttonContainer.setAttribute(
             "href",
-            `../cattle details/cow/C1.html?breed=${repOtherCattles[i].breed}&cattle_id=${repOtherCattles[i].cattle_uniqueId}&user_id=${user_id}`
+            `../cattle details/cow/C1.html?breed=${repOtherCattles[i].breed}&cattle_id=${repOtherCattles[i].cattleUniqueId}&user_id=${user_id}`
           );
           info_container.append(buttonContainer);
 
@@ -358,7 +358,7 @@
 
           for (let i = 0; i < repCattlesId.length; i++) {
             let repCattleData = cattle_detail.find(
-              (e) => e.cattle_uniqueId === repCattlesId[i]["cattle_uniqueId"]
+              (e) => e.cattleUniqueId === repCattlesId[i]["cattleUniqueId"]
             );
             repCattles.push(repCattleData);
           }
@@ -380,7 +380,7 @@
             cattle_anchor.setAttribute(
               "href",
               `../cattle details/cow/C1.html?cattle_id=${
-                repCattles[i]["cattle_uniqueId"]
+                repCattles[i]["cattleUniqueId"]
               }&user_id=${repCattles[i].userId}&page=${"seller"}&desc=no`
             );
             cattle_img_container.append(cattle_anchor);
@@ -406,7 +406,7 @@
 
             button_know = document.createElement("button");
             button_know.setAttribute("id", "verifyButton");
-            button_know.setAttribute("data-iid", repCattles[i].cattle_uniqueId);
+            button_know.setAttribute("data-iid", repCattles[i].cattleUniqueId);
             button_know.innerText = "Pending";
             btnContainer.append(button_know);
 
@@ -467,28 +467,28 @@
                     if (check === false) return;
 
                     let verifiedCattleData = cattle_detail.find(
-                      (e) => e.cattle_uniqueId === cattle_id
+                      (e) => e.cattleUniqueId === cattle_id
                     );
                     verifiedCattleData.status = "Verified";
                     localStorage.setItem(
-                      "cattle_details",
+                      "cattleDetails",
                       JSON.stringify(cattle_detail)
                     );
 
                     let repCattleIndex = repCattleDetails.indexOf(
                       repCattleDetails.find(
-                        (e) => e.cattle_uniqueId === cattle_id
+                        (e) => e.cattleUniqueId === cattle_id
                       )
                     );
 
                     let repUserId =
                       repCattleDetails[repCattleIndex]["repUserId"];
                     let userId = repCattleDetails[repCattleIndex]["userId"];
-                    let cattle_uniqueId =
-                      repCattleDetails[repCattleIndex]["cattle_uniqueId"];
+                    let cattleUniqueId =
+                      repCattleDetails[repCattleIndex]["cattleUniqueId"];
 
                     let findCattle = cattle_detail.find(
-                      (e) => e.cattle_uniqueId === cattle_id
+                      (e) => e.cattleUniqueId === cattle_id
                     );
                     findCattle.verificationData = verificationData;
                     let receiver = findCattle.userId;
@@ -519,11 +519,11 @@
                     verifiedCattleLists.push({
                       repUserId,
                       userId,
-                      cattle_uniqueId,
+                      cattleUniqueId,
                     });
                     repCattleDetails.splice(repCattleIndex, 1);
                     localStorage.setItem(
-                      "cattle_details",
+                      "cattleDetails",
                       JSON.stringify(cattle_detail)
                     );
                     localStorage.setItem(
@@ -543,28 +543,28 @@
                     if (check === false) return;
 
                     let rejectedCattleData = cattle_detail.find(
-                      (e) => e.cattle_uniqueId === cattle_id
+                      (e) => e.cattleUniqueId === cattle_id
                     );
                     rejectedCattleData.status = "Rejected";
                     localStorage.setItem(
-                      "cattle_details",
+                      "cattleDetails",
                       JSON.stringify(cattle_detail)
                     );
 
                     let repCattleIndex = repCattleDetails.indexOf(
                       repCattleDetails.find(
-                        (e) => e.cattle_uniqueId === cattle_id
+                        (e) => e.cattleUniqueId === cattle_id
                       )
                     );
 
                     let repUserId =
                       repCattleDetails[repCattleIndex]["repUserId"];
                     let userId = repCattleDetails[repCattleIndex]["userId"];
-                    let cattle_uniqueId =
-                      repCattleDetails[repCattleIndex]["cattle_uniqueId"];
+                    let cattleUniqueId =
+                      repCattleDetails[repCattleIndex]["cattleUniqueId"];
 
                     let findCattle = cattle_detail.find(
-                      (e) => e.cattle_uniqueId === cattle_id
+                      (e) => e.cattleUniqueId === cattle_id
                     );
                     findCattle.verificationData = verificationData;
                     let receiver = findCattle.userId;
@@ -595,12 +595,12 @@
                     rejectedCattleLists.push({
                       repUserId,
                       userId,
-                      cattle_uniqueId,
+                      cattleUniqueId,
                       verificationData,
                     });
                     repCattleDetails.splice(repCattleIndex, 1);
                     localStorage.setItem(
-                      "cattle_details",
+                      "cattleDetails",
                       JSON.stringify(cattle_detail)
                     );
                     localStorage.setItem(
@@ -643,7 +643,7 @@
           for (let i = 0; i < repVerifiedCattles.length; i++) {
             let verifiedCattlesData = cattle_detail.find(
               (e) =>
-                e.cattle_uniqueId === repVerifiedCattles[i]["cattle_uniqueId"]
+                e.cattleUniqueId === repVerifiedCattles[i]["cattleUniqueId"]
             );
             verified_cattles.push(verifiedCattlesData);
           }
@@ -665,7 +665,7 @@
             cattle_anchor.setAttribute(
               "href",
               `../cattle details/cow/C1.html?cattle_id=${
-                verified_cattles[i].cattle_uniqueId
+                verified_cattles[i].cattleUniqueId
               }&user_id=${verified_cattles[i].userId}&page=${"seller"}`
             );
             cattle_img_container.append(cattle_anchor);
@@ -693,7 +693,7 @@
             button_know.setAttribute("id", "editButton");
             button_know.setAttribute(
               "data-id",
-              verified_cattles[i].cattle_uniqueId
+              verified_cattles[i].cattleUniqueId
             );
             button_know.innerText = "Edit";
             btnContainer.append(button_know);
@@ -702,7 +702,7 @@
             cancelBtn.setAttribute("id", "cancelVerify");
             cancelBtn.setAttribute(
               "data-id",
-              verified_cattles[i].cattle_uniqueId
+              verified_cattles[i].cattleUniqueId
             );
             cancelBtn.innerText = "Cancel Verification";
             btnContainer.append(cancelBtn);
@@ -737,25 +737,25 @@
                 const { id } = this.dataset;
 
                 let cancelVerifyCattleData = cattle_detail.find(
-                  (e) => e.cattle_uniqueId === id
+                  (e) => e.cattleUniqueId === id
                 );
                 cancelVerifyCattleData.status = "";
                 localStorage.setItem(
-                  "cattle_details",
+                  "cattleDetails",
                   JSON.stringify(cattle_detail)
                 );
 
                 let repCattleIndex = verifiedCattleLists.indexOf(
-                  verifiedCattleLists.find((e) => e.cattle_uniqueId === id)
+                  verifiedCattleLists.find((e) => e.cattleUniqueId === id)
                 );
 
                 let repUserId =
                   verifiedCattleLists[repCattleIndex]["repUserId"];
                 let userId = verifiedCattleLists[repCattleIndex]["userId"];
-                let cattle_uniqueId =
-                  verifiedCattleLists[repCattleIndex]["cattle_uniqueId"];
+                let cattleUniqueId =
+                  verifiedCattleLists[repCattleIndex]["cattleUniqueId"];
 
-                repCattleDetails.push({ repUserId, userId, cattle_uniqueId });
+                repCattleDetails.push({ repUserId, userId, cattleUniqueId });
                 verifiedCattleLists.splice(repCattleIndex, 1);
                 localStorage.setItem(
                   "verifiedCattles",
@@ -787,7 +787,7 @@
           for (let i = 0; i < repRejectedCattles.length; i++) {
             let rejectedCattlesData = cattle_detail.find(
               (e) =>
-                e.cattle_uniqueId === repRejectedCattles[i]["cattle_uniqueId"]
+                e.cattleUniqueId === repRejectedCattles[i]["cattleUniqueId"]
             );
             rejectedCattlesData.verificationData =
               rejectedCattleLists[i]["verificationData"];
@@ -811,7 +811,7 @@
             cattle_anchor.setAttribute(
               "href",
               `../cattle details/cow/C1.html?cattle_id=${
-                rejected_cattles[i].cattle_uniqueId
+                rejected_cattles[i].cattleUniqueId
               }&user_id=${rejected_cattles[i].userId}&page=${"seller"}`
             );
             cattle_img_container.append(cattle_anchor);
@@ -839,7 +839,7 @@
             cancelBtn.setAttribute("id", "cancelReject");
             cancelBtn.setAttribute(
               "data-id",
-              rejected_cattles[i].cattle_uniqueId
+              rejected_cattles[i].cattleUniqueId
             );
             cancelBtn.innerText = "Cancel Rejection";
             btnContainer.append(cancelBtn);
@@ -860,25 +860,25 @@
                 const { id } = this.dataset;
 
                 let cancelRejectCattleData = cattle_detail.find(
-                  (e) => e.cattle_uniqueId === id
+                  (e) => e.cattleUniqueId === id
                 );
                 cancelRejectCattleData.status = "";
                 localStorage.setItem(
-                  "cattle_details",
+                  "cattleDetails",
                   JSON.stringify(cattle_detail)
                 );
 
                 let repCattleIndex = rejectedCattleLists.indexOf(
-                  rejectedCattleLists.find((e) => e.cattle_uniqueId === id)
+                  rejectedCattleLists.find((e) => e.cattleUniqueId === id)
                 );
 
                 let repUserId =
                   rejectedCattleLists[repCattleIndex]["repUserId"];
                 let userId = rejectedCattleLists[repCattleIndex]["userId"];
-                let cattle_uniqueId =
-                  rejectedCattleLists[repCattleIndex]["cattle_uniqueId"];
+                let cattleUniqueId =
+                  rejectedCattleLists[repCattleIndex]["cattleUniqueId"];
 
-                repCattleDetails.push({ repUserId, userId, cattle_uniqueId });
+                repCattleDetails.push({ repUserId, userId, cattleUniqueId });
                 rejectedCattleLists.splice(repCattleIndex, 1);
                 localStorage.setItem(
                   "rejectedCattles",

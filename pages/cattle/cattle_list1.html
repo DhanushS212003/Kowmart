@@ -319,7 +319,7 @@
       ];
 
       const urlParams = new URLSearchParams(window.location.search);
-      const cattlePage = urlParams.get("cattle_details");
+      const cattlePage = urlParams.get("cattleDetails");
       // heading
       category_name = document.createElement("h1");
       category_name.setAttribute("class", "title_color");
@@ -384,7 +384,7 @@
         for (let i = 0; i < verifiedCattleLists.length; i++) {
           let cattleData = cattle_detail.find(
             (e) =>
-              e.cattle_uniqueId === verifiedCattleLists[i]["cattle_uniqueId"]
+              e.cattleUniqueId === verifiedCattleLists[i]["cattleUniqueId"]
           );
           cattleData.rep_id = verifiedCattleLists[i]["repUserId"];
           cattleDetails.push(cattleData);
@@ -514,7 +514,7 @@
             );
             const zoneAllCattles = cattle_detail.filter((e) =>
               zoneVerifiedCattles.some(
-                (a) => a.cattle_uniqueId === e.cattle_uniqueId
+                (a) => a.cattleUniqueId === e.cattleUniqueId
               )
             );
             const zoneCattles = zoneAllCattles.filter(
@@ -655,7 +655,7 @@
           cattle_anchor = document.createElement("a");
           cattle_anchor.setAttribute(
             "href",
-            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.rep_id}`
           );
           cattle_img_container.append(cattle_anchor);
 
@@ -690,7 +690,7 @@
           buttonContainer = document.createElement("a");
           buttonContainer.setAttribute(
             "href",
-            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattle_uniqueId}&user_id=${card.rep_id}`
+            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.rep_id}`
           );
           info_container.append(buttonContainer);
 

@@ -7,17 +7,13 @@ function signUp(e) {
   if (user === "customer") {
     const name = document.getElementById("name").value;
     const phoneNo = document.getElementById("phoneNo").value;
-    const user_uniqueId = uuidv4();
+    const userUniqueId = uuidv4();
     const password = document.getElementById("password").value;
     const confirm_password = document.getElementById("confirm_password").value;
-    const address = "";
-    const district = "";
-    const pincode = "";
-    const user = "customer";
 
     const userData = JSON.parse(localStorage.getItem("userData")) || [];
 
-    const exist = userData.some((data) => data.phone_no === phoneNo);
+    const exist = userData.some((data) => data.phoneNo === phoneNo);
 
     if (!exist) {
       if (password === confirm_password) {
@@ -25,11 +21,7 @@ function signUp(e) {
           name,
           phoneNo,
           password,
-          address,
-          district,
-          pincode,
-          user_uniqueId,
-          user,
+          userUniqueId,
         });
         localStorage.setItem("userData", JSON.stringify(userData));
         document.querySelector("form").reset();
@@ -42,25 +34,23 @@ function signUp(e) {
       alert("Ooopppssss... Duplicate found! You have already signed up");
     }
   } else if (user === "rep") {
-    const userId = document.getElementById("userId").value;
+    const repId = document.getElementById("repId").value;
     const name = document.getElementById("name").value;
     const password = document.getElementById("password").value;
     const confirm_password = document.getElementById("confirm_password").value;
     const address = "";
     const district = "";
     const pincode = "";
-    const user = "rep";
-    // const notification = [];
     const phoneNo = "";
 
     const rep_details = JSON.parse(localStorage.getItem("rep_details")) || [];
 
-    const exist = rep_details.some((data) => data.userId === userId);
+    const exist = rep_details.some((data) => data.userId === repId);
 
     if (!exist) {
       if (password === confirm_password) {
         rep_details.push({
-          userId,
+          repId,
           name,
           phoneNo,
           password,
