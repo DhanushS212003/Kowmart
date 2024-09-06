@@ -31,50 +31,76 @@
         <img class="logo" src="../assets/images/cattles/logo1.png" alt="logo" />
         <h3 class="primary_color">KowMart</h3>
       </div>
-
-      <form id="registerForm" class="d-flex flex-column row-gap-4">
+      <form
+        onsubmit="signUp(event)"
+        id="registerForm"
+        class="d-flex flex-column row-gap-4"
+        novalidate
+      >
         <h6 class="text-center">REGISTER</h6>
-        <input id="repId" type="text" placeholder="Rep ID" minlength="4" maxlength="4" />
-        <input
-          id="name"
-          type="text"
-          placeholder="Name"
-          title="Name should contain atleast 3 alphabets"
-          required
-          pattern="^[a-zA-Z ]{3,30}"
-          oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
-          minlength="3"
-          maxlength="30"
-        />
-        <input
-          id="phoneNo"
-          type="tel"
-          placeholder="Phone No"
-          title="Please enter a valid phone number"
-          required
-          pattern="^[6789]\d{9}$"
-          oninput="this.value = this.value.replace(/[^0-9]/g,'')"
-          minlength="10"
-          maxlength="10"
-        />
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          required
-          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,24}$"
-          minlength="8"
-          maxlength="24"
-        />
-        <input
-          id="confirm_password"
-          type="password"
-          placeholder="Confirm Password"
-          required
-        />
-        <button class="primary_btn w-100" style="border-radius: 2px;" type="submit">SUBMIT</button>
-        <p class="text-center">Existing User? <a class="text-decoration-underline pointer" id="login_link"> Login here </a></p>
+        <div>
+          <input
+            id="name"
+            class="form-control"
+            type="text"
+            placeholder="Name"
+            oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
+            maxlength="30"
+          />
+          <div class="name_feedback invalid-feedback">Enter your name</div>
+        </div>
+        <div>
+          <input
+            id="phone"
+            class="form-control"
+            type="tel"
+            placeholder="Phone No"
+            oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+            maxlength="10"
+          />
+          <div class="phone_feedback invalid-feedback">
+            Invalid Phone Number
+          </div>
+        </div>
+        <div>
+          <input
+            id="password"
+            class="form-control"
+            type="password"
+            placeholder="Password"
+            maxlength="24"
+          />
+          <div class="password_feedback invalid-feedback">
+            At least 6 characters, with a letter, number, and special character
+          </div>
+        </div>
+        <div>
+          <input
+            id="confirm_password"
+            class="form-control"
+            type="password"
+            placeholder="Re-enter password"
+            required
+          />
+          <div class="confirm_password_feedback invalid-feedback">
+            Passwords must match
+          </div>
+        </div>
+        <button
+          class="primary_btn w-100"
+          style="border-radius: 2px"
+          type="submit"
+        >
+          SUBMIT
+        </button>
+        <p class="text-center">
+          Existing User?
+          <a href="signIn.html?user=customer" class="text-decoration-underline">
+            Login here
+          </a>
+        </p>
       </form>
+      <div id="liveAlertPlaceholder"></div>
     </main>
 
     <script src="../assets/js/register.js"></script>
@@ -84,18 +110,5 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
-
-    <script>
-      (() => {
-        const element = document.getElementById("repId");
-        if (user === "customer") element.style.display = "none";
-        else element.required = true;
-
-        document.getElementById("login_link").addEventListener("click", () => {
-          window.location.href = `signIn.html?user=${user}`;
-        });
-      })()
-    </script>
-    
   </body>
 </html>

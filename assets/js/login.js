@@ -6,20 +6,20 @@ function signIn(e) {
   e.preventDefault();
 
   if (user === "customer") {
-    const phoneNo = document.getElementById("phoneNo").value;
+    const phone = document.getElementById("phone").value;
     const password = document.getElementById("password").value;
 
     const userDetails = JSON.parse(localStorage.getItem("userData"));
 
     if (userDetails) {
       const exist = userDetails.some(
-        (data) => data.phoneNo === phoneNo && data.password === password
+        (data) => data.phone === phone && data.password === password
       );
 
       if (!exist) {
         alert("Incorrect login credentials");
       } else {
-        localStorage.setItem("phoneNo_id", JSON.stringify(phoneNo));
+        localStorage.setItem("phoneNo_id", JSON.stringify(phone));
         alert("Successfully logined");
         window.location.href = "../../pages/buyer_profile.html";
       }

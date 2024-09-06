@@ -117,7 +117,7 @@
             </div>
             <div class="seller_phoneno_container">
               <i class="fa-solid fa-phone"></i>
-              <p class="phoneNo"></p>
+              <p class="phone"></p>
             </div>
             <div class="seller_address_container">
               <i class="fa-solid fa-location-dot"></i>
@@ -162,7 +162,7 @@
         (e) => e.cattleUniqueId == cattle_id
       );
       const repData = repDetail.find((e) => e.userId === user_id);
-      const userData = userDetails.find((e) => e.phoneNo === user_id);
+      const userData = userDetails.find((e) => e.phone === user_id);
 
       cattle_image = document.createElement("img");
       cattle_image.setAttribute("src", cattleData[0].image);
@@ -294,8 +294,8 @@
 
         icon = document.createElement("i");
 
-        phoneNo = document.querySelector("p.phoneNo");
-        phoneNo.innerText = repData.phoneNo;
+        phone = document.querySelector("p.phone");
+        phone.innerText = repData.phone;
 
         address = document.querySelector("p.address");
         address.innerText = `${repData.address}, ${repData.district}, ${repData.pincode}.`;
@@ -310,8 +310,8 @@
 
         icon = document.createElement("i");
 
-        phoneNo = document.querySelector("p.phoneNo");
-        phoneNo.innerText = userData.phoneNo;
+        phone = document.querySelector("p.phone");
+        phone.innerText = userData.phone;
 
         address = document.querySelector("p.address");
         address.innerText = `${userData.address}, ${userData.district}, ${userData.pincode}.`;

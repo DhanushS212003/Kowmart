@@ -176,13 +176,13 @@
 
     <script>
       const user_address = userDetails.find(
-        (e) => e.phoneNo == phone_id
+        (e) => e.phone == phone_id
       ).address;
       const user_district = userDetails.find(
-        (e) => e.phoneNo == phone_id
+        (e) => e.phone == phone_id
       ).district;
       const user_pincode = userDetails.find(
-        (e) => e.phoneNo == phone_id
+        (e) => e.phone == phone_id
       ).pincode;
 
       document.getElementById("gender").addEventListener("change", function () {
@@ -219,7 +219,7 @@
 
         messageTitle = "New " + breed + " " + cattle + " has been uploaded";
 
-        const customerData = userDetails.find((e) => e.phoneNo === userId);
+        const customerData = userDetails.find((e) => e.phone === userId);
 
         message =
           "It is in " +

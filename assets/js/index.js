@@ -437,13 +437,12 @@ const cattleData = [
 const userData = [
   {
     name: "Dhanush",
-    phoneNo: "1234567890",
+    phone: "1234567890",
     password: "Aa!12345",
     address: "No.22/7, Raghavan Colony, West Mambalam",
     district: "Chennai",
     pincode: "600033",
     user: "customer",
-    userUniqueId: "9e6c8ef1-d606-4d19-9c1c-96c50518d039",
   },
 ];
 
@@ -451,13 +450,12 @@ const repData = [
   {
     userId: "Rep1",
     name: "Rep A",
-    phoneNo: "0987654321",
+    phone: "0987654321",
     password: "Aa!12345",
     address: "No.3/5, Anna Salai, Central",
     district: "Chennai",
     pincode: "600001",
     user: "rep",
-    userUniqueId: "9e6c8ef1-d606-4d19-9c1c-96c50518d030",
   },
 ];
 
