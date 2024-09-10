@@ -77,15 +77,15 @@ function signUp(e) {
   const confirmPassword = document.getElementById("confirm_password");
 
   const isValidName = verifyName(name);
-  // const isValidPhone = verifyPhone(phone);
+  const isValidPhone = verifyPhone(phone);
   const isValidPassword = verifyPassword(password);
 
   if (!isValidName) name.addEventListener("input", () => verifyName(name));
-  // if (!isValidPhone) phone.addEventListener("input", () => verifyPhone(phone));
+  if (!isValidPhone) phone.addEventListener("input", () => verifyPhone(phone));
   if (!isValidPassword)
     password.addEventListener("input", () => verifyPassword(password));
 
-  if (!(isValidName && isValidPassword)) return false;
+  if (!(isValidName && isValidPhone && isValidPassword)) return false;
 
   const isValidConfirmPassword = verifyConfirmPassword(confirmPassword);
   if (!isValidConfirmPassword)
@@ -99,6 +99,7 @@ function signUp(e) {
   const exist = userData.some((data) => data.phone == phone.value);
 
   const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+  alertPlaceholder.childNodes.forEach((e) => e.remove());
   const appendAlert = (message, type) => {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = [
@@ -118,10 +119,10 @@ function signUp(e) {
       password: password.value,
     });
     localStorage.setItem("userData", JSON.stringify(userData));
+    appendAlert("Account Created Successfully", "success");
     document.querySelector("form").reset();
-    appendAlert("Account Created Successfully");
     window.location.href = "../../pages/signIn.html?user=customer";
   } else {
-    appendAlert('Ooopppssss... Duplicate found! You have already signed up')
+    appendAlert("You have already signed up", "danger");
   }
 }
