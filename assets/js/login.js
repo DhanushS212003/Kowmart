@@ -1,30 +1,72 @@
 const params = new URLSearchParams(window.location.search);
 const user = params.get("user");
-const repDetail = JSON.parse(localStorage.getItem("repData"));
 
-function signIn(e) {
+function verifyPhone(phone) {
+  const phoneFeedback = document.querySelector(".phone_feedback");
+
+  if (phone.value.length > 0) {
+    phone.classList.add("invalid_input");
+    phone.classList.remove("valid_input");
+    phoneFeedback.style.display = "block";
+    return false;
+  } else {
+    phone.classList.add("valid_input");
+    phone.classList.remove("invalid_input");
+    phoneFeedback.style.display = "none";
+    return true;
+  }
+}
+
+function verifyPassword(password) {
+  const passwordFeedback = document.querySelector(".password_feedback");
+
+  if (password.value.length > 0) {
+    password.classList.add("invalid_input");
+    password.classList.remove("valid_input");
+    passwordFeedback.style.display = "block";
+    return false;
+  } else {
+    password.classList.add("valid_input");
+    password.classList.remove("invalid_input");
+    passwordFeedback.style.display = "none";
+    return true;
+  }
+}
+
+function login(e) {
   e.preventDefault();
 
   if (user === "customer") {
-    const phone = document.getElementById("phone").value;
-    const password = document.getElementById("password").value;
+    const phone = document.getElementById("phone");
+    const password = document.getElementById("password");
 
-    const userDetails = JSON.parse(localStorage.getItem("userData"));
+    const isValidPhone = verifyPhone(phone);
+    const isValidPassword = verifyPassword(password);
 
-    if (userDetails) {
-      const exist = userDetails.some(
-        (data) => data.phone === phone && data.password === password
-      );
+    if (!isValidPhone)
+      phone.addEventListener("input", () => verifyPhone(phone));
+    if (!isValidPassword)
+      password.addEventListener("input", () => verifyPassword(password));
 
-      if (!exist) {
-        alert("Incorrect login credentials");
-      } else {
-        localStorage.setItem("phoneNo_id", JSON.stringify(phone));
+    if (!(isValidPhone && isValidPassword)) return false;
+
+    const userData = JSON.parse(localStorage.getItem("userData")) || [];
+
+    const exist = userData.some((data) => data.phone == phone);
+    const matched = userData.some(
+      (data) => data.phone == phone && data.password == password
+    );
+
+    if (exist) {
+      if (matched) {
+        localStorage.setItem("phoneNo", JSON.stringify(phone));
         alert("Successfully logined");
         window.location.href = "../../pages/buyer_profile.html";
+      } else {
+        alert("Incorrect login credentials");
       }
     } else {
-      alert("Incorrect login credentials");
+      alert("Phone number not fond");
     }
   } else if (user === "rep") {
     const userId = document.getElementById("userId").value;
@@ -52,4 +94,4 @@ function signIn(e) {
   document.querySelector("form").reset();
 }
 
-document.getElementById("loginForm").addEventListener("submit", signIn);
+document.getElementById("loginForm").addEventListener("submit", login);

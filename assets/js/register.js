@@ -121,7 +121,7 @@ function signUp(e) {
     localStorage.setItem("userData", JSON.stringify(userData));
     appendAlert("Account Created Successfully", "success");
     document.querySelector("form").reset();
-    window.location.href = "../../pages/signIn.html?user=customer";
+    window.location.href = "../../pages/login.html?user=customer";
   } else {
     appendAlert("You have already signed up", "danger");
   }

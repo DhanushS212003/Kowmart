@@ -31,10 +31,10 @@ const beforeLogin = `<header>
               <span class="closebtn" onclick="closeCustomerSelection()" title="close">×</span>
               <div class="overlay_content">
                   <div class="type_container">
-                     <a href="${root}/pages/signIn.html?user=customer"> Customer </a>
+                     <a href="${root}/pages/login.html?user=customer"> Customer </a>
                   </div>
                   <div class="type_container">
-                     <a href="${root}/pages/signIn.html?user=rep"> Rep </a>
+                     <a href="${root}/pages/login.html?user=rep"> Rep </a>
                   </div>
               </div>
           </div>
