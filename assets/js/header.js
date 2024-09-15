@@ -30,12 +30,12 @@ const beforeLogin = `<header>
           <div class="overlay">
               <span class="closebtn" onclick="closeCustomerSelection()" title="close">×</span>
               <div class="overlay_content">
-                  <div class="type_container">
-                     <a href="${root}/pages/login.html?user=customer"> Customer </a>
-                  </div>
-                  <div class="type_container">
-                     <a href="${root}/pages/login.html?user=rep"> Rep </a>
-                  </div>
+                <a href="${root}/pages/login.html?user=customer">
+                  <div class="type_container"> Customer </div>
+                </a>
+                <a href="${root}/pages/login.html?user=rep">
+                  <div class="type_container"> Rep </div>
+                </a>
               </div>
           </div>
         </div>
@@ -53,7 +53,7 @@ const afterLogin = `<header>
                 <a href = "${root}/index.html"> Cattles </a>
                 <a href = "${root}/pages/about.html"> About Us </a>
                 <a href = "${root}/pages/cattle/sell_details1.html"><button class = "primary_btn sell_btn"> SELL </button> </a>
-                <a href = "${root}/pages/buyer_profile.html"> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
+                <a href = "${root}/pages/profile.html"> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
                 <a href = "${root}/pages/notification.html" class = "notification_nav"> Notification </a>
               </div>
           </div>
@@ -71,7 +71,7 @@ const afterLogin = `<header>
 
           <div class = "d-flex align-items-end column-gap-3 nav_links_container">
               <button class = "primary_btn sell_btn"> SELL </button>
-              <a href = ${root}/pages/buyer_profile.html> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
+              <a href = ${root}/pages/profile.html> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
           </div> 
         </div>
     </header>`;

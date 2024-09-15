@@ -181,6 +181,10 @@ footer {
     color: black;
 }
 
+.overlay_content>a {
+    color: var(--primary-color);
+}
+
 .type_container {
     background-color: white;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -192,12 +196,7 @@ footer {
 }
 
 .type_container:hover {
-    cursor: pointer;
     box-shadow: #57d192 3px 3px 3px;
-}
-
-.type_container>a {
-    color: var(--primary-color);
 }
 
 /* CUSTOMER SELECTION MODAL */

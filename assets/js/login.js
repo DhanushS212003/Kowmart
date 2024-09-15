@@ -60,7 +60,7 @@ function login(e) {
       localStorage.setItem(mapper.elementId, JSON.stringify(id.value));
       appendAlert("Logined Successfully", "success");
       document.querySelector("form").reset();
-      window.location.href = "../../pages/buyer_profile.html";
+      window.location.href = "../../pages/profile.html";
     } else {
       appendAlert("Incorrect credentials", "danger");
     }
