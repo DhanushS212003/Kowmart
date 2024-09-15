@@ -26,6 +26,8 @@
     />
   </head>
 
+  <!-- TODO: Optimise the after login part in header.js -->
+
   <body>
     <main>
       <div class="form_container divspace">
@@ -271,7 +273,7 @@
         document.getElementById("phone").removeAttribute("disabled");
         document.getElementById("phone").setAttribute("readonly", true);
         document.getElementById("customer_portal").style.display = "block";
-      } else if (rep_id != null) {
+      } else if (repId != null) {
         document.getElementById("rep_portal").style.display = "block";
       }
 
@@ -291,7 +293,7 @@
       // function for updating details
 
       function disableInput() {
-        if (rep_id === null) {
+        if (repId === null) {
           const person_data = userDetails.find((e) => e.phone === phone_id);
 
           if (confirm("Are you sure you want to save the details")) {
@@ -303,7 +305,7 @@
             localStorage.setItem("userData", JSON.stringify(userDetails));
           }
         } else if (phone_id === null) {
-          const repData = repDetail.find((e) => e.userId === rep_id);
+          const repData = repDetail.find((e) => e.userId === repId);
 
           if (confirm("Are you sure you want to save the details")) {
             repData.name = document.getElementById("name").value;
@@ -319,7 +321,7 @@
         window.location.reload();
       }
 
-      if (rep_id === null) {
+      if (repId === null) {
         const person_data = userDetails.find((e) => e.phone === phone_id);
 
         document.getElementById("name").value = person_data.name;
@@ -341,7 +343,7 @@
             const removedata = userDetails.indexOf(person_data);
             userDetails.splice(removedata, 1);
             localStorage.setItem("userData", JSON.stringify(userDetails));
-            localStorage.removeItem("phoneNo_id");
+            localStorage.removeItem("phone");
             window.location.href = "../index.html";
           }
         }
@@ -349,7 +351,7 @@
         const del = document.querySelector("#delete");
         del.addEventListener("click", deleteaccount);
       } else if (phone_id === null) {
-        const repData = repDetail.find((e) => e.userId === rep_id);
+        const repData = repDetail.find((e) => e.userId === repId);
 
         document.getElementById("name").value = repData.name;
         document.getElementById("phone").value = repData.phone;

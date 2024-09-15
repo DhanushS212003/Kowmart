@@ -1,34 +1,31 @@
 const params = new URLSearchParams(window.location.search);
 const user = params.get("user");
+const mapper = {};
 
-function verifyPhone(phone) {
-  const phoneFeedback = document.querySelector(".phone_feedback");
-
-  if (phone.value.length > 0) {
-    phone.classList.add("invalid_input");
-    phone.classList.remove("valid_input");
-    phoneFeedback.style.display = "block";
-    return false;
-  } else {
-    phone.classList.add("valid_input");
-    phone.classList.remove("invalid_input");
-    phoneFeedback.style.display = "none";
-    return true;
-  }
+if (user === "customer") {
+  mapper["elementId"] = "phone";
+  mapper["feebackId"] = "phone_feedback";
+  mapper["data"] = "userData";
+  mapper["key"] = "phone";
+  mapper["message"] = "Phone Number";
+} else {
+  mapper["elementId"] = "repId";
+  mapper["feebackId"] = "repId_feedback";
+  mapper["data"] = "repData";
+  mapper["key"] = "userId";
+  mapper["message"] = "Rep ID";
 }
 
-function verifyPassword(password) {
-  const passwordFeedback = document.querySelector(".password_feedback");
+function verifyData(e, className) {
+  const feedback = document.querySelector(`.${className}`);
 
-  if (password.value.length > 0) {
-    password.classList.add("invalid_input");
-    password.classList.remove("valid_input");
-    passwordFeedback.style.display = "block";
+  if (e.value.length === 0) {
+    e.classList.add("invalid_input");
+    feedback.style.display = "block";
     return false;
   } else {
-    password.classList.add("valid_input");
-    password.classList.remove("invalid_input");
-    passwordFeedback.style.display = "none";
+    e.classList.remove("invalid_input");
+    feedback.style.display = "none";
     return true;
   }
 }
@@ -36,62 +33,38 @@ function verifyPassword(password) {
 function login(e) {
   e.preventDefault();
 
-  if (user === "customer") {
-    const phone = document.getElementById("phone");
-    const password = document.getElementById("password");
+  const id = document.getElementById(mapper.elementId);
+  const password = document.getElementById("password");
 
-    const isValidPhone = verifyPhone(phone);
-    const isValidPassword = verifyPassword(password);
+  const isValidId = verifyData(id, mapper.feebackId);
+  const isValidPassword = verifyData(password, "password_feedback");
 
-    if (!isValidPhone)
-      phone.addEventListener("input", () => verifyPhone(phone));
-    if (!isValidPassword)
-      password.addEventListener("input", () => verifyPassword(password));
-
-    if (!(isValidPhone && isValidPassword)) return false;
-
-    const userData = JSON.parse(localStorage.getItem("userData")) || [];
-
-    const exist = userData.some((data) => data.phone == phone);
-    const matched = userData.some(
-      (data) => data.phone == phone && data.password == password
+  if (!isValidId)
+    id.addEventListener("input", () => verifyData(id, mapper.feebackId));
+  if (!isValidPassword)
+    password.addEventListener("input", () =>
+      verifyData(password, "password_feedback")
     );
 
-    if (exist) {
-      if (matched) {
-        localStorage.setItem("phoneNo", JSON.stringify(phone));
-        alert("Successfully logined");
-        window.location.href = "../../pages/buyer_profile.html";
-      } else {
-        alert("Incorrect login credentials");
-      }
+  if (!(isValidId && isValidPassword)) return false;
+
+  const data = JSON.parse(localStorage.getItem(mapper.data)) || [];
+
+  const exist = data.some((data) => data[mapper.key] == id.value);
+  const matched = data.some(
+    (data) => data[mapper.key] == id.value && data.password == password.value
+  );
+
+  if (exist) {
+    if (matched) {
+      localStorage.setItem(mapper.elementId, JSON.stringify(id.value));
+      appendAlert("Logined Successfully", "success");
+      document.querySelector("form").reset();
+      window.location.href = "../../pages/buyer_profile.html";
     } else {
-      alert("Phone number not fond");
+      appendAlert("Incorrect credentials", "danger");
     }
-  } else if (user === "rep") {
-    const userId = document.getElementById("userId").value;
-    const password = document.getElementById("password").value;
-
-    const repDetail = JSON.parse(localStorage.getItem("repData"));
-
-    if (repDetail) {
-      const exist = repDetail.some(
-        (data) => data.userId === userId && data.password === password
-      );
-
-      if (!exist) {
-        alert("Incorrect login credentials");
-      } else {
-        localStorage.setItem("rep_id", JSON.stringify(userId));
-        alert("Successfully logined");
-        window.location.href = "../../pages/buyer_profile.html";
-      }
-    } else {
-      alert("Incorrect login credentails");
-    }
+  } else {
+    appendAlert(`${mapper.message} not found`, "danger");
   }
-
-  document.querySelector("form").reset();
 }
-
-document.getElementById("loginForm").addEventListener("submit", login);

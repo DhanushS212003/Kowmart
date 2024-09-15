@@ -351,7 +351,7 @@
 
         if (repCattleDetails.length !== 0) {
           const repCattlesId = repCattleDetails.filter(
-            (e) => e.repUserId === rep_id
+            (e) => e.repUserId === repId
           );
 
           let repCattles = [];
@@ -495,7 +495,7 @@
 
                     let notificationId = uuidv4();
                     let messageTitle =
-                      "From " + rep_id + ", Representative of KowMart";
+                      "From " + repId + ", Representative of KowMart";
                     let message =
                       "Your " +
                       findCattle.breed +
@@ -571,7 +571,7 @@
 
                     let notificationId = uuidv4();
                     let messageTitle =
-                      "From " + rep_id + ", Representative of KowMart";
+                      "From " + repId + ", Representative of KowMart";
                     let message =
                       "Your " +
                       findCattle.breed +
@@ -635,7 +635,7 @@
 
         if (verifiedCattleLists.length !== 0) {
           const repVerifiedCattles = verifiedCattleLists.filter(
-            (e) => e.repUserId === rep_id
+            (e) => e.repUserId === repId
           );
 
           const verified_cattles = [];
@@ -779,7 +779,7 @@
 
         if (rejectedCattleLists.length !== 0) {
           const repRejectedCattles = rejectedCattleLists.filter(
-            (e) => e.repUserId === rep_id
+            (e) => e.repUserId === repId
           );
 
           const rejected_cattles = [];

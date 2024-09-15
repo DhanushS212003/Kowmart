@@ -442,7 +442,6 @@ const userData = [
     address: "No.22/7, Raghavan Colony, West Mambalam",
     district: "Chennai",
     pincode: "600033",
-    user: "customer",
   },
 ];
 
@@ -455,7 +454,6 @@ const repData = [
     address: "No.3/5, Anna Salai, Central",
     district: "Chennai",
     pincode: "600001",
-    user: "rep",
   },
 ];
 

@@ -99,7 +99,7 @@
       if (notificationList.length !== 0) {
         if (phone_id === null) {
           const repNotificationList = notificationList.filter(
-            (e) => e.receiver === rep_id
+            (e) => e.receiver === repId
           );
 
           if (repNotificationList.length === 0) {
@@ -145,7 +145,7 @@
               });
             });
           }
-        } else if (rep_id === null) {
+        } else if (repId === null) {
           const userNotificationList = notificationList.filter(
             (e) => e.receiver === phone_id
           );

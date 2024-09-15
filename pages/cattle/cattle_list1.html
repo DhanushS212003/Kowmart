@@ -383,10 +383,9 @@
 
         for (let i = 0; i < verifiedCattleLists.length; i++) {
           let cattleData = cattle_detail.find(
-            (e) =>
-              e.cattleUniqueId === verifiedCattleLists[i]["cattleUniqueId"]
+            (e) => e.cattleUniqueId === verifiedCattleLists[i]["cattleUniqueId"]
           );
-          cattleData.rep_id = verifiedCattleLists[i]["repUserId"];
+          cattleData.repId = verifiedCattleLists[i]["repUserId"];
           cattleDetails.push(cattleData);
         }
 
@@ -429,14 +428,14 @@
 
           if (selectedBreeds.length > 0 && selectedDistricts.length > 0) {
             const filterCattles = breedFilteredCattles.filter((e) =>
-              selectedRep.includes(e.rep_id)
+              selectedRep.includes(e.repId)
             );
             filteredCattles = filteredCattles.concat(filterCattles);
           } else if (selectedBreeds.length > 0) {
             filteredCattles = filteredCattles.concat(breedFilteredCattles);
           } else if (selectedDistricts.length > 0) {
             for (let i = 0; i < categoryCattleDetails.length; i++) {
-              if (selectedRep.includes(categoryCattleDetails[i].rep_id)) {
+              if (selectedRep.includes(categoryCattleDetails[i].repId)) {
                 filteredCattles.push(categoryCattleDetails[i]);
               }
             }
@@ -655,7 +654,7 @@
           cattle_anchor = document.createElement("a");
           cattle_anchor.setAttribute(
             "href",
-            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.rep_id}`
+            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.repId}`
           );
           cattle_img_container.append(cattle_anchor);
 
@@ -690,7 +689,7 @@
           buttonContainer = document.createElement("a");
           buttonContainer.setAttribute(
             "href",
-            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.rep_id}`
+            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.repId}`
           );
           info_container.append(buttonContainer);
 

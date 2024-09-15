@@ -52,7 +52,7 @@ const afterLogin = `<header>
               <div class = "d-flex flex-column row-gap-3 ps-4 py-3">
                 <a href = "${root}/index.html"> Cattles </a>
                 <a href = "${root}/pages/about.html"> About Us </a>
-                <a href = "${root}/pages/cattle/sell_details1.html"><button class = "primary_btn"> SELL </button> </a>
+                <a href = "${root}/pages/cattle/sell_details1.html"><button class = "primary_btn sell_btn"> SELL </button> </a>
                 <a href = "${root}/pages/buyer_profile.html"> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
                 <a href = "${root}/pages/notification.html" class = "notification_nav"> Notification </a>
               </div>
@@ -70,7 +70,7 @@ const afterLogin = `<header>
           </div>
 
           <div class = "d-flex align-items-end column-gap-3 nav_links_container">
-              <button class = "primary_btn"> SELL </button>
+              <button class = "primary_btn sell_btn"> SELL </button>
               <a href = ${root}/pages/buyer_profile.html> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
           </div> 
         </div>
@@ -79,8 +79,8 @@ const afterLogin = `<header>
 const userDetails = JSON.parse(localStorage.getItem("userData"));
 const cattle_detail = JSON.parse(localStorage.getItem("cattleDetails")) || [];
 const repDetail = JSON.parse(localStorage.getItem("repData"));
-const phone_id = JSON.parse(localStorage.getItem("phoneNo_id"));
-const rep_id = JSON.parse(localStorage.getItem("rep_id"));
+const phone_id = JSON.parse(localStorage.getItem("phone"));
+const repId = JSON.parse(localStorage.getItem("repId"));
 const repCattleDetails =
   JSON.parse(localStorage.getItem("repCattleList")) || [];
 const verifiedCattleLists =
@@ -100,7 +100,7 @@ if (phone_id) {
   const customerLogOutBtn = document.querySelector("#customerLogOut");
   customerLogOutBtn?.addEventListener("click", () => {
     if (confirm("Are you sure you want to logout")) {
-      localStorage.removeItem("phoneNo_id");
+      localStorage.removeItem("phone");
       document.body.innerHTML = beforeLogin;
       window.location.href = "../../index.html";
     }
@@ -117,13 +117,16 @@ if (phone_id) {
         "2px solid #00a651";
     }
   }
-} else if (rep_id) {
+} else if (repId) {
   document.body.insertAdjacentHTML("afterbegin", afterLogin);
-  document.getElementById("sellBtn").style.display = "none";
+  document
+    .querySelectorAll(".sell_btn")
+    .forEach((e) => (e.style.display = "none"));
+
   const repLogOutBtn = document.querySelector("#repLogOut");
   repLogOutBtn?.addEventListener("click", () => {
     if (confirm("Are you sure you want to logout")) {
-      localStorage.removeItem("rep_id");
+      localStorage.removeItem("repId");
       document.body.innerHTML = beforeLogin;
       window.location.href = "../../index.html";
     }
@@ -131,7 +134,7 @@ if (phone_id) {
 
   if (notificationList) {
     const repNotificationList = notificationList.filter(
-      (e) => e.receiver === rep_id
+      (e) => e.receiver === repId
     );
     const newNote = repNotificationList.find((e) => e.readStatus === false);
 
