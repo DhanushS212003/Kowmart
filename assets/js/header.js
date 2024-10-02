@@ -94,49 +94,19 @@ const verificationDetails = JSON.parse(
 );
 const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
 
-if (phone_id) {
+if (phone_id || repId) {
   document.body.insertAdjacentHTML("afterbegin", afterLogin);
 
-  const customerLogOutBtn = document.querySelector("#customerLogOut");
-  customerLogOutBtn?.addEventListener("click", () => {
-    if (confirm("Are you sure you want to logout")) {
-      localStorage.removeItem("phone");
-      document.body.innerHTML = beforeLogin;
-      window.location.href = "../../index.html";
-    }
-  });
+  if (repId)
+    document
+      .querySelectorAll(".sell_btn")
+      .forEach((e) => (e.style.display = "none"));
 
   if (notificationList) {
-    const userNotificationList = notificationList.filter(
-      (e) => e.receiver === phone_id
+    const list = notificationList.filter((e) =>
+      e.receiver === phone_id ? phone_id : repId
     );
-    const newNote = userNotificationList.find((e) => e.status === false);
-
-    if (newNote) {
-      document.querySelector(".notification_nav").style.borderBottom =
-        "2px solid #00a651";
-    }
-  }
-} else if (repId) {
-  document.body.insertAdjacentHTML("afterbegin", afterLogin);
-  document
-    .querySelectorAll(".sell_btn")
-    .forEach((e) => (e.style.display = "none"));
-
-  const repLogOutBtn = document.querySelector("#repLogOut");
-  repLogOutBtn?.addEventListener("click", () => {
-    if (confirm("Are you sure you want to logout")) {
-      localStorage.removeItem("repId");
-      document.body.innerHTML = beforeLogin;
-      window.location.href = "../../index.html";
-    }
-  });
-
-  if (notificationList) {
-    const repNotificationList = notificationList.filter(
-      (e) => e.receiver === repId
-    );
-    const newNote = repNotificationList.find((e) => e.readStatus === false);
+    const newNote = list.find((e) => e.readStatus === false);
 
     if (newNote) {
       document.querySelector(".notification_nav").style.borderBottom =

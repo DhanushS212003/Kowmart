@@ -70,22 +70,16 @@
   background: var(--primary-color);
 }
 
-/* @media screen and (max-width: 780px) {
-  .banner_title {
-      max-width: 550px;
-  }
-} */
-
 @media screen and (max-width: 549px) {
   .banner_chevron_container {
-      padding-inline: 12px;
+    padding-inline: 12px;
   }
 }
 
 @media screen and (max-width: 499px) {
   .banner_container {
-      height: 200px;
-      margin-top: 5px;
+    height: 200px;
+    margin-top: 5px;
   }
 
   .banner_title {
@@ -95,38 +89,38 @@
   }
 
   .banner_chevron {
-      width: 30px;
-      height: 30px;
+    width: 30px;
+    height: 30px;
   }
 
   .fa-chevron-left,
   .fa-chevron-right {
-      font-size: 13px;
+    font-size: 13px;
   }
 
   .banner_dots {
-      width: 8px;
-      height: 8px;
+    width: 8px;
+    height: 8px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .banner_chevron_container {
-      padding-inline: 8px;
+    padding-inline: 8px;
   }
 
   .banner_chevron {
-      width: 25px;
-      height: 25px;
+    width: 25px;
+    height: 25px;
   }
 
   .fa-chevron-left,
   .fa-chevron-right {
-      font-size: 11px;
+    font-size: 11px;
   }
 
   .banner_dots {
-      width: 8px;
-      height: 8px;
+    width: 8px;
+    height: 8px;
   }
 }

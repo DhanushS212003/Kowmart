@@ -1,5 +1,5 @@
 const appendAlert = (message, type) => {
-  const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
+  const alertPlaceholder = document.getElementById("alertPlaceHolder");
   alertPlaceholder.childNodes.forEach((e) => e.remove());
   const wrapper = document.createElement("div");
   wrapper.innerHTML = [

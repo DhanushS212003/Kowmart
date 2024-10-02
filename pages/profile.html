@@ -26,242 +26,198 @@
     />
   </head>
 
-  <!-- TODO: Optimise the after login part in header.js -->
-
   <body>
-    <main>
-      <div class="form_container divspace">
-        <form>
-          <!-- left section -->
-
-          <div class="left_section divspace">
-            <div class="profile_img_container">
-              <img
-                class="profile_img"
-                src="../assets/images/profile_logo.png"
-                alt="profile_img"
-              />
-              <input type="url" id="image" />
+    <div id="alertPlaceHolder"></div>
+    <div id="confirmationBoxPlaceholder"></div>
+    <main class="d-flex justify-content-center align-items-center p-3">
+      <div class="profile_section">
+        <div class="profile_card">
+          <div
+            class="d-flex flex-column align-items-center p-3 pb-2 row-gap-2 border-bottom"
+          >
+            <img
+              src="../assets/images/profile_logo.png"
+              class="avatar_img"
+              alt="User Avatar"
+            />
+            <h6 class="fw-bold mt-1 text-secondary">Dhanush</h6>
+          </div>
+          <div class="p-3 py-2">
+            <a
+              class="profile_menu customer_menu"
+              href="cattle/cattleList.html?page=sellerCattleList"
+            >
+              <i class="fa-solid fa-paw"></i>
+              <p>Cattle List</p>
+            </a>
+            <a
+              class="profile_menu customer_menu"
+              href="cattle/cattleList.html?page=favourites"
+            >
+              <i class="fa-solid fa-star"></i>
+              <p>Favourites</p>
+            </a>
+            <a
+              class="profile_menu rep_menu"
+              href="cattle/cattleList.html?page=repCattleList"
+            >
+              <i class="fa-solid fa-list"></i>
+              <p>Cattle List</p>
+            </a>
+            <a
+              class="profile_menu rep_menu"
+              href="cattle/cattleList.html?page=verifiedCattles"
+            >
+              <i class="fa-solid fa-circle-check"></i>
+              <p>Verified Cattles</p>
+            </a>
+            <a
+              class="profile_menu rep_menu"
+              href="cattle/cattleList.html?page=rejectedCattles"
+            >
+              <i class="fa-solid fa-circle-xmark"></i>
+              <p>Rejected Cattles</p>
+            </a>
+            <div class="profile_menu" id="logOut">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <p>Log Out</p>
             </div>
-
-            <div id="customer_portal">
-              <div class="links_container">
-                <div class="icon_container1">
-                  <i class="fa-solid fa-paw"></i>
-                </div>
-                <h2>
-                  <a href="cattle/cattleList.html?page=sellerCattleList">
-                    Cattle List
-                  </a>
-                </h2>
-              </div>
-
-              <div class="links_container">
-                <div class="icon_container1">
-                  <i class="fa-solid fa-star"></i>
-                </div>
-                <h2>
-                  <a href="cattle/cattleList.html?page=favourites">
-                    Favourites
-                  </a>
-                </h2>
-              </div>
-
-              <div class="links_container">
-                <div class="icon_container1">
-                  <i class="fa-solid fa-right-from-bracket"></i>
-                </div>
-                <h2 class="links_head" id="customerLogOut">Log out</h2>
-              </div>
-
-              <div class="links_container" id="delAccount">
-                <div class="icon_container2">
-                  <i class="fa-solid fa-trash"></i>
-                </div>
-                <h2 class="links_head" id="delete">Delete Account</h2>
-              </div>
-            </div>
-
-            <div id="rep_portal">
-              <div class="links_container">
-                <div class="icon_container1">
-                  <i class="fa-solid fa-list"></i>
-                </div>
-                <h2>
-                  <a href="cattle/cattleList.html?page=repCattleList">
-                    Cattle List
-                  </a>
-                </h2>
-              </div>
-
-              <div class="links_container">
-                <div class="icon_container1">
-                  <i class="fa-regular fa-circle-check"></i>
-                </div>
-                <h2>
-                  <a href="cattle/cattleList.html?page=verifiedCattles">
-                    Verified Cattles
-                  </a>
-                </h2>
-              </div>
-
-              <div class="links_container">
-                <div class="icon_container1">
-                  <i class="fa-regular fa-circle-xmark"></i>
-                </div>
-                <h2>
-                  <a href="cattle/cattleList.html?page=rejectedCattles">
-                    Rejected Cattles
-                  </a>
-                </h2>
-              </div>
-
-              <div class="links_container">
-                <div class="icon_container1">
-                  <i class="fa-solid fa-right-from-bracket"></i>
-                </div>
-                <h2 class="links_head" id="repLogOut">Log out</h2>
-              </div>
+            <div class="profile_menu customer_menu" id="delete">
+              <i class="fa-solid fa-trash-can"></i>
+              <p>Delete Account</p>
             </div>
           </div>
-
-          <!-- right section -->
-
-          <div class="right_section divspace">
-            <div class="user_details divspace">
-              <h1 class="head">Profile</h1>
-
-              <div class="divspace divspace1">
-                <div class="label_container">
-                  <label> Name </label>
-                </div>
-                <div class="colon_container">:</div>
-                <div class="input_container">
-                  <input
-                    type="text"
-                    id="name"
-                    pattern="^[a-zA-Z]+([ ][a-zA-Z]+)*$"
-                    title="Don't use spaces in the first and last"
-                    oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
-                    readonly
-                  />
+        </div>
+        <div class="main_content">
+          <h5 class="fw-bold text-secondary text-center">Profile</h5>
+          <form novalidate>
+            <div class="mt-3 mb-4">
+              <div class="mt-2">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  id="name"
+                  class="form-control"
+                  type="text"
+                  placeholder="Name"
+                  oninput="this.value = this.value.replace(/[^a-z ]/gi,'')"
+                  maxlength="30"
+                  disabled
+                />
+                <div class="name_feedback invalid-feedback">
+                  Enter your name
                 </div>
               </div>
-
-              <div class="divspace divspace1">
-                <div class="label_container">
-                  <label> Phone.No </label>
-                </div>
-                <div class="colon_container">:</div>
-                <div class="input_container">
-                  <input
-                    required
-                    type="tel"
-                    maxlength="10"
-                    id="phone"
-                    disabled
-                  />
-                </div>
-              </div>
-
-              <div class="divspace divspace1">
-                <div class="label_container">
-                  <label> Address </label>
-                </div>
-                <div class="colon_container">:</div>
-                <div class="input_container">
-                  <textarea id="address" readonly></textarea>
+              <div class="mt-2">
+                <label for="phone" class="form-label">Phone</label>
+                <input
+                  id="phone"
+                  class="form-control"
+                  type="tel"
+                  placeholder="Phone No"
+                  oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                  maxlength="10"
+                  disabled
+                />
+                <div class="phone_feedback invalid-feedback">
+                  Invalid phone number
                 </div>
               </div>
-
-              <div class="divspace divspace1">
-                <div class="label_container">
-                  <label> District </label>
-                </div>
-                <div class="colon_container">:</div>
-                <div class="input_container">
-                  <select id="district" required>
-                    <option>Ariyalur</option>
-                    <option>Chengalpattu</option>
-                    <option>Chennai</option>
-                    <option>Coimbatore</option>
-                    <option>Cuddalore</option>
-                    <option>Dharmapuri</option>
-                    <option>Dindigul</option>
-                    <option>Erode</option>
-                    <option>Kallakurichi</option>
-                    <option>Kanchipuram</option>
-                    <option>Kanniyakumari</option>
-                    <option>Karur</option>
-                    <option>Krishnagiri</option>
-                    <option>Madurai</option>
-                    <option>Mayiladuthurai</option>
-                    <option>Nagapattinam</option>
-                    <option>Namakkal</option>
-                    <option>Nilgiris</option>
-                    <option>Perambalur</option>
-                    <option>Puducherry</option>
-                    <option>Pudukkottai</option>
-                    <option>Ramanathapuram</option>
-                    <option>Ranipet</option>
-                    <option>Salem</option>
-                    <option>Sivaganga</option>
-                    <option>Tenkasi</option>
-                    <option>Thanjavur</option>
-                    <option>Theni</option>
-                    <option>Thoothukudi</option>
-                    <option>Tiruchirappalli</option>
-                    <option>Tirunelveli</option>
-                    <option>Tirupathur</option>
-                    <option>Tiruppur</option>
-                    <option>Tiruvallur</option>
-                    <option>Tiruvannamalai</option>
-                    <option>Tiruvarur</option>
-                    <option>Vellore</option>
-                    <option>Viluppuram</option>
-                    <option>Virudhunagar</option>
-                  </select>
+              <div class="mt-2">
+                <label for="address" class="form-label">Address</label>
+                <input
+                  id="address"
+                  class="form-control"
+                  type="text"
+                  placeholder="Address"
+                  maxlength="200"
+                  disabled
+                />
+                <div class="address_feedback invalid-feedback">
+                  Enter your address
                 </div>
               </div>
-
-              <div class="divspace divspace1">
-                <div class="label_container">
-                  <label> Pincode </label>
-                </div>
-                <div class="colon_container">:</div>
-                <div class="input_container">
-                  <input
-                    required
-                    type="text"
-                    id="pincode"
-                    pattern="^[123456789]\d{5}$"
-                    oninput="this.value = this.value.replace(/[^0-9]/g,'')"
-                    minlength="6"
-                    maxlength="6"
-                    readonly
-                  />
+              <div class="mt-2">
+                <label for="district" class="form-label">District</label>
+                <select class="form-select" id="district" disabled>
+                  <option value="select_district">Select District</option>
+                  <option value="Ariyalur">Ariyalur</option>
+                  <option value="Chengalpattu">Chengalpattu</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Coimbatore">Coimbatore</option>
+                  <option value="Cuddalore">Cuddalore</option>
+                  <option value="Dharmapuri">Dharmapuri</option>
+                  <option value="Dindigul">Dindigul</option>
+                  <option value="Erode">Erode</option>
+                  <option value="Kallakurichi">Kallakurichi</option>
+                  <option value="Kanchipuram">Kanchipuram</option>
+                  <option value="Kanniyakumari">Kanniyakumari</option>
+                  <option value="Karur">Karur</option>
+                  <option value="Krishnagiri">Krishnagiri</option>
+                  <option value="Madurai">Madurai</option>
+                  <option value="Mayiladuthurai">Mayiladuthurai</option>
+                  <option value="Nagapattinam">Nagapattinam</option>
+                  <option value="Namakkal">Namakkal</option>
+                  <option value="Nilgiris">Nilgiris</option>
+                  <option value="Perambalur">Perambalur</option>
+                  <option value="Puducherry">Puducherry</option>
+                  <option value="Pudukkottai">Pudukkottai</option>
+                  <option value="Ramanathapuram">Ramanathapuram</option>
+                  <option value="Ranipet">Ranipet</option>
+                  <option value="Salem">Salem</option>
+                  <option value="Sivaganga">Sivaganga</option>
+                  <option value="Tenkasi">Tenkasi</option>
+                  <option value="Thanjavur">Thanjavur</option>
+                  <option value="Theni">Theni</option>
+                  <option value="Thoothukudi">Thoothukudi</option>
+                  <option value="Tiruchirappalli">Tiruchirappalli</option>
+                  <option value="Tirunelveli">Tirunelveli</option>
+                  <option value="Tirupathur">Tirupathur</option>
+                  <option value="Tiruppur">Tiruppur</option>
+                  <option value="Tiruvallur">Tiruvallur</option>
+                  <option value="Tiruvannamalai">Tiruvannamalai</option>
+                  <option value="Tiruvarur">Tiruvarur</option>
+                  <option value="Vellore">Vellore</option>
+                  <option value="Viluppuram">Viluppuram</option>
+                  <option value="Virudhunagar">Virudhunagar</option>
+                </select>
+                <div class="pincode_feedback invalid-feedback">
+                  Select district
                 </div>
               </div>
-
-              <div class="button_container divspace">
-                <div class="divspace">
-                  <button class="edit_btn" type="submit" id="editButton">
-                    Edit
-                  </button>
-                </div>
-                <div class="divspace">
-                  <button type="button" id="save">Save</button>
+              <div class="mt-2">
+                <label for="pincode" class="form-label">Pincode</label>
+                <input
+                  id="pincode"
+                  class="form-control"
+                  type="number"
+                  placeholder="Pincode"
+                  oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                  maxlength="6"
+                  disabled
+                />
+                <div class="pincode_feedback invalid-feedback">
+                  Invalid pincode
                 </div>
               </div>
             </div>
-          </div>
-        </form>
+            <div class="d-flex justify-content-between px-5">
+              <button type="button" class="secondary_btn px-3" id="edit">
+                Edit
+              </button>
+              <button type="button" class="primary_btn px-3" id="save" disabled>
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </main>
 
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/header.js"></script>
     <script src="../assets/js/footer.js"></script>
+    <script src="../assets/js/confirmationBox.js"></script>
+    <script src="../assets/js/alert.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
@@ -269,101 +225,105 @@
     ></script>
 
     <script>
-      if (phone_id !== null) {
-        document.getElementById("phone").removeAttribute("disabled");
-        document.getElementById("phone").setAttribute("readonly", true);
-        document.getElementById("customer_portal").style.display = "block";
-      } else if (repId != null) {
-        document.getElementById("rep_portal").style.display = "block";
-      }
+      const editableElementsId = [
+        "name",
+        "address",
+        "district",
+        "pincode",
+        "save",
+      ];
+      const mapper = {
+        user: ["rep_menu", userDetails, "phone", phone_id],
+        rep: ["customer_menu", repDetail, "userId", repId],
+      };
+      let mappedKeys = null;
 
-      // function for enabling input
+      if (phone_id) mappedKeys = mapper.user;
+      else if (repId) mappedKeys = mapper.rep;
 
-      function enableInput(e) {
-        e.preventDefault();
-        if (confirm("Are you sure you want to edit the details")) {
-          document.getElementById("name").removeAttribute("readonly");
-          document.getElementById("phone").removeAttribute("readonly");
-          document.getElementById("address").removeAttribute("readonly");
-          document.getElementById("district").removeAttribute("readonly");
-          document.getElementById("pincode").removeAttribute("readonly");
-        }
-      }
+      document
+        .querySelectorAll("." + mappedKeys[0])
+        .forEach((e) => (e.style.display = "none"));
 
-      // function for updating details
+      const data = mappedKeys[1].find(
+        (e) => e[mappedKeys[2]] === mappedKeys[3]
+      );
 
-      function disableInput() {
-        if (repId === null) {
-          const person_data = userDetails.find((e) => e.phone === phone_id);
+      document.getElementById("name").value = data.name;
+      document.getElementById("phone").value = data.phone;
+      document.getElementById("address").value = data.address;
+      document.getElementById("district").value = data.district;
+      document.getElementById("pincode").value = data.pincode;
 
-          if (confirm("Are you sure you want to save the details")) {
-            person_data.name = document.getElementById("name").value;
-            person_data.address = document.getElementById("address").value;
-            person_data.district = document.getElementById("district").value;
-            person_data.pincode = document.getElementById("pincode").value;
+      document.getElementById("edit").addEventListener("click", enableInput);
+      document.getElementById("save").addEventListener("click", updateProfile);
 
-            localStorage.setItem("userData", JSON.stringify(userDetails));
-          }
-        } else if (phone_id === null) {
-          const repData = repDetail.find((e) => e.userId === repId);
-
-          if (confirm("Are you sure you want to save the details")) {
-            repData.name = document.getElementById("name").value;
-            repData.phone = document.getElementById("phone").value;
-            repData.address = document.getElementById("address").value;
-            repData.district = document.getElementById("district").value;
-            repData.pincode = document.getElementById("pincode").value;
-
-            localStorage.setItem("repData", JSON.stringify(repDetail));
-          }
-        }
-
-        window.location.reload();
-      }
-
-      if (repId === null) {
-        const person_data = userDetails.find((e) => e.phone === phone_id);
-
-        document.getElementById("name").value = person_data.name;
-        document.getElementById("phone").value = person_data.phone;
-        document.getElementById("address").value = person_data.address;
-        document.getElementById("district").value = person_data.district;
-        document.getElementById("pincode").value = person_data.pincode;
-
-        document
-          .getElementById("editButton")
-          .addEventListener("click", enableInput);
-
-        document.getElementById("save").addEventListener("click", disableInput);
-
-        // function for deleting account
-
-        function deleteaccount(e) {
-          if (confirm("Are you sure you want to delete the account?")) {
-            const removedata = userDetails.indexOf(person_data);
-            userDetails.splice(removedata, 1);
-            localStorage.setItem("userData", JSON.stringify(userDetails));
-            localStorage.removeItem("phone");
-            window.location.href = "../index.html";
-          }
-        }
-
+      if (phone_id) {
         const del = document.querySelector("#delete");
         del.addEventListener("click", deleteaccount);
-      } else if (phone_id === null) {
-        const repData = repDetail.find((e) => e.userId === repId);
+      }
 
-        document.getElementById("name").value = repData.name;
-        document.getElementById("phone").value = repData.phone;
-        document.getElementById("address").value = repData.address;
-        document.getElementById("district").value = repData.district;
-        document.getElementById("pincode").value = repData.pincode;
+      document.getElementById("logOut").addEventListener("click", logOut);
 
-        document
-          .getElementById("editButton")
-          .addEventListener("click", enableInput);
+      function enableInput() {
+        editableElementsId.forEach((id) =>
+          document.getElementById(id).removeAttribute("disabled")
+        );
+      }
 
-        document.getElementById("save").addEventListener("click", disableInput);
+      function disableInput() {
+        editableElementsId.forEach((id) =>
+          document.getElementById(id).setAttribute("disabled", true)
+        );
+      }
+
+      function updateProfile() {
+        let data = null;
+
+        if (phone_id) data = userDetails.find((e) => e.phone === phone_id);
+        else if (repId) data = repDetail.find((e) => e.userId === repId);
+
+        data.name = document.getElementById("name").value;
+        data.address = document.getElementById("address").value;
+        data.district = document.getElementById("district").value;
+        data.pincode = document.getElementById("pincode").value;
+
+        if (phone_id)
+          localStorage.setItem("userData", JSON.stringify(userDetails));
+        else if (repId)
+          localStorage.setItem("repData", JSON.stringify(repDetail));
+
+        appendAlert("Profile updated successfully", "success");
+        disableInput();
+      }
+
+      function logOut() {
+        localStorage.removeItem(phone_id ? "phone" : "repId");
+        document.body.innerHTML = beforeLogin;
+        window.location.href = "../../index.html";
+      }
+
+      function deleteaccount() {
+        appendConfirmationBox({
+          title: "Account Deletion",
+          message: "Are you sure you want to delete the account?",
+          actionBtn: {
+            text: "Delete",
+            class: "danger_btn",
+          },
+          cancelBtn: {
+            text: "Cancel",
+            class: "cancel_btn",
+          },
+        });
+
+        document.getElementById("actionBtn").addEventListener("click", () => {
+          const removedata = userDetails.indexOf(data);
+          userDetails.splice(removedata, 1);
+          localStorage.setItem("userData", JSON.stringify(userDetails));
+          localStorage.removeItem("phone");
+          window.location.href = "../index.html";
+        });
       }
     </script>
   </body>

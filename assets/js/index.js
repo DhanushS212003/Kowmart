@@ -438,7 +438,7 @@ const userData = [
   {
     name: "Dhanush",
     phone: "1234567890",
-    password: "Aa!12345",
+    password: "12345",
     address: "No.22/7, Raghavan Colony, West Mambalam",
     district: "Chennai",
     pincode: "600033",
@@ -450,7 +450,7 @@ const repData = [
     userId: "Rep1",
     name: "Rep A",
     phone: "0987654321",
-    password: "Aa!12345",
+    password: "12345",
     address: "No.3/5, Anna Salai, Central",
     district: "Chennai",
     pincode: "600001",
