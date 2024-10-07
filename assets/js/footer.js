@@ -8,7 +8,7 @@ const footer = `<footer>
             </div>
 
             <div class = "right_section">
-                <h5 class = "text-body-tertiary"> CONNECT WITH US</h5>
+                <h5 style="color=lightgray"> CONNECT WITH US</h5>
                 <p class = "footer_com_info"> Email: <span class = "fw-bold"> info@kowmart.com </span></p>
                 <p class = "footer_com_info"> Ph.no:  <span class = "fw-bold"> 1234567890 </span></p>
                 <p class = "footer_com_info lh-base"> Address:  <span class = "fw-bold"> Chennai, India </span></p>

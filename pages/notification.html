@@ -26,11 +26,28 @@
     />
   </head>
 
+  <!-- TODO
+  1. Navigate
+  2. Unread -> read
+  3. Clear
+  4. Status icon change
+  5. Timestamp
+  -->
+
   <body>
     <main>
       <div class="container">
-        <h1 class="heading">Notifications <i class="fa-solid fa-bell"></i></h1>
-        <div class="notificationsContainer"></div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="d-flex align-items-center fw-bold" style="color: #1f6f3e">
+            <i class="fa-regular fa-bell me-2"></i>
+            Notifications
+          </h4>
+          <span id="badge">0</span>
+        </div>
+        <div
+          class="d-flex flex-column row-gap-3"
+          id="notificationsContainer"
+        ></div>
       </div>
     </main>
 
@@ -42,178 +59,137 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
 
     <script>
       function createNotification(message) {
-        // noteContainer
-        const noteContainer = document.createElement("div");
-        noteContainer.setAttribute("class", "noteContainer");
-        if (message.status === false || message.readStatus === false) {
-          noteContainer.style.borderLeft = "2px solid #00a651";
-        }
+        // Notification card
+        const notificationCard = document.createElement("div");
+        notificationCard.setAttribute("class", "notification_card");
+        if (message.status === false || message.readStatus === false)
+          notificationCard.style.borderLeft = "4px solid #22c55e";
 
-        // div anchor
-        const contentContainer_anchor = document.createElement("a");
-        contentContainer_anchor.setAttribute(
-          "class",
-          "contentContainer_anchor"
-        );
-        contentContainer_anchor.setAttribute(
-          "data-yid",
-          message.notificationId
-        );
-        noteContainer.append(contentContainer_anchor);
-
-        // contentContainer
+        // Content container
         const contentContainer = document.createElement("div");
-        contentContainer.setAttribute("class", "contentContainer");
-        contentContainer_anchor.append(contentContainer);
+        contentContainer.setAttribute("class", "content_container");
+        notificationCard.append(contentContainer);
 
-        // noteTitle
-        const noteTitle = document.createElement("h3");
-        noteTitle.setAttribute("class", "noteTitle");
-        noteTitle.innerText = message.messageTitle;
-        contentContainer.append(noteTitle);
+        // Notification from
+        const title = document.createElement("h6");
+        title.setAttribute("class", "notification_from");
+        title.innerText = message.messageTitle;
+        contentContainer.append(title);
 
-        // content
-        const content = document.createElement("p");
-        content.innerText = message.message + " .";
-        contentContainer.append(content);
+        // Notification message
+        const notificationMessage = document.createElement("p");
+        notificationMessage.setAttribute("class", "text-body-secondary mb-1");
+        notificationMessage.innerText = message.message + " .";
+        contentContainer.append(notificationMessage);
 
-        // iconContainer
-        const iconContainer = document.createElement("div");
-        iconContainer.setAttribute("class", "iconContainer");
-        noteContainer.append(iconContainer);
+        // Notification timestamp
+        const timestamp = document.createElement("span");
+        timestamp.setAttribute("class", "notification_timestamp");
+        timestamp.innerText = "1 hour ago";
+        contentContainer.append(timestamp);
 
-        // icon
-        const icon = document.createElement("i");
-        icon.setAttribute("class", "fa-solid fa-xmark");
-        icon.setAttribute("data-iid", message.notificationId);
-        iconContainer.append(icon);
+        // Right section
+        const rightSection = document.createElement("div");
+        rightSection.setAttribute(
+          "class",
+          "d-flex flex-column justify-content-between align-items-center"
+        );
+        notificationCard.append(rightSection);
+
+        // Dismiss button
+        const dismissButton = document.createElement("button");
+        dismissButton.setAttribute("class", "dismiss_button");
+        rightSection.append(dismissButton);
+
+        // Close icon
+        const closeIcon = document.createElement("i");
+        closeIcon.setAttribute("class", "fa-solid fa-xmark");
+        dismissButton.append(closeIcon);
+
+        // Status icon
+        const statusIcon = document.createElement("i");
+        statusIcon.setAttribute("class", "fa-regular fa-clock");
+        rightSection.append(statusIcon);
 
         document
-          .querySelector("div.notificationsContainer")
-          .prepend(noteContainer);
+          .getElementById("notificationsContainer")
+          .prepend(notificationCard);
       }
 
-      if (notificationList.length !== 0) {
-        if (phone_id === null) {
-          const repNotificationList = notificationList.filter(
-            (e) => e.receiver === repId
-          );
+      const mapper = {
+        user: [phone_id, "sellerCattleList"],
+        rep: [repId, "repCattleList"],
+      };
+      let mappedKeys = null;
 
-          if (repNotificationList.length === 0) {
-            noNote();
-          } else {
-            for (let i = 0; i < repNotificationList.length; i++) {
-              const message = repNotificationList[i];
-              createNotification(message);
-            }
+      if (phone_id) mappedKeys = mapper.user;
+      else if (repId) mappedKeys = mapper.rep;
 
-            const newNote = document.querySelectorAll(
-              ".contentContainer_anchor"
-            );
-            newNote.forEach(function (findId) {
-              findId.addEventListener("click", function () {
-                const id = this.dataset.yid;
-                const oldNote = notificationList.find(
-                  (e) => e.notificationId === id
-                );
-                oldNote.readStatus = true;
-                localStorage.setItem(
-                  "notificationList",
-                  JSON.stringify(notificationList)
-                );
-                window.location.href =
-                  "./cattle/cattleList.html?page=repCattleList";
-              });
-            });
+      const filteredList = notificationList.filter(
+        (e) => e.receiver === mappedKeys[0]
+      );
 
-            const removeNotifications = document.querySelectorAll(".fa-xmark");
-            removeNotifications.forEach(function (findId) {
-              findId.addEventListener("click", function () {
-                const { id } = this.dataset;
-                let notificationIndex = notificationList.indexOf(
-                  notificationList.find((e) => e.notificationId === id)
-                );
-                notificationList.splice(notificationIndex, 1);
-                localStorage.setItem(
-                  "notificationList",
-                  JSON.stringify(notificationList)
-                );
-                window.location.reload();
-              });
-            });
-          }
-        } else if (repId === null) {
-          const userNotificationList = notificationList.filter(
-            (e) => e.receiver === phone_id
-          );
+      filteredList.push({
+        notificationId: uuidv4(),
+        messageTitle: "From Rep 1, Representative of KowMart",
+        message: "Your Kankrej Cow has been Verified. We will reach you soon",
+      });
 
-          if (userNotificationList.length === 0) {
-            noNote();
-          } else {
-            for (let i = 0; i < userNotificationList.length; i++) {
-              const message = userNotificationList[i];
-              createNotification(message);
-            }
+      filteredList.push({
+        notificationId: uuidv4(),
+        messageTitle: "From Rep 1, Representative of KowMart",
+        message: "Your Surti Buffalo has been Verified. We will reach you soon",
+      });
 
-            const newNote = document.querySelectorAll(
-              ".contentContainer_anchor"
-            );
-            newNote.forEach(function (findId) {
-              findId.addEventListener("click", function () {
-                const id = this.dataset.yid;
-                const oldNote = notificationList.find(
-                  (e) => e.notificationId === id
-                );
-                oldNote.status = true;
-                localStorage.setItem(
-                  "notificationList",
-                  JSON.stringify(notificationList)
-                );
-                window.location.href =
-                  "./cattle/cattleList.html?page=sellerCattleList";
-              });
-            });
+      if (filteredList.length !== 0) {
+        document.getElementById("badge").innerText = filteredList.length;
 
-            const removeNotifications = document.querySelectorAll(".fa-xmark");
-            removeNotifications.forEach(function (findId) {
-              findId.addEventListener("click", function () {
-                const id = this.dataset.iid;
-                let notificationIndex = notificationList.indexOf(
-                  notificationList.find((e) => e.notificationId === id)
-                );
-                notificationList.splice(notificationIndex, 1);
-                localStorage.setItem(
-                  "notificationList",
-                  JSON.stringify(notificationList)
-                );
-                window.location.reload();
-              });
-            });
-          }
+        for (let i = 0; i < filteredList.length; i++) {
+          const message = filteredList[i];
+          createNotification(message);
         }
+
+        const newNote = document.querySelectorAll(".contentContainer_anchor");
+        newNote.forEach(function (findId) {
+          findId.addEventListener("click", function () {
+            const id = this.dataset.yid;
+            const oldNote = notificationList.find(
+              (e) => e.notificationId === id
+            );
+            oldNote.readStatus = true;
+            localStorage.setItem(
+              "notificationList",
+              JSON.stringify(notificationList)
+            );
+            window.location.href = `./cattle/cattleList.html?page=${mappedKeys[1]}`;
+          });
+        });
+
+        const removeNotifications = document.querySelectorAll(".fa-xmark");
+        removeNotifications.forEach(function (findId) {
+          findId.addEventListener("click", function () {
+            const { id } = this.dataset;
+            let notificationIndex = notificationList.indexOf(
+              notificationList.find((e) => e.notificationId === id)
+            );
+            notificationList.splice(notificationIndex, 1);
+            localStorage.setItem(
+              "notificationList",
+              JSON.stringify(notificationList)
+            );
+            window.location.reload();
+          });
+        });
       } else {
-        noNote();
-      }
+        const text = document.createElement("h6");
+        text.setAttribute("class", "text-secondary text-center");
+        text.innerText = "No new notifications";
 
-      function noNote() {
-        document.querySelector(".heading").style.display = "none";
-
-        container = document.createElement("div");
-        container.setAttribute("class", "noNoteContainer");
-
-        icon = document.createElement("i");
-        icon.setAttribute("class", "fa-solid fa-bell bell");
-        container.append(icon);
-
-        title = document.createElement("h2");
-        title.setAttribute("class", "title");
-        title.innerText = "No Notifications";
-        container.append(title);
-
-        document.querySelector("div.notificationsContainer").append(container);
+        document.getElementById("notificationsContainer").append(text);
       }
     </script>
   </body>
