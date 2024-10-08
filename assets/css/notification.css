@@ -16,6 +16,7 @@
 
 .content_container {
     width: 95%;
+    cursor: pointer;
 }
 
 .notification_from {

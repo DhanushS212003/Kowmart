@@ -27,11 +27,8 @@
   </head>
 
   <!-- TODO
-  1. Navigate
-  2. Unread -> read
-  3. Clear
-  4. Status icon change
-  5. Timestamp
+  1. Status icon change
+  2. Timestamp
   -->
 
   <body>
@@ -72,6 +69,7 @@
         // Content container
         const contentContainer = document.createElement("div");
         contentContainer.setAttribute("class", "content_container");
+        contentContainer.setAttribute("data-id", message.notificationId);
         notificationCard.append(contentContainer);
 
         // Notification from
@@ -103,6 +101,7 @@
         // Dismiss button
         const dismissButton = document.createElement("button");
         dismissButton.setAttribute("class", "dismiss_button");
+        dismissButton.setAttribute("data-id", message.notificationId);
         rightSection.append(dismissButton);
 
         // Close icon
@@ -133,18 +132,6 @@
         (e) => e.receiver === mappedKeys[0]
       );
 
-      filteredList.push({
-        notificationId: uuidv4(),
-        messageTitle: "From Rep 1, Representative of KowMart",
-        message: "Your Kankrej Cow has been Verified. We will reach you soon",
-      });
-
-      filteredList.push({
-        notificationId: uuidv4(),
-        messageTitle: "From Rep 1, Representative of KowMart",
-        message: "Your Surti Buffalo has been Verified. We will reach you soon",
-      });
-
       if (filteredList.length !== 0) {
         document.getElementById("badge").innerText = filteredList.length;
 
@@ -153,26 +140,26 @@
           createNotification(message);
         }
 
-        const newNote = document.querySelectorAll(".contentContainer_anchor");
-        newNote.forEach(function (findId) {
-          findId.addEventListener("click", function () {
-            const id = this.dataset.yid;
-            const oldNote = notificationList.find(
+        document.querySelectorAll(".content_container").forEach((container) => {
+          container.addEventListener("click", function () {
+            const id = this.dataset.id;
+            console.log(id);
+            const notification = notificationList.find(
               (e) => e.notificationId === id
             );
-            oldNote.readStatus = true;
+            notification.readStatus = true;
             localStorage.setItem(
               "notificationList",
               JSON.stringify(notificationList)
             );
-            window.location.href = `./cattle/cattleList.html?page=${mappedKeys[1]}`;
+            location.replace(`cattle/cattleList.html?page=${mappedKeys[1]}`);
           });
         });
 
-        const removeNotifications = document.querySelectorAll(".fa-xmark");
-        removeNotifications.forEach(function (findId) {
-          findId.addEventListener("click", function () {
-            const { id } = this.dataset;
+        document.querySelectorAll("button.dismiss_button").forEach((btn) => {
+          btn.addEventListener("click", (event) => {
+            const { id } = event.currentTarget.dataset;
+            console.log(event.currentTarget.dataset);
             let notificationIndex = notificationList.indexOf(
               notificationList.find((e) => e.notificationId === id)
             );
