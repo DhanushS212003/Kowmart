@@ -26,11 +26,6 @@
     />
   </head>
 
-  <!-- TODO
-  1. Status icon change
-  2. Timestamp
-  -->
-
   <body>
     <main>
       <div class="container">
@@ -87,15 +82,18 @@
         // Notification timestamp
         const timestamp = document.createElement("span");
         timestamp.setAttribute("class", "notification_timestamp");
-        timestamp.innerText = "1 hour ago";
+        const date = new Date(message.createdAt);
+        timestamp.innerText =
+          date.toLocaleString("default", { month: "short" }) +
+          " " +
+          date.getDate() +
+          ", " +
+          date.getFullYear();
         contentContainer.append(timestamp);
 
         // Right section
         const rightSection = document.createElement("div");
-        rightSection.setAttribute(
-          "class",
-          "d-flex flex-column justify-content-between align-items-center"
-        );
+        rightSection.setAttribute("class", "d-flex align-items-center");
         notificationCard.append(rightSection);
 
         // Dismiss button
@@ -108,11 +106,6 @@
         const closeIcon = document.createElement("i");
         closeIcon.setAttribute("class", "fa-solid fa-xmark");
         dismissButton.append(closeIcon);
-
-        // Status icon
-        const statusIcon = document.createElement("i");
-        statusIcon.setAttribute("class", "fa-regular fa-clock");
-        rightSection.append(statusIcon);
 
         document
           .getElementById("notificationsContainer")
