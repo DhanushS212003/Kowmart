@@ -52,7 +52,7 @@ const afterLogin = `<header>
               <div class = "d-flex flex-column row-gap-3 ps-4 py-3">
                 <a href = "${root}/index.html"> Cattles </a>
                 <a href = "${root}/pages/about.html"> About Us </a>
-                <a href = "${root}/pages/cattle/sell_details1.html"><button class = "primary_btn sell_btn"> SELL </button> </a>
+                <a href = "${root}/pages/cattle/sellDetails1.html"><button class = "primary_btn sell_btn"> SELL </button> </a>
                 <a href = "${root}/pages/profile.html"> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
                 <a href = "${root}/pages/notification.html" class = "notification_nav"> Notification </a>
               </div>
@@ -70,7 +70,7 @@ const afterLogin = `<header>
           </div>
 
           <div class = "d-flex align-items-end column-gap-3 nav_links_container">
-              <button class = "primary_btn sell_btn"> SELL </button>
+              <a href = ${root}/pages/cattle/sellDetails1.html> <button class = "primary_btn sell_btn"> SELL </button> </a>
               <a href = ${root}/pages/profile.html> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
           </div> 
         </div>

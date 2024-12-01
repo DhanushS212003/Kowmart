@@ -8,10 +8,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     />
-    <title>Sell details 2</title>
+    <title>Sell Details 2</title>
 
     <link rel="stylesheet" href="../../assets/css/style.css" />
-    <link rel="stylesheet" href="../../assets/css/cattles/selldetails1&2.css" />
+    <link rel="stylesheet" href="../../assets/css/sellDetails.css" />
     <link rel="stylesheet" href="../../assets/css/header_footer.css" />
     <link
       rel="icon"
@@ -27,30 +27,19 @@
   </head>
 
   <body>
-    <main>
-      <!-- back button section -->
-
-      <div class="back_btn_container">
-        <div>
-          <button onclick="window.history.back()">BACK</button>
-        </div>
-        <h1 class="title1">List Your LiveStock Here</h1>
+    <main class="py-4">
+      <div class="d-flex flex-column align-items-center">
+        <p class="title1">List Your LiveStock Here</p>
+        <p class="title2">Buy and Sell your Cattles easier!</p>
+        <img
+          class="choose"
+          src="../../assets/images/choose_breed_active.png"
+          alt="choose"
+        />
+        <p class="title3">Choose Breed</p>
       </div>
 
-      <!-- title section -->
-
-      <h3 class="title2">Buy and Sell your Cattles easier!</h3>
-      <img
-        class="choose"
-        src="../../assets/images/choose_breed_active.png"
-        alt="choose"
-      />
-      <h1 class="title3">Choose Breed</h1>
-      <hr />
-
-      <!-- categories section -->
-
-      <div class="categories_container" id="breed_container"></div>
+      <div class="list_container"></div>
     </main>
 
     <script src="../../assets/js/main.js"></script>
@@ -63,9 +52,7 @@
     ></script>
 
     <script>
-      // breeds json
-
-      const breed_list = [
+      const breeds_list = [
         {
           image: {
             source: "../../assets/images/cattles/c1.jpg",
@@ -351,47 +338,38 @@
       const urlParams = new URLSearchParams(window.location.search);
       const cattle = urlParams.get("cattle");
 
-      const category_filter = breed_list.filter((e) => e.category == cattle);
+      const filtered_breed = breeds_list.filter(
+        (e) => e.category.toLowerCase() == cattle
+      );
 
-      for (i = 0; i < category_filter.length; i++) {
+      for (i = 0; i < filtered_breed.length; i++) {
         // container
-        container = document.createElement("div");
-        container.setAttribute("class", "category_container");
-        container.setAttribute("id", category_filter[i].name);
+        const container = document.createElement("div");
+        container.setAttribute("class", "category");
+        container.setAttribute("id", filtered_breed[i].name.toLowerCase());
 
-        // image container
-        img_container = document.createElement("div");
-        img_container.setAttribute("class", "catimg_container");
-        container.append(img_container);
+        // image
+        const img = document.createElement("img");
+        img.setAttribute("class", "category_img");
+        img.setAttribute("src", filtered_breed[i].image.source);
+        img.setAttribute("alt", filtered_breed[i].name);
+        container.append(img);
 
-        // cattle image
-        image = document.createElement("img");
-        image.setAttribute("src", category_filter[i].image.source);
-        image.setAttribute("alt", category_filter[i].image.cattle);
-        image.setAttribute("class", "cat_img");
-        img_container.append(image);
+        // name
+        const name = document.createElement("p");
+        name.setAttribute("class", "text-center mt-2");
+        name.innerText = filtered_breed[i].name;
+        container.append(name);
 
-        // cattle name
-        namee = document.createElement("p");
-        namee.innerText = category_filter[i].name;
-        namee.setAttribute("class", "category_title");
-        container.append(namee);
-
-        document.querySelector("div.categories_container").append(container);
+        document.querySelector("div.list_container").append(container);
       }
 
-      // Passing breed value to the details page
-
-      const parentDiv = document.querySelector(".categories_container");
-      const childDiv = parentDiv.children;
-
-      for (let i = 0; i < childDiv.length; i++) {
-        const element = childDiv[i];
+      document.querySelectorAll(".category").forEach((element) =>
         element.addEventListener("click", function (event) {
           const breed = event.currentTarget.getAttribute("id");
           window.location.href = `./sell_details3.html?cattle=${cattle}&breed=${breed}`;
-        });
-      }
+        })
+      );
     </script>
   </body>
 </html>
