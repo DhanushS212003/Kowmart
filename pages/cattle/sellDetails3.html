@@ -11,6 +11,7 @@
     <title>Sell Details 3</title>
 
     <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/sellDetails1&2.css" />
     <link rel="stylesheet" href="../../assets/css/sellDetails3.css" />
     <link rel="stylesheet" href="../../assets/css/headerFooter.css" />
     <link
@@ -27,142 +28,109 @@
   </head>
 
   <body>
-    <main>
-      <!-- Pop up section -->
-
-      <!-- <div class="container">
-            <div class="popUpContainer">
-                <p> Uploaded Successfully </p>
-            </div>
-        </div> -->
-
-      <!-- back button section -->
-
-      <div class="back_btn_container">
-        <div>
-          <button onclick="window.history.back()">BACK</button>
-        </div>
-        <h1 class="title1">List Your LiveStock Here</h1>
+    <main class="py-4">
+      <div class="d-flex flex-column align-items-center">
+        <p class="title1">List Your LiveStock Here</p>
+        <p class="title2">Buy and Sell your Cattles easier!</p>
+        <img
+          class="choose"
+          src="../../assets/images/choose_animals_active.png"
+          alt="choose"
+        />
+        <p class="title3">Animal Details</p>
       </div>
 
-      <!-- title section -->
-
-      <h3 class="title2">Buy and Sell your Cattles easier!</h3>
-      <img
-        class="choose"
-        src="../../assets/images/choose_animals_active.png"
-        alt="choose"
-      />
-      <h1 class="title3">Animal Details</h1>
-      <hr />
-
-      <!-- Details section -->
-
-      <form>
-        <div class="details_section">
-          <div>
-            <label> Age (in Years) </label>
-            <br />
+      <div class="form-container">
+        <form novalidate>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <label for="age"> Age (in Years) </label>
+              <input
+                id="age"
+                class="form-control"
+                type="text"
+                oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                maxlength="2"
+              />
+              <div class="age_feedback invalid-feedback">Required</div>
+            </div>
+            <div>
+              <label for="gender">Gender</label>
+              <select class="form-select" id="gender">
+                <option value="select_district">Select Gender</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+              </select>
+              <div class="gender_feedback invalid-feedback">Required</div>
+            </div>
+            <div>
+              <label for="weight"> Weight (kg) </label>
+              <input
+                id="weight"
+                class="form-control"
+                type="text"
+                oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                maxlength="5"
+              />
+              <div class="weight_feedback invalid-feedback">Required</div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <div>
+              <label for="price"> Price (Rs.) </label>
+              <input
+                id="price"
+                class="form-control"
+                type="text"
+                oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                maxlength="7"
+              />
+              <div class="price_feedback invalid-feedback">Required</div>
+            </div>
+            <div class="female_cattles_section">
+              <label for="milk"> Milk per day (litres) </label>
+              <input
+                id="milk"
+                class="form-control"
+                type="text"
+                oninput="this.value = this.value.replace(/[^0-9]/g,'')"
+                maxlength="2"
+              />
+              <div class="milk_feedback invalid-feedback">Required</div>
+            </div>
+            <div class="female_cattles_section">
+              <label for="lactation"> Lactation </label>
+              <input
+                id="lactation"
+                class="form-control"
+                type="text"
+                oninput="this.value = this.value.replace(/[^1-9]/g,'')"
+                maxlength="1"
+              />
+            </div>
+          </div>
+          <div class="mt-2">
+            <label for="description"> Description </label>
+            <textarea id="description" class="form-control"></textarea>
+          </div>
+          <div class="mt-2">
+            <label for="images">Upload Photos</label>
             <input
-              required
-              type="text"
-              id="age"
-              oninput="this.value = this.value.replace(/[^1-9]/g,'')"
-              maxlength="1"
+              id="images"
+              class="file-input"
+              type="file"
+              accept="image/*"
+              multiple
             />
+            <div id="imagePreview" class="d-flex flex-wrap gap-2 mt-2"></div>
           </div>
-
-          <div>
-            <label> Gender </label>
-            <br />
-            <select required id="gender">
-              <option>Female</option>
-              <option>Male</option>
-            </select>
+          <div class="d-flex justify-content-center mt-3">
+            <button id="submit_btn" class="primary_btn" type="button">
+              SUBMIT
+            </button>
           </div>
-
-          <div class="weight">
-            <label> Weight (kg) </label>
-            <br />
-            <input
-              required
-              type="text"
-              id="weight"
-              pattern="^[1-9]\d*$"
-              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
-              maxlength="4"
-              max="2000"
-              title="Do not start with 0"
-            />
-          </div>
-        </div>
-
-        <div class="details_section">
-          <div>
-            <label> Price (Rs.) </label>
-            <br />
-            <input
-              required
-              type="text"
-              id="price"
-              pattern="^[1-9]\d*$"
-              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
-              maxlength="7"
-              title="Do not start with 0"
-            />
-          </div>
-          <div class="milk_container">
-            <label> Milk per day (litres) </label>
-            <br />
-            <input
-              type="text"
-              id="milk"
-              pattern="^[1-9]\d*$"
-              oninput="this.value = this.value.replace(/[^0-9]/g,'')"
-              maxlength="2"
-              title="Do not start with 0"
-            />
-          </div>
-          <div class="weight lact_container">
-            <label> Lactation </label>
-            <br />
-            <input
-              type="text"
-              id="lactation"
-              oninput="this.value = this.value.replace(/[^1-9]/g,'')"
-              maxlength="1"
-            />
-          </div>
-        </div>
-
-        <div class="description_section">
-          <label> Description </label>
-          <br />
-          <textarea id="description"></textarea>
-        </div>
-
-        <div class="details_section">
-          <div>
-            <label> Upload Photo: </label>
-            <br />
-            <input required type="url" id="image" />
-          </div>
-          <div>
-            <label> Upload Photo: </label>
-            <br />
-            <input type="url" id="image1" />
-          </div>
-          <div class="weight">
-            <label> Upload Video: </label>
-            <br />
-            <input type="url" multiple />
-          </div>
-        </div>
-
-        <div class="submit_btn_container">
-          <button class="submit_btn" type="button">SUBMIT</button>
-        </div>
-      </form>
+        </form>
+      </div>
     </main>
 
     <script src="../../assets/js/main.js"></script>
@@ -173,121 +141,176 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
 
     <script>
-      const user_address = userDetails.find(
-        (e) => e.phone == phone_id
-      ).address;
-      const user_district = userDetails.find(
-        (e) => e.phone == phone_id
-      ).district;
-      const user_pincode = userDetails.find(
-        (e) => e.phone == phone_id
-      ).pincode;
+      document.getElementById("images").addEventListener("change", (event) => {
+        const preview = document.getElementById("imagePreview");
+        const files = event.target.files;
 
-      document.getElementById("gender").addEventListener("change", function () {
-        if (document.getElementById("gender").value === "Male") {
-          document.querySelector(".milk_container").style.display = "none";
-          document.querySelector(".lact_container").style.display = "none";
-        } else {
-          document.querySelector(".milk_container").style.display = "block";
-          document.querySelector(".lact_container").style.display = "block";
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+
+          if (!validateFile(file)) {
+            continue;
+          }
+
+          const reader = new FileReader();
+
+          reader.onload = (e) => {
+            const imgContainer = document.createElement("div");
+            imgContainer.className = "image-preview-item";
+
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            img.alt = file.name;
+            imgContainer.appendChild(img);
+
+            const closeIcon = document.createElement("span");
+            closeIcon.className = "close-icon";
+            closeIcon.innerHTML = "&times;";
+            closeIcon.onclick = () => {
+              preview.removeChild(imgContainer);
+              updateFileInput();
+            };
+            imgContainer.appendChild(closeIcon);
+
+            preview.appendChild(imgContainer);
+          };
+
+          reader.readAsDataURL(file);
         }
       });
 
-      document.querySelector(".submit_btn").addEventListener("click", (e) => {
-        const urlParams = new URLSearchParams(window.location.search);
+      function validateFile(file) {
+        const allowedFormats = ["image/jpeg", "image/png"];
+        const maxSize = 2 * 1024 * 1024;
 
-        const cattle = urlParams.get("cattle");
-        breed = urlParams.get("breed");
-        age = document.getElementById("age").value;
-        gender = document.getElementById("gender").value;
-        weight = document.getElementById("weight").value;
-        milk = document.getElementById("milk").value;
-        price = document.getElementById("price").value;
-        lactation = document.getElementById("lactation").value;
-        description = document.getElementById("description").value;
-        image = document.getElementById("image").value;
-        image1 = document.getElementById("image1").value;
-        cattleUniqueId = uuidv4();
-        userId = phone_id;
-        timestamp = new Date();
-        date = timestamp.toLocaleDateString();
-        status = "";
+        if (!allowedFormats.includes(file.type)) return false;
+        if (file.size > maxSize) return false;
 
-        notificationId = uuidv4();
+        return true;
+      }
 
-        messageTitle = "New " + breed + " " + cattle + " has been uploaded";
+      function updateFileInput() {
+        const fileInput = document.getElementById("images");
+        const preview = document.getElementById("imagePreview");
+        const remainingImages = preview.getElementsByTagName("img");
 
-        const customerData = userDetails.find((e) => e.phone === userId);
-
-        message =
-          "It is in " +
-          customerData.address +
-          ", " +
-          customerData.district +
-          ", " +
-          customerData.pincode;
-        readStatus = false;
-
-        const stock = cattle_detail
-          .filter((e) => e.breed == breed)
-          .length.toString()
-          .padStart(3, "0");
-        const stock_no = parseInt(stock) + 1;
-
-        id = cattle[0] + breed[0] + stock_no;
-
-        if (user_address != "" && user_pincode != "" && user_district != "") {
-          const repUserId = repDetail.find(
-            (e) => e.district === customerData.district
-          ).userId;
-          const receiver = repUserId;
-
-          cattle_detail.push({
-            cattle,
-            breed,
-            age,
-            gender,
-            weight,
-            milk,
-            price,
-            lactation,
-            description,
-            image,
-            image1,
-            id,
-            cattleUniqueId,
-            userId,
-            date,
-            status,
+        if (remainingImages.length === 0) fileInput.value = "";
+        else {
+          const dataTransfer = new DataTransfer();
+          Array.from(fileInput.files).forEach((file) => {
+            if (
+              Array.from(remainingImages).some((img) => img.alt === file.name)
+            )
+              dataTransfer.items.add(file);
           });
-          repCattleDetails.push({ cattleUniqueId, repUserId, userId });
-          notificationList.push({
-            notificationId,
-            messageTitle,
-            message,
-            receiver,
-            readStatus,
-          });
-
-          localStorage.setItem("cattleDetails", JSON.stringify(cattle_detail));
-          localStorage.setItem(
-            "repCattleList",
-            JSON.stringify(repCattleDetails)
-          );
-          localStorage.setItem(
-            "notificationList",
-            JSON.stringify(notificationList)
-          );
-          location.href = "./cattleList.html?page=sellerCattleList";
-          document.querySelector("form").reset();
-        } else {
-          alert("Please fill the address, state and pincode in your profile");
+          fileInput.files = dataTransfer.files;
         }
+      }
+
+      document.getElementById("gender").addEventListener("change", () => {
+        if (document.getElementById("gender").value === "male")
+          document
+            .querySelectorAll(".female_cattles_section")
+            .forEach((e) => (e.style.display = "none"));
+        else
+          document
+            .querySelectorAll(".female_cattles_section")
+            .forEach((e) => (e.style.display = "block"));
       });
+
+      document
+        .getElementById("submit_btn")
+        .addEventListener("click", (event) => {
+          return;
+
+          const urlParams = new URLSearchParams(window.location.search);
+
+          const cattle = urlParams.get("cattle");
+          const breed = urlParams.get("breed");
+          const age = document.getElementById("age").value;
+          const gender = document.getElementById("gender").value;
+          const weight = document.getElementById("weight").value;
+          const milk = document.getElementById("milk").value;
+          const price = document.getElementById("price").value;
+          const lactation = document.getElementById("lactation").value;
+          const description = document.getElementById("description").value;
+          const images = document.getElementById("images").value;
+          const cattleUniqueId = uuidv4();
+          const userId = PHONE;
+          const timestamp = new Date();
+          const date = timestamp.toLocaleDateString();
+          const status = "";
+          const notificationId = uuidv4();
+          const messageTitle = `New ${breed} ${cattle} has been uploaded`;
+          const customerData = USER_LIST.find((e) => e.phone === userId);
+          const userDetail = USER_LIST.find((e) => e.phone == PHONE);
+
+          message =
+            "It is in " +
+            customerData.address +
+            ", " +
+            customerData.district +
+            ", " +
+            customerData.pincode;
+          readStatus = false;
+
+          const stock = CATTLE_LIST.filter((e) => e.breed == breed)
+            .length.toString()
+            .padStart(3, "0");
+          const stock_no = parseInt(stock) + 1;
+
+          id = cattle[0] + breed[0] + stock_no;
+
+          if (user_address != "" && user_pincode != "" && user_district != "") {
+            const repUserId = REP_LIST.find(
+              (e) => e.district === customerData.district
+            ).userId;
+            const receiver = repUserId;
+
+            CATTLE_LIST.push({
+              cattle,
+              breed,
+              age,
+              gender,
+              weight,
+              milk,
+              price,
+              lactation,
+              description,
+              image,
+              image1,
+              id,
+              cattleUniqueId,
+              userId,
+              date,
+              status,
+            });
+            REP_CATTLE_LIST.push({ cattleUniqueId, repUserId, userId });
+            NOTIFICATION_LIST.push({
+              notificationId,
+              messageTitle,
+              message,
+              receiver,
+              readStatus,
+            });
+
+            localStorage.setItem("cattleDetails", JSON.stringify(CATTLE_LIST));
+            localStorage.setItem(
+              "repCattleList",
+              JSON.stringify(REP_CATTLE_LIST)
+            );
+            localStorage.setItem(
+              "notificationList",
+              JSON.stringify(NOTIFICATION_LIST)
+            );
+            location.href = "./cattleList.html?page=sellerCattleList";
+            document.querySelector("form").reset();
+          } else
+            alert("Please fill the address, state and pincode in your profile");
+        });
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
   </body>
 </html>

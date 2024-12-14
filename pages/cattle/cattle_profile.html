@@ -158,13 +158,12 @@
       // Edit page
 
       const uid = JSON.parse(localStorage.getItem("cattle_unique_Id"));
-      const cattle = JSON.parse(localStorage.getItem("cattleDetails"));
 
       function find_data(e) {
         return e.cattleUniqueId == uid;
       }
 
-      cattleData = cattle.find(find_data);
+      cattleData = CATTLE_LIST.find(find_data);
 
       document.getElementById("age").value = cattleData.age;
       document.getElementById("gender").value = cattleData.gender;
@@ -186,12 +185,11 @@
           cattleData.milk = document.getElementById("milk").value;
           cattleData.price = document.getElementById("price").value;
           cattleData.lactation = document.getElementById("lactation").value;
-          cattleData.description =
-            document.getElementById("description").value;
+          cattleData.description = document.getElementById("description").value;
           cattleData.image = document.getElementById("image").value;
           cattleData.image1 = document.getElementById("image1").value;
 
-          localStorage.setItem("cattleDetails", JSON.stringify(cattle));
+          localStorage.setItem("cattleDetails", JSON.stringify(CATTLE_LIST));
           window.location.href = "./cattleList.html?page=verifiedCattles";
         }
       }
@@ -205,14 +203,14 @@
       function deleteDetails() {
         if (confirm("Are you sure you want to remove this cattle?")) {
           const uid = JSON.parse(localStorage.getItem("cattle_unique_Id"));
-          const cattleIndex = verifiedCattleLists.indexOf(
-            verifiedCattleLists.find((e) => e.cattleUniqueId === uid)
+          const cattleIndex = VERIFIED_CATTLE_LIST.indexOf(
+            VERIFIED_CATTLE_LIST.find((e) => e.cattleUniqueId === uid)
           );
 
-          verifiedCattleLists.splice(cattleIndex, 1);
+          VERIFIED_CATTLE_LIST.splice(cattleIndex, 1);
           localStorage.setItem(
             "verifiedCattles",
-            JSON.stringify(verifiedCattleLists)
+            JSON.stringify(VERIFIED_CATTLE_LIST)
           );
           document.querySelector("form").reset();
           window.location.href = "./cattleList.html?page=verifiedCattles";

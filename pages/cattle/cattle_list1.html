@@ -326,7 +326,7 @@
       category_name.innerText = `All ${cattlePage}s`;
       document.querySelector("div.title_container1").append(category_name);
 
-      if (verifiedCattleLists.length !== 0) {
+      if (VERIFIED_CATTLE_LIST.length !== 0) {
         const cat_breed_list = breed_list.filter(
           (e) => e.category == cattlePage
         );
@@ -381,11 +381,12 @@
 
         let cattleDetails = [];
 
-        for (let i = 0; i < verifiedCattleLists.length; i++) {
-          let cattleData = cattle_detail.find(
-            (e) => e.cattleUniqueId === verifiedCattleLists[i]["cattleUniqueId"]
+        for (let i = 0; i < VERIFIED_CATTLE_LIST.length; i++) {
+          let cattleData = CATTLE_LIST.find(
+            (e) =>
+              e.cattleUniqueId === VERIFIED_CATTLE_LIST[i]["cattleUniqueId"]
           );
-          cattleData.repId = verifiedCattleLists[i]["repUserId"];
+          cattleData.repId = VERIFIED_CATTLE_LIST[i]["repUserId"];
           cattleDetails.push(cattleData);
         }
 
@@ -416,7 +417,7 @@
           const selectedRep = [];
 
           for (let i = 0; i < selectedDistricts.length; i++) {
-            const filterRep = repDetail.find(
+            const filterRep = REP_LIST.find(
               (e) => e.district === selectedDistricts[i]
             );
             if (filterRep) {
@@ -435,13 +436,10 @@
             filteredCattles = filteredCattles.concat(breedFilteredCattles);
           } else if (selectedDistricts.length > 0) {
             for (let i = 0; i < categoryCattleDetails.length; i++) {
-              if (selectedRep.includes(categoryCattleDetails[i].repId)) {
+              if (selectedRep.includes(categoryCattleDetails[i].repId))
                 filteredCattles.push(categoryCattleDetails[i]);
-              }
             }
-          } else {
-            filteredCattles = categoryCattleDetails;
-          }
+          } else filteredCattles = categoryCattleDetails;
 
           displayFilteredCattles(filteredCattles);
         }
@@ -490,7 +488,7 @@
         const magnifying_glass = document.getElementById("mag_search");
         magnifying_glass.addEventListener("click", function () {
           const pincode_value = document.getElementById("pincode_input").value;
-          const zoneRep = repDetail.filter((e) => e.pincode == pincode_value);
+          const zoneRep = REP_LIST.filter((e) => e.pincode == pincode_value);
 
           const crossButton = document.getElementById("pincode_input");
           crossButton.addEventListener("search", () => {
@@ -508,10 +506,10 @@
           if (pincode_value.length === 6) {
             document.querySelector("div.cattles_container").innerHTML = "";
 
-            const zoneVerifiedCattles = verifiedCattleLists.filter((e) =>
+            const zoneVerifiedCattles = VERIFIED_CATTLE_LIST.filter((e) =>
               zoneRep.some((a) => a.userId === e.repUserId)
             );
-            const zoneAllCattles = cattle_detail.filter((e) =>
+            const zoneAllCattles = CATTLE_LIST.filter((e) =>
               zoneVerifiedCattles.some(
                 (a) => a.cattleUniqueId === e.cattleUniqueId
               )

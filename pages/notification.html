@@ -113,15 +113,15 @@
       }
 
       const mapper = {
-        user: [phone_id, "sellerCattleList"],
-        rep: [repId, "repCattleList"],
+        user: [PHONE, "sellerCattleList"],
+        rep: [REP_ID, "repCattleList"],
       };
       let mappedKeys = null;
 
-      if (phone_id) mappedKeys = mapper.user;
-      else if (repId) mappedKeys = mapper.rep;
+      if (PHONE) mappedKeys = mapper.user;
+      else if (REP_ID) mappedKeys = mapper.rep;
 
-      const filteredList = notificationList.filter(
+      const filteredList = NOTIFICATION_LIST.filter(
         (e) => e.receiver === mappedKeys[0]
       );
 
@@ -136,14 +136,13 @@
         document.querySelectorAll(".content_container").forEach((container) => {
           container.addEventListener("click", function () {
             const id = this.dataset.id;
-            console.log(id);
-            const notification = notificationList.find(
+            const notification = NOTIFICATION_LIST.find(
               (e) => e.notificationId === id
             );
             notification.readStatus = true;
             localStorage.setItem(
               "notificationList",
-              JSON.stringify(notificationList)
+              JSON.stringify(NOTIFICATION_LIST)
             );
             location.replace(`cattle/cattleList.html?page=${mappedKeys[1]}`);
           });
@@ -152,14 +151,13 @@
         document.querySelectorAll("button.dismiss_button").forEach((btn) => {
           btn.addEventListener("click", (event) => {
             const { id } = event.currentTarget.dataset;
-            console.log(event.currentTarget.dataset);
-            let notificationIndex = notificationList.indexOf(
-              notificationList.find((e) => e.notificationId === id)
+            let notificationIndex = NOTIFICATION_LIST.indexOf(
+              NOTIFICATION_LIST.find((e) => e.notificationId === id)
             );
-            notificationList.splice(notificationIndex, 1);
+            NOTIFICATION_LIST.splice(notificationIndex, 1);
             localStorage.setItem(
               "notificationList",
-              JSON.stringify(notificationList)
+              JSON.stringify(NOTIFICATION_LIST)
             );
             window.location.reload();
           });

@@ -181,14 +181,14 @@
 
       // Most breed section
 
-      // if (verifiedCattleLists.length !== 0) {
+      // if (VERIFIED_CATTLE_LIST.length !== 0) {
       //   let cattleDetails = [];
 
-      //   for (let i = 0; i < verifiedCattleLists.length; i++) {
-      //     let cattleData = cattle_detail.find(
-      //       (e) => e.cattleUniqueId === verifiedCattleLists[i]["cattleUniqueId"]
+      //   for (let i = 0; i < VERIFIED_CATTLE_LIST.length; i++) {
+      //     let cattleData = CATTLE_LIST.find(
+      //       (e) => e.cattleUniqueId === VERIFIED_CATTLE_LIST[i]["cattleUniqueId"]
       //     );
-      //     cattleData.repId = verifiedCattleLists[i]["repUserId"];
+      //     cattleData.repId = VERIFIED_CATTLE_LIST[i]["repUserId"];
       //     cattleDetails.push(cattleData);
       //   }
 
@@ -321,13 +321,13 @@
           return false;
         }
 
-        const searchCattle = cattle_detail.find((e) => e.id === search_box);
+        const searchCattle = CATTLE_LIST.find((e) => e.id === search_box);
         if (searchCattle === undefined) {
           alert("THERE is no cattle with this ID");
           return false;
         }
 
-        const checkVerify = verifiedCattleLists.find(
+        const checkVerify = VERIFIED_CATTLE_LIST.find(
           (e) => e.cattleUniqueId === searchCattle.cattleUniqueId
         );
         if (checkVerify === undefined) {

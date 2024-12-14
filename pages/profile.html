@@ -233,13 +233,13 @@
         "save",
       ];
       const mapper = {
-        user: ["rep_menu", userDetails, "phone", phone_id],
-        rep: ["customer_menu", repDetail, "userId", repId],
+        user: ["rep_menu", USER_LIST, "phone", PHONE],
+        rep: ["customer_menu", REP_LIST, "userId", REP_ID],
       };
       let mappedKeys = null;
 
-      if (phone_id) mappedKeys = mapper.user;
-      else if (repId) mappedKeys = mapper.rep;
+      if (PHONE) mappedKeys = mapper.user;
+      else if (REP_ID) mappedKeys = mapper.rep;
 
       document
         .querySelectorAll("." + mappedKeys[0])
@@ -258,7 +258,7 @@
       document.getElementById("edit").addEventListener("click", enableInput);
       document.getElementById("save").addEventListener("click", updateProfile);
 
-      if (phone_id) {
+      if (PHONE) {
         const del = document.querySelector("#delete");
         del.addEventListener("click", deleteaccount);
       }
@@ -280,25 +280,24 @@
       function updateProfile() {
         let data = null;
 
-        if (phone_id) data = userDetails.find((e) => e.phone === phone_id);
-        else if (repId) data = repDetail.find((e) => e.userId === repId);
+        if (PHONE) data = USER_LIST.find((e) => e.phone === PHONE);
+        else if (REP_ID) data = REP_LIST.find((e) => e.userId === REP_ID);
 
         data.name = document.getElementById("name").value;
         data.address = document.getElementById("address").value;
         data.district = document.getElementById("district").value;
         data.pincode = document.getElementById("pincode").value;
 
-        if (phone_id)
-          localStorage.setItem("userData", JSON.stringify(userDetails));
-        else if (repId)
-          localStorage.setItem("repData", JSON.stringify(repDetail));
+        if (PHONE) localStorage.setItem("userData", JSON.stringify(USER_LIST));
+        else if (REP_ID)
+          localStorage.setItem("repData", JSON.stringify(REP_LIST));
 
         appendAlert("Profile updated successfully", "success");
         disableInput();
       }
 
       function logOut() {
-        localStorage.removeItem(phone_id ? "phone" : "repId");
+        localStorage.removeItem(PHONE ? "phone" : "repId");
         document.body.innerHTML = beforeLogin;
         window.location.href = "../../index.html";
       }
@@ -318,9 +317,9 @@
         });
 
         document.getElementById("actionBtn").addEventListener("click", () => {
-          const removedata = userDetails.indexOf(data);
-          userDetails.splice(removedata, 1);
-          localStorage.setItem("userData", JSON.stringify(userDetails));
+          const removedata = USER_LIST.indexOf(data);
+          USER_LIST.splice(removedata, 1);
+          localStorage.setItem("userData", JSON.stringify(USER_LIST));
           localStorage.removeItem("phone");
           window.location.href = "../index.html";
         });

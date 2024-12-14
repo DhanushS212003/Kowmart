@@ -19,11 +19,20 @@ main {
     margin: 0 auto;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
     margin: 0 !important;
 }
 
-p, button, span, a {
+p,
+button,
+span,
+a {
     font-size: 14px;
 }
 
@@ -35,16 +44,23 @@ a {
     color: var(--primary-color)
 }
 
-.primary_btn, .secondary_btn, .danger_btn, .cancel_btn {
+.primary_btn,
+.secondary_btn,
+.danger_btn,
+.cancel_btn {
     color: white;
     padding: 6px 10px;
     border-radius: 4px;
 }
 
-.primary_btn:disabled, .primary_btn:disabled:hover,
-.secondary_btn:disabled, .secondary_btn:disabled:hover,
-.danger_btn:disabled, .danger_btn:disabled:hover,
-.cancel_btn:disabled, .cancel_btn:disabled:hover {
+.primary_btn:disabled,
+.primary_btn:disabled:hover,
+.secondary_btn:disabled,
+.secondary_btn:disabled:hover,
+.danger_btn:disabled,
+.danger_btn:disabled:hover,
+.cancel_btn:disabled,
+.cancel_btn:disabled:hover {
     background-color: #b5bab8;
     border: 1px solid #b5bab8;
 }
@@ -74,7 +90,7 @@ a {
     border: 1px solid #dc3545;
 }
 
-.danger_btn:hover { 
+.danger_btn:hover {
     background-color: #c83a4a;
     border: 1px solid #c83a4a;
 }
@@ -124,9 +140,11 @@ label {
     margin-bottom: 6px !important;
 }
 
-input, select {
+input,
+select {
     font-size: 14px !important;
     padding-block: 4px !important;
+    border-radius: 4px !important;
 }
 
 .valid_input {
@@ -184,7 +202,13 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 @media screen and (max-width: 499px) {
-    p, button, span, label, a, .modal-body {
+
+    p,
+    button,
+    span,
+    label,
+    a,
+    .modal-body {
         font-size: 12px;
     }
 
@@ -192,7 +216,8 @@ input[type="number"]::-webkit-inner-spin-button {
         font-size: 16px;
     }
 
-    input, select {
+    input,
+    select {
         font-size: 12px !important;
     }
 }

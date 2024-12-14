@@ -158,11 +158,11 @@
       const page = urlParams.get("page");
       const desc = urlParams.get("desc");
 
-      const cattleData = cattle_detail.filter(
+      const cattleData = CATTLE_LIST.filter(
         (e) => e.cattleUniqueId == cattle_id
       );
-      const repData = repDetail.find((e) => e.userId === user_id);
-      const userData = userDetails.find((e) => e.phone === user_id);
+      const repData = REP_LIST.find((e) => e.userId === user_id);
+      const userData = USER_LIST.find((e) => e.phone === user_id);
 
       cattle_image = document.createElement("img");
       cattle_image.setAttribute("src", cattleData[0].image);
@@ -237,7 +237,7 @@
       //     let verification = "";
 
       //     for (let i = 0; i < cattleData[0]["verificationData"].length; i++){
-      //         verification += verificationDetails[cattleData[0]["verificationData"][i]]["question"] + ". ";
+      //         verification += VERIFICATIONS_CHECK[cattleData[0]["verificationData"][i]]["question"] + ". ";
       //     }
 
       //     description = document.querySelector("p.description");
@@ -260,26 +260,24 @@
 
       favourite.addEventListener("click", function (event) {
         if (page === null) {
-          if (phone_id == null) {
+          if (PHONE == null) {
             alert("Please Log In");
             return;
           } else {
             const cattleId = event.currentTarget.getAttribute("custom-id");
-            const favourites =
-              JSON.parse(localStorage.getItem("favourites")) || [];
 
-            for (let i = 0; i < favourites.length; i++) {
+            for (let i = 0; i < FAVOURITES.length; i++) {
               if (
-                cattleId == favourites[i].cattleId &&
-                favourites[i].phone_id == phone_id
+                cattleId == FAVOURITES[i].cattleId &&
+                FAVOURITES[i].PHONE == PHONE
               ) {
                 alert("Already added in the list");
                 return;
               }
             }
             alert("Added to your Favourites list");
-            favourites.push({ cattleId, phone_id });
-            localStorage.setItem("favourites", JSON.stringify(favourites));
+            FAVOURITES.push({ cattleId, PHONE });
+            localStorage.setItem("favourites", JSON.stringify(FAVOURITES));
             // window.location.href = "../../cattle/cattleList.html";
           }
         }
@@ -335,12 +333,10 @@
         }
       }
 
-      const breedCattles = cattle_detail.filter(
-        (e) => e.breed == breed_category
-      );
+      const breedCattles = CATTLE_LIST.filter((e) => e.breed == breed_category);
 
       const verifiedBreedCattles = breedCattles.filter((e) => {
-        const matchCattleId = verifiedCattleLists.find(
+        const matchCattleId = VERIFIED_CATTLE_LIST.find(
           (a) => a.cattleUniqueId === e.cattleUniqueId
         );
         if (matchCattleId) {

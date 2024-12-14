@@ -69,49 +69,45 @@ const afterLogin = `<header>
               <a class = "nav_links" href = "${root}/pages/about.html"> About Us </a>
           </div>
 
-          <div class = "d-flex align-items-end column-gap-3 nav_links_container">
+          <div class = "d-flex align-items-center column-gap-3 nav_links_container">
               <a href = ${root}/pages/cattle/sellDetails1.html> <button class = "primary_btn sell_btn"> SELL </button> </a>
-              <a href = ${root}/pages/profile.html> <i class = "fa-regular fa-user primary_color" style = "font-size: 20px"> </i> </a>
+              <a href = ${root}/pages/profile.html> <i class = "fa-regular fa-user primary_color mt-1" style = "font-size: 20px"> </i> </a>
           </div> 
         </div>
     </header>`;
 
-const userDetails = JSON.parse(localStorage.getItem("userData"));
-const cattle_detail = JSON.parse(localStorage.getItem("cattleDetails")) || [];
-const repDetail = JSON.parse(localStorage.getItem("repData"));
-const phone_id = JSON.parse(localStorage.getItem("phone"));
-const repId = JSON.parse(localStorage.getItem("repId"));
-const repCattleDetails =
-  JSON.parse(localStorage.getItem("repCattleList")) || [];
-const verifiedCattleLists =
+const USER_LIST = JSON.parse(localStorage.getItem("userData")) || [];
+const CATTLE_LIST = JSON.parse(localStorage.getItem("cattleDetails")) || [];
+const REP_LIST = JSON.parse(localStorage.getItem("repData")) || [];
+const PHONE = JSON.parse(localStorage.getItem("phone"));
+const REP_ID = JSON.parse(localStorage.getItem("repId"));
+const REP_CATTLE_LIST = JSON.parse(localStorage.getItem("repCattleList")) || [];
+const VERIFIED_CATTLE_LIST =
   JSON.parse(localStorage.getItem("verifiedCattles")) || [];
-const rejectedCattleLists =
+const REJECTED_CATTLE_LIST =
   JSON.parse(localStorage.getItem("rejectedCattles")) || [];
-const notificationList =
+const NOTIFICATION_LIST =
   JSON.parse(localStorage.getItem("notificationList")) || [];
-const verificationDetails = JSON.parse(
-  localStorage.getItem("verificationDetails")
-);
-const favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+const VERIFICATIONS_CHECK = [];
+const FAVOURITES = JSON.parse(localStorage.getItem("favourites")) || [];
 
-if (phone_id || repId) {
+if (PHONE || REP_ID) {
   document.body.insertAdjacentHTML("afterbegin", afterLogin);
 
-  if (repId)
+  if (REP_ID)
     document
       .querySelectorAll(".sell_btn")
       .forEach((e) => (e.style.display = "none"));
 
-  if (notificationList) {
-    const list = notificationList.filter((e) =>
-      e.receiver === phone_id ? phone_id : repId
+  if (NOTIFICATION_LIST) {
+    const list = NOTIFICATION_LIST.filter((e) =>
+      e.receiver === PHONE ? PHONE : REP_ID
     );
     const newNote = list.find((e) => e.readStatus === false);
 
-    if (newNote) {
+    if (newNote)
       document.querySelector(".notification_nav").style.borderBottom =
         "2px solid #00a651";
-    }
   }
 } else {
   document.body.insertAdjacentHTML("afterbegin", beforeLogin);

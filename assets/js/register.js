@@ -95,16 +95,15 @@ function signUp(e) {
 
   if (!isValidConfirmPassword) return false;
 
-  const userData = JSON.parse(localStorage.getItem("userData")) || [];
-  const exist = userData.some((data) => data.phone == phone.value);
+  const exist = USER_LIST.some((data) => data.phone == phone.value);
 
   if (!exist) {
-    userData.push({
+    USER_LIST.push({
       name: name.value,
       phone: phone.value,
       password: password.value,
     });
-    localStorage.setItem("userData", JSON.stringify(userData));
+    localStorage.setItem("userData", JSON.stringify(USER_LIST));
     appendAlert("Account Created Successfully", "success");
     document.querySelector("form").reset();
     window.location.href = "../../pages/login.html?user=customer";
