@@ -99,7 +99,7 @@ function signUp(e) {
 
   if (!exist) {
     USER_LIST.push({
-      name: name.value,
+      name: name.value.trim(),
       phone: phone.value,
       password: password.value,
     });

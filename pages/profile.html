@@ -189,7 +189,8 @@
                 <input
                   id="pincode"
                   class="form-control"
-                  type="number"
+                  type="text"
+                  inputmode="numeric"
                   placeholder="Pincode"
                   oninput="this.value = this.value.replace(/[^0-9]/g,'')"
                   maxlength="6"
@@ -249,12 +250,15 @@
         (e) => e[mappedKeys[2]] === mappedKeys[3]
       );
 
-      document.getElementById("name").value = data.name;
-      document.getElementById("phone").value = data.phone;
-      document.getElementById("address").value = data.address;
-      document.getElementById("district").value = data.district;
-      document.getElementById("pincode").value = data.pincode;
+      function setInputValues() {
+        document.getElementById("name").value = data.name;
+        document.getElementById("phone").value = data.phone;
+        document.getElementById("address").value = data.address;
+        document.getElementById("district").value = data.district;
+        document.getElementById("pincode").value = data.pincode;
+      }
 
+      setInputValues();
       document.getElementById("edit").addEventListener("click", enableInput);
       document.getElementById("save").addEventListener("click", updateProfile);
 
@@ -283,8 +287,8 @@
         if (PHONE) data = USER_LIST.find((e) => e.phone === PHONE);
         else if (REP_ID) data = REP_LIST.find((e) => e.userId === REP_ID);
 
-        data.name = document.getElementById("name").value;
-        data.address = document.getElementById("address").value;
+        data.name = document.getElementById("name").value.trim();
+        data.address = document.getElementById("address").value.trim();
         data.district = document.getElementById("district").value;
         data.pincode = document.getElementById("pincode").value;
 
@@ -293,6 +297,7 @@
           localStorage.setItem("repData", JSON.stringify(REP_LIST));
 
         appendAlert("Profile updated successfully", "success");
+        setInputValues();
         disableInput();
       }
 
