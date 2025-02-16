@@ -39,12 +39,10 @@ function login(e) {
   const isValidId = verifyData(id, mapper.feebackId);
   const isValidPassword = verifyData(password, "password_feedback");
 
-  if (!isValidId)
-    id.addEventListener("input", () => verifyData(id, mapper.feebackId));
-  if (!isValidPassword)
-    password.addEventListener("input", () =>
-      verifyData(password, "password_feedback")
-    );
+  id.addEventListener("input", () => verifyData(id, mapper.feebackId));
+  password.addEventListener("input", () =>
+    verifyData(password, "password_feedback")
+  );
 
   if (!(isValidId && isValidPassword)) return false;
 

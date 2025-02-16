@@ -131,6 +131,7 @@ input[type="search"]::-webkit-search-cancel-button {
 #alertPlaceHolder {
     position: fixed;
     right: 1rem;
+    z-index: 5;
 }
 
 .alert {
@@ -203,6 +204,12 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 14px;
 }
 
+.spinner-border {
+    font-size: 0.8rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 @media screen and (max-width: 699px) {
     #alertPlaceHolder {
         width: 100%;
@@ -219,7 +226,8 @@ input[type="number"]::-webkit-inner-spin-button {
     span,
     label,
     a,
-    .modal-body {
+    .modal-body,
+    .invalid-feedback {
         font-size: 12px;
     }
 

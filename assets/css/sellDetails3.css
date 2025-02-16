@@ -1,4 +1,5 @@
 .form-container {
+    position: relative;
     max-width: 1000px;
     margin-inline: auto;
     background-color: white;
@@ -84,6 +85,13 @@ textarea {
     background-color: #c53030;
 }
 
+.spinner_container {
+    display: none;
+    position: absolute;
+    top: 35%;
+    right: 50%;
+}
+
 /* ------------------------------------------------- */
 
 /* Cattle Edit page */
@@ -117,13 +125,13 @@ input[type="file"] {
     color: transparent;
 }
 
-label[for="age"]::after,
-label[for="gender"]::after,
-label[for="weight"]::after,
-label[for="price"]::after,
-label[for="images"]::after {
+label::after {
     content: " *";
     color: red;
+}
+
+label[for="description"]::after {
+    content: "";
 }
 
 @media (max-width: 768px) {

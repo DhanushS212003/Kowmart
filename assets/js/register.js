@@ -80,18 +80,17 @@ function signUp(e) {
   const isValidPhone = verifyPhone(phone);
   const isValidPassword = verifyPassword(password);
 
-  if (!isValidName) name.addEventListener("input", () => verifyName(name));
-  if (!isValidPhone) phone.addEventListener("input", () => verifyPhone(phone));
-  if (!isValidPassword)
-    password.addEventListener("input", () => verifyPassword(password));
+  name.addEventListener("input", () => verifyName(name));
+  phone.addEventListener("input", () => verifyPhone(phone));
+  password.addEventListener("input", () => verifyPassword(password));
 
   if (!(isValidName && isValidPhone && isValidPassword)) return false;
 
   const isValidConfirmPassword = verifyConfirmPassword(confirmPassword);
-  if (!isValidConfirmPassword)
-    confirmPassword.addEventListener("input", () =>
-      verifyConfirmPassword(confirmPassword)
-    );
+
+  confirmPassword.addEventListener("input", () =>
+    verifyConfirmPassword(confirmPassword)
+  );
 
   if (!isValidConfirmPassword) return false;
 

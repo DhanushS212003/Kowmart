@@ -127,7 +127,7 @@
 
             // cattle image
             cattle_image = document.createElement("img");
-            cattle_image.setAttribute("src", favouriteCattles[i].image);
+            cattle_image.setAttribute("src", favouriteCattles[i].images[0]);
             cattle_image.setAttribute(
               "alt",
               `${favouriteCattles[i].breed} ${favouriteCattles[i].cattle}`
@@ -219,7 +219,7 @@
 
           // cattle image
           cattle_image = document.createElement("img");
-          cattle_image.setAttribute("src", usersCattle[i].image);
+          cattle_image.setAttribute("src", usersCattle[i].images[0]);
           cattle_image.setAttribute(
             "alt",
             `${usersCattle[i].breed} ${usersCattle[i].cattle}`
@@ -237,10 +237,10 @@
           if (usersCattle[i]["status"] === "") {
             button_know.setAttribute("class", "status_button");
             button_know.innerText = "Verifying";
-          } else if (usersCattle[i]["status"] === "Verified") {
+          } else if (usersCattle[i]["status"] === "verified") {
             button_know.setAttribute("class", "verify_button");
             button_know.innerText = "Verified";
-          } else if (usersCattle[i]["status"] === "Rejected") {
+          } else if (usersCattle[i]["status"] === "rejected") {
             button_know.setAttribute("class", "reject_button");
             button_know.innerText = "Rejected";
           }
@@ -294,7 +294,7 @@
 
           // cattle image
           cattle_image = document.createElement("img");
-          cattle_image.setAttribute("src", repOtherCattles[i].image);
+          cattle_image.setAttribute("src", repOtherCattles[i].images[0]);
           cattle_image.setAttribute(
             "alt",
             `${repOtherCattles[i].breed} ${repOtherCattles[i].cattle}`
@@ -384,7 +384,7 @@
 
             // cattle image
             cattle_image = document.createElement("img");
-            cattle_image.setAttribute("src", repCattles[i].image);
+            cattle_image.setAttribute("src", repCattles[i].images[0]);
             cattle_image.setAttribute(
               "alt",
               `${repCattles[i].breed} ${repCattles[i].cattle}`
@@ -441,7 +441,7 @@
           let verificationData = [];
 
           const verifyButton = document.querySelectorAll("#verifyButton");
-          console.log(verifyButton);
+
           verifyButton.forEach(function (findId) {
             findId.addEventListener("click", function () {
               alert("hi");
@@ -466,7 +466,7 @@
                     let verifiedCattleData = CATTLE_LIST.find(
                       (e) => e.cattleUniqueId === cattle_id
                     );
-                    verifiedCattleData.status = "Verified";
+                    verifiedCattleData.status = "verified";
                     localStorage.setItem(
                       "cattleDetails",
                       JSON.stringify(CATTLE_LIST)
@@ -542,7 +542,7 @@
                     let rejectedCattleData = CATTLE_LIST.find(
                       (e) => e.cattleUniqueId === cattle_id
                     );
-                    rejectedCattleData.status = "Rejected";
+                    rejectedCattleData.status = "rejected";
                     localStorage.setItem(
                       "cattleDetails",
                       JSON.stringify(CATTLE_LIST)
@@ -669,7 +669,7 @@
 
             // cattle image
             cattle_image = document.createElement("img");
-            cattle_image.setAttribute("src", verified_cattles[i].image);
+            cattle_image.setAttribute("src", verified_cattles[i].images[0]);
             cattle_image.setAttribute(
               "alt",
               `${verified_cattles[i].breed} ${verified_cattles[i].cattle}`
@@ -815,7 +815,7 @@
 
             // cattle image
             cattle_image = document.createElement("img");
-            cattle_image.setAttribute("src", rejected_cattles[i].image);
+            cattle_image.setAttribute("src", rejected_cattles[i].images[0]);
             cattle_image.setAttribute(
               "alt",
               `${rejected_cattles[i].breed} ${rejected_cattles[i].cattle}`

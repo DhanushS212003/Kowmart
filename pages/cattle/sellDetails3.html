@@ -25,14 +25,11 @@
       href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,700&display=swap"
       rel="stylesheet"
     />
-    <!-- <script async src="//freeimage.host/sdk/pup.js" data-url="https://freeimage.host/upload"></script> -->
   </head>
-
-  <!-- https://iili.io/21xJ94V.webp -->
 
   <body>
     <div id="confirmationBoxPlaceholder"></div>
-    <div id="modalFormPlaceholder"></div>
+    <div id="alertPlaceHolder"></div>
 
     <main class="py-4">
       <div class="d-flex flex-column align-items-center">
@@ -46,6 +43,12 @@
         <p class="title3">Animal Details</p>
       </div>
       <div class="form-container">
+        <div class="spinner_container">
+          <div class="spinner-border">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+
         <form novalidate>
           <div class="form-row">
             <div class="form-field">
@@ -122,7 +125,7 @@
             <textarea id="description" class="form-control"></textarea>
           </div>
           <div class="mt-2">
-            <label for="images">Upload Photos</label>
+            <label for="images">Upload Photos</label> <span class="text-secondary">(Max: 2MB / photo)</span>
             <input
               id="images"
               class="file-input"
@@ -145,6 +148,7 @@
     <script src="../../assets/js/header.js"></script>
     <script src="../../assets/js/footer.js"></script>
     <script src="../../assets/js/confirmationBox.js"></script>
+    <script src="../../assets/js/alert.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
@@ -197,7 +201,7 @@
         const maxSize = 2 * 1024 * 1024;
 
         if (!allowedFormats.includes(file.type)) return false;
-        if (file.size > maxSize) return false;
+        if (file.size >= maxSize) return false;
 
         return true;
       }
@@ -248,27 +252,44 @@
         }
       }
 
+      const spinnerContainer = document.querySelector(".spinner_container");
+      const formContainer = document.querySelector(".form-container");
+
       async function uploadImage(file) {
+        const apiKey = "55f399ce0217d62d37be1d928112eaa8";
+        const apiUrl = "https://api.imgbb.com/1/upload";
+
         const formData = new FormData();
-        formData.append("source", file);
-        formData.append("action", "upload");
+        formData.append("key", apiKey);
+        formData.append("image", file);
 
-        const response = await fetch("https://freeimage.host/api/1/upload", {
-          method: "POST",
-          body: formData,
-        });
+        try {
+          const response = await fetch(apiUrl, {
+            method: "POST",
+            body: formData,
+          });
 
-        const data = await response.json();
-        if (data.status_code === 200) {
-          return data.image.url; // Direct link to the uploaded image
-        } else {
-          throw new Error(data.status_txt);
+          const data = await response.json();
+
+          spinnerContainer.style.display = "none";
+          formContainer.style.opacity = 1;
+
+          if (response.ok) return data.data.url;
+          else {
+            spinnerContainer.style.display = "none";
+            formContainer.style.opacity = 1;
+            appendAlert("Something went wrong. Please try again.", "danger");
+          }
+        } catch (error) {
+          spinnerContainer.style.display = "none";
+          formContainer.style.opacity = 1;
+          appendAlert("Something went wrong. Please try again.", "danger");
         }
       }
 
       document
         .getElementById("submit_btn")
-        .addEventListener("click", (event) => {
+        .addEventListener("click", async (event) => {
           const customerData = USER_LIST.find((e) => e.phone == PHONE);
 
           if (
@@ -298,30 +319,32 @@
               );
           } else {
             const age = document.getElementById("age");
+            const gender = document.getElementById("gender");
             const weight = document.getElementById("weight");
             const price = document.getElementById("price");
+            const milk = document.getElementById("milk");
+            const lactation = document.getElementById("lactation");
             const images = document.getElementById("images");
 
             const isValidAge = verifyValue(age);
             const isValidWeight = verifyValue(weight);
             const isValidPrice = verifyValue(price);
+            const isValidMilk = verifyValue(milk);
+            const isValidLactation = verifyValue(lactation);
 
-            if (!isValidAge)
-              age.addEventListener("input", () => verifyValue(age));
-            if (!isValidWeight)
-              weight.addEventListener("input", () => verifyValue(weight));
-            if (!isValidPrice)
-              price.addEventListener("input", () => verifyValue(price));
+            age.addEventListener("input", () => verifyValue(age));
+            weight.addEventListener("input", () => verifyValue(weight));
+            price.addEventListener("input", () => verifyValue(price));
+            milk.addEventListener("input", () => verifyValue(milk));
+            lactation.addEventListener("input", () => verifyValue(lactation));
 
-            // console.log(
-            //   Object.keys(images.files).map((key) =>
-            //     uploadImage(images.files[key])
-            //   )
-            // );
-            // return;
-
-            if (!images.value) return false;
             if (!(isValidAge && isValidWeight && isValidPrice)) return false;
+            if (gender.value === "female" && !(isValidMilk && isValidLactation))
+              return false;
+            if (!images.value) return false;
+
+            spinnerContainer.style.display = "block";
+            formContainer.style.opacity = 0.5;
 
             const urlParams = new URLSearchParams(window.location.search);
             const cattle = urlParams.get("cattle");
@@ -334,36 +357,33 @@
               .length.toString()
               .padStart(3, "0");
             const stock_no = parseInt(stock) + 1;
-            const id = cattle[0] + breed[0] + stock_no;
+            const id = (cattle[0] + breed[0] + stock_no).toUpperCase();
             const repUserId = REP_LIST.find(
               (e) => e.district === customerData.district
             ).userId;
 
-            alert("success");
-            return;
+            const imagesLink = await Promise.all(
+              Object.keys(images.files).map((key) =>
+                uploadImage(images.files[key])
+              )
+            );
 
-            const gender = document.getElementById("gender");
+            if (imagesLink.some((link) => !link)) return;
 
             CATTLE_LIST.push({
               cattle,
               breed,
               age: age.value,
-              gender: document.getElementById("gender").value,
+              gender: gender.value,
               weight: weight.value,
-              milk:
-                gender.value === "female"
-                  ? document.getElementById("milk").value
-                  : null,
+              milk: gender.value === "female" ? milk.value : null,
               price: price.value,
-              lactation:
-                gender.value === "female"
-                  ? document.getElementById("lactation").value
-                  : null,
+              lactation: gender.value === "female" ? lactation.value : null,
               description: document.getElementById("description").value,
-              images: document.getElementById("images").value,
+              images: imagesLink,
               id,
               cattleUniqueId,
-              phone: PHONE,
+              userId: PHONE,
               date: new Date().toLocaleDateString(),
               status: "",
             });
@@ -385,6 +405,8 @@
               "notificationList",
               JSON.stringify(NOTIFICATION_LIST)
             );
+            spinnerContainer.style.display = "none";
+            formContainer.style.opacity = 1;
             location.href = "./cattleList.html?page=sellerCattleList";
             document.querySelector("form").reset();
           }
