@@ -125,7 +125,8 @@
             <textarea id="description" class="form-control"></textarea>
           </div>
           <div class="mt-2">
-            <label for="images">Upload Photos</label> <span class="text-secondary">(Max: 2MB / photo)</span>
+            <label for="images">Upload Photos</label>
+            <span class="text-secondary">(Max: 2MB / photo)</span>
             <input
               id="images"
               class="file-input"
@@ -156,7 +157,7 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
 
-    <script>
+    <script type="module">
       document.getElementById("images").addEventListener("change", (event) => {
         const preview = document.getElementById("imagePreview");
         const files = event.target.files;
@@ -256,7 +257,7 @@
       const formContainer = document.querySelector(".form-container");
 
       async function uploadImage(file) {
-        const apiKey = "55f399ce0217d62d37be1d928112eaa8";
+        const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
         const apiUrl = "https://api.imgbb.com/1/upload";
 
         const formData = new FormData();
