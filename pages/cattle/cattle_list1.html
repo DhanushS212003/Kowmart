@@ -652,16 +652,19 @@
           cardImage.append(category);
 
           const cardContent = document.createElement("div");
-          cardContent.setAttribute("class", "card_content");
+          cardContent.setAttribute("class", "p-3");
           card.append(cardContent);
 
           const cardHeader = document.createElement("div");
-          cardHeader.setAttribute("class", "card_header");
+          cardHeader.setAttribute(
+            "class",
+            "d-flex justify-content-between mb-2 pb-1"
+          );
           cardContent.append(cardHeader);
 
           const cardTitle = document.createElement("h2");
           cardTitle.setAttribute("class", "card_title");
-          cardTitle.innerText = `${cattle.breed} ${cattle.cattle} ${cattle.id}`;
+          cardTitle.innerText = `${cattle.breed} ${cattle.cattle}`;
           cardHeader.append(cardTitle);
 
           const badge = document.createElement("span");
@@ -670,22 +673,24 @@
           cardHeader.append(badge);
 
           const infoList = document.createElement("div");
-          infoList.setAttribute("class", "info_list");
+          infoList.setAttribute("class", "d-flex flex-column row-gap-2");
           cardContent.append(infoList);
 
           ["age", "gender"].forEach((e) => {
             const infoItem = document.createElement("div");
-            infoItem.setAttribute("class", "info_item");
+            infoItem.setAttribute("class", "d-flex justify-content-between");
             infoList.append(infoItem);
 
             const label = document.createElement("span");
-            label.setAttribute("class", "info_value");
+            label.setAttribute("class", "text-capitalize");
+            label.style.color = "var(--bs-gray-700)";
             label.innerText = e;
             infoItem.append(label);
 
             const value = document.createElement("span");
-            value.setAttribute("class", "info_value");
-            value.innerText = `${cattle[e]} ${e === "age" ? "Year(s)" : ""}`;
+            value.innerText = `${
+              cattle[e].slice(0, 1).toUpperCase() + cattle[e].slice(1)
+            } ${e === "age" ? "Year(s)" : ""}`;
             infoItem.append(value);
           });
 

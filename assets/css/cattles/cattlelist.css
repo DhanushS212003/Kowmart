@@ -10,8 +10,8 @@
 }
 
 .badge_outline {
-    border: 1px solid #16a34a;
-    color: #16a34a;
+    border: 1px solid #22c55e;
+    color: #22c55e;
 }
 
 .badge_filled {
@@ -40,6 +40,10 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.cattle_card:hover .card_image img {
+    transform: scale(1.05);
+}
+
 .card_image {
     position: relative;
     height: 255px;
@@ -51,21 +55,6 @@
     transition: transform 0.3s ease;
 }
 
-.cattle_card:hover .card_image img {
-    transform: scale(1.05);
-}
-
-.card_content {
-    padding: 1rem;
-}
-
-.card_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-bottom: 0.5rem;
-}
-
 .card_title {
     font-size: 1.125rem;
     font-weight: 600;
@@ -73,41 +62,15 @@
     text-transform: capitalize;
 }
 
-.info_list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin: 1rem 0;
-}
-
-.info_item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.875rem;
-    text-transform: capitalize
-}
-
-.info_label {
-    color: #4b5563;
-}
-
-.info_value {
-    font-weight: 500;
-}
-
 .view_details {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 0.7rem;
     background: none;
     border: none;
     color: #16a34a;
-    font-weight: 500;
-    cursor: pointer;
     transition: color 0.2s ease;
 }
 
