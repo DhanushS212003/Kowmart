@@ -14,7 +14,7 @@ const appendConfirmationBox = ({ title, message, actionBtn, cancelBtn }) => {
             ${message}
           </div>
           <div class="modal-footer">
-            <button type="button" class="${actionBtn.class}" id="actionBtn" data-bs-dismiss="modal">${actionBtn.text}</button>
+            <button type="button" class="${actionBtn.class}" id="action_btn" data-bs-dismiss="modal">${actionBtn.text}</button>
             <button type="button" class="${cancelBtn.class}" data-bs-dismiss="modal">${cancelBtn.text}</button>
           </div>
         </div>

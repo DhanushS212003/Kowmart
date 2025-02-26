@@ -52,7 +52,7 @@
     ></script>
 
     <script>
-      const category_list = [
+      const categoryList = [
         {
           name: "Cow",
           img: "../../assets/images/cattles/ch1.jpg",
@@ -75,23 +75,23 @@
         },
       ];
 
-      for (i = 0; i < category_list.length; i++) {
+      for (i = 0; i < categoryList.length; i++) {
         // container
         const container = document.createElement("div");
         container.setAttribute("class", "category");
-        container.setAttribute("id", category_list[i].name.toLowerCase());
+        container.setAttribute("id", categoryList[i].name.toLowerCase());
 
         // image
         const img = document.createElement("img");
         img.setAttribute("class", "category_img");
-        img.setAttribute("src", category_list[i].img);
-        img.setAttribute("alt", category_list[i].name);
+        img.setAttribute("src", categoryList[i].img);
+        img.setAttribute("alt", categoryList[i].name);
         container.append(img);
 
         // name
         const name = document.createElement("p");
         name.setAttribute("class", "text-center mt-2");
-        name.innerText = category_list[i].name;
+        name.innerText = categoryList[i].name;
         container.append(name);
 
         document.querySelector("div.list_container").append(container);

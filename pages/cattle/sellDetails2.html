@@ -52,7 +52,7 @@
     ></script>
 
     <script>
-      const breeds_list = [
+      const breedsList = [
         {
           image: {
             source: "../../assets/images/cattles/c1.jpg",
@@ -338,27 +338,27 @@
       const urlParams = new URLSearchParams(window.location.search);
       const cattle = urlParams.get("cattle");
 
-      const filtered_breed = breeds_list.filter(
+      const filteredBreed = breedsList.filter(
         (e) => e.category.toLowerCase() == cattle
       );
 
-      for (i = 0; i < filtered_breed.length; i++) {
+      for (i = 0; i < filteredBreed.length; i++) {
         // container
         const container = document.createElement("div");
         container.setAttribute("class", "category");
-        container.setAttribute("id", filtered_breed[i].name.toLowerCase());
+        container.setAttribute("id", filteredBreed[i].name.toLowerCase());
 
         // image
         const img = document.createElement("img");
         img.setAttribute("class", "category_img");
-        img.setAttribute("src", filtered_breed[i].image.source);
-        img.setAttribute("alt", filtered_breed[i].name);
+        img.setAttribute("src", filteredBreed[i].image.source);
+        img.setAttribute("alt", filteredBreed[i].name);
         container.append(img);
 
         // name
         const name = document.createElement("p");
         name.setAttribute("class", "text-center mt-2");
-        name.innerText = filtered_breed[i].name;
+        name.innerText = filteredBreed[i].name;
         container.append(name);
 
         document.querySelector("div.list_container").append(container);

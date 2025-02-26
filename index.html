@@ -95,12 +95,12 @@
         <div class="banner_container">
           <div class="banner_slide">
             <div class="banner_title_container">
-              <h3 class="banner_title">Buy or Sell Livestock Online</h1>
+              <h3 class="banner_title">Buy or Sell Livestock Online</h3>
             </div>
           </div>
           <div class="banner_slide">
             <div class="banner_title_container">
-              <h3 class="banner_title">Most Trusted Livestock Marketplace</h1>
+              <h3 class="banner_title">Most Trusted Livestock Marketplace</h3>
             </div>
           </div>
         </div>
@@ -178,7 +178,6 @@
     ></script>
 
     <script>
-
       // Most breed section
 
       // if (VERIFIED_CATTLE_LIST.length !== 0) {
@@ -313,15 +312,15 @@
         });
       });
 
-      const mag_glass = document.querySelector(".fa-magnifying-glass");
-      mag_glass.addEventListener("click", function () {
-        const search_box = document.getElementById("search_input").value;
-        if (search_box === "") {
+      const magGlass = document.querySelector(".fa-magnifying-glass");
+      magGlass.addEventListener("click", function () {
+        const searchBox = document.getElementById("search_input").value;
+        if (searchBox === "") {
           alert("Please enter a ID");
           return false;
         }
 
-        const searchCattle = CATTLE_LIST.find((e) => e.id === search_box);
+        const searchCattle = CATTLE_LIST.find((e) => e.id === searchBox);
         if (searchCattle === undefined) {
           alert("THERE is no cattle with this ID");
           return false;
@@ -333,10 +332,10 @@
         if (checkVerify === undefined) {
           alert("THERE is no cattle with this ID");
         } else {
-          const cattle_breed = searchCattle["breed"];
-          const cattle_id = searchCattle["cattleUniqueId"];
-          const user_id = checkVerify["repUserId"];
-          window.location.href = `./pages/cattle details/cow/C1.html?breed=${cattle_breed}&cattle_id=${cattle_id}&user_id=${user_id}`;
+          const cattleBreed = searchCattle["breed"];
+          const cattleId = searchCattle["cattleUniqueId"];
+          const userId = checkVerify["repUserId"];
+          window.location.href = `./pages/cattle details/cow/C1.html?breed=${cattleBreed}&cattle_id=${cattleId}&user_id=${userId}`;
         }
       });
 
@@ -344,8 +343,7 @@
         "./assets/images/banner_1.jpg",
         "./assets/images/banner_2.jpg",
       ];
-      moveBanners(banners)
-
+      moveBanners(banners);
     </script>
   </body>
 </html>

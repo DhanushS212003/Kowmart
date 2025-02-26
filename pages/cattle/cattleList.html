@@ -41,7 +41,7 @@
         <div class="cattles_container"></div>
       </div>
 
-      <div id="myOverlay" class="overlay1">
+      <div id="overlay" class="overlay1">
         <span class="closebtn" onclick="closeSearch()" title="Close Overlay"
           >×</span
         >
@@ -87,9 +87,7 @@
         document.querySelector("h1.title_color").innerText = "Your Favourites";
 
         if (FAVOURITES.length !== 0) {
-          const users_FavCattle = FAVOURITES.filter(
-            (e) => e.phone_id === PHONE
-          );
+          const users_FavCattle = FAVOURITES.filter((e) => e.phone == PHONE);
           const favourite_id = CATTLE_LIST.filter((e) =>
             users_FavCattle.find((a) => a.cattleId === e.cattleUniqueId)
           );
@@ -177,7 +175,7 @@
               if (confirm("Are you sure you want to remove")) {
                 const { id } = this.dataset;
                 const fav_obj = FAVOURITES.find(
-                  (e) => e.cattleId === id && e.phone_id === PHONE
+                  (e) => e.cattleId == id && e.phone == PHONE
                 );
                 const fav_index = FAVOURITES.indexOf(fav_obj);
                 FAVOURITES.splice(fav_index, 1);
@@ -402,7 +400,7 @@
             cattle_container.append(btnContainer);
 
             button_know = document.createElement("button");
-            button_know.setAttribute("id", "verifyButton");
+            button_know.setAttribute("id", "verify_btn");
             button_know.setAttribute("data-iid", repCattles[i].cattleUniqueId);
             button_know.innerText = "Pending";
             btnContainer.append(button_know);
@@ -440,9 +438,9 @@
 
           let verificationData = [];
 
-          const verifyButton = document.querySelectorAll("#verifyButton");
+          const verifyBtn = document.querySelectorAll("#verify_btn");
 
-          verifyButton.forEach(function (findId) {
+          verifyBtn.forEach(function (findId) {
             findId.addEventListener("click", function () {
               alert("hi");
               const cattle_id = this.dataset.iid;
@@ -617,11 +615,11 @@
           });
 
           function openSearch() {
-            document.getElementById("myOverlay").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
           }
 
           function closeSearch() {
-            document.getElementById("myOverlay").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
           }
         }
       }
@@ -696,7 +694,7 @@
             btnContainer.append(button_know);
 
             cancelBtn = document.createElement("button");
-            cancelBtn.setAttribute("id", "cancelVerify");
+            cancelBtn.setAttribute("id", "cancel_verify");
             cancelBtn.setAttribute(
               "data-id",
               verified_cattles[i].cattleUniqueId
@@ -723,7 +721,8 @@
 
           // cancelling the verification by rep //
 
-          const cancelVerifyButton = document.querySelectorAll("#cancelVerify");
+          const cancelVerifyButton =
+            document.querySelectorAll("#cancel_verify");
           cancelVerifyButton.forEach(function (findId) {
             findId.addEventListener("click", function () {
               if (
@@ -833,7 +832,7 @@
             cattle_container.append(btnContainer);
 
             cancelBtn = document.createElement("button");
-            cancelBtn.setAttribute("id", "cancelReject");
+            cancelBtn.setAttribute("id", "cancel_reject");
             cancelBtn.setAttribute(
               "data-id",
               rejected_cattles[i].cattleUniqueId
@@ -848,7 +847,8 @@
 
           // cancelling the rejection by rep //
 
-          const cancelVerifyButton = document.querySelectorAll("#cancelReject");
+          const cancelVerifyButton =
+            document.querySelectorAll("#cancel_reject");
           cancelVerifyButton.forEach(function (findId) {
             findId.addEventListener("click", function () {
               if (

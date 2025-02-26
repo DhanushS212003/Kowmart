@@ -40,7 +40,7 @@
               class="avatar_img"
               alt="User Avatar"
             />
-            <h6 class="fw-bold mt-1 text-secondary">Dhanush</h6>
+            <h6 id="profile_name" class="fw-bold mt-1 text-secondary"></h6>
           </div>
           <div class="p-3 py-2">
             <a
@@ -78,7 +78,7 @@
               <i class="fa-solid fa-circle-xmark"></i>
               <p>Rejected Cattles</p>
             </a>
-            <div class="profile_menu" id="logOut">
+            <div class="profile_menu" id="log_out">
               <i class="fa-solid fa-right-from-bracket"></i>
               <p>Log Out</p>
             </div>
@@ -251,6 +251,7 @@
       );
 
       function setInputValues() {
+        document.getElementById("profile_name").innerText = data.name;
         document.getElementById("name").value = data.name;
         document.getElementById("phone").value = data.phone;
         document.getElementById("address").value = data.address;
@@ -267,7 +268,7 @@
         del.addEventListener("click", deleteaccount);
       }
 
-      document.getElementById("logOut").addEventListener("click", logOut);
+      document.getElementById("log_out").addEventListener("click", logOut);
 
       function enableInput() {
         editableElementsId.forEach((id) =>
@@ -321,7 +322,7 @@
           },
         });
 
-        document.getElementById("actionBtn").addEventListener("click", () => {
+        document.getElementById("action_btn").addEventListener("click", () => {
           const removedata = USER_LIST.indexOf(data);
           USER_LIST.splice(removedata, 1);
           localStorage.setItem("userData", JSON.stringify(USER_LIST));

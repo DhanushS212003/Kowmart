@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     />
-    <title>Cattle List 1</title>
+    <title></title>
 
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <link rel="stylesheet" href="../../assets/css/cattles/cattlelist.css" />
@@ -30,12 +30,7 @@
     <main>
       <!-- Cattles Section  -->
 
-      <div class="products_section1">
-        <div class="filter_cattles_container">
-          <div class="back_button_container1">
-            <button class="btn" onclick="window.history.back()">BACK</button>
-          </div>
-
+      <!-- <div class="filter_cattles_container">
           <div class="filter_container">
             <div class="breed_filter_container">
               <div class="topic_container">
@@ -118,12 +113,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="cattles_title_container">
-          <div class="title_container1"></div>
-          <div class="cattles_container"></div>
+      <div class="px-5 py-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="title"></h2>
+          <span class="badge badge_outline">Total: 4</span>
         </div>
+        <div class="cattles_container"></div>
       </div>
     </main>
 
@@ -320,64 +317,64 @@
 
       const urlParams = new URLSearchParams(window.location.search);
       const cattlePage = urlParams.get("cattleDetails");
-      // heading
-      category_name = document.createElement("h1");
-      category_name.setAttribute("class", "title_color");
-      category_name.innerText = `All ${cattlePage}s`;
-      document.querySelector("div.title_container1").append(category_name);
+
+      document.querySelector("title").innerText = `${cattlePage
+        .slice(0, 1)
+        .toUpperCase()}${cattlePage.slice(1)}s Section`;
+      document.querySelector("h2.title").innerText = `All ${cattlePage}s`;
 
       if (VERIFIED_CATTLE_LIST.length !== 0) {
         const cat_breed_list = breed_list.filter(
           (e) => e.category == cattlePage
         );
 
-        for (let i = 0; i < cat_breed_list.length; i++) {
-          // breed_container
-          breed_container = document.createElement("div");
-          breed_container.setAttribute("class", "breed_container");
+        // for (let i = 0; i < cat_breed_list.length; i++) {
+        //   // breed_container
+        //   breed_container = document.createElement("div");
+        //   breed_container.setAttribute("class", "breed_container");
 
-          // checkbox
-          checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.setAttribute("class", "checkbox");
-          checkbox.setAttribute("id", cat_breed_list[i].name);
-          checkbox.addEventListener("click", breedOnSelect);
-          breed_container.append(checkbox);
+        //   // checkbox
+        //   checkbox = document.createElement("input");
+        //   checkbox.type = "checkbox";
+        //   checkbox.setAttribute("class", "checkbox");
+        //   checkbox.setAttribute("id", cat_breed_list[i].name);
+        //   checkbox.addEventListener("click", breedOnSelect);
+        //   breed_container.append(checkbox);
 
-          // label
-          label = document.createElement("label");
-          label.setAttribute("for", cat_breed_list[i].name);
-          label.innerText = cat_breed_list[i].name;
-          breed_container.append(label);
+        //   // label
+        //   label = document.createElement("label");
+        //   label.setAttribute("for", cat_breed_list[i].name);
+        //   label.innerText = cat_breed_list[i].name;
+        //   breed_container.append(label);
 
-          document
-            .querySelector("div.breed_list_container")
-            .append(breed_container);
-        }
+        //   document
+        //     .querySelector("div.breed_list_container")
+        //     .append(breed_container);
+        // }
 
-        for (let i = 0; i < state_list.length; i++) {
-          // breed_container
-          state_container = document.createElement("div");
-          state_container.setAttribute("class", "state_container");
+        // for (let i = 0; i < state_list.length; i++) {
+        //   // breed_container
+        //   state_container = document.createElement("div");
+        //   state_container.setAttribute("class", "state_container");
 
-          // checkbox
-          checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.setAttribute("class", "checkbox1");
-          checkbox.setAttribute("id", state_list[i].name);
-          checkbox.addEventListener("click", stateOnSelect);
-          state_container.append(checkbox);
+        //   // checkbox
+        //   checkbox = document.createElement("input");
+        //   checkbox.type = "checkbox";
+        //   checkbox.setAttribute("class", "checkbox1");
+        //   checkbox.setAttribute("id", state_list[i].name);
+        //   checkbox.addEventListener("click", stateOnSelect);
+        //   state_container.append(checkbox);
 
-          // label
-          label = document.createElement("label");
-          label.setAttribute("for", state_list[i].name);
-          label.innerText = state_list[i].name;
-          state_container.append(label);
+        //   // label
+        //   label = document.createElement("label");
+        //   label.setAttribute("for", state_list[i].name);
+        //   label.innerText = state_list[i].name;
+        //   state_container.append(label);
 
-          document
-            .querySelector("div.state_list_container")
-            .append(state_container);
-        }
+        //   document
+        //     .querySelector("div.state_list_container")
+        //     .append(state_container);
+        // }
 
         let cattleDetails = [];
 
@@ -394,12 +391,10 @@
           (e) => e.cattle === cattlePage
         );
 
-        for (let i = 0; i < categoryCattleDetails.length; i++) {
-          const cattle_container = cards(categoryCattleDetails[i]);
+        for (let i = 0; i < categoryCattleDetails.length; i++)
           document
             .querySelector("div.cattles_container")
-            .append(cattle_container);
-        }
+            .append(cards(categoryCattleDetails[i]));
 
         const selectedBreeds = [];
         const selectedDistricts = [];
@@ -485,58 +480,58 @@
           filterCattles();
         }
 
-        const magnifying_glass = document.getElementById("mag_search");
-        magnifying_glass.addEventListener("click", function () {
-          const pincode_value = document.getElementById("pincode_input").value;
-          const zoneRep = REP_LIST.filter((e) => e.pincode == pincode_value);
+        // const magnifying_glass = document.getElementById("mag_search");
+        // magnifying_glass.addEventListener("click", function () {
+        //   const pincode_value = document.getElementById("pincode_input").value;
+        //   const zoneRep = REP_LIST.filter((e) => e.pincode == pincode_value);
 
-          const crossButton = document.getElementById("pincode_input");
-          crossButton.addEventListener("search", () => {
-            if (!crossButton.value) {
-              document.querySelector("div.cattles_container").innerHTML = "";
-              for (let i = 0; i < categoryCattleDetails.length; i++) {
-                const defaultCattleContainer = cards(categoryCattleDetails[i]);
-                document
-                  .querySelector("div.cattles_container")
-                  .append(defaultCattleContainer);
-              }
-            }
-          });
+        //   const crossButton = document.getElementById("pincode_input");
+        //   crossButton.addEventListener("search", () => {
+        //     if (!crossButton.value) {
+        //       document.querySelector("div.cattles_container").innerHTML = "";
+        //       for (let i = 0; i < categoryCattleDetails.length; i++) {
+        //         const defaultCattleContainer = cards(categoryCattleDetails[i]);
+        //         document
+        //           .querySelector("div.cattles_container")
+        //           .append(defaultCattleContainer);
+        //       }
+        //     }
+        //   });
 
-          if (pincode_value.length === 6) {
-            document.querySelector("div.cattles_container").innerHTML = "";
+        //   if (pincode_value.length === 6) {
+        //     document.querySelector("div.cattles_container").innerHTML = "";
 
-            const zoneVerifiedCattles = VERIFIED_CATTLE_LIST.filter((e) =>
-              zoneRep.some((a) => a.userId === e.repUserId)
-            );
-            const zoneAllCattles = CATTLE_LIST.filter((e) =>
-              zoneVerifiedCattles.some(
-                (a) => a.cattleUniqueId === e.cattleUniqueId
-              )
-            );
-            const zoneCattles = zoneAllCattles.filter(
-              (e) => e.cattle === cattlePage
-            );
+        //     const zoneVerifiedCattles = VERIFIED_CATTLE_LIST.filter((e) =>
+        //       zoneRep.some((a) => a.userId === e.repUserId)
+        //     );
+        //     const zoneAllCattles = CATTLE_LIST.filter((e) =>
+        //       zoneVerifiedCattles.some(
+        //         (a) => a.cattleUniqueId === e.cattleUniqueId
+        //       )
+        //     );
+        //     const zoneCattles = zoneAllCattles.filter(
+        //       (e) => e.cattle === cattlePage
+        //     );
 
-            if (zoneCattles.length == 0) {
-              const no_image = document.createElement("img");
-              no_image.setAttribute("src", "../../assets/images/no_result.gif");
-              no_image.setAttribute("class", "no_result");
-              document.querySelector("div.cattles_container").append(no_image);
-            } else {
-              for (let i = 0; i < zoneCattles.length; i++) {
-                const cattle_filter_container = cards(zoneCattles[i]);
-                document
-                  .querySelector("div.cattles_container")
-                  .append(cattle_filter_container);
-              }
-            }
-          } else if (pincode_value.length === 0) {
-            alert("Please enter a pincode");
-          } else {
-            alert("Please enter a proper pincode");
-          }
-        });
+        //     if (zoneCattles.length == 0) {
+        //       const no_image = document.createElement("img");
+        //       no_image.setAttribute("src", "../../assets/images/no_result.gif");
+        //       no_image.setAttribute("class", "no_result");
+        //       document.querySelector("div.cattles_container").append(no_image);
+        //     } else {
+        //       for (let i = 0; i < zoneCattles.length; i++) {
+        //         const cattle_filter_container = cards(zoneCattles[i]);
+        //         document
+        //           .querySelector("div.cattles_container")
+        //           .append(cattle_filter_container);
+        //       }
+        //     }
+        //   } else if (pincode_value.length === 0) {
+        //     alert("Please enter a pincode");
+        //   } else {
+        //     alert("Please enter a proper pincode");
+        //   }
+        // });
 
         const rangeInput = document.querySelectorAll(".range-input input");
         const priceInput = document.querySelectorAll(".price-input input");
@@ -638,66 +633,75 @@
           });
         });
 
-        function cards(card) {
-          // cattle container
-          cattle_container = document.createElement("div");
-          cattle_container.setAttribute("class", "cattle_container");
+        function cards(cattle) {
+          const card = document.createElement("div");
+          card.setAttribute("class", "cattle_card");
 
-          // image container
-          cattle_img_container = document.createElement("div");
-          cattle_img_container.setAttribute("class", "img_container");
-          cattle_container.append(cattle_img_container);
+          const cardImage = document.createElement("div");
+          cardImage.setAttribute("class", "card_image");
+          card.append(cardImage);
 
-          // a
-          cattle_anchor = document.createElement("a");
-          cattle_anchor.setAttribute(
-            "href",
-            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.repId}`
-          );
-          cattle_img_container.append(cattle_anchor);
+          const image = document.createElement("img");
+          image.setAttribute("src", cattle.images[0]);
+          image.setAttribute("alt", `${cattle.breed} ${cattle.cattle}`);
+          cardImage.append(image);
 
-          // cattle image
-          cattle_image = document.createElement("img");
-          cattle_image.setAttribute("src", card.images[0]);
-          cattle_image.setAttribute("alt", `${card.breed} ${card.cattle}`);
-          cattle_image.setAttribute("class", "cattle_image");
-          cattle_anchor.append(cattle_image);
+          const category = document.createElement("span");
+          category.setAttribute("class", "badge badge_filled");
+          category.innerText = cattle.cattle;
+          cardImage.append(category);
 
-          // cattle info container
-          info_container = document.createElement("div");
-          info_container.setAttribute("class", "info_container");
-          cattle_container.append(info_container);
+          const cardContent = document.createElement("div");
+          cardContent.setAttribute("class", "card_content");
+          card.append(cardContent);
 
-          // cattle info
-          cattle_name = document.createElement("p");
-          cattle_name.setAttribute("class", "cattle_name");
-          cattle_name.innerText = `${card.breed} ${card.cattle} ${card.id}`;
-          info_container.append(cattle_name);
+          const cardHeader = document.createElement("div");
+          cardHeader.setAttribute("class", "card_header");
+          cardContent.append(cardHeader);
 
-          cattle_age = document.createElement("p");
-          cattle_age.innerText = `Age: ${card.age} Year(s)`;
-          info_container.append(cattle_age);
+          const cardTitle = document.createElement("h2");
+          cardTitle.setAttribute("class", "card_title");
+          cardTitle.innerText = `${cattle.breed} ${cattle.cattle} ${cattle.id}`;
+          cardHeader.append(cardTitle);
 
-          cattle_gender = document.createElement("p");
-          cattle_gender.innerText = `Gender: ${card.gender}`;
-          info_container.append(cattle_gender);
+          const badge = document.createElement("span");
+          badge.setAttribute("class", "badge badge_outline");
+          badge.innerText = cattle.id;
+          cardHeader.append(badge);
 
-          // a
+          const infoList = document.createElement("div");
+          infoList.setAttribute("class", "info_list");
+          cardContent.append(infoList);
 
-          buttonContainer = document.createElement("a");
+          ["age", "gender"].forEach((e) => {
+            const infoItem = document.createElement("div");
+            infoItem.setAttribute("class", "info_item");
+            infoList.append(infoItem);
+
+            const label = document.createElement("span");
+            label.setAttribute("class", "info_value");
+            label.innerText = e;
+            infoItem.append(label);
+
+            const value = document.createElement("span");
+            value.setAttribute("class", "info_value");
+            value.innerText = `${cattle[e]} ${e === "age" ? "Year(s)" : ""}`;
+            infoItem.append(value);
+          });
+
+          const buttonContainer = document.createElement("a");
           buttonContainer.setAttribute(
             "href",
-            `../cattle details/cow/C1.html?breed=${card.breed}&cattle_id=${card.cattleUniqueId}&user_id=${card.repId}`
+            `../cattle details/cow/C1.html?breed=${cattle.breed}&cattle_id=${cattle.cattleUniqueId}&user_id=${cattle.repId}`
           );
-          info_container.append(buttonContainer);
+          cardContent.append(buttonContainer);
 
-          // Know more button
+          const button = document.createElement("button");
+          button.setAttribute("class", "view_details");
+          button.innerText = "View Details";
+          buttonContainer.append(button);
 
-          button_know = document.createElement("button");
-          button_know.innerText = "Know More";
-          buttonContainer.append(button_know);
-
-          return cattle_container;
+          return card;
         }
       }
     </script>

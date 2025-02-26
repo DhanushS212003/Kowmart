@@ -38,7 +38,7 @@
         </div>
         <div
           class="d-flex flex-column row-gap-3"
-          id="notificationsContainer"
+          id="notifications_container"
         ></div>
       </div>
     </main>
@@ -108,7 +108,7 @@
         dismissButton.append(closeIcon);
 
         document
-          .getElementById("notificationsContainer")
+          .getElementById("notifications_container")
           .prepend(notificationCard);
       }
 
@@ -167,7 +167,7 @@
         text.setAttribute("class", "text-secondary text-center");
         text.innerText = "No new notifications";
 
-        document.getElementById("notificationsContainer").append(text);
+        document.getElementById("notifications_container").append(text);
       }
     </script>
   </body>

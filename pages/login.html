@@ -38,7 +38,7 @@
         novalidate
       >
         <h6 class="text-center">LOGIN</h6>
-        <div id="repIdForm">
+        <div id="rep_form">
           <input
             id="repId"
             class="form-control"
@@ -47,7 +47,7 @@
           />
           <div class="repId_feedback invalid-feedback">Required</div>
         </div>
-        <div id="phoneForm">
+        <div id="phone_form">
           <input
             id="phone"
             class="form-control"
@@ -94,9 +94,9 @@
     <script>
       (() => {
         if (user === "rep") {
-          document.getElementById("phoneForm").style.display = "none";
+          document.getElementById("phone_form").style.display = "none";
           document.getElementById("reg_link").style.display = "none";
-        } else document.getElementById("repIdForm").style.display = "none";
+        } else document.getElementById("rep_form").style.display = "none";
       })();
     </script>
   </body>

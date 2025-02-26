@@ -269,14 +269,14 @@
             for (let i = 0; i < FAVOURITES.length; i++) {
               if (
                 cattleId == FAVOURITES[i].cattleId &&
-                FAVOURITES[i].PHONE == PHONE
+                FAVOURITES[i].phone == PHONE
               ) {
                 alert("Already added in the list");
                 return;
               }
             }
             alert("Added to your Favourites list");
-            FAVOURITES.push({ cattleId, PHONE });
+            FAVOURITES.push({ cattleId, phone: PHONE });
             localStorage.setItem("favourites", JSON.stringify(FAVOURITES));
             // window.location.href = "../../cattle/cattleList.html";
           }

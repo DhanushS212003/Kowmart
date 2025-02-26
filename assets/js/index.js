@@ -10,7 +10,7 @@ const cattleData = [
       "Quality Gir Cow of 4 year(s) age is available in Chennai, TN. The price of the cattle is Rs. 70000/-. The Cow is in 2nd lactation. It Produces 12 Litres of milk on daily basis.",
     gender: "female",
     id: "CG1",
-    images: ["https://iili.io/HWccpp9.jpg"],
+    images: ["https://iili.io/HWccpp9.jpg", "https://iili.io/HWclJLb.jpg"],
     lactation: "2",
     milk: "12",
     price: "70000",
