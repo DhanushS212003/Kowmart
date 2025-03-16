@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     />
-    <title></title>
+    <title>Cattle List</title>
 
     <link rel="stylesheet" href="../../assets/css/style.css" />
     <link rel="stylesheet" href="../../assets/css/cattles/cattlelist.css" />
@@ -115,10 +115,10 @@
           </div>
         </div> -->
 
-      <div class="px-5 py-4">
+      <div class="page-container">
         <div class="d-flex justify-content-between align-items-center">
           <h2 class="title"></h2>
-          <span class="badge badge_outline">Total: 4</span>
+          <span id="category_count" class="badge badge_outline"></span>
         </div>
         <div class="cattles_container"></div>
       </div>
@@ -322,6 +322,7 @@
         .slice(0, 1)
         .toUpperCase()}${cattlePage.slice(1)}s Section`;
       document.querySelector("h2.title").innerText = `All ${cattlePage}s`;
+      document.getElementById("category_count").innerText = "Total: 0";
 
       if (VERIFIED_CATTLE_LIST.length !== 0) {
         const cat_breed_list = breed_list.filter(
@@ -390,6 +391,10 @@
         let categoryCattleDetails = cattleDetails.filter(
           (e) => e.cattle === cattlePage
         );
+
+        document.getElementById(
+          "category_count"
+        ).innerText = `Total: ${categoryCattleDetails.length}`;
 
         for (let i = 0; i < categoryCattleDetails.length; i++)
           document
@@ -647,7 +652,7 @@
           cardImage.append(image);
 
           const category = document.createElement("span");
-          category.setAttribute("class", "badge badge_filled");
+          category.setAttribute("class", "badge badge_filled text-capitalize");
           category.innerText = cattle.cattle;
           cardImage.append(category);
 
@@ -658,7 +663,7 @@
           const cardHeader = document.createElement("div");
           cardHeader.setAttribute(
             "class",
-            "d-flex justify-content-between mb-2 pb-1"
+            "d-flex justify-content-between mb-2 pb-sm-1"
           );
           cardContent.append(cardHeader);
 
