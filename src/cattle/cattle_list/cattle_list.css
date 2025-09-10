@@ -1,0 +1,80 @@
+.page-container {
+  padding: 1.5rem 3rem;
+
+  .title {
+    color: darkslategray;
+    text-transform: capitalize
+  }
+
+  .badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    line-height: normal;
+  }
+
+  .badge_outline {
+    border: 1px solid #22c55e;
+    color: #22c55e;
+  }
+
+  .badge_filled {
+    background-color: #22c55e;
+    color: white;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .danger {
+    background-color: #ef4444;
+    /* background-color: #dc3545; */
+  }
+
+  .warning {
+    background-color: #eab308;
+  }
+
+  .cattles_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px 40px;
+    margin-top: 6px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .cattles_container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    .cattles_container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .cattles_container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 499px) {
+    .badge {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .page-container {
+    padding-inline: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .page-container {
+    padding-inline: 2rem;
+  }
+}
