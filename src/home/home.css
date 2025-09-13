@@ -20,6 +20,10 @@
     outline: 1.5px solid var(--primary-color);
   }
 
+  .search_bar_container>input {
+    line-height: normal;
+  }
+
   .search_icon_container {
     background: var(--primary-color);
     padding: 5px 8px;

@@ -10,8 +10,10 @@ import {
 } from "../assets/img/cattles/categories";
 import banner1 from "../assets/img/banner/banner_1.jpg";
 import banner2 from "../assets/img/banner/banner_2.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const banners = [banner1, banner2];
   const titles = [
     "Buy or Sell Livestock Online",
@@ -41,16 +43,14 @@ const Home = () => {
             { name: "goat", img: categoryGoat },
             { name: "sheep", img: categorySheep },
             { name: "ox", img: categoryOx },
-          ].map((category, index) => (
-            <div className="category_container" key={index}>
-              <img
-                className="category_img rounded-pill"
-                src={category.img}
-                alt={category.name}
-              />
-              <p className="mt-2 text-center text-capitalize">
-                {category.name}
-              </p>
+          ].map(({ name, img }, index) => (
+            <div
+              className="category_container"
+              key={index}
+              onClick={() => navigate(`/cattle_list?category=${name}`)}
+            >
+              <img className="category_img rounded-pill" src={img} alt={name} />
+              <p className="mt-2 text-center text-capitalize">{name}</p>
             </div>
           ))}
         </div>

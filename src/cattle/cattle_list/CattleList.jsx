@@ -1,47 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../../context.jsx";
-import { Alert } from "../../styles.jsx";
-import { useNavigate } from "react-router-dom";
 import CattleCard from "../../cattle/cattle_card/CattleCard.jsx";
 import "./cattle_list.css";
 
 const CattleList = () => {
-  const navigate = useNavigate();
-  const { currentUser, cattlesList } = useContext(AppContext);
-  const [showAlert, setShowAlert] = useState(false);
-
-  useEffect(() => {
-    if (!currentUser) {
-      setShowAlert(true);
-      setTimeout(() => navigate("/login?user=customer"), 1500);
-    }
-  }, []);
+  const { cattlesList } = useContext(AppContext);
+  const urlParams = new URLSearchParams(location.search);
+  const category = urlParams.get("category");
 
   return (
     <main>
-      <Alert isOpen={showAlert} color="danger" role="alert">
-        Unauthorized access. Redirecting to login page...
-      </Alert>
-
-      {currentUser && (
-        <div className="page-container">
-          <div className="d-flex justify-content-between align-items-center">
-            <h2 className="title">My Cattles</h2>
-            <span className="badge badge_outline">
-              {`Total: ${
-                cattlesList.filter((e) => e.userId == currentUser.id).length
-              }`}
-            </span>
-          </div>
-          <div className="cattles_container">
-            {cattlesList
-              .filter((e) => e.userId == currentUser.id)
-              .map((e, index) => (
-                <CattleCard key={index} cattle={e} onlyStatus={false} />
-              ))}
-          </div>
+      <div className="page-container">
+        <div className="d-flex justify-content-between align-items-center">
+          <h2 className="title">All {category}</h2>
+          <span className="badge badge_outline">
+            {`Total: ${
+              cattlesList.filter((e) => e.cattle === category).length
+            }`}
+          </span>
         </div>
-      )}
+        <div className="cattles_container">
+          {cattlesList
+            .filter((e) => e.cattle === category)
+            .map((e, index) => (
+              <CattleCard key={index} cattle={e} onlyStatus={false} />
+            ))}
+        </div>
+      </div>
     </main>
   );
 };
