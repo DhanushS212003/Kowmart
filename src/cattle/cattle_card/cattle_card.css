@@ -45,13 +45,19 @@
     color: #15803d;
   }
 
-  @media screen and (max-width: 499px) {
+  @media screen and (max-width: 570px) {
     .card_title {
       font-size: 1rem;
     }
 
     .card_image {
       height: 200px;
+    }
+  }
+
+  @media screen and (max-width: 499px) {
+    .card_title {
+      font-size: 0.9rem;
     }
   }
 }
