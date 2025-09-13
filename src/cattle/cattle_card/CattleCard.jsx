@@ -17,13 +17,12 @@ const CattleCard = ({ cattle, onlyStatus }) => {
     <div className="cattle_card">
       <div className="card_image">
         <img src={images[0]} alt={`${breed} ${category}`} />
-        <span className="badge badge_filled text-capitalize">{category}</span>
+        <span className="badge badge_filled text-capitalize">{id}</span>
       </div>
 
       <div className="p-3">
-        <div className="d-flex justify-content-between mb-2 pb-sm-1">
+        <div className="mb-2 pb-sm-1">
           <h2 className="card_title">{`${breed} ${category}`}</h2>
-          <span className="badge badge_outline">{id}</span>
         </div>
         {onlyStatus ? (
           (() => {
