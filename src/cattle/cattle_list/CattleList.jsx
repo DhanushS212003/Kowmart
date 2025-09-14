@@ -1,6 +1,7 @@
 import React, { useContext, useState, useMemo } from "react";
 import { AppContext } from "../../context.jsx";
 import CattleCard from "../../cattle/cattle_card/CattleCard.jsx";
+import { Offcanvas, OffcanvasBody, Button } from "reactstrap";
 import "./cattle_list.css";
 
 const CattleList = () => {
@@ -99,18 +100,26 @@ const CattleList = () => {
     setIsOffcanvasOpen(!isOffcanvasOpen);
   };
 
-  const closeOffcanvas = () => {
-    setIsOffcanvasOpen(false);
-  };
-
   // Filter component to avoid duplication
   const FilterContent = () => (
     <>
       <div className="sidebar-header">
-        <h3>Filters</h3>
-        <button className="clear-filters-btn" onClick={clearFilters}>
+        <div className="d-flex justify-content-center align-items-center">
+          <i
+            className="fa-solid fa-arrow-left me-2 mobile-only"
+            onClick={toggleOffcanvas}
+            style={{ cursor: "pointer" }}
+          />
+          <h3>Filters</h3>
+        </div>
+        <Button
+          className="clear-filters-btn"
+          onClick={clearFilters}
+          color="danger"
+          size="sm"
+        >
           Clear All
-        </button>
+        </Button>
       </div>
 
       <div className="filter-sections">
@@ -384,24 +393,15 @@ const CattleList = () => {
               </div>
 
               {/* Mobile Filter Toggle Button */}
-              <button
+              <Button
                 className="mobile-filter-btn mobile-only"
                 onClick={toggleOffcanvas}
+                color="success"
+                size="sm"
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
+                <i className="fa-solid fa-filter"></i>
                 Filters
-              </button>
+              </Button>
             </div>
 
             <div className="cattles_container">
@@ -412,45 +412,31 @@ const CattleList = () => {
               ) : (
                 <div className="no-results">
                   <p>No cattle found matching your filters.</p>
-                  <button onClick={clearFilters} className="clear-filters-btn">
+                  <Button
+                    onClick={clearFilters}
+                    className="clear-filters-btn"
+                    color="danger"
+                    size="sm"
+                  >
                     Clear Filters
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>
           </div>
         </div>
 
-        {/* Mobile Offcanvas */}
-        <div
-          className={`offcanvas-overlay ${isOffcanvasOpen ? "active" : ""}`}
-          onClick={closeOffcanvas}
-        ></div>
-        <div
-          className={`offcanvas-filters mobile-only ${
-            isOffcanvasOpen ? "active" : ""
-          }`}
+        {/* Reactstrap Offcanvas */}
+        <Offcanvas
+          isOpen={isOffcanvasOpen}
+          toggle={toggleOffcanvas}
+          direction="end"
+          className="offcanvas-filters"
         >
-          <div className="offcanvas-header">
-            <h3>Filters</h3>
-            <button className="close-btn" onClick={closeOffcanvas}>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-          </div>
-          <div className="offcanvas-content">
+          <OffcanvasBody className="offcanvas-content">
             <FilterContent />
-          </div>
-        </div>
+          </OffcanvasBody>
+        </Offcanvas>
       </div>
     </main>
   );
