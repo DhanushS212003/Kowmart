@@ -53,9 +53,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 1rem;
   }
 
   .header-left {
@@ -64,31 +62,25 @@
     gap: 1rem;
   }
 
-  /* Default grid layout */
   .cattles_container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
     width: 100%;
+    padding-bottom: 2rem;
   }
 
   .no-results {
-    grid-column: 1 / -1;
     text-align: center;
-    padding: 3rem;
-    color: #6c757d;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border: 1px solid #e9ecef;
+    padding: 3rem 1rem;
+    color: #6b7280;
   }
 
   .no-results p {
-    font-size: 1.125rem;
     margin-bottom: 1rem;
+    font-size: 1.125rem;
   }
 
-  /* Responsive Design */
-  /* Three column layout for screens > 1170px */
+  /* Responsive Grid Layout */
   @media screen and (min-width: 1171px) {
     .cattles_container {
       grid-template-columns: repeat(3, 1fr);
@@ -96,7 +88,6 @@
     }
   }
 
-  /* Two column layout for screens > 870px */
   @media screen and (max-width: 1170px) and (min-width: 871px) {
     .cattles_container {
       grid-template-columns: repeat(2, 1fr);
@@ -104,7 +95,7 @@
     }
   }
 
-  /* Mobile behavior for screens < 870px - 2 columns with offcanvas */
+  /* Mobile responsive adjustments */
   @media screen and (max-width: 870px) {
     .main-content {
       flex-direction: column;
@@ -119,32 +110,20 @@
       display: flex;
     }
 
-    /* Keep header section horizontal on mobile */
-    .header-section {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-
     .header-left {
-      justify-content: flex-start;
-    }
-
-    .title {
       text-align: left;
     }
 
     .cattles_container {
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
-      width: 100%;
     }
   }
 
-  /* Single column for very small screens < 450px */
   @media screen and (max-width: 450px) {
     .cattles_container {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
   }
 }
@@ -198,11 +177,25 @@
   border-radius: 8px;
   padding: 1.5rem;
   position: sticky;
-  top: 0;
+  top: 88px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   height: fit-content;
   flex-shrink: 0;
   align-self: flex-start;
+  max-height: calc(100vh - 112px);
+  overflow-y: auto;
+
+  /* Custom Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #b5c0b9 #f1f5f9;
+}
+
+.filters-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filters-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #16a34a;
 }
 
 .sidebar-header {
@@ -453,13 +446,6 @@
 
   .page-container .content-area {
     width: 100%;
-  }
-
-  .page-container .header-section {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
   }
 
   .page-container .header-left {
