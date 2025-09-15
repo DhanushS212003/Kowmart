@@ -5,7 +5,7 @@ import { AppContext } from "../../context";
 const CattleCard = ({ cattle, onlyStatus }) => {
   const { currentUser, verifiedCattlesList, rejectedCattlesList } =
     useContext(AppContext);
-  const { images, breed, cattle: category, id, cattleId } = cattle;
+  const { images, breed, cattle: category, id, cattleId, price } = cattle;
   const userVerifiedCattlesList = verifiedCattlesList.filter(
     (e) => e.userId == currentUser.id
   );
@@ -61,7 +61,7 @@ const CattleCard = ({ cattle, onlyStatus }) => {
         ) : (
           <>
             <div className="d-flex flex-column row-gap-2">
-              {["age", "gender"].map((field) => (
+              {["price", "age", "gender"].map((field) => (
                 <div key={field} className="d-flex justify-content-between">
                   <span
                     className="text-capitalize"
@@ -69,7 +69,8 @@ const CattleCard = ({ cattle, onlyStatus }) => {
                   >
                     {field}
                   </span>
-                  <span>
+                  <span className={`${field === "price" ? "fw-medium" : ""}`}>
+                    {field === "price" ? "₹" : ""}
                     {`${cattle[field][0].toUpperCase()}${cattle[field].slice(
                       1
                     )}${field === "age" ? " Year(s)" : ""}`}

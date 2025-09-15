@@ -2,6 +2,7 @@ import React, { useContext, useState, useMemo } from "react";
 import { AppContext } from "../../context.jsx";
 import CattleCard from "../../cattle/cattle_card/CattleCard.jsx";
 import { Offcanvas, OffcanvasBody, Button } from "reactstrap";
+import Select from "react-select";
 import "./cattle_list.css";
 
 const CattleList = () => {
@@ -12,22 +13,70 @@ const CattleList = () => {
   // Filter states
   const [filters, setFilters] = useState({
     breed: "",
-    priceRange: "",
-    ageRange: "",
+    priceMin: "",
+    priceMax: "",
     gender: "",
     sortBy: "",
   });
 
+  const breedList = {
+    cow: [
+      "Gir",
+      "Red Sindhi",
+      "Kankrej",
+      "Jersey",
+      "Rathi Heifer",
+      "Kapila",
+      "Vilwadri",
+      "HF",
+      "Tharparkar",
+      "Sahiwal",
+      "Deoni",
+    ],
+    buffalo: ["Surti", "Nili", "Banni", "Murrah", "Jafarabadi"],
+    goat: [
+      "Malabari",
+      "Sirohi",
+      "Kota",
+      "Beetal",
+      "Sannen",
+      "Jamunapari",
+      "Boer",
+      "Sojat",
+      "Barbari",
+      "Gujri",
+      "Jakhrana",
+    ],
+    sheep: ["Bannur", "Neelore Jodipi", "Sindhanoor", "Deccani", "Coimbatore"],
+    ox: ["Ongole", "Brahma"],
+  };
+
   // Offcanvas state for mobile
   const [isOffcanvasOpen, setIsOffcanvasOpen] = useState(false);
 
-  // Get unique breeds for the current category
+  // Derive price bounds for slider based on current category
+  const { minPrice, maxPrice } = useMemo(() => {
+    const prices = cattlesList
+      .filter((e) => e.cattle === category)
+      .map((e) => Number(e.price))
+      .filter((n) => !Number.isNaN(n));
+    if (prices.length === 0) return { minPrice: 0, maxPrice: 0 };
+    return {
+      minPrice: Math.min(...prices),
+      maxPrice: Math.max(...prices),
+    };
+  }, [cattlesList, category]);
+
+  // Get breeds for the current category using the provided breedList (fallback to data-derived)
   const availableBreeds = useMemo(() => {
+    const list = breedList[category] || [];
+    if (list.length > 0) return list;
     const breeds = cattlesList
       .filter((e) => e.cattle === category)
-      .map((e) => e.breed);
+      .map((e) => e.breed)
+      .filter(Boolean);
     return [...new Set(breeds)];
-  }, [cattlesList, category]);
+  }, [breedList, cattlesList, category]);
 
   // Filter and sort cattle
   const filteredCattle = useMemo(() => {
@@ -35,41 +84,32 @@ const CattleList = () => {
 
     // Apply filters
     if (filters.breed) {
-      filtered = filtered.filter((e) => e.breed === filters.breed);
+      filtered = filtered.filter((e) =>
+        (e.breed || "").toLowerCase() === filters.breed.toLowerCase()
+      );
     }
 
     if (filters.gender) {
-      filtered = filtered.filter((e) => e.gender === filters.gender);
+      filtered = filtered.filter((e) => (e.gender || "") === filters.gender);
     }
 
-    if (filters.priceRange) {
-      const [min, max] = filters.priceRange.split("-").map(Number);
+    if (filters.priceMin !== "" || filters.priceMax !== "") {
+      const min = filters.priceMin !== "" ? Number(filters.priceMin) : -Infinity;
+      const max = filters.priceMax !== "" ? Number(filters.priceMax) : Infinity;
       filtered = filtered.filter((e) => {
         const price = Number(e.price);
-        return price >= min && (max ? price <= max : true);
-      });
-    }
-
-    if (filters.ageRange) {
-      const [min, max] = filters.ageRange.split("-").map(Number);
-      filtered = filtered.filter((e) => {
-        const age = Number(e.age);
-        return age >= min && (max ? age <= max : true);
+        return !Number.isNaN(price) && price >= min && price <= max;
       });
     }
 
     // Apply sorting
     if (filters.sortBy) {
-      filtered.sort((a, b) => {
+      filtered = [...filtered].sort((a, b) => {
         switch (filters.sortBy) {
           case "price-low":
             return Number(a.price) - Number(b.price);
           case "price-high":
             return Number(b.price) - Number(a.price);
-          case "age-young":
-            return Number(a.age) - Number(b.age);
-          case "age-old":
-            return Number(b.age) - Number(a.age);
           default:
             return 0;
         }
@@ -89,8 +129,8 @@ const CattleList = () => {
   const clearFilters = () => {
     setFilters({
       breed: "",
-      priceRange: "",
-      ageRange: "",
+      priceMin: "",
+      priceMax: "",
       gender: "",
       sortBy: "",
     });
@@ -101,277 +141,183 @@ const CattleList = () => {
   };
 
   // Filter component to avoid duplication
-  const FilterContent = () => (
-    <>
-      <div className="sidebar-header">
-        <div className="d-flex justify-content-center align-items-center">
-          <i
-            className="fa-solid fa-arrow-left me-2 mobile-only"
-            onClick={toggleOffcanvas}
-            style={{ cursor: "pointer" }}
-          />
-          <h3>Filters</h3>
-        </div>
-        <Button
-          className="clear-filters-btn"
-          onClick={clearFilters}
-          color="danger"
-          size="sm"
-        >
-          Clear All
-        </Button>
-      </div>
+  const FilterContent = () => {
+    const genderOptions = [
+      { value: "", label: "All Genders" },
+      { value: "male", label: "Male" },
+      { value: "female", label: "Female" },
+    ];
 
-      <div className="filter-sections">
-        {/* Breed Filter */}
-        <div className="filter-section">
-          <h4 className="filter-title">Breed</h4>
-          <div className="filter-options">
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="breed"
-                value=""
-                checked={filters.breed === ""}
-                onChange={(e) => handleFilterChange("breed", e.target.value)}
-              />
-              <span>All Breeds</span>
-            </label>
-            {availableBreeds.map((breed) => (
-              <label key={breed} className="filter-option">
+    const selectStyles = {
+      control: (base, state) => ({
+        ...base,
+        minHeight: 40,
+        borderRadius: 6,
+        borderColor: state.isFocused ? "#22c55e" : "#ced4da",
+        boxShadow: state.isFocused ? "0 0 0 2px rgba(34,197,94,0.15)" : "none",
+        "&:hover": { borderColor: "#22c55e" },
+      }),
+      valueContainer: (base) => ({ ...base, padding: "2px 8px" }),
+      placeholder: (base) => ({ ...base, color: "#6b7280" }),
+      singleValue: (base) => ({ ...base, color: "#374151" }),
+      indicatorSeparator: () => ({ display: "none" }),
+      dropdownIndicator: (base, state) => ({
+        ...base,
+        color: state.isFocused ? "#22c55e" : "#94a3b8",
+        "&:hover": { color: "#22c55e" },
+      }),
+      menu: (base) => ({ ...base, borderRadius: 8, overflow: "hidden" }),
+      option: (base, state) => ({
+        ...base,
+        backgroundColor: state.isSelected
+          ? "#22c55e"
+          : state.isFocused
+          ? "rgba(34,197,94,0.08)"
+          : "white",
+        color: state.isSelected ? "white" : "#111827",
+        cursor: "pointer",
+      }),
+    };
+
+    const selectedGender = genderOptions.find((o) => o.value === filters.gender) || genderOptions[0];
+
+    return (
+      <>
+        <div className="sidebar-header">
+          <div className="d-flex justify-content-center align-items-center">
+            <i
+              className="fa-solid fa-arrow-left me-2 mobile-only"
+              onClick={toggleOffcanvas}
+              style={{ cursor: "pointer" }}
+            />
+            <h3>Filters</h3>
+          </div>
+          <Button
+            className="clear-filters-btn"
+            onClick={clearFilters}
+            color="danger"
+            size="sm"
+          >
+            Clear All
+          </Button>
+        </div>
+
+        <div className="filter-sections">
+          {/* Breed Filter */}
+          <div className="filter-section">
+            <h4 className="filter-title">Breed</h4>
+            <div className="filter-options">
+              <label className="filter-option">
                 <input
                   type="radio"
                   name="breed"
-                  value={breed}
-                  checked={filters.breed === breed}
+                  value=""
+                  checked={filters.breed === ""}
                   onChange={(e) => handleFilterChange("breed", e.target.value)}
                 />
-                <span>{breed.charAt(0).toUpperCase() + breed.slice(1)}</span>
+                <span>All Breeds</span>
               </label>
-            ))}
+              {availableBreeds.map((breed) => (
+                <label key={breed} className="filter-option">
+                  <input
+                    type="radio"
+                    name="breed"
+                    value={breed}
+                    checked={filters.breed === breed}
+                    onChange={(e) => handleFilterChange("breed", e.target.value)}
+                  />
+                  <span>{breed}</span>
+                </label>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Gender Filter */}
-        <div className="filter-section">
-          <h4 className="filter-title">Gender</h4>
-          <div className="filter-options">
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="gender"
-                value=""
-                checked={filters.gender === ""}
-                onChange={(e) => handleFilterChange("gender", e.target.value)}
+          {/* Gender Dropdown (react-select) */}
+          <div className="filter-section">
+            <h4 className="filter-title">Gender</h4>
+            <div className="filter-options">
+              <Select
+                options={genderOptions}
+                value={selectedGender}
+                onChange={(opt) => handleFilterChange("gender", opt ? opt.value : "")}
+                isSearchable={false}
+                styles={selectStyles}
+                classNamePrefix="gender-select"
               />
-              <span>All Genders</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="gender"
-                value="male"
-                checked={filters.gender === "male"}
-                onChange={(e) => handleFilterChange("gender", e.target.value)}
-              />
-              <span>Male</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="gender"
-                value="female"
-                checked={filters.gender === "female"}
-                onChange={(e) => handleFilterChange("gender", e.target.value)}
-              />
-              <span>Female</span>
-            </label>
+            </div>
           </div>
-        </div>
 
-        {/* Price Range Filter */}
-        <div className="filter-section">
-          <h4 className="filter-title">Price Range</h4>
-          <div className="filter-options">
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="priceRange"
-                value=""
-                checked={filters.priceRange === ""}
-                onChange={(e) =>
-                  handleFilterChange("priceRange", e.target.value)
-                }
-              />
-              <span>All Prices</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="priceRange"
-                value="0-50000"
-                checked={filters.priceRange === "0-50000"}
-                onChange={(e) =>
-                  handleFilterChange("priceRange", e.target.value)
-                }
-              />
-              <span>₹0 - ₹50,000</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="priceRange"
-                value="50000-100000"
-                checked={filters.priceRange === "50000-100000"}
-                onChange={(e) =>
-                  handleFilterChange("priceRange", e.target.value)
-                }
-              />
-              <span>₹50,000 - ₹1,00,000</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="priceRange"
-                value="100000-200000"
-                checked={filters.priceRange === "100000-200000"}
-                onChange={(e) =>
-                  handleFilterChange("priceRange", e.target.value)
-                }
-              />
-              <span>₹1,00,000 - ₹2,00,000</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="priceRange"
-                value="200000"
-                checked={filters.priceRange === "200000"}
-                onChange={(e) =>
-                  handleFilterChange("priceRange", e.target.value)
-                }
-              />
-              <span>₹2,00,000+</span>
-            </label>
+          {/* Price Range Slider */}
+          <div className="filter-section">
+            <h4 className="filter-title">Price Range</h4>
+            <div className="filter-options">
+              <div className="d-flex align-items-center justify-content-between" style={{ gap: "12px" }}>
+                <div className="d-flex flex-column" style={{ minWidth: 0 }}>
+                  <label style={{ fontSize: "0.8rem", color: "#6b7280" }}>Min</label>
+                  <input
+                    type="range"
+                    min={minPrice}
+                    max={maxPrice}
+                    value={filters.priceMin === "" ? minPrice : Number(filters.priceMin)}
+                    onChange={(e) => handleFilterChange("priceMin", e.target.value)}
+                  />
+                  <span style={{ fontSize: "0.8rem" }}>₹{filters.priceMin === "" ? minPrice : filters.priceMin}</span>
+                </div>
+                <div className="d-flex flex-column" style={{ minWidth: 0 }}>
+                  <label style={{ fontSize: "0.8rem", color: "#6b7280" }}>Max</label>
+                  <input
+                    type="range"
+                    min={minPrice}
+                    max={maxPrice}
+                    value={filters.priceMax === "" ? maxPrice : Number(filters.priceMax)}
+                    onChange={(e) => handleFilterChange("priceMax", e.target.value)}
+                  />
+                  <span style={{ fontSize: "0.8rem" }}>₹{filters.priceMax === "" ? maxPrice : filters.priceMax}</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Age Range Filter */}
-        <div className="filter-section">
-          <h4 className="filter-title">Age Range</h4>
-          <div className="filter-options">
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="ageRange"
-                value=""
-                checked={filters.ageRange === ""}
-                onChange={(e) => handleFilterChange("ageRange", e.target.value)}
-              />
-              <span>All Ages</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="ageRange"
-                value="0-2"
-                checked={filters.ageRange === "0-2"}
-                onChange={(e) => handleFilterChange("ageRange", e.target.value)}
-              />
-              <span>0-2 years</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="ageRange"
-                value="2-4"
-                checked={filters.ageRange === "2-4"}
-                onChange={(e) => handleFilterChange("ageRange", e.target.value)}
-              />
-              <span>2-4 years</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="ageRange"
-                value="4-6"
-                checked={filters.ageRange === "4-6"}
-                onChange={(e) => handleFilterChange("ageRange", e.target.value)}
-              />
-              <span>4-6 years</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="ageRange"
-                value="6"
-                checked={filters.ageRange === "6"}
-                onChange={(e) => handleFilterChange("ageRange", e.target.value)}
-              />
-              <span>6+ years</span>
-            </label>
+          {/* Sort By (removed age based sorting) */}
+          <div className="filter-section">
+            <h4 className="filter-title">Sort By</h4>
+            <div className="filter-options">
+              <label className="filter-option">
+                <input
+                  type="radio"
+                  name="sortBy"
+                  value=""
+                  checked={filters.sortBy === ""}
+                  onChange={(e) => handleFilterChange("sortBy", e.target.value)}
+                />
+                <span>Default</span>
+              </label>
+              <label className="filter-option">
+                <input
+                  type="radio"
+                  name="sortBy"
+                  value="price-low"
+                  checked={filters.sortBy === "price-low"}
+                  onChange={(e) => handleFilterChange("sortBy", e.target.value)}
+                />
+                <span>Price: Low to High</span>
+              </label>
+              <label className="filter-option">
+                <input
+                  type="radio"
+                  name="sortBy"
+                  value="price-high"
+                  checked={filters.sortBy === "price-high"}
+                  onChange={(e) => handleFilterChange("sortBy", e.target.value)}
+                />
+                <span>Price: High to Low</span>
+              </label>
+            </div>
           </div>
         </div>
-
-        {/* Sort By */}
-        <div className="filter-section">
-          <h4 className="filter-title">Sort By</h4>
-          <div className="filter-options">
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="sortBy"
-                value=""
-                checked={filters.sortBy === ""}
-                onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-              />
-              <span>Default</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="sortBy"
-                value="price-low"
-                checked={filters.sortBy === "price-low"}
-                onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-              />
-              <span>Price: Low to High</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="sortBy"
-                value="price-high"
-                checked={filters.sortBy === "price-high"}
-                onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-              />
-              <span>Price: High to Low</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="sortBy"
-                value="age-young"
-                checked={filters.sortBy === "age-young"}
-                onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-              />
-              <span>Age: Young to Old</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="sortBy"
-                value="age-old"
-                checked={filters.sortBy === "age-old"}
-                onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-              />
-              <span>Age: Old to Young</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  };
 
   return (
     <main>
