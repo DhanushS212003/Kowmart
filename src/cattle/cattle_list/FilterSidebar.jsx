@@ -13,6 +13,12 @@ const FilterSidebar = ({
 }) => {
   const [sliderValues, setSliderValues] = useState([0, 1000000]);
 
+  const sortOptions = [
+    { label: "Default", value: "" },
+    { label: "Price: Low to High", value: "price-low" },
+    { label: "Price: High to Low", value: "price-high" },
+  ];
+
   const handleFilterChange = useCallback(
     (filterType, value) => {
       setFilters((prev) => ({
@@ -257,36 +263,17 @@ const FilterSidebar = ({
         <div className="filter-section">
           <h4 className="filter-title">Sort By</h4>
           <div className="filter-options">
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="sortBy"
-                value=""
-                checked={filters.sortBy === ""}
-                onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-              />
-              <span>Default</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="sortBy"
-                value="price-low"
-                checked={filters.sortBy === "price-low"}
-                onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-              />
-              <span>Price: Low to High</span>
-            </label>
-            <label className="filter-option">
-              <input
-                type="radio"
-                name="sortBy"
-                value="price-high"
-                checked={filters.sortBy === "price-high"}
-                onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-              />
-              <span>Price: High to Low</span>
-            </label>
+            {sortOptions.map((option) => (
+              <label key={option.value} className="filter-option">
+                <input
+                  type="radio"
+                  value={option.value}
+                  checked={filters.sortBy === option.value}
+                  onChange={(e) => handleFilterChange("sortBy", e.target.value)}
+                />
+                <span>{option.label}</span>
+              </label>
+            ))}
           </div>
         </div>
       </div>

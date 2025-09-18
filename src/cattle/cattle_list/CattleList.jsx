@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo } from "react";
+import React, { useContext, useState, useMemo, useEffect } from "react";
 import { AppContext } from "../../context.jsx";
 import CattleCard from "../../cattle/cattle_card/CattleCard.jsx";
 import { Offcanvas, OffcanvasBody, Button } from "reactstrap";
@@ -198,22 +198,24 @@ const CattleList = () => {
         </div>
 
         {/* Reactstrap Offcanvas */}
-        <Offcanvas
-          isOpen={isOffcanvasOpen}
-          toggle={toggleOffcanvas}
-          direction="end"
-          className="offcanvas-filters"
-        >
-          <OffcanvasBody className="offcanvas-content">
-            <FilterSidebar
-              filters={filters}
-              setFilters={setFilters}
-              availableBreeds={availableBreeds}
-              clearFilters={clearFilters}
-              toggleOffcanvas={toggleOffcanvas}
-            />
-          </OffcanvasBody>
-        </Offcanvas>
+        {isOffcanvasOpen && (
+          <Offcanvas
+            isOpen={isOffcanvasOpen}
+            toggle={toggleOffcanvas}
+            direction="end"
+            className="offcanvas-filters"
+          >
+            <OffcanvasBody className="offcanvas-content">
+              <FilterSidebar
+                filters={filters}
+                setFilters={setFilters}
+                availableBreeds={availableBreeds}
+                clearFilters={clearFilters}
+                toggleOffcanvas={toggleOffcanvas}
+              />
+            </OffcanvasBody>
+          </Offcanvas>
+        )}
       </div>
     </main>
   );

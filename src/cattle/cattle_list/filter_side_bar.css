@@ -264,7 +264,7 @@ input[type="radio"]:checked::after {
   border-radius: 50%;
   position: absolute;
   top: 2.3px;
-  left: 2px;
+  left: 2.2px;
 }
 
 
