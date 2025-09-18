@@ -2,7 +2,7 @@ import React, { useContext, useState, useMemo } from "react";
 import { AppContext } from "../../context.jsx";
 import CattleCard from "../../cattle/cattle_card/CattleCard.jsx";
 import { Offcanvas, OffcanvasBody, Button } from "reactstrap";
-import Select from "react-select";
+import FilterSidebar from "./FilterSidebar";
 import "./cattle_list.css";
 
 const CattleList = () => {
@@ -12,7 +12,7 @@ const CattleList = () => {
 
   // Filter states
   const [filters, setFilters] = useState({
-    breed: "",
+    breeds: [],
     priceMin: "",
     priceMax: "",
     gender: "",
@@ -60,7 +60,7 @@ const CattleList = () => {
       .filter((e) => e.cattle === category)
       .map((e) => Number(e.price))
       .filter((n) => !Number.isNaN(n));
-    if (prices.length === 0) return { minPrice: 0, maxPrice: 0 };
+    if (prices.length === 0) return { minPrice: 0, maxPrice: 100000 };
     return {
       minPrice: Math.min(...prices),
       maxPrice: Math.max(...prices),
@@ -82,10 +82,13 @@ const CattleList = () => {
   const filteredCattle = useMemo(() => {
     let filtered = cattlesList.filter((e) => e.cattle === category);
 
-    // Apply filters
-    if (filters.breed) {
+    // Apply breed filters (multi-select). If none selected, show all.
+    if (filters.breeds && filters.breeds.length > 0) {
+      const wanted = new Set(
+        filters.breeds.map((b) => (b || "").toLowerCase())
+      );
       filtered = filtered.filter((e) =>
-        (e.breed || "").toLowerCase() === filters.breed.toLowerCase()
+        wanted.has((e.breed || "").toLowerCase())
       );
     }
 
@@ -93,8 +96,10 @@ const CattleList = () => {
       filtered = filtered.filter((e) => (e.gender || "") === filters.gender);
     }
 
+    // Apply price filtering
     if (filters.priceMin !== "" || filters.priceMax !== "") {
-      const min = filters.priceMin !== "" ? Number(filters.priceMin) : -Infinity;
+      const min =
+        filters.priceMin !== "" ? Number(filters.priceMin) : -Infinity;
       const max = filters.priceMax !== "" ? Number(filters.priceMax) : Infinity;
       filtered = filtered.filter((e) => {
         const price = Number(e.price);
@@ -119,16 +124,9 @@ const CattleList = () => {
     return filtered;
   }, [cattlesList, category, filters]);
 
-  const handleFilterChange = (filterType, value) => {
-    setFilters((prev) => ({
-      ...prev,
-      [filterType]: value,
-    }));
-  };
-
   const clearFilters = () => {
     setFilters({
-      breed: "",
+      breeds: [],
       priceMin: "",
       priceMax: "",
       gender: "",
@@ -140,192 +138,19 @@ const CattleList = () => {
     setIsOffcanvasOpen(!isOffcanvasOpen);
   };
 
-  // Filter component to avoid duplication
-  const FilterContent = () => {
-    const genderOptions = [
-      { value: "", label: "All Genders" },
-      { value: "male", label: "Male" },
-      { value: "female", label: "Female" },
-    ];
-
-    const selectStyles = {
-      control: (base, state) => ({
-        ...base,
-        minHeight: 40,
-        borderRadius: 6,
-        borderColor: state.isFocused ? "#22c55e" : "#ced4da",
-        boxShadow: state.isFocused ? "0 0 0 2px rgba(34,197,94,0.15)" : "none",
-        "&:hover": { borderColor: "#22c55e" },
-      }),
-      valueContainer: (base) => ({ ...base, padding: "2px 8px" }),
-      placeholder: (base) => ({ ...base, color: "#6b7280" }),
-      singleValue: (base) => ({ ...base, color: "#374151" }),
-      indicatorSeparator: () => ({ display: "none" }),
-      dropdownIndicator: (base, state) => ({
-        ...base,
-        color: state.isFocused ? "#22c55e" : "#94a3b8",
-        "&:hover": { color: "#22c55e" },
-      }),
-      menu: (base) => ({ ...base, borderRadius: 8, overflow: "hidden" }),
-      option: (base, state) => ({
-        ...base,
-        backgroundColor: state.isSelected
-          ? "#22c55e"
-          : state.isFocused
-          ? "rgba(34,197,94,0.08)"
-          : "white",
-        color: state.isSelected ? "white" : "#111827",
-        cursor: "pointer",
-      }),
-    };
-
-    const selectedGender = genderOptions.find((o) => o.value === filters.gender) || genderOptions[0];
-
-    return (
-      <>
-        <div className="sidebar-header">
-          <div className="d-flex justify-content-center align-items-center">
-            <i
-              className="fa-solid fa-arrow-left me-2 mobile-only"
-              onClick={toggleOffcanvas}
-              style={{ cursor: "pointer" }}
-            />
-            <h3>Filters</h3>
-          </div>
-          <Button
-            className="clear-filters-btn"
-            onClick={clearFilters}
-            color="danger"
-            size="sm"
-          >
-            Clear All
-          </Button>
-        </div>
-
-        <div className="filter-sections">
-          {/* Breed Filter */}
-          <div className="filter-section">
-            <h4 className="filter-title">Breed</h4>
-            <div className="filter-options">
-              <label className="filter-option">
-                <input
-                  type="radio"
-                  name="breed"
-                  value=""
-                  checked={filters.breed === ""}
-                  onChange={(e) => handleFilterChange("breed", e.target.value)}
-                />
-                <span>All Breeds</span>
-              </label>
-              {availableBreeds.map((breed) => (
-                <label key={breed} className="filter-option">
-                  <input
-                    type="radio"
-                    name="breed"
-                    value={breed}
-                    checked={filters.breed === breed}
-                    onChange={(e) => handleFilterChange("breed", e.target.value)}
-                  />
-                  <span>{breed}</span>
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {/* Gender Dropdown (react-select) */}
-          <div className="filter-section">
-            <h4 className="filter-title">Gender</h4>
-            <div className="filter-options">
-              <Select
-                options={genderOptions}
-                value={selectedGender}
-                onChange={(opt) => handleFilterChange("gender", opt ? opt.value : "")}
-                isSearchable={false}
-                styles={selectStyles}
-                classNamePrefix="gender-select"
-              />
-            </div>
-          </div>
-
-          {/* Price Range Slider */}
-          <div className="filter-section">
-            <h4 className="filter-title">Price Range</h4>
-            <div className="filter-options">
-              <div className="d-flex align-items-center justify-content-between" style={{ gap: "12px" }}>
-                <div className="d-flex flex-column" style={{ minWidth: 0 }}>
-                  <label style={{ fontSize: "0.8rem", color: "#6b7280" }}>Min</label>
-                  <input
-                    type="range"
-                    min={minPrice}
-                    max={maxPrice}
-                    value={filters.priceMin === "" ? minPrice : Number(filters.priceMin)}
-                    onChange={(e) => handleFilterChange("priceMin", e.target.value)}
-                  />
-                  <span style={{ fontSize: "0.8rem" }}>₹{filters.priceMin === "" ? minPrice : filters.priceMin}</span>
-                </div>
-                <div className="d-flex flex-column" style={{ minWidth: 0 }}>
-                  <label style={{ fontSize: "0.8rem", color: "#6b7280" }}>Max</label>
-                  <input
-                    type="range"
-                    min={minPrice}
-                    max={maxPrice}
-                    value={filters.priceMax === "" ? maxPrice : Number(filters.priceMax)}
-                    onChange={(e) => handleFilterChange("priceMax", e.target.value)}
-                  />
-                  <span style={{ fontSize: "0.8rem" }}>₹{filters.priceMax === "" ? maxPrice : filters.priceMax}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Sort By (removed age based sorting) */}
-          <div className="filter-section">
-            <h4 className="filter-title">Sort By</h4>
-            <div className="filter-options">
-              <label className="filter-option">
-                <input
-                  type="radio"
-                  name="sortBy"
-                  value=""
-                  checked={filters.sortBy === ""}
-                  onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-                />
-                <span>Default</span>
-              </label>
-              <label className="filter-option">
-                <input
-                  type="radio"
-                  name="sortBy"
-                  value="price-low"
-                  checked={filters.sortBy === "price-low"}
-                  onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-                />
-                <span>Price: Low to High</span>
-              </label>
-              <label className="filter-option">
-                <input
-                  type="radio"
-                  name="sortBy"
-                  value="price-high"
-                  checked={filters.sortBy === "price-high"}
-                  onChange={(e) => handleFilterChange("sortBy", e.target.value)}
-                />
-                <span>Price: High to Low</span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  };
-
   return (
     <main>
       <div className="page-container">
         <div className="main-content">
           {/* Desktop Sidebar Filters */}
           <aside className="filters-sidebar desktop-only">
-            <FilterContent />
+            <FilterSidebar
+              filters={filters}
+              setFilters={setFilters}
+              availableBreeds={availableBreeds}
+              clearFilters={clearFilters}
+              toggleOffcanvas={toggleOffcanvas}
+            />
           </aside>
 
           {/* Main Content Area */}
@@ -380,7 +205,13 @@ const CattleList = () => {
           className="offcanvas-filters"
         >
           <OffcanvasBody className="offcanvas-content">
-            <FilterContent />
+            <FilterSidebar
+              filters={filters}
+              setFilters={setFilters}
+              availableBreeds={availableBreeds}
+              clearFilters={clearFilters}
+              toggleOffcanvas={toggleOffcanvas}
+            />
           </OffcanvasBody>
         </Offcanvas>
       </div>
