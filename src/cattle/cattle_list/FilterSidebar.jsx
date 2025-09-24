@@ -10,9 +10,11 @@ const FilterSidebar = ({
   availableBreeds,
   clearFilters,
   toggleOffcanvas,
+  sliderValues,
+  setSliderValues,
+  minPrice,
+  maxPrice,
 }) => {
-  const [sliderValues, setSliderValues] = useState([0, 1000000]);
-
   const sortOptions = [
     { label: "Default", value: "" },
     { label: "Price: Low to High", value: "price-low" },
@@ -39,7 +41,7 @@ const FilterSidebar = ({
         priceMax: String(values[1]),
       }));
     },
-    [setFilters]
+    [setFilters, setSliderValues]
   );
 
   // Handle manual input changes

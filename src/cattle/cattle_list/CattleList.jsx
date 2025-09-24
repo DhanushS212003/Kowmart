@@ -124,6 +124,15 @@ const CattleList = () => {
     return filtered;
   }, [cattlesList, category, filters]);
 
+  // Move sliderValues state to CattleList component - always default to full range
+  const [sliderValues, setSliderValues] = useState([0, 1000000]);
+
+  // Update slider values when price bounds change - but keep default range
+  React.useEffect(() => {
+    // Don't auto-update slider values based on data bounds
+    // Keep the default [0, 1000000] range
+  }, [minPrice, maxPrice]);
+
   const clearFilters = () => {
     setFilters({
       breeds: [],
@@ -132,6 +141,8 @@ const CattleList = () => {
       gender: "",
       sortBy: "",
     });
+    // Reset slider values to default range
+    setSliderValues([0, 1000000]);
   };
 
   const toggleOffcanvas = () => {
@@ -150,6 +161,10 @@ const CattleList = () => {
               availableBreeds={availableBreeds}
               clearFilters={clearFilters}
               toggleOffcanvas={toggleOffcanvas}
+              sliderValues={sliderValues}
+              setSliderValues={setSliderValues}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
             />
           </aside>
 
@@ -165,7 +180,7 @@ const CattleList = () => {
 
               {/* Mobile Filter Toggle Button */}
               <Button
-                className="mobile-filter-btn mobile-only"
+                className="mobile-filter-btn"
                 onClick={toggleOffcanvas}
                 color="success"
                 size="sm"
@@ -175,14 +190,22 @@ const CattleList = () => {
               </Button>
             </div>
 
-            <div className="cattles_container">
-              {filteredCattle.length > 0 ? (
-                filteredCattle.map((e, index) => (
+            {filteredCattle.length > 0 ? (
+              <div className="cattles_container">
+                {filteredCattle.map((e, index) => (
                   <CattleCard key={index} cattle={e} onlyStatus={false} />
-                ))
-              ) : (
-                <div className="no-results">
-                  <p>No cattle found matching your filters.</p>
+                ))}
+              </div>
+            ) : (
+              <div className="no-results">
+                <div className="no-results-icon">
+                  <i className="fa-solid fa-search"></i>
+                </div>
+                <h3 className="mb-2 text-secondary">No cattle found</h3>
+                <p>
+                  We couldn't find any cattle matching your current filters.
+                </p>
+                <div className="no-results-actions">
                   <Button
                     onClick={clearFilters}
                     className="clear-filters-btn"
@@ -192,8 +215,8 @@ const CattleList = () => {
                     Clear Filters
                   </Button>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -212,6 +235,10 @@ const CattleList = () => {
                 availableBreeds={availableBreeds}
                 clearFilters={clearFilters}
                 toggleOffcanvas={toggleOffcanvas}
+                sliderValues={sliderValues}
+                setSliderValues={setSliderValues}
+                minPrice={minPrice}
+                maxPrice={maxPrice}
               />
             </OffcanvasBody>
           </Offcanvas>
