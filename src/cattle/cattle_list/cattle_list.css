@@ -27,14 +27,6 @@
     right: 0.5rem;
   }
 
-  .danger {
-    background-color: #ef4444;
-  }
-
-  .warning {
-    background-color: #eab308;
-  }
-
   /* Main Layout */
   .main-content {
     display: flex;
@@ -66,7 +58,6 @@
     display: grid;
     gap: 2rem;
     width: 100%;
-    padding-bottom: 2rem;
   }
 
   /* Mobile Filter Button */
@@ -252,13 +243,20 @@
   }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 700px) {
   .page-container {
     padding-inline: 2rem;
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
+  .page-container {
+    padding: 1.5rem;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
   .page-container {
     padding: 1rem;
   }
@@ -282,9 +280,5 @@
 
   .mobile-only {
     display: block;
-  }
-
-  .page-container {
-    padding: 1rem;
   }
 }

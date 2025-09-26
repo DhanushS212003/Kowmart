@@ -185,7 +185,7 @@ const Profile = () => {
               <div className="p-3 py-2" aria-label="Profile navigation">
                 {currentUser.type === "customer" ? (
                   <>
-                    <Link className="profile_menu">
+                    <Link className="profile_menu" to="/my_cattle_list">
                       <i className="fa-solid fa-paw"></i>
                       <p>Cattle List</p>
                     </Link>

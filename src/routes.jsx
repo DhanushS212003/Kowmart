@@ -6,6 +6,7 @@ import Profile from "./profile/Profile";
 import About from "./about/About";
 import Sell from "./sell/Sell";
 import CattleList from "./cattle/cattle_list/CattleList";
+import List from "./cattle/cattle_list/List";
 
 export const routes = [
   {
@@ -39,6 +40,10 @@ export const routes = [
       {
         path: "cattle_list",
         element: <CattleList />,
+      },
+      {
+        path: "my_cattle_list",
+        element: <List />,
       },
     ],
   },
